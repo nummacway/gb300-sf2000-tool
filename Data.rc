@@ -1,0 +1,80 @@
+// UI Images
+1 PNG Data\UI\Octocat.png
+2 PNG Data\UI\Clyde.png
+42 PNG Data\UI\GB300.png
+1000 PNG Data\UI\List.png
+1001 PNG Data\UI\FC.png
+1002 PNG Data\UI\PCE.png
+1003 PNG Data\UI\SFC.png
+1004 PNG Data\UI\MD.png
+1005 PNG Data\UI\GB.png
+1006 PNG Data\UI\GBC.png
+1007 PNG Data\UI\GBA.png
+1008 PNG Data\UI\Star.png
+1009 PNG Data\UI\BIOS.png
+1010 PNG Data\UI\Buttons.png
+1011 PNG Data\UI\UI.png
+1012 PNG Data\UI\Gears.png
+999 PNG Data\UI\Favorite.png
+1101 PNG Data\UI\Button_A.png
+1102 PNG Data\UI\Button_B.png
+1103 PNG Data\UI\Button_X.png
+1104 PNG Data\UI\Button_Y.png
+1105 PNG Data\UI\Button_L.png
+1106 PNG Data\UI\Button_R.png
+
+// Previews
+1 XML Data\previews.xml
+2000 PNG Data\AYBABTU_stretched.png
+2001 PNG Data\AYBABTU_shrunken.png
+2002 PNG Data\Glazed.png
+2003 PNG Data\Shade.png
+2004 PNG Data\Missingno.png
+2005 PNG Data\Airport.png
+
+// Defaults
+1 RCDATA Data\KeyMapInfo.kmp
+
+// No-Intro (IDs are their official platform IDs, but the formats have been simplified to include only the data this program needs)
+12 DAT Data\NoIntro\12.bin // NEC - PC Engine
+46 DAT Data\NoIntro\46.bin // Nintendo - Game Boy
+23 DAT Data\NoIntro\23.bin // Nintendo - Game Boy Advance
+47 DAT Data\NoIntro\47.bin // Nintendo - Game Boy Color
+45 DAT Data\NoIntro\45.bin // Nintendo - Nintendo Entertainment System [must be created from the headerless DAT file!]
+49 DAT Data\NoIntro\49.bin // Nintendo - Super Nintendo Entertainment System
+25 DAT Data\NoIntro\25.bin // Sega - Game Gear
+18 DAT Data\NoIntro\18.bin // Sega - Kids Computer Pico
+26 DAT Data\NoIntro\26.bin // Sega - Master System
+32 DAT Data\NoIntro\32.bin // Sega - Mega Drive
+
+// No-Intro for multicore
+88 DAT Data\NoIntro\88.bin // Atari - 2600
+//1 DAT Data\NoIntro\1.bin // Atari - 5200
+74 DAT Data\NoIntro\74.bin // Atari - 7800 [BIN]
+30 DAT Data\NoIntro\30.bin // Atari - Lynx [LYX]
+50 DAT Data\NoIntro\50.bin // Bandai - WonderSwan
+51 DAT Data\NoIntro\51.bin // Bandai - WonderSwan Color
+87 DAT Data\NoIntro\87.bin // Benesse - Pocket Challenge v2
+3 DAT Data\NoIntro\3.bin // Coleco - ColecoVision
+6 DAT Data\NoIntro\6.bin // Fairchild - Channel F
+7 DAT Data\NoIntro\7.bin // GCE - Vectrex
+105 DAT Data\NoIntro\105.bin // Mattel - IntelliVision
+14 DAT Data\NoIntro\14.bin // Nintendo - Pokémon mini
+17 DAT Data\NoIntro\17.bin // Sega - 32X
+19 DAT Data\NoIntro\19.bin // Sega - SG-1000
+73 DAT Data\NoIntro\73.bin // Sinclair - ZX Spectrum
+35 DAT Data\NoIntro\35.bin // SNK - NeoGeo Pocket
+36 DAT Data\NoIntro\36.bin // SNK - NeoGeo Pocket Color
+22 DAT Data\NoIntro\22.bin // Watara - SuperVision
+
+// No-Intro-style Additional Data by numma_cway
+// GG2SMS advisory
+// GG2SMS results
+
+// Screen swap
+300 RCDATA Data\GB300_Screen.bin
+2000 RCDATA Data\SF2000_Screen.bin
+
+// Bootloader
+42 RCDATA Data\Firmware.upk
+
