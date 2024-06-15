@@ -5,14 +5,14 @@ It is supposed to be the GB300's counterpart to what Tadpole is for the similar 
 
 ## Requirements
 
-The tool works on any Windows machine. There are no dependencies but you need a bit of screen resolution (at least 1280×864). It might run on Linux via Wine, but note that the _Live Previews_ feature makes heavy use of an undocumented Windows API feature.
+The tool works on any Windows machine. There are no dependencies. It might run on Linux via Wine, but note that the _Live Previews_ feature makes heavy use of an undocumented Windows API feature.
 
-Once source is available, you can also use Embarcadero Delphi to compile it yourself. It should compile with no to minimal changes starting from Delphi XE2. GB300 Tools makes heavy use of negative Zlib window sizes (aka headerless Deflate streams) which are not possible in earlier versions (maybe XE, I don't know). There is a way newer free Community Edition that will do the job.
+Once source is available, you can also use Embarcadero Delphi to compile it yourself. It should compile with no to minimal changes starting from Delphi XE2. GB300 Tools makes heavy use of negative Zlib window sizes (aka headerless deflate streams) which are not possible in earlier versions (maybe XE, I don't know). There is a way newer free Community Edition that will do the job.
 
 
 ## Features
 
-**General features:**
+General features:
 
 - Fast startup times
 - Works quite smooth (performance depends on Windows GDI and TF card performance)
@@ -21,57 +21,52 @@ Once source is available, you can also use Embarcadero Delphi to compile it your
 - Supports drag and drop and multi-select (actions in the ROM details still apply to displayed single file only)
 
 
-**Features in detail:**
+Features in detail:
 
-**ROMs**
-- Add, remove and in the seven "static" lists and user ROMs
-- Manually reorder and alphabetically sort ROMs in the "static" lists
-- Identify ROMs using No-Intro (includes No-Intro game ID, name and verification status; ignores NES header if one is present)
-- Rename, duplicate, compress and decompress ROM files
-- Import (replace) and export ROM files
-- Apply IPS (International Patching System) patches (RLE and truncate extensions supported)
-- Import, export and add thumbnails
-- Export save state images (screenshots)
-- Delete save states
-- Toggle favorites
-- Full multicore support!
-
-**Favorites**
-- Remove favorites
-- Manually reorder or alphabetically sort favorites
-
-**BIOS & Device**
-- Patch bootloader
-- Work around bootloader issues
-- Enable GBA BIOS
-- Fix BIOS CRC
-- Change boot logo
-- Patch BIOS after swapping in the SF2000's screen
-- Fix broken MD thumbnails (45 of these exist on the GB300)
-- Fix Glazed thumbnail
-- Clear favorites, history and key map
-
-**Keys**
-- Edit first and second player keys independently
-- Shows SMS and GG mapping for MD
-- Knows about all the bugs in the official key map editor, so you assign the actual mapping to the actual buttons (I'm talking about you, shoulder buttons!)
-- Import and export key map backups
-- Reset one console's or all key mappings to default
-
-**UI Editor**
-- Export and replace all images
-- View slices of images that aren't used as a whole
-- Preview images in around 100 pixel-perfect simulated scenes
-- Edit general UI settings in `Foldername.ini`
+- ROMs
+  - Add, remove and in the seven "static" lists and user ROMs
+  - Manually reorder and alphabetically sort ROMs in the "static" lists
+  - Identify ROMs using No-Intro (includes No-Intro game ID, name and verification status; ignores NES header if one is present)
+  - Rename, compress and decompress ROM files
+  - Import (replace) and export ROM files
+  - Apply IPS (International Patching System) patches (RLE and truncate extensions supported)
+  - Import, export and add thumbnails
+  - Import and export save states
+  - Export save state images
+  - Delete save states
+- Favorites
+  - Remove favorites
+  - Manually reorder or alphabetically sort favorites
+- BIOS & Device
+  - Patch bootloader
+  - Work around bootloader issues
+  - Enable GBA BIOS
+  - Fix BIOS CRC
+  - Change boot logo
+  - Patch BIOS after swapping in the SF2000's screen
+  - Fix broken MD thumbnails (45 of these exist on the GB300)
+  - Fix Glazed thumbnail
+  - Clear favorites, history and key map
+- Keys
+  - Edit first and second player keys independently
+  - Shows SMS and GG mapping for MD
+  - Knows about all the bugs in the official key map editor, so you assign the actual mapping to the actual buttons (I'm talking about you, shoulder buttons!)
+  - Import and export key map backups
+  - Reset one console's or all key mappings to default
+- UI Editor
+  - Export and replace all images
+  - View slices of images that aren't used as a whole
+  - Preview images in around 100 pixel-perfect simulated scenes
+  - Edit general UI settings in `Foldername.ini`
 
 I hope that people will be sharing the themes they made, so we can have a theme gallery with downloads like the SF2000 has.
-
 
 #### Limitations
 
 - A few preview scenes are missing. They would be related to key editing and more ROM lists.
 - There was a plan to get you suggested GG2SMS hacks when you add GG games where those hacks exist and can be played without an external gamepad. This is not yet implemented. Except for the absolute best hacks that use the entire screen, there is no need for this with multicore.
-- Files with bad thumbnails are not supported right now. Use the two fixes in the BIOS tab before doing anything else with the 45 glitched MD files and _Pokemon - Glazed Version (CN)_.
+- Does not support multicore yet. This is planned to be released very soon.
+- Files with bad thumbnails are not supported right now. Use the two fixes in the BIOS tab before doing anything else with the 45 glitched MD files and Pokemon Glazed.
 - Does not currently automatically rescale images.
 - There are no plans for sound-related features right now. Use [Kerokero](https://github.com/Dteyn/SF2000_BGM_Tool) instead.
 
@@ -85,7 +80,7 @@ When you hit _Start_, GB300 Tool makes sure that `Foldername.ini` exists and you
 
 ### ROMs
 
-Note: GB300 Tool does not use obfuscation in files it writes. This applies to archives with and without thumbnails, as obfuscation is purely optional for both. (It will keep any existing obfuscation if you just change a thumbnail.)
+Note: GB300 Tool does not use obfuscation in files it writes. This applies to archives with an without thumbnails, as obfuscation is purely optional. (It will keep any existing obfuscation if you just change a thumbnail.)
 
 
 ### BIOS
@@ -138,8 +133,8 @@ Selecting another file or leaving the _UI Editor_ tab without saving will discar
 
 Launch with `-dev` switch to show two menu items:
 
-- In the _Rename_ menu of the ROM details, there will be an option to convert NoIntro DATs into the format this tool uses for space and performance reasons (DATs are XML files with more checksums and lots of redundant information and overhead). The result will have the name of the original file but with a `.bin` extension. Make sure to use the headerless NES DAT, BIN DAT for Atari 7800. Database of GB300 Tool does not include BIOS.
-- In the _Save_ menu of the UI editor, you can load `preview.xml` from the tool's directory. If you didn't reorder, add or delete `<preview>`s, this will reload the currently-viewed preview.
+* In the _Rename_ menu of the ROM details, there will be an option to convert NoIntro DATs into the format this tool uses for space and performance reasons (DATs are XML files with more checksums and lots of redundant information and overhead). The result will have the name of the original file but with a `.bin` extension. Make sure to use the headerless NES DAT.
+* In the _Save_ menu of the UI editor, you can load `preview.xml` from the tool's directory. If you didn't reorder, add or delete `<preview>`s, this will reload the currently-viewed preview.
 
 
 ## Trivia
@@ -147,75 +142,5 @@ Launch with `-dev` switch to show two menu items:
 There are 19013 entries in the tool's No-Intro database. The chance that all of these have different hashes ("birthday paradox") is: $(2^32)!/((2^32)^19013*(2^32-19013)!)$ There is actually one duplicate game, but that one is an SMS game released for the MD with just a physical adapter, but still exactly the same ROM.
 
 Fun Facts about making the live previews:
-- To not promote even more downloading of commercial games, the sample screenshot for "Download ROMs" contains one free homebrew ROM for each of the 8 supported systems. All ROMs were considered the best on their respective systems according to various sources. I took considerable time to create this list, leading to delays in publishing thsi tool. You should give all of these ROMs a try.
-- The three screenshots used in the samples are the most memorable situations (or memes) I recalled when thinking about ROMs.
-
-
-## Changelog
-
-### v1.0 (TBA)
-
-- Add a few previews
-- Add on option to scale input files when replacing the BIOS boot logo and thumbnail images
-- Stop the tool from attempting to hash disc images
-- Complete this file
-- Add No-Intro databases for the remaining platforms that run reasonably well on the GB300 and do not require disc images (because these are difficult zu handle):
-  250. Amstrad - CPC
-  242. NEC - PC-88
-- Note: The above No-Intro DATs were not previously included because they come in different formats.
-- Update the existing No-Intro databases
-
-
-### v1.0-rc3 (TBA)
-
-- Add No-Intro databases for all platforms that run reasonably well on the GB300 and do not require disc images (because they are difficult to handle):
-  88. Atari - 2600
-  1. Atari - 5200
-  74. Atari - 7800
-  30. Atari - Lynx
-  50. Bandai - WonderSwan
-  51. Bandai - WonderSwan Color
-  87. Benesse - Pocket Challenge v2
-  3. Coleco - ColecoVision
-  6. Fairchild - Channel F
-  7. GCE - Vectrex
-  105. Mattel - IntelliVision
-  14. Nintendo - Pokémon mini
-  17. Sega - 32X
-  18. Sega - Kids Computer Pico _(also available on stock)_
-  19. Sega - SG-1000
-  73. Sinclair - ZX Spectrum
-  35. SNK - NeoGeo Pocket
-  36. SNK - NeoGeo Pocket Color
-  22. Watara - SuperVision
-- Note: The above list is subject to the Birthday Paradox.
-- Note: In theory, you could use this to identify files with generic extensions like `.bin`. This not currently planned because those extensions are rare.
-
-
-### v1.0-rc1b
-
-- Fixed two bugs that both prevented you from picking stock emulators when multicore was present
-- Added a few previews
-- Note: With the exception of "Empty battery screen" (`jccatm.kbp`) which I haven't seen so far, all images now have live previews, but three images do not have all slices used in previews yet: "Bottom tabs, selected state" (`nvinf.hsp`), "Top left screen logos" (`exaxz.hsp`) and "Button names in selection popup menu" (`ztrba.nec`). This will be fixed in the future.
-- Added a feature to export themes (in the drop down menu of the _Save_ button
-
-
-### v1.0-rc1 (04 May 2024)
-
-- Added full multicore support
-- Fixed some bugs
-
-
-### v1.0-pre1 vanilla-only (28 Apr 2024)
-
-- This is the first release.
-- No-Intro databases supported:
-  12. NEC - PC Engine
-  46. Nintendo - Game Boy
-  23. Nintendo - Game Boy Advance
-  47. Nintendo - Game Boy Color
-  45. Nintendo - Nintendo Entertainment System
-  49. Nintendo - Super Nintendo Entertainment System
-  25. Sega - Game Gear
-  26. Sega - Master System
-  32. Sega - Mega Drive
+* To not promote even more downloading of commercial games, the sample screenshot for "Download ROMs" contains one free homebrew ROM for each of the 8 supported systems. All ROMs were considered the best on their respective systems according to various sources. I took considerable time to create this list, leading to delays in publishing thsi tool. You should give all of these ROMs a try.
+* The three screenshots used in the samples are the most memorable situations (or memes) I recalled when thinking about ROMs.

@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
-  Vcl.ComCtrls, Generics.Collections, UnitCoreOption, MulticoreUtils;
+  Vcl.ComCtrls, Generics.Collections, UnitCoreOptions, MulticoreUtils;
 
 type
   TFrameMulticore = class(TFrame)
@@ -29,10 +29,9 @@ type
     ListViewAlways: TListView;
     ListViewBIOS: TListView;
     Label4: TLabel;
-    ScrollBox: TScrollBox;
     LabelBIOSInfo: TLabel;
+    PanelConfigActions: TPanel;
     ButtonSaveConfig: TButton;
-    LabelError: TLabel;
     procedure PanelNotInstalledClick(Sender: TObject);
     procedure TimerLazyLoadTimer(Sender: TObject);
     procedure ListViewFilesSelectItem(Sender: TObject; Item: TListItem;
@@ -43,11 +42,10 @@ type
   private
     { Private declarations }
     Core: TCore;
-    ConfigComps: TObjectList<TFrameCoreOption>;
+    Frame: TFrameCoreOptions;
   public
     { Public declarations }
     constructor Create(AOwner: TComponent); override;
-    destructor Destroy(); override;
   end;
 
 implementation
@@ -58,28 +56,17 @@ uses
 {$R *.dfm}
 
 procedure TFrameMulticore.ButtonSaveConfigClick(Sender: TObject);
-var
-  Options: TCoreOptions;
-  i: Integer;
 begin
-  SetLength(Options, ConfigComps.Count);
-  for i := 0 to ConfigComps.Count - 1 do
-  Options[i] := ConfigComps[i].Option;
-  Core.SetConfig(Options);
+  Frame.Save();
 end;
 
 constructor TFrameMulticore.Create(AOwner: TComponent);
 begin
   inherited;
+  Frame := TFrameCoreOptions.Create(Self);
+  Frame.Parent := PanelCoreInfo;
   PanelInstalled.Visible := HasMulticore;
   PanelNotInstalled.Visible := not HasMulticore;
-  ConfigComps := TObjectList<TFrameCoreOption>.Create(True);
-end;
-
-destructor TFrameMulticore.Destroy;
-begin
-  ConfigComps.Free();
-  inherited;
 end;
 
 procedure TFrameMulticore.ListViewAlwaysItemChecked(Sender: TObject; Item: TListItem);
@@ -100,10 +87,6 @@ end;
 
 procedure TFrameMulticore.ListViewFilesSelectItem(Sender: TObject; Item: TListItem; Selected: Boolean);
 var
-  FoundCore: Boolean;
-  Core: TCore; // name collission with self is no issue because this is a loop variable and the compiler will complain about situation when the two a different
-  Option: TCoreOption;
-  Top: Integer;
   Exts: TStringList;
   Ext: string;
   Console: TCoreConsole;
@@ -111,50 +94,16 @@ var
 begin
   if Selected then
   try
-    ConfigComps.Clear();
-    ScrollBox.VertScrollBar.Position := 0; // does funny things if you don't do that and the user has scrolled down in the previous core
-    FoundCore := False;
-    LabelError.Hide();
-    Self.Core.Core := Item.Caption;
-    Self.Core.Name := Item.Caption;
-    Self.Core.Config := '';
-    for Core in Cores do
-    if Core.Core = Item.Caption then
+    Core.Core := Item.Caption;
+    Core.Name := Item.Caption;
+    Core.Config := '';
+    if CoresDict.ContainsKey(Item.Caption) then
     begin
-      Self.Core := Core;
+      Core := CoresDict[Item.Caption];
       LabelEmuName.Caption := StringReplace(Core.GetNameAndDescription(), '&', '&&', [rfReplaceAll]);
-      Top := 0;
-      try
-        if Core.Config = '' then
-        raise Exception.Create('GB300 Tool does not know the configuration file''s name for this core (probably this core cannot be configured)');
-        for Option in Core.GetConfig do
-        begin
-          ConfigComps.Add(TFrameCoreOption.Create(Self));
-          ConfigComps.Last.Parent := ScrollBox;
-          ConfigComps.Last.Name := '';
-          ConfigComps.Last.Option := Option;
-          ConfigComps.Last.Top := Top;
-          Inc(Top, ConfigComps.Last.Height);
-        end;
-      except
-        on E: Exception do
-        begin
-          LabelError.Caption := E.Message;
-          LabelError.Top := Top;
-          LabelError.Show();
-        end;
-      end;
-      if ConfigComps.Count = 0 then
-      ButtonSaveConfig.Hide()
-      else
-      begin
-        ButtonSaveConfig.Top := Top;
-        ButtonSaveConfig.Show();
-      end;
-      FoundCore := True;
-      Break;
-    end;
-    if not FoundCore then
+      ButtonSaveConfig.Visible := Frame.LoadCore(Core, '');
+    end
+    else
     begin
       LabelEmuName.Caption := Item.Caption;
       ButtonSaveConfig.Hide();
@@ -174,12 +123,12 @@ begin
         with ListViewDefault.Items.Add do
         begin
           Caption := Ext;
-          Checked := INI.ReadString('Default', Ext, '') = Self.Core.Core;
+          Checked := INI.ReadString('Default', Ext, '') = Core.Core;
         end;
         with ListViewAlways.Items.Add do
         begin
           Caption := Ext;
-          Checked := INI.ReadString('Always', Ext, '') = Self.Core.Core;
+          Checked := INI.ReadString('Always', Ext, '') = Core.Core;
         end;
       end;
     finally
@@ -198,7 +147,7 @@ begin
     try
       ListViewBIOS.Items.Clear();
       ListViewBIOS.Groups.Clear();
-      for Console in TCore.GetConsoles(Self.Core.Core) do
+      for Console in TCore.GetConsoles(Core.Core) do
       begin
         ListViewBIOS.Groups.Add.Header := Console.Console;
 

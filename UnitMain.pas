@@ -1,4 +1,4 @@
-unit UnitMain;
+﻿unit UnitMain;
 
 interface
 
@@ -72,6 +72,8 @@ type
     Shape13: TShape;
     Image13: TImage;
     Label13: TLabel;
+    ImageListCheckResults: TImageList;
+    LabelOnboardingChinese: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure EditOnboardingWorkingDirChange(Sender: TObject);
     procedure ButtonOnboardingStartClick(Sender: TObject);
@@ -82,6 +84,7 @@ type
     procedure TimerLazyLoadTimer(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure CheckBoxOnboardingChineseClick(Sender: TObject);
   private
     { Private declarations }
     var
@@ -106,7 +109,7 @@ implementation
 uses
   GB300Utils, GB300UIConst, DateUtils, GUIHelpers, Generics.Collections,
   UnitBIOS, UnitUI, UnitStockROMs, UnitKeys, UnitUserROMs, UnitFavorites,
-  UnitMulticore, MulticoreUtils;
+  UnitMulticore, MulticoreUtils, System.UITypes;
 
 {$R *.dfm}
 
@@ -115,6 +118,16 @@ uses
 procedure TForm1.ButtonOnboardingStartClick(Sender: TObject);
 var
   FileNames: TObjectList<TNameList>;
+  i: Integer;
+  Core, CoreTGBDual, CoreGambatte, CoreGB, CoreGBB: TCore;
+function IsCoreGambatte(Core: string; Default: Boolean): Boolean;
+begin
+  Core := IncludeTrailingPathDelimiter(IncludeTrailingPathDelimiter(Path + 'cores') + Core) + 'core_87000000';
+  if FileExists(Core) then
+  Result := GetFileSize(Core) > 668206 // average of the two
+  else
+  Result := Default;
+end;
 begin
   Path := EditOnboardingWorkingDir.Text;
   if Length(Path) = 1 then
@@ -140,9 +153,48 @@ begin
   end;
   PanelOnboarding.Hide();
   PanelTop.Show();
-  Caption := Caption + ' � ' + Path;
+  Caption := Caption + ' – ' + Path;
   HandleHover(10);
   HandleDown(10);
+
+  if HasMulticore then
+  begin
+    // Ever asked yourself how to cause the a lot of unnecessary work for tool developers? Just randomly swap important files around between versions!
+    for i := Low(Cores) to High(Cores) do
+    if Cores[i].Core = 'gb' then
+    CoreTGBDual := Cores[i]
+    else
+    if Cores[i].Core = 'gbb' then
+    CoreGambatte := Cores[i];
+
+    if IsCoreGambatte('gb', False) then
+    CoreGB := CoreGambatte
+    else
+    CoreGB := CoreTGBDual;
+
+    if IsCoreGambatte('gbb', False) then
+    CoreGBB := CoreGambatte
+    else
+    CoreGBB := CoreTGBDual;
+
+    CoreGB.Core := 'gb';
+    CoreGBB.Core := 'gbb';
+
+    for i := Low(Cores) to High(Cores) do
+    if Cores[i].Core = 'gb' then
+    Cores[i] := CoreGB
+    else
+    if Cores[i].Core = 'gbb' then
+    Cores[i] := CoreGBB;
+  end;
+
+  for Core in Cores do
+  CoresDict.Add(Core.Core, Core);
+end;
+
+procedure TForm1.CheckBoxOnboardingChineseClick(Sender: TObject);
+begin
+  LabelOnboardingChinese.Visible := CheckBoxOnboardingChinese.Checked;
 end;
 
 procedure TForm1.EditOnboardingWorkingDirChange(Sender: TObject);
@@ -156,12 +208,25 @@ begin
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);
+var
+  INIPath: string;
 begin
+  if (Screen.Width < 1200) or (Screen.Height < 864) then
+  MessageDlg('Your screen resolution seems to be lower than that of the OLPC XO-1, better known as the world’s cheapest laptop, released in 2007. GB300 Tool does not support such a low resolution.', mtWarning, [mbOk], 0);
+
   Randomize(); // used for the random background colors of the UI editor
   Application.Title := Caption;
   Foldername := DefaultFoldername;
   //ShowFrame(TFrameBIOS);
-  INI := TIniFile.Create(ChangeFileExt(ParamStr(0), '.ini'));
+  INIPath := ExtractFilePath(ParamStr(0)) + 'GB300Tool.ini';
+  if FileExists(INIPath) then
+  INI := TIniFile.Create(INIPath)
+  else
+  begin
+    INIPath := IncludeTrailingPathDelimiter(IncludeTrailingPathDelimiter(GetEnvironmentVariable('APPDATA')) + 'GB300 Tool');
+    ForceDirectories(INIPath);
+    INI := TIniFile.Create(INIPath + 'GB300Tool.ini');
+  end;
   EditOnboardingWorkingDir.Text := INI.ReadString('Onboarding', 'WorkingDir', '');
   CheckBoxOnboardingChinese.Checked := INI.ReadBool('Onboarding', 'Chinese', False);
   LoadPNGTo(42, ImageOnboardingDevice.Picture);
@@ -245,40 +310,39 @@ end;
 
 procedure TForm1.LazyCreate;
 const
-  NoIntroPlatforms: array[0..26] of Word = (//12, 23, 25, 26, 32, 45, 46, 47, 49
+  NoIntroPlatforms: array[0..27] of Word = (//12, 23, 25, 26, 32, 45, 46, 47, 49
     12,
-46,
-23,
-47,
-45,
-49,
-25,
-26,
-32,
-88,
-//1, // birthday paradox?
-74,
-30,
-50,
-51,
-87,
-3,
-6,
-7,
-105,
-14,
-17,
-18,
-19,
-73,
-35,
-36,
-22);
+    46,
+    23,
+    47,
+    45,
+    49,
+    25,
+    26,
+    32,
+    88,
+    1,
+    74,
+    30,
+    50,
+    51,
+    87,
+    3,
+    6,
+    7,
+    105,
+    14,
+    17,
+    18,
+    19,
+    73,
+    35,
+    36,
+    22);
 var
   RS: TResourceStream;
   NoIntroPlatform: Word;
   Temp: TNoIntro;
-  Core: TCore;
 begin
   // low-priority
   RS := TResourceStream.CreateFromID(HInstance, 1, 'XML');
@@ -288,6 +352,7 @@ begin
     RS.Free();
   end;
   LoadPNGToList(1000, ImageListFileTypes);
+  LoadPNGToList(997, ImageListCheckResults);
   LoadPNGTo(1001, Image1.Picture);
   LoadPNGTo(1002, Image2.Picture);
   LoadPNGTo(1003, Image3.Picture);
@@ -319,9 +384,6 @@ begin
       RS.Free();
     end;
   end;
-
-  for Core in Cores do
-  CoresDict.Add(Core.Core, Core);
 end;
 
 procedure TForm1.OpenURL(URL: string);

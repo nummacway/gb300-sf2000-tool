@@ -8,6 +8,11 @@ uses
   GUIHelpers, Vcl.Menus;
 
 type
+  TMulticoreMapping = record
+    Name: string;
+    x08, x00, x09, x01, x0a, x0b: string;
+  end;
+
   TFrameKeys = class(TFrame)
     ImageFC: TImage;
     Label1: TLabel;
@@ -29,7 +34,7 @@ type
     Image1Y: TImage;
     Image1L: TImage;
     Image1R: TImage;
-    Shape1: TShape;
+    ShapePlayer2: TShape;
     LabelPlayer2: TLabel;
     Image2A: TImage;
     Image2B: TImage;
@@ -198,6 +203,20 @@ type
     N1: TMenuItem;
     MenuItemsUndo: TMenuItem;
     MenuItemDefaults: TMenuItem;
+    ImageMC: TImage;
+    ComboBoxMulticore: TComboBox;
+    EditMC1A: TEdit;
+    EditMC1B: TEdit;
+    EditMC1L: TEdit;
+    EditMC1R: TEdit;
+    EditMC1X: TEdit;
+    EditMC1Y: TEdit;
+    EditMC2A: TEdit;
+    EditMC2B: TEdit;
+    EditMC2L: TEdit;
+    EditMC2R: TEdit;
+    EditMC2X: TEdit;
+    EditMC2Y: TEdit;
     procedure TimerLazyLoadTimer(Sender: TObject);
     procedure ButtonDefaultsClick(Sender: TObject);
     procedure MenuItemImportClick(Sender: TObject);
@@ -205,6 +224,7 @@ type
     procedure ButtonSaveClick(Sender: TObject);
     procedure MenuItemsUndoClick(Sender: TObject);
     procedure MenuItemDefaultsClick(Sender: TObject);
+    procedure ComboBoxMulticoreSelect(Sender: TObject);
   private
     { Private declarations }
     procedure InitData();
@@ -216,13 +236,33 @@ type
       // for populating controls
       KeyNamesFC:   array[0..1] of string = ('A',   'B'); // also used by GB
       KeyValuesFC:  array[0..1] of Word   = ($0008, $0000); // also used by GB
-      KeyNamesPCE:  array[0..5] of string = ('I',   'II', 'invalid', 'invalid', 'invalid', 'invalid');
       KeyNamesSFC:  array[0..5] of string = ('A',   'B',   'X',   'Y',   'L',   'R');
       KeyValuesSFC: array[0..5] of Word   = ($0008, $0000, $000a, $000b, $0009, $0001);
-      KeyNamesMD:   array[0..5] of string = ('A',   'B / SMS 1', 'C / SMS 2', 'X',   'Y',   'Z');
-      KeyValuesMD:  array[0..5] of Word   = ($0008, $0000,       $0001,       $000a, $000b, $0009); // also used by PCE
+      KeyNamesPCE:  array[0..5] of string = ('I',   'II',        'invalid',   'invalid', 'invalid', 'invalid');
+      KeyNamesMD:   array[0..5] of string = ('A',   'B / SMS 1', 'C / SMS 2', 'X',       'Y',       'Z');
+      KeyValuesMD:  array[0..5] of Word   = ($0008, $0000,       $0001,       $000a,     $000b,     $0009); // also used by PCE
       KeyNamesGBA:  array[0..5] of string = ('A',   'B',   'invalid', 'invalid', 'L', 'R');
       KeyValuesGBA: array[0..5] of Word   = ($0008, $0000, $0001,     $0009,     $000a,    $000b);
+
+      MulticoreData: array[0..16] of TMulticoreMapping = (
+        (Name: 'blueMSX CV';       x08: 'L';    x00: 'R';    x09: '1';    x01: '2';    x0a: '4'; x0b: '3'),
+        (Name: 'blueMSX SG';       x08: 'L';    x00: 'R'                                                 ),
+        (Name: 'Caprice32';        x08: 'Joy 1';x00: 'Joy 2'                                             ),
+        (Name: 'CrocoDS BASIC';    x08: 'X';    x00: 'Z';    x09: 'é';    x01: '"';                      ),
+        (Name: 'CrocoDS def.Joy';  x08: 'Joy 1';x00: 'Joy 2';x09: 'Key 2';x01: 'Key 3'                   ),
+        (Name: 'CrocoDS def.Key';  x08: 'Space';x00: 'Key 1';x09: 'Key 2';x01: 'Key 3'                   ),
+        (Name: 'CrocoDS internal'; x08: 'A';    x00: 'B';    x09: 'X';    x01: 'Y';    x0a: 'L'; x0b: 'R'),
+        (Name: 'Gearcoloco';       x08: 'R';    x00: 'L';    x09: '2';    x01: '1';    x0a: '3'; x0b: '4'),
+        (Name: 'Gearsystem SG';    x08: 'R';    x00: 'L'                                                 ),
+        (Name: 'Gearsystem SMS/GG';x08: '2';    x00: '1'                                                 ),
+        (Name: 'gpSP';             x08: 'A';    x00: 'B';    x09: 'TA';   x01: 'TB';   x0a: 'L'; x0b: 'R'),
+        (Name: 'Picodrive MD';     x08: 'C';    x00: 'B';    x09: 'Y';    x01: 'A';    x0a: 'X'; x0b: 'Z'),
+        (Name: 'Picodrive SG';     x08: 'R';    x00: 'L'                                                 ),
+        (Name: 'Picodrive SMS/GG'; x08: '2';    x00: '1'                                                 ),
+        (Name: 'PokeMini';         x08: 'A';    x00: 'B';    x09: 'TA';                          x0b: 'C'),
+        (Name: 'Snes9x 2002';      x08: 'A';    x00: 'B';    x09: 'X';    x01: 'Y';    x0a: 'L'; x0b: 'R'),
+        (Name: 'Snes9x 2005';      x08: 'A';    x00: 'B';    x09: 'X';    x01: 'Y';    x0a: 'L'; x0b: 'R')
+      );
     var
       ComboBoxes: array[0..71] of TComboBox;
       CheckBoxes: array[0..71] of TCheckBox;
@@ -265,6 +305,33 @@ begin
   SaveToFile();
 end;
 
+procedure TFrameKeys.ComboBoxMulticoreSelect(Sender: TObject);
+var
+  i: Byte;
+  ii: Integer;
+  cbv: Word;
+  Key: string;
+begin
+  ii := ComboBoxMulticore.ItemIndex;
+  if ii > -1 then
+  for i := 0 to 11 do
+  begin
+    cbv := ComboBoxes[5*12 + i].ObjectIndexInt;
+    with MulticoreData[ii] do
+    case cbv of
+      $08: Key := x08;
+      $00: Key := x00;
+      $09: Key := x09;
+      $01: Key := x01;
+      $0a: Key := x0a;
+      $0b: Key := x0b;
+    end;
+    if Key = '' then
+    Key := 'invalid';
+    (FindComponent(StringReplace(ComboBoxes[5*12 + i].Name, 'ComboBoxGBA', 'EditMC', [])) as TEdit).Text := Key;
+  end;
+end;
+
 constructor TFrameKeys.Create(AOwner: TComponent);
 begin
   inherited;
@@ -274,6 +341,7 @@ begin
   LoadPNGTo(1004, ImageMD.Picture);
   LoadPNGTo(1006, ImageGB.Picture);
   LoadPNGTo(1007, ImageGBA.Picture);
+  LoadPNGTo(1012, ImageMC.Picture);
   LoadPNGTo(1101, Image1A.Picture);
   LoadPNGTo(1102, Image1B.Picture);
   LoadPNGTo(1103, Image1X.Picture);
@@ -294,6 +362,8 @@ begin
 end;
 
 procedure TFrameKeys.InitData;
+var
+  Dev: Boolean;
 procedure InitConsole(Console: Byte; const KeyNames: array of string; const KeyValues: array of Word);
 var
   i, j: Byte;
@@ -310,15 +380,24 @@ begin
       begin
         Items.BeginUpdate();
         for j := Low(KeyNames) to High(KeyNames) do
+        if Dev then
+        if KeyNames[j] = 'invalid' then
+        Items.AddObject('0x' + IntToHex(KeyValues[j], 2), TObject(KeyValues[j]))
+        else
+        Items.AddObject(Trim(Copy(KeyNames[j], 1, 2)) + ' | 0x' + IntToHex(KeyValues[j], 2), TObject(KeyValues[j]))
+        else
         Items.AddObject(KeyNames[j], TObject(KeyValues[j]));
         Items.EndUpdate();
       end
       else
       Items := ComboBoxes[Console * 12].Items;
+      if Console = 5 then
+      OnSelect := ComboBoxMulticoreSelect;
     end;
   end;
 end;
 begin
+  Dev := ParamStr(1) = '-dev';
   InitConsole(0, KeyNamesFC, KeyValuesFC);
   InitConsole(1, KeyNamesPCE, KeyValuesMD);
   InitConsole(2, KeyNamesSFC, KeyValuesSFC);
@@ -338,7 +417,14 @@ begin
     Stream.Read(w, 2);
     Stream.Read(w2, 2);
     ComboBoxes[i].ObjectIndexInt := w;
+    if ComboBoxes[i].ItemIndex = -1 then
+    begin
+      ComboBoxes[i].Items.AddObject('0x' + IntToHex(w, 2), Pointer(w));
+      ComboBoxes[i].ObjectIndexInt := w;
+    end;
     CheckBoxes[i].Checked := (w2 and 1) = 1; // this how the GB300 does that: odd is autofire, even isn't (tested -1 (which is odd), 0 to 3)
+    if Console = 5 then
+    ComboBoxMulticoreSelect(nil);
   end;
 end;
 
@@ -445,9 +531,18 @@ begin
 end;
 
 procedure TFrameKeys.TimerLazyLoadTimer(Sender: TObject);
+var
+  i: Integer;
 begin
   TimerLazyLoad.Enabled := False;
   InitData(); // running this after creation of the form takes half as long as calling in the Create() method because Delphi essentially creates the form twice otherwise
+  ComboBoxMulticore.Items.BeginUpdate();
+  try
+    for i := Low(MulticoreData) to High(MulticoreData) do
+    ComboBoxMulticore.Items.AddObject(MulticoreData[i].Name, Pointer(i));
+  finally
+    ComboBoxMulticore.Items.EndUpdate();
+  end;
   LoadFromFile();
   Show();
 end;

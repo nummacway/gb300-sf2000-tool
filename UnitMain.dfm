@@ -1,7 +1,7 @@
 object Form1: TForm1
   Left = 0
   Top = 0
-  Caption = 'GB300 Tool [v1.0-rc1b]'
+  Caption = 'GB300 Tool [v1.0]'
   ClientHeight = 808
   ClientWidth = 1232
   Color = clWhite
@@ -31,7 +31,7 @@ object Form1: TForm1
   end
   object PanelOnboarding: TPanel
     Left = 396
-    Top = 275
+    Top = 267
     Width = 440
     Height = 216
     Anchors = []
@@ -117,6 +117,14 @@ object Form1: TForm1
       Font.Style = []
       ParentFont = False
     end
+    object LabelOnboardingChinese: TLabel
+      Left = 152
+      Top = 168
+      Width = 142
+      Height = 15
+      Caption = '(double-click to edit them)'
+      Visible = False
+    end
     object EditOnboardingWorkingDir: TEdit
       Left = 200
       Top = 120
@@ -143,6 +151,7 @@ object Form1: TForm1
       Height = 17
       Caption = 'Show Chinese/Pinyin names'
       TabOrder = 2
+      OnClick = CheckBoxOnboardingChineseClick
     end
   end
   object PanelTop: TPanel
@@ -578,5 +587,10 @@ object Form1: TForm1
     Top = 640
     object BrowseURL: TBrowseURL
     end
+  end
+  object ImageListCheckResults: TImageList
+    ColorDepth = cd32Bit
+    Left = 216
+    Top = 400
   end
 end

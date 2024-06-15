@@ -41,12 +41,13 @@ type
       State: TDragState; var Accept: Boolean);
     procedure ListViewFilesDragDrop(Sender, Source: TObject; X, Y: Integer);
     procedure ListViewFilesKeyPress(Sender: TObject; var Key: Char);
+    procedure ListViewFilesDblClick(Sender: TObject);
   private
     { Private declarations }
     procedure DropFiles(Sender: TObject);
     procedure DoCheck(NewState: Boolean);
     procedure DoCheckSelection(NewState: Boolean);
-    function DoAddUnlisted(FN: string): TListItem;
+    function DoAddUnlisted(FN: string; Checked: Boolean): TListItem;
     procedure ROMDuplicate(var Item: TListItem; const NewName: string);
     procedure ROMRename(var Item: TListItem; const NewName: string);
     var
@@ -175,12 +176,15 @@ begin
       for i := ListViewFiles.Items.Count - 1 downto 0 do
       if ListViewFiles.Items[i].Selected then
       begin
+        if TROMFile.GetIsMultiCore(ListViewFiles.Items[i].Caption) then
+        DeleteFile(TROMFile.GetMCName(ListViewFiles.Items[i].Caption).AbsoluteFileName);
         if DeleteFile(Foldername.AbsoluteFolder[FolderIndex] + ListViewFiles.Items[i].Caption) then
         ListViewFiles.Items[i].Delete();
       end;
     finally
       ListViewFiles.Items.EndUpdate();
       ApplyAndSave();
+      ROMDetailsFrame.Hide();
     end;
   end;
 end;
@@ -237,7 +241,7 @@ begin
         NewFN := FN;
         if TFormMulticoreSelection.HandleMulticore(FolderIndex, NewFN) then
         if NewFN <> '' then
-        DoAddUnlisted(ExtractFileName(NewFN));
+        DoAddUnlisted(ExtractFileName(NewFN), True);
       end;
     end
     else
@@ -267,7 +271,7 @@ begin
 
       if CopyFile(PChar(FN), PChar(NewFN), not Overwrite) then
       if not FileExisted then
-      DoAddUnlisted(ExtractFileName(FN));
+      DoAddUnlisted(ExtractFileName(FN), True);
     end;
   finally
     ListViewFiles.Items.EndUpdate();
@@ -277,13 +281,13 @@ begin
   end;
 end;
 
-function TFrameStockROMs.DoAddUnlisted(FN: string): TListItem;
+function TFrameStockROMs.DoAddUnlisted(FN: string; Checked: Boolean): TListItem;
 var
   FN2: string;
 begin
   Result := ListViewFiles.Items.Add();
   Result.Caption := FN;
-  Result.Checked := False;
+  Result.Checked := Checked;
   //if ShowChineseNames then
   //begin
   if TROMFile.GetIsMultiCore(FN) then
@@ -331,6 +335,24 @@ end;
 procedure TFrameStockROMs.DropFiles(Sender: TObject);
 begin
   DoAdd(Form1.DragIn.FileList);
+end;
+
+procedure TFrameStockROMs.ListViewFilesDblClick(Sender: TObject);
+var
+  Names: array[0..1] of string;
+begin
+  if ListViewFiles.SelCount = 1 then
+  if ShowChineseNames then
+  begin
+    Names[0] := ListViewFiles.Selected.SubItems[0];
+    Names[1] := ListViewFiles.Selected.SubItems[1];
+    if InputQuery('Edit Chinese Names', ['Chinese:', 'Pinyin:'], Names) then
+    begin
+      ListViewFiles.Selected.SubItems[0] := Names[0];
+      ListViewFiles.Selected.SubItems[1] := Names[1];
+    end;
+    ApplyAndSave();
+  end;
 end;
 
 procedure TFrameStockROMs.ListViewFilesDragDrop(Sender, Source: TObject; X, Y: Integer);
@@ -387,6 +409,8 @@ begin
   begin
     Favorites.Rename(FolderIndex, Item.Caption, S);
     History.Rename(FolderIndex, Item.Caption, S);
+    if not TROMFile.RenameRelated(FolderIndex, Item.Caption, S) then
+    MessageDlg('Could not rename all existing related files, likely because there is some conflict or damage', mtWarning, [mbOk], 0);
     MustSaveReferenceLists := True;
     Item.Caption := S;
     ROMDetailsFrame.ShowFile(FolderIndex, Item);
@@ -454,9 +478,38 @@ var
   KnownFiles: TDictionary<string, Integer>; // the second argument is not needed
   AllFiles: TList<string>;
   FN: string;
+{function CanPreview(Index: Integer): Boolean; // this method was used to select the games for the previews
+var
+  j: Integer;
+  Name: string;
+begin
+  Result := True;
+  for j := Index to Index + 7 do
+  begin
+    Name := ChangeFileExt(Names.FileNames[j mod Names.FileNames.Count], '');
+    if Pos('g', Name) > 0 then Exit(False);
+    if Pos('j', Name) > 0 then Exit(False);
+    if Pos('p', Name) > 0 then Exit(False);
+    if Pos('q', Name) > 0 then Exit(False);
+    if Pos('y', Name) > 0 then Exit(False);
+  end;
+  for j := Index + 5 to Index + 7 do
+  begin
+    Name := ChangeFileExt(Names.FileNames[j mod Names.FileNames.Count], '');
+    if Pos('g', Name) > 0 then Exit(False);
+    if Pos('j', Name) > 0 then Exit(False);
+    if Pos('p', Name) > 0 then Exit(False);
+    if Pos('q', Name) > 0 then Exit(False);
+    if Pos('y', Name) > 0 then Exit(False);
+  end;
+end;  }
 begin
   Self.FolderIndex := FolderIndex;
   Names.LoadFromFiles(FolderIndex);
+  //for i := 0 to Names.FileNames.Count - 1 do
+  //if CanPreview(i) then
+  //FN := FN + IntToStr(i) + '. ' + Names.FileNames[i] + #13#10;
+  //ShowMessage(FN);
   ListViewFiles.Items.BeginUpdate();
   KnownFiles := TDictionary<string, Integer>.Create();
   try
@@ -480,7 +533,7 @@ begin
       AllFiles.Sort();
       for FN in AllFiles do
       if not KnownFiles.ContainsKey(AnsiLowercase(FN)) then
-      DoAddUnlisted(FN);
+      DoAddUnlisted(FN, False);
     finally
       AllFiles.Free();
     end;
@@ -496,7 +549,7 @@ procedure TFrameStockROMs.ROMDuplicate(var Item: TListItem; const NewName: strin
 begin
   try
     ListViewFiles.OnItemChecked := nil;
-    Item := DoAddUnlisted(NewName);
+    Item := DoAddUnlisted(NewName, ROMDetailsFrame.Item.Checked);
   finally
     ListViewFiles.OnItemChecked := ListViewFilesItemChecked;
     ListViewFiles.DoAutoSize();
@@ -508,6 +561,8 @@ procedure TFrameStockROMs.ROMRename(var Item: TListItem; const NewName: string);
 begin
   Favorites.Rename(FolderIndex, Item.Caption, NewName);
   History.Rename(FolderIndex, Item.Caption, NewName);
+  if not TROMFile.RenameRelated(FolderIndex, Item.Caption, NewName) then
+  MessageDlg('Could not rename all existing related files, likely because there is some conflict or damage', mtWarning, [mbOk], 0);
   MustSaveReferenceLists := True;
   Item.Caption := NewName;
   Item.ImageIndex := TROMFile.FileNameToImageIndex(NewName);

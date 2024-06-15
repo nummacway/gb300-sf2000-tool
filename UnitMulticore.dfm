@@ -173,14 +173,14 @@ object FrameMulticore: TFrameMulticore
           Caption = 'Supported platforms and BIOS files:'
         end
         object Label2: TLabel
-          Left = 424
+          Left = 520
           Top = 28
           Width = 154
           Height = 15
           Caption = 'Is default core for extensions:'
         end
         object Label3: TLabel
-          Left = 592
+          Left = 688
           Top = 28
           Width = 138
           Height = 15
@@ -210,7 +210,7 @@ object FrameMulticore: TFrameMulticore
           ParentFont = False
         end
         object ListViewDefault: TListView
-          Left = 424
+          Left = 520
           Top = 44
           Width = 160
           Height = 208
@@ -231,7 +231,7 @@ object FrameMulticore: TFrameMulticore
           OnItemChecked = ListViewDefaultItemChecked
         end
         object ListViewAlways: TListView
-          Left = 592
+          Left = 688
           Top = 44
           Width = 160
           Height = 208
@@ -254,7 +254,7 @@ object FrameMulticore: TFrameMulticore
         object ListViewBIOS: TListView
           Left = 0
           Top = 44
-          Width = 416
+          Width = 512
           Height = 208
           Columns = <
             item
@@ -278,30 +278,22 @@ object FrameMulticore: TFrameMulticore
           ReadOnly = True
           RowSelect = True
           ParentDoubleBuffered = False
+          SmallImages = Form1.ImageListCheckResults
           TabOrder = 0
           ViewStyle = vsReport
         end
       end
-      object ScrollBox: TScrollBox
+      object PanelConfigActions: TPanel
         Left = 0
-        Top = 294
+        Top = 616
         Width = 976
-        Height = 354
-        Align = alClient
-        BorderStyle = bsNone
-        Color = clWhite
-        ParentColor = False
+        Height = 32
+        Align = alBottom
+        BevelOuter = bvNone
         TabOrder = 1
-        object LabelError: TLabel
-          Left = 0
-          Top = 0
-          Width = 53
-          Height = 15
-          Caption = 'LabelError'
-        end
         object ButtonSaveConfig: TButton
           Left = 0
-          Top = 144
+          Top = 8
           Width = 128
           Height = 24
           Caption = 'Save Core Settings'

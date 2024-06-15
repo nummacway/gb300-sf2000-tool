@@ -44,7 +44,7 @@ type
       procedure GetSliceFromSlices(const Slices: array of TUIFileSlice);
       function GetHeight: Word;
       function GetWidth: Word;
-      var // should be threadvar, but records thing doesn't support threadvar
+      var // should be threadvar, but records don't support threadvar
         SliceIndex: Byte;
         Slice: TUIFileSlice;
     public
@@ -339,8 +339,8 @@ const
      (Filename: 'fixas.ctp';  Format: idfBGRA8888; FWidth:  152; FHeight:  160; Group: 5; Description: 'Pause menu item labels in Chinese';                 IsLanguage: False; Slices: usPauseMenuLabels),
      (Filename: 'drivr.ers';  Format: idfBGRA8888; FWidth:  152; FHeight:  160; Group: 5; Description: 'Pause menu item labels in Arabic';                  IsLanguage: False; Slices: usPauseMenuLabels),
      (Filename: 'icuin.cpl';  Format: idfBGRA8888; FWidth:  152; FHeight:  160; Group: 5; Description: 'Pause menu item labels in Russian';                 IsLanguage: False; Slices: usPauseMenuLabels),
-     (Filename: 'qwave.bke';  Format: idfBGRA8888; FWidth:  152; FHeight:  160; Group: 5; Description: 'Pause menu item labels in Spanish';                 IsLanguage: False; Slices: usPauseMenuLabels),
-     (Filename: 'xajkg.hsp';  Format: idfBGRA8888; FWidth:  152; FHeight:  160; Group: 5; Description: 'Pause menu item labels in Portuguese';              IsLanguage: False; Slices: usPauseMenuLabels),
+     (Filename: 'xajkg.hsp';  Format: idfBGRA8888; FWidth:  152; FHeight:  160; Group: 5; Description: 'Pause menu item labels in Spanish';                 IsLanguage: False; Slices: usPauseMenuLabels),
+     (Filename: 'qwave.bke';  Format: idfBGRA8888; FWidth:  152; FHeight:  160; Group: 5; Description: 'Pause menu item labels in Portuguese';              IsLanguage: False; Slices: usPauseMenuLabels),
      (Filename: 'irftp.ctp';  Format: idfBGRA8888; FWidth:  152; FHeight:  160; Group: 5; Description: 'Pause menu item labels in Korean';                  IsLanguage: False; Slices: usPauseMenuLabels),
      (Filename: 'bttlve.kbp'; Format: idfBGRA8888; FWidth:   60; FHeight:  144; Group: 6; Description: 'Battery states';                                    IsLanguage: False; Slices: usBatteryStates),
      (Filename: 'jccatm.kbp'; Format: idfRGB565;   FWidth:  640; FHeight:  480; Group: 6; Description: 'Empty battery screen';                              IsLanguage: False; Slices: usNone));
@@ -744,15 +744,16 @@ begin
             SetTextCharacterExtra(Result.Canvas.Handle, 1);
             Result.Canvas.Font.Height := Obj.S;
             Result.Canvas.Font.Color := Obj.C;
-            Result.Canvas.Font.Quality := TFontQuality.fqAntialiased; // disable ClearType
+            Result.Canvas.Font.Quality := TFontQuality.fqAntialiased; // disable ClearType but use monochromatic Antialiasing
             Result.Canvas.Brush.Style := bsClear; // disable image background
             r.Left := Obj.X;
             r.Top := Obj.Y;
             r.Width := 640;
             r.Height := 480;
-            s := Obj.D + #13#10;
+            s := Obj.D;
+            //DrawText(Result.Canvas.Handle, s, Length(s), r, DT_EXTERNALLEADING); // does not help with decenders and has bugged " " spacing from the second space in a string
             Result.Canvas.TextRect(r, Obj.X, Obj.Y, s);
-            //Result.Canvas.TextOut(Obj.X, Obj.Y, Obj.D + #13#10);
+            //Result.Canvas.TextOut(Obj.X, Obj.Y, Obj.D + #13#10 + 'bla');
           end;
         uoStatic:
           begin
@@ -794,6 +795,12 @@ begin
   if FC >= Low(Foldername.SelectedColors) then
   if FC <= High(Foldername.SelectedColors) then
   Exit(Foldername.SelectedColors[FC]);
+  if FC = -2 then
+  Exit(clWhite)
+  else
+  if FC = -3 then
+  Exit(clRed)
+  else
   Result := Foldername.DefaultColor;
 end;
 

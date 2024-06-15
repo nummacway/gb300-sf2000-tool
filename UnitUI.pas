@@ -101,6 +101,7 @@ type
     MenuItemReloadXML: TMenuItem;
     N2: TMenuItem;
     ExportAllImagestoDirectory1: TMenuItem;
+    MenuItemCopySmall: TMenuItem;
     procedure TimerLazyLoadTimer(Sender: TObject);
     procedure ListViewFilesSelectItem(Sender: TObject; Item: TListItem;
       Selected: Boolean);
@@ -121,6 +122,8 @@ type
     procedure MenuItemCopyClick(Sender: TObject);
     procedure MenuItemReloadXMLClick(Sender: TObject);
     procedure ExportAllImagestoDirectory1Click(Sender: TObject);
+    procedure MenuItemCopySmallClick(Sender: TObject);
+    procedure PopupMenuSavePopup(Sender: TObject);
   private
     { Private declarations }
     procedure ShowFile(const NewFile: TUIFile);
@@ -301,6 +304,7 @@ end;
 procedure TFrameUI.ComboBoxImageListSelect(Sender: TObject);
 var
   Img: TPngImage;
+  Img2: TPngImage;
 begin
   case ComboBoxDisplayMode.ItemIndex of
     0:
@@ -320,8 +324,14 @@ begin
         Img := UIPreviews[Integer(ComboBoxImageList.Items.Objects[ComboBoxImageList.ItemIndex])].GetPNG();
         try
           ImagePreview.Picture.Assign(Img);
-          Img.Canvas.CopyRect(Rect(1,1,640,480), Img.Canvas, Rect(0,0,639,479)); // windows shows the bottom right pixel of a 2x2 block when scaled down by 50%, whereas the GB300 displays the top left (CopyRect is strange if both rectangles have different dimensions)
-          ImagePreview2.Picture.Assign(Img);
+          Img2 := TPngImage.CreateBlank(COLOR_RGB, 8, 320, 240); // we create the scaled image instead of using Delphi's feature to improve compatibility with screen scaling
+          try
+            Img.Canvas.CopyRect(Rect(1,1,640,480), Img.Canvas, Rect(0,0,639,479)); // windows shows the bottom right pixel of a 2x2 block when scaled down by 50%, whereas the GB300 displays the top left (CopyRect is strange if both rectangles have different dimensions)
+            img.Draw(Img2.Canvas, Rect(0, 0, 320, 240));
+            ImagePreview2.Picture.Assign(Img2);
+          finally
+            Img2.Free();
+          end;
         finally
           Img.Free();
         end;
@@ -339,6 +349,8 @@ procedure TFrameUI.DoReplace(const FileName: string);
 var
   Image: TPicture;
 begin
+  if PanelRightFoldername.Visible then
+  Exit;
   Image := TPicture.Create();
   try
     Image.LoadFromFile(FileName);
@@ -434,6 +446,11 @@ begin
   Clipboard.Assign(ImagePreview.Picture.Graphic);
 end;
 
+procedure TFrameUI.MenuItemCopySmallClick(Sender: TObject);
+begin
+  Clipboard.Assign(ImagePreview2.Picture.Graphic);
+end;
+
 procedure TFrameUI.MenuItemReloadXMLClick(Sender: TObject);
 var
   MS: TMemoryStream;
@@ -447,6 +464,11 @@ begin
   finally
     MS.Free();
   end;
+end;
+
+procedure TFrameUI.PopupMenuSavePopup(Sender: TObject);
+begin
+  MenuItemCopySmall.Enabled := ImagePreview2.Visible;
 end;
 
 procedure TFrameUI.ShowFile(const NewFile: TUIFile);

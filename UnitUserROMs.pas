@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
   Vcl.ComCtrls, Vcl.StdCtrls, Vcl.ExtCtrls, UnitROMDetails, IOUtils,
-  Generics.Collections;
+  Generics.Collections, Vcl.Menus;
 
 type
   TFrameUserROMs = class(TFrame)
@@ -18,6 +18,15 @@ type
     PanelSpacer: TPanel;
     TimerLazyLoad: TTimer;
     OpenDialogROMs: TOpenDialog;
+    PopupMenuAdd: TPopupMenu;
+    MenuItemAddVTxx: TMenuItem;
+    OpenDialogVTxx: TOpenDialog;
+    MenuItemKeepiNES: TMenuItem;
+    N1: TMenuItem;
+    PopupMenu: TPopupMenu;
+    SavetsmfktaxasText1: TMenuItem;
+    SaveDialogTXT: TSaveDialog;
+    MenuItemOnlyOneBus: TMenuItem;
     procedure ListViewFilesSelectItem(Sender: TObject; Item: TListItem;
       Selected: Boolean);
     procedure TimerLazyLoadTimer(Sender: TObject);
@@ -29,6 +38,8 @@ type
       var S: string);
     procedure ListViewFilesKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure MenuItemAddVTxxClick(Sender: TObject);
+    procedure SavetsmfktaxasText1Click(Sender: TObject);
   private
     { Private declarations }
     procedure DropFiles(Sender: TObject);
@@ -81,11 +92,15 @@ begin
       for i := ListViewFiles.Items.Count - 1 downto 0 do
       if ListViewFiles.Items[i].Selected then
       begin
+        if TROMFile.GetIsMultiCore(ListViewFiles.Items[i].Caption) then
+        DeleteFile(TROMFile.GetMCName(ListViewFiles.Items[i].Caption).AbsoluteFileName);
         if DeleteFile(Foldername.AbsoluteFolder[7] + ListViewFiles.Items[i].Caption) then
         ListViewFiles.Items[i].Delete();
       end;
     finally
       ListViewFiles.Items.EndUpdate();
+      ListViewFilesSelectItem(nil, nil, False);
+      ROMDetailsFrame.Hide();
     end;
   end;
 end;
@@ -100,6 +115,8 @@ begin
   ROMDetailsFrame.ImageFavorite.Hide();
   Form1.DragIn.OnDrop := DropFiles;
   Form1.DragIn.Enabled := True;
+  if VTxxEnabled then
+  ButtonAdd.Style := bsSplitButton;
 end;
 
 procedure TFrameUserROMs.DoAdd(Files: TStrings);
@@ -128,7 +145,7 @@ begin
         begin
           Item := ListViewFiles.Items.Add;
           Item.Caption := ExtractFileName(NewFN);
-          Item.ImageIndex := TROMFile.FileNameToImageIndex(NewFN);
+          Item.ImageIndex := TROMFile.FileNameToImageIndex(ExtractFileName(NewFN));
         end;
       end;
     end
@@ -163,7 +180,7 @@ begin
         begin
           Item := ListViewFiles.Items.Add;
           Item.Caption := ExtractFileName(FN);
-          Item.ImageIndex := TROMFile.FileNameToImageIndex(FN);
+          Item.ImageIndex := TROMFile.FileNameToImageIndex(ExtractFileName(FN));
           //if Item.ImageIndex = -1 then
           //Item.Delete();
         end;
@@ -192,6 +209,8 @@ begin
                 Foldername.AbsoluteFolder[7] + S) then
   begin
     Item.Caption := S;
+    if not TROMFile.RenameRelated(7, Item.Caption, S) then
+  MessageDlg('Could not rename all existing related files, likely because there is some conflict or damage', mtWarning, [mbOk], 0);
     ROMDetailsFrame.ShowFile(7, Item);
   end
   else
@@ -219,6 +238,75 @@ begin
   ROMDetailsFrame.ShowFile(7, Item);
 end;
 
+procedure TFrameUserROMs.MenuItemAddVTxxClick(Sender: TObject);
+type
+  TiNES = packed record
+    Header: Cardinal;
+    PRGSize: Byte;
+    CHRSize: Byte;
+    Flags6: Byte;
+    Flags7: Byte;
+    Flags8: Byte;
+    Flags9: Byte;
+    Flags10: Byte;
+    Flags11: Byte;
+    Flags12: Byte;
+    Flags13: Byte;
+    Flags14: Byte;
+    Flags15: Byte;
+  end;
+var
+  s: string;
+  MS, MS2: TMemoryStream;
+  iNES, iNES2: TiNES;
+begin
+  if OpenDialogVTxx.Execute then
+  try
+    for s in OpenDialogVTxx.Files do
+    begin
+      MS := TMemoryStream.Create();
+      try
+        MS.LoadFromFile(s);
+        MS.ReadData(iNES);
+        ZeroMemory(@iNES2, SizeOf(TiNES));
+        iNES2.Header := $1a53454e;
+        if iNES.Header = $1a53454e then // iNES
+        begin
+          if iNES.CHRSize <> 0 then // not one bus
+          if MenuItemOnlyOneBus.Checked then
+          Continue;
+
+          if MenuItemKeepiNES.Checked then
+          if (MS.Size - MS.Position) div 16384 = iNES.PRGSize then
+          iNES2 := iNES;
+        end
+        else
+        if iNES.Header = $46494e55 then // UNIF
+        TROMFile.UnUNIF(MS) // convert to raw
+        else
+        MS.Position := 0;
+        iNES2.PRGSize := (MS.Size - MS.Position) div 16384;
+        iNES2.Flags6 := $c2;
+
+        MS2 := TMemoryStream.Create();
+        try
+          MS2.WriteData(iNES2);
+
+          MS2.CopyFrom(MS, MS.Size - MS.Position);
+
+          MS2.SaveToFile(Foldername.AbsoluteFolder[7] + ChangeFileExt(ExtractFileName(s), '.nfc'));
+        finally
+          MS2.Free();
+        end;
+      finally
+        MS.Free();
+      end;
+    end;
+  finally
+    TimerLazyLoadTimer(nil);
+  end;
+end;
+
 procedure TFrameUserROMs.ROMDuplicate(var Item: TListItem; const NewName: string);
 begin
   Item := ListViewFiles.Items.Add;
@@ -230,9 +318,33 @@ end;
 
 procedure TFrameUserROMs.ROMRename(var Item: TListItem; const NewName: string);
 begin
+  if not TROMFile.RenameRelated(7, Item.Caption, NewName) then
+  MessageDlg('Could not rename all existing related files, likely because there is some conflict or damage', mtWarning, [mbOk], 0);
   Item.Caption := NewName;
   Item.ImageIndex := TROMFile.FileNameToImageIndex(NewName);
   ListViewFiles.AlphaSort();
+end;
+
+procedure TFrameUserROMs.SavetsmfktaxasText1Click(Sender: TObject);
+var
+  FNs: TNameList;
+  s: string;
+  sl: TStringList;
+begin
+  if not SaveDialogTXT.Execute() then
+  Exit;
+
+  FNs := TNameList.Create();
+  sl := TStringList.Create();
+  try
+    FNs.LoadFromFile(FileNamesFilenames[7]);
+    for s in FNs do
+    sl.Add(s);
+    sl.SaveToFile(SaveDialogTXT.FileName, TEncoding.UTF8);
+  finally
+    FNs.Free();
+    sl.Free();
+  end;
 end;
 
 procedure TFrameUserROMs.TimerLazyLoadTimer(Sender: TObject);
@@ -245,6 +357,7 @@ begin
   ROMDetailsFrame.Parent := Self;
   ListViewFiles.Items.BeginUpdate();
   try
+    ListViewFiles.Items.Clear();
     Files := TROMFile.GetROMsIn(7);
     try
       for FN in Files do

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" ?>
-<uselessrootelement>
+<previews>
 <preview name="#0">
 <image d="sfcdr.cpl"  x="0"   y="0" />
 <image d="exaxz.hsp"  x="0"   y="8"   s="0" />
@@ -24,15 +24,98 @@
 <text d="/868" x="92" y="329" s="27"/>
 </preview>
 
-<!-- SFC irgendwo mit NHL -->
+<preview name="#1">
+<image d="sfcdr.cpl"  x="0"   y="0" />
+<image d="exaxz.hsp"  x="0"   y="8"   s="1" />
+<image d="sdclt.occ"  x="172" y="241" />
+<image d="bttlve.kbp" x="556" y="16" s="1" />
+<image d="ectte.bke"  x="21"  y="360" s="10" />
+<image d="ectte.bke"  x="121" y="360" s="11" />
+<image d="ectte.bke"  x="221" y="360" s="0" />
+<image d="ectte.bke"  x="421" y="360" s="2" />
+<image d="ectte.bke"  x="521" y="360" s="3" />
+<image d="nvinf.hsp"  x="321" y="360" s="1" />
+<image d="appvc.ikb" />
+<text d="12. Armed F" x="236" y="89" s="29"/>
+<text d="13. Artist Tool" x="236" y="121" s="29"/>
+<text d="14. Atomic Robo-Kid Special" x="236" y="153" s="29"/>
+<text d="15. Ballistix" x="236" y="185" s="29"/>
+<text d="16. Bari Bari Densetsu" x="236" y="217" s="29"/>
+<text d="17. Barunba" x="236" y="249" s="29" c="1"/>
+<text d="18. Batman" x="236" y="281" s="29"/>
+<text d="19. Battle Lode Runner" x="236" y="313" s="29"/>
+<text d="1" x="62" y="329" s="27"/>
+<text d="7" x="77" y="329" s="27"/>
+<text d="/304" x="92" y="329" s="27"/>
+</preview>
 
-<!--  -->
+<preview name="#2">
+<image d="sfcdr.cpl"  x="0"   y="0" />
+<image d="exaxz.hsp"  x="0"   y="8"   s="2" />
+<image d="okcg2.old"  x="200" y="93" />
+<image d="okcg2.old"  x="200" y="125" />
+<image d="okcg2.old"  x="200" y="157" />
+<image d="okcg2.old"  x="200" y="189" />
+<image d="okcg2.old"  x="200" y="221" />
+<image d="okcg2.old"  x="200" y="253" />
+<image d="okcg2.old"  x="200" y="285" />
+<image d="okcg2.old"  x="200" y="317" />
+<image d="sdclt.occ"  x="172" y="145" />
+<image d="bttlve.kbp" x="556" y="16" s="2" />
+<image d="ectte.bke"  x="21"  y="360" s="10" />
+<image d="ectte.bke"  x="121" y="360" s="11" />
+<image d="ectte.bke"  x="221" y="360" s="0" />
+<image d="ectte.bke"  x="321" y="360" s="1" />
+<image d="ectte.bke"  x="521" y="360" s="3" />
+<image d="nvinf.hsp"  x="421" y="360" s="2" />
+<image d="appvc.ikb" />
+<text d="217. E.V.O. - Search For Eden" x="236" y="89" s="29"/>
+<text d="218. Earth Defense Force" x="236" y="121" s="29"/>
+<text d="219. Earthbound" x="236" y="153" s="29" c="2"/>
+<text d="220. Earthworm Jim 2" x="236" y="185" s="29"/>
+<text d="221. Earthworm Jim" x="236" y="217" s="29"/>
+<text d="222. Eek! The Cat" x="236" y="249" s="29"/>
+<text d="223. Elite Soccer" x="236" y="281" s="29"/>
+<text d="224. Emmitt Smith Football" x="236" y="313" s="29"/>
+<text d="2" x="47" y="329" s="27"/>
+<text d="1" x="62" y="329" s="27"/>
+<text d="9" x="77" y="329" s="27"/>
+<text d="/1165" x="92" y="329" s="27"/>
+</preview>
+
+<preview name="#3">
+<image d="sfcdr.cpl"  x="0"   y="0" />
+<image d="exaxz.hsp"  x="0"   y="8"   s="3" />
+<image d="okcg2.old"  x="200" y="93" />
+<image d="okcg2.old"  x="200" y="125" />
+<image d="sdclt.occ"  x="172" y="177" />
+<image d="bttlve.kbp" x="556" y="16" s="3" />
+<image d="ectte.bke"  x="21"  y="360" s="10" />
+<image d="ectte.bke"  x="121" y="360" s="11" />
+<image d="ectte.bke"  x="221" y="360" s="0" />
+<image d="ectte.bke"  x="321" y="360" s="1" />
+<image d="ectte.bke"  x="421" y="360" s="2" />
+<image d="nvinf.hsp"  x="521" y="360" s="3" />
+<image d="appvc.ikb" />
+<text d="782. Thunder Force III" x="236" y="89" s="29"/>
+<text d="783. Thunder Force IV" x="236" y="121" s="29"/>
+<text d="784. Thunder Fox" x="236" y="153" s="29"/>
+<text d="785. Time Domininator 1st" x="236" y="185" s="29" c="3"/>
+<text d="786. Time Killers" x="236" y="217" s="29"/>
+<text d="787. Time Trax" x="236" y="249" s="29"/>
+<text d="788. TinHead" x="236" y="281" s="29"/>
+<text d="789. TinTin au Tibet" x="236" y="313" s="29"/>
+<text d="7" x="47" y="329" s="27"/>
+<text d="8" x="62" y="329" s="27"/>
+<text d="5" x="77" y="329" s="27"/>
+<text d="/912" x="92" y="329" s="27"/>
+</preview>
 
 <preview name="#4">
 <image d="sfcdr.cpl"  x="0"   y="0" />
 <image d="exaxz.hsp"  x="0"   y="8"   s="4" />
 <image d="okcg2.old"  x="200" y="93" />
-<image d="sdclt.occ"  x="172" y="113" />  
+<image d="sdclt.occ"  x="172" y="209" />  
 <image d="bttlve.kbp" x="556" y="16"  s="4" />
 <image d="ectte.bke"  x="21"  y="360" s="11" />
 <image d="ectte.bke"  x="121" y="360" s="0" />
@@ -41,22 +124,74 @@
 <image d="ectte.bke"  x="421" y="360" s="3" />
 <image d="nvinf.hsp"  x="521" y="360" s="4" />
 <image d="appvc.ikb" />
-<text d="1060. Ultraman" x="236" y="89" s="29"/>
-<text d="1061. Umaban Club" x="236" y="121" s="29" c="4"/>
-<text d="1062. Umi no Nushi Tsuri 2" x="236" y="153" s="29"/>
-<text d="1065. Uno - Small World" x="236" y="249" s="29"/>
-<text d="1066. Uno 2 - Small World" x="236" y="281" s="29"/>
-<text d="1067. Uoozu" x="236" y="313" s="29"/>
+<text d="24. Amida" x="236" y="89" s="29"/>
+<text d="25. Animal Breeder 2" x="236" y="121" s="29"/>
+<text d="26. Animal Breeder" x="236" y="153" s="29"/>
+<text d="27. Animaniacs" x="236" y="185" s="29"/>
+<text d="28. Another Bible" x="236" y="217" s="29" c="4"/>
+<text d="29. Aoki Densetsu Shoot!" x="236" y="249" s="29"/>
+<text d="30. Aretha II" x="236" y="281" s="29"/>
+<text d="31. Aretha III" x="236" y="313" s="29"/>
+<text d="2" x="62" y="329" s="27"/>
+<text d="8" x="77" y="329" s="27"/>
+<text d="/1142" x="92" y="329" s="27"/>
+</preview>
+
+<preview name="#5">
+<image d="sfcdr.cpl"  x="0"   y="0" />
+<image d="exaxz.hsp"  x="0"   y="8"   s="5" />
+<image d="okcg2.old"  x="200" y="93" />
+<image d="sdclt.occ"  x="172" y="113" />
+<image d="bttlve.kbp" x="556" y="16" s="5" />
+<image d="ectte.bke"  x="21"  y="360" s="0" />
+<image d="ectte.bke"  x="121" y="360" s="1" />
+<image d="ectte.bke"  x="221" y="360" s="2" />
+<image d="ectte.bke"  x="321" y="360" s="3" />
+<image d="ectte.bke"  x="421" y="360" s="4" />
+<image d="nvinf.hsp"  x="521" y="360" s="5" />
+<image d="appvc.ikb" />
+<text d="1019. Tottoko Ham Tarou 2" x="236" y="89" s="29"/>
+<text d="1020. Tottoko Hum Taro" x="236" y="121" s="29" c="5"/>
+<text d="1021. Towers - Lord Baniff's" x="236" y="153" s="29"/>
+<text d="1024. Treasure World" x="236" y="249" s="29"/>
+<text d="1025. Trick Boarder" x="236" y="281" s="29"/>
+<text d="1026. Trickboarder GP" x="236" y="313" s="29"/>
 <text d="1" x="32" y="329" s="27"/>
 <text d="0" x="47" y="329" s="27"/>
-<text d="6" x="62" y="329" s="27"/>
-<text d="1" x="77" y="329" s="27"/>
-<text d="/868" x="92" y="329" s="27"/>
+<text d="2" x="62" y="329" s="27"/>
+<text d="0" x="77" y="329" s="27"/>
+<text d="/1112" x="92" y="329" s="27"/>
 <image d="zaqrc.olc" x="216" y="160" s="0" />
 <image d="zaqrc.olc" x="624" y="160" s="1" />
 <image d="mhg4s.ihg" x="224" y="160" s="0" />
 <image d="mhg4s.ihg" x="224" y="232" s="1" />
 <image d="qasfc.bel" x="288" y="192" />
+</preview>
+
+<preview name="#6">
+<image d="sfcdr.cpl"  x="0"   y="0" />
+<image d="exaxz.hsp"  x="0"   y="8"   s="6" />
+<image d="sdclt.occ"  x="172" y="273" />
+<image d="bttlve.kbp" x="556" y="16" s="0" />
+<image d="ectte.bke"  x="121"  y="360" s="7" />
+<image d="ectte.bke"  x="221" y="360" s="8" />
+<image d="ectte.bke"  x="321" y="360" s="9" />
+<image d="ectte.bke"  x="421" y="360" s="10" />
+<image d="ectte.bke"  x="521" y="360" s="11" />
+<image d="nvinf.hsp"  x="21" y="360" s="6" />
+<image d="appvc.ikb" />
+<text d="597. Snood" x="236" y="89" s="29"/>
+<text d="598. Sonic Advance (CN)" x="236" y="121" s="29"/>
+<text d="599. Sonic Advance 2 (CN)" x="236" y="153" s="29"/>
+<text d="600. Sonic Advance 2" x="236" y="185" s="29"/>
+<text d="601. Sonic Advance 3 (CN)" x="236" y="217" s="29"/>
+<text d="602. Sonic Advance 3" x="236" y="249" s="29"/>
+<text d="603. Sonic Advance" x="236" y="281" s="29" c="6"/>
+<text d="604. Sonic Battle (CN)" x="236" y="313" s="29"/>
+<text d="6" x="47" y="329" s="27"/>
+<text d="0" x="62" y="329" s="27"/>
+<text d="3" x="77" y="329" s="27"/>
+<text d="/762" x="92" y="329" s="27"/>
 </preview>
 
 <!--
@@ -75,7 +210,7 @@ GBA: 2004MBit - GBAdev
 <image d="sfcdr.cpl"  x="0"   y="0" />
 <image d="exaxz.hsp"  x="0"   y="8"   s="7" />
 <image d="qdbec.ofd"  x="200" y="40" />
-<image d="sdclt.occ"  x="36" y="305" />  
+<image d="sdclt.occ"  x="36" y="305" />
 <image d="bttlve.kbp" x="556" y="16"  s="1" />
 <image d="ectte.bke"  x="21"  y="360" s="6" />
 <image d="ectte.bke"  x="221" y="360" s="8" />
@@ -315,7 +450,7 @@ GBA: 2004MBit - GBAdev
 <image d="nvinf.hsp"  x="421" y="360" s="11" />
 </preview>
 
-<preview name="Settings – EN – Check Pos’s">
+<preview name="Settings – EN – checkbox positions">
 <image d="sfcdr.cpl"  x="0"   y="0" />
 <image d="fhshl.skb"  x="0"   y="80" />
 <image d="exaxz.hsp"  x="0"   y="8"   s="11" />
@@ -352,7 +487,7 @@ GBA: 2004MBit - GBAdev
 <image d="nvinf.hsp"  x="421" y="360" s="11" />
 </preview>
 
-<preview name="Settings – ZH – Check Pos’s">
+<preview name="Settings – ZH – checkbox positions">
 <image d="sfcdr.cpl"  x="0"   y="0" />
 <image d="t2act.sgf"  x="0"   y="80" />
 <image d="exaxz.hsp"  x="0"   y="8"   s="11" />
@@ -389,7 +524,7 @@ GBA: 2004MBit - GBAdev
 <image d="nvinf.hsp"  x="421" y="360" s="11" />
 </preview>
 
-<preview name="Settings – AR – Check Pos’s">
+<preview name="Settings – AR – checkbox positions">
 <image d="sfcdr.cpl"  x="0"   y="0" />
 <image d="tvctu.uby"  x="0"   y="80" />
 <image d="exaxz.hsp"  x="0"   y="8"   s="11" />
@@ -426,7 +561,7 @@ GBA: 2004MBit - GBAdev
 <image d="nvinf.hsp"  x="421" y="360" s="11" />
 </preview>
 
-<preview name="Settings – RU – Check Pos’s">
+<preview name="Settings – RU – checkbox positions">
 <image d="sfcdr.cpl"  x="0"   y="0" />
 <image d="vdaz5.bjk"  x="0"   y="80" />
 <image d="exaxz.hsp"  x="0"   y="8"   s="11" />
@@ -463,7 +598,7 @@ GBA: 2004MBit - GBAdev
 <image d="nvinf.hsp"  x="421" y="360" s="11" />
 </preview>
 
-<preview name="Settings – ES – Check Pos’s">
+<preview name="Settings – ES – checkbox positions">
 <image d="sfcdr.cpl"  x="0"   y="0" />
 <image d="eknjo.ofd"  x="0"   y="80" />
 <image d="exaxz.hsp"  x="0"   y="8"   s="11" />
@@ -500,7 +635,7 @@ GBA: 2004MBit - GBAdev
 <image d="nvinf.hsp"  x="421" y="360" s="11" />
 </preview>
 
-<preview name="Settings – PT – Check Pos’s">
+<preview name="Settings – PT – checkbox positions">
 <image d="sfcdr.cpl"  x="0"   y="0" />
 <image d="lf9lb.cut"  x="0"   y="80" />
 <image d="exaxz.hsp"  x="0"   y="8"   s="11" />
@@ -537,7 +672,7 @@ GBA: 2004MBit - GBAdev
 <image d="nvinf.hsp"  x="421" y="360" s="11" />
 </preview>
 
-<preview name="Settings – KO – Check Pos’s">
+<preview name="Settings – KO – checkbox positions">
 <image d="sfcdr.cpl"  x="0"   y="0" />
 <image d="bfrjd.odb"  x="0"   y="80" />
 <image d="exaxz.hsp"  x="0"   y="8"   s="11" />
@@ -574,7 +709,7 @@ GBA: 2004MBit - GBAdev
 <image d="nvinf.hsp"  x="421" y="360" s="11" />
 </preview>
 
-<preview name="Settings – NTSC – Check Pos’s">
+<preview name="Settings – NTSC – checkbox positions">
 <image d="sfcdr.cpl"  x="0"   y="0" />
 <image d="sgotd.cwt"  x="0"   y="80" />
 <image d="exaxz.hsp"  x="0"   y="8"   s="11" />
@@ -606,7 +741,7 @@ GBA: 2004MBit - GBAdev
 <image d="nvinf.hsp"  x="421" y="360" s="11" />
 </preview>
 
-<preview name="Settings – PAL – Check Pos’s">
+<preview name="Settings – PAL – checkbox positions">
 <image d="sfcdr.cpl"  x="0"   y="0" />
 <image d="snbqj.uby"  x="0"   y="80" />
 <image d="exaxz.hsp"  x="0"   y="8"   s="11" />
@@ -809,11 +944,11 @@ GBA: 2004MBit - GBAdev
 <image d="mczwq.ikb"  x="0"   y="0"   s="3" />
 <image d="bttlve.kbp" x="560" y="8"   s="3" />
 <image d="hctml.ers"  x="320" y="64"  s="3" />
-<image d="qwave.bke"  x="72"  y="77"  s="0" />
-<image d="qwave.bke"  x="72"  y="141" s="1" />
-<image d="qwave.bke"  x="72"  y="205" s="2" />
-<image d="qwave.bke"  x="72"  y="269" s="3" />
-<image d="qwave.bke"  x="72"  y="333" s="4" />
+<image d="xajkg.hsp"  x="72"  y="77"  s="0" />
+<image d="xajkg.hsp"  x="72"  y="141" s="1" />
+<image d="xajkg.hsp"  x="72"  y="205" s="2" />
+<image d="xajkg.hsp"  x="72"  y="269" s="3" />
+<image d="xajkg.hsp"  x="72"  y="333" s="4" />
 <image d="lk7tc.bvs"  x="356" y="176" s="3" />
 <image d="lk7tc.bvs"  x="508" y="176" s="19" />
 <image d="lk7tc.bvs"  x="492" y="234" s="21" />
@@ -827,11 +962,11 @@ GBA: 2004MBit - GBAdev
 <image d="mczwq.ikb"  x="0"   y="0"   s="4" />
 <image d="bttlve.kbp" x="560" y="8"   s="4" />
 <image d="hctml.ers"  x="320" y="64"  s="4" />
-<image d="xajkg.hsp"  x="72"  y="77"  s="0" />
-<image d="xajkg.hsp"  x="72"  y="141" s="1" />
-<image d="xajkg.hsp"  x="72"  y="205" s="2" />
-<image d="xajkg.hsp"  x="72"  y="269" s="3" />
-<image d="xajkg.hsp"  x="72"  y="333" s="4" />
+<image d="qwave.bke"  x="72"  y="77"  s="0" />
+<image d="qwave.bke"  x="72"  y="141" s="1" />
+<image d="qwave.bke"  x="72"  y="205" s="2" />
+<image d="qwave.bke"  x="72"  y="269" s="3" />
+<image d="qwave.bke"  x="72"  y="333" s="4" />
 <image d="lk7tc.bvs"  x="356" y="176" s="17" />
 <image d="lk7tc.bvs"  x="508" y="176" s="1" />
 <image d="lk7tc.bvs"  x="492" y="234" s="17" />
@@ -902,6 +1037,246 @@ GBA: 2004MBit - GBAdev
 <image d="ztrba.nec"  x="528" y="276" s="3" />
 </preview>
 
+<preview name="Pause – Joystick – PCE – Y – X selected">
+<image d="gpapi.bvs"  x="0"   y="0" />
+<image d="mczwq.ikb"  x="0"   y="0"   s="1" />
+<image d="bttlve.kbp" x="560" y="8"   s="1" />
+<image d="hctml.ers"  x="320" y="64"  s="1" />
+<image d="dsuei.cpl"  x="72"  y="77"  s="0" />
+<image d="dsuei.cpl"  x="72"  y="141" s="1" />
+<image d="dsuei.cpl"  x="72"  y="205" s="2" />
+<image d="dsuei.cpl"  x="72"  y="269" s="3" />
+<image d="dsuei.cpl"  x="72"  y="333" s="4" />
+<image d="lk7tc.bvs"  x="356" y="176" s="2" />
+<image d="lk7tc.bvs"  x="508" y="176" s="18" />
+<image d="lk7tc.bvs"  x="492" y="234" s="20" />
+<image d="lk7tc.bvs"  x="439" y="282" s="22" />
+<image d="lk7tc.bvs"  x="544" y="282" s="16" />
+<image d="lk7tc.bvs"  x="492" y="332" s="0" />
+<image d="ztrba.nec"  x="472" y="280" s="0" />
+<image d="ztrba.nec"  x="504" y="280" s="1" />
+<image d="ztrba.nec"  x="472" y="300" s="2" />
+<image d="ztrba.nec"  x="504" y="300" s="3" />
+<image d="ztrba.nec"  x="472" y="320" s="20" />
+<image d="ztrba.nec"  x="504" y="320" s="5" />
+<image d="ztrba.nec"  x="472" y="340" s="6" />
+<image d="ztrba.nec"  x="504" y="340" s="7" />
+<image d="ztrba.nec"  x="472" y="360" s="8" />
+<image d="ztrba.nec"  x="504" y="360" s="9" />
+<image d="ztrba.nec"  x="472" y="380" s="10" />
+<image d="ztrba.nec"  x="504" y="380" s="11" />
+</preview>
+
+<preview name="Pause – Joystick – PCE – Y – TX selected">
+<image d="gpapi.bvs"  x="0"   y="0" />
+<image d="mczwq.ikb"  x="0"   y="0"   s="1" />
+<image d="bttlve.kbp" x="560" y="8"   s="1" />
+<image d="hctml.ers"  x="320" y="64"  s="1" />
+<image d="dsuei.cpl"  x="72"  y="77"  s="0" />
+<image d="dsuei.cpl"  x="72"  y="141" s="1" />
+<image d="dsuei.cpl"  x="72"  y="205" s="2" />
+<image d="dsuei.cpl"  x="72"  y="269" s="3" />
+<image d="dsuei.cpl"  x="72"  y="333" s="4" />
+<image d="lk7tc.bvs"  x="356" y="176" s="2" />
+<image d="lk7tc.bvs"  x="508" y="176" s="18" />
+<image d="lk7tc.bvs"  x="492" y="234" s="20" />
+<image d="lk7tc.bvs"  x="439" y="282" s="22" />
+<image d="lk7tc.bvs"  x="544" y="282" s="16" />
+<image d="lk7tc.bvs"  x="492" y="332" s="0" />
+<image d="ztrba.nec"  x="472" y="280" s="0" />
+<image d="ztrba.nec"  x="504" y="280" s="1" />
+<image d="ztrba.nec"  x="472" y="300" s="2" />
+<image d="ztrba.nec"  x="504" y="300" s="3" />
+<image d="ztrba.nec"  x="472" y="320" s="4" />
+<image d="ztrba.nec"  x="504" y="320" s="21" />
+<image d="ztrba.nec"  x="472" y="340" s="6" />
+<image d="ztrba.nec"  x="504" y="340" s="7" />
+<image d="ztrba.nec"  x="472" y="360" s="8" />
+<image d="ztrba.nec"  x="504" y="360" s="9" />
+<image d="ztrba.nec"  x="472" y="380" s="10" />
+<image d="ztrba.nec"  x="504" y="380" s="11" />
+</preview>
+
+<preview name="Pause – Joystick – SFC – L – Y selected">
+<image d="gpapi.bvs"  x="0"   y="0" />
+<image d="mczwq.ikb"  x="0"   y="0"   s="2" />
+<image d="bttlve.kbp" x="560" y="8"   s="2" />
+<image d="hctml.ers"  x="320" y="64"  s="2" />
+<image d="dsuei.cpl"  x="72"  y="77"  s="0" />
+<image d="dsuei.cpl"  x="72"  y="141" s="1" />
+<image d="dsuei.cpl"  x="72"  y="205" s="2" />
+<image d="dsuei.cpl"  x="72"  y="269" s="3" />
+<image d="dsuei.cpl"  x="72"  y="333" s="4" />
+<image d="lk7tc.bvs"  x="356" y="176" s="12" />
+<image d="lk7tc.bvs"  x="508" y="176" s="14" />
+<image d="lk7tc.bvs"  x="492" y="234" s="20" />
+<image d="lk7tc.bvs"  x="439" y="282" s="22" />
+<image d="lk7tc.bvs"  x="544" y="282" s="16" />
+<image d="lk7tc.bvs"  x="492" y="332" s="0" />
+<image d="ztrba.nec"  x="512" y="200" s="0" />
+<image d="ztrba.nec"  x="544" y="200" s="1" />
+<image d="ztrba.nec"  x="512" y="220" s="2" />
+<image d="ztrba.nec"  x="544" y="220" s="3" />
+<image d="ztrba.nec"  x="512" y="240" s="4" />
+<image d="ztrba.nec"  x="544" y="240" s="5" />
+<image d="ztrba.nec"  x="512" y="260" s="22" />
+<image d="ztrba.nec"  x="544" y="260" s="7" />
+<image d="ztrba.nec"  x="512" y="280" s="12" />
+<image d="ztrba.nec"  x="544" y="280" s="13" />
+<image d="ztrba.nec"  x="512" y="300" s="14" />
+<image d="ztrba.nec"  x="544" y="300" s="15" />
+</preview>
+
+<preview name="Pause – Joystick – SFC – L – TY selected">
+<image d="gpapi.bvs"  x="0"   y="0" />
+<image d="mczwq.ikb"  x="0"   y="0"   s="2" />
+<image d="bttlve.kbp" x="560" y="8"   s="2" />
+<image d="hctml.ers"  x="320" y="64"  s="2" />
+<image d="dsuei.cpl"  x="72"  y="77"  s="0" />
+<image d="dsuei.cpl"  x="72"  y="141" s="1" />
+<image d="dsuei.cpl"  x="72"  y="205" s="2" />
+<image d="dsuei.cpl"  x="72"  y="269" s="3" />
+<image d="dsuei.cpl"  x="72"  y="333" s="4" />
+<image d="lk7tc.bvs"  x="356" y="176" s="12" />
+<image d="lk7tc.bvs"  x="508" y="176" s="14" />
+<image d="lk7tc.bvs"  x="492" y="234" s="20" />
+<image d="lk7tc.bvs"  x="439" y="282" s="22" />
+<image d="lk7tc.bvs"  x="544" y="282" s="16" />
+<image d="lk7tc.bvs"  x="492" y="332" s="0" />
+<image d="ztrba.nec"  x="512" y="200" s="0" />
+<image d="ztrba.nec"  x="544" y="200" s="1" />
+<image d="ztrba.nec"  x="512" y="220" s="2" />
+<image d="ztrba.nec"  x="544" y="220" s="3" />
+<image d="ztrba.nec"  x="512" y="240" s="4" />
+<image d="ztrba.nec"  x="544" y="240" s="5" />
+<image d="ztrba.nec"  x="512" y="260" s="6" />
+<image d="ztrba.nec"  x="544" y="260" s="23" />
+<image d="ztrba.nec"  x="512" y="280" s="12" />
+<image d="ztrba.nec"  x="544" y="280" s="13" />
+<image d="ztrba.nec"  x="512" y="300" s="14" />
+<image d="ztrba.nec"  x="544" y="300" s="15" />
+</preview>
+
+<preview name="Pause – Joystick – MD – A – C selected">
+<image d="gpapi.bvs"  x="0"   y="0" />
+<image d="mczwq.ikb"  x="0"   y="0"   s="3" />
+<image d="bttlve.kbp" x="560" y="8"   s="3" />
+<image d="hctml.ers"  x="320" y="64"  s="3" />
+<image d="dsuei.cpl"  x="72"  y="77"  s="0" />
+<image d="dsuei.cpl"  x="72"  y="141" s="1" />
+<image d="dsuei.cpl"  x="72"  y="205" s="2" />
+<image d="dsuei.cpl"  x="72"  y="269" s="3" />
+<image d="dsuei.cpl"  x="72"  y="333" s="4" />
+<image d="lk7tc.bvs"  x="356" y="176" s="2" />
+<image d="lk7tc.bvs"  x="508" y="176" s="18" />
+<image d="lk7tc.bvs"  x="492" y="234" s="20" />
+<image d="lk7tc.bvs"  x="439" y="282" s="22" />
+<image d="lk7tc.bvs"  x="544" y="282" s="16" />
+<image d="lk7tc.bvs"  x="492" y="332" s="0" />
+<image d="ztrba.nec"  x="544" y="304" s="0" />
+<image d="ztrba.nec"  x="576" y="304" s="1" />
+<image d="ztrba.nec"  x="544" y="324" s="2" />
+<image d="ztrba.nec"  x="576" y="324" s="3" />
+<image d="ztrba.nec"  x="544" y="344" s="4" />
+<image d="ztrba.nec"  x="576" y="344" s="5" />
+<image d="ztrba.nec"  x="544" y="364" s="6" />
+<image d="ztrba.nec"  x="576" y="364" s="7" />
+<image d="ztrba.nec"  x="544" y="384" s="24" />
+<image d="ztrba.nec"  x="576" y="384" s="9" />
+<image d="ztrba.nec"  x="544" y="404" s="10" />
+<image d="ztrba.nec"  x="576" y="404" s="11" />
+</preview>
+
+<preview name="Pause – Joystick – MD – A – TC selected">
+<image d="gpapi.bvs"  x="0"   y="0" />
+<image d="mczwq.ikb"  x="0"   y="0"   s="3" />
+<image d="bttlve.kbp" x="560" y="8"   s="3" />
+<image d="hctml.ers"  x="320" y="64"  s="3" />
+<image d="dsuei.cpl"  x="72"  y="77"  s="0" />
+<image d="dsuei.cpl"  x="72"  y="141" s="1" />
+<image d="dsuei.cpl"  x="72"  y="205" s="2" />
+<image d="dsuei.cpl"  x="72"  y="269" s="3" />
+<image d="dsuei.cpl"  x="72"  y="333" s="4" />
+<image d="lk7tc.bvs"  x="356" y="176" s="2" />
+<image d="lk7tc.bvs"  x="508" y="176" s="18" />
+<image d="lk7tc.bvs"  x="492" y="234" s="20" />
+<image d="lk7tc.bvs"  x="439" y="282" s="22" />
+<image d="lk7tc.bvs"  x="544" y="282" s="16" />
+<image d="lk7tc.bvs"  x="492" y="332" s="0" />
+<image d="ztrba.nec"  x="544" y="304" s="0" />
+<image d="ztrba.nec"  x="576" y="304" s="1" />
+<image d="ztrba.nec"  x="544" y="324" s="2" />
+<image d="ztrba.nec"  x="576" y="324" s="3" />
+<image d="ztrba.nec"  x="544" y="344" s="4" />
+<image d="ztrba.nec"  x="576" y="344" s="5" />
+<image d="ztrba.nec"  x="544" y="364" s="6" />
+<image d="ztrba.nec"  x="576" y="364" s="7" />
+<image d="ztrba.nec"  x="544" y="384" s="8" />
+<image d="ztrba.nec"  x="576" y="384" s="25" />
+<image d="ztrba.nec"  x="544" y="404" s="10" />
+<image d="ztrba.nec"  x="576" y="404" s="11" />
+</preview>
+
+<preview name="Pause – Joystick – MD – A – Z selected">
+<image d="gpapi.bvs"  x="0"   y="0" />
+<image d="mczwq.ikb"  x="0"   y="0"   s="3" />
+<image d="bttlve.kbp" x="560" y="8"   s="3" />
+<image d="hctml.ers"  x="320" y="64"  s="3" />
+<image d="dsuei.cpl"  x="72"  y="77"  s="0" />
+<image d="dsuei.cpl"  x="72"  y="141" s="1" />
+<image d="dsuei.cpl"  x="72"  y="205" s="2" />
+<image d="dsuei.cpl"  x="72"  y="269" s="3" />
+<image d="dsuei.cpl"  x="72"  y="333" s="4" />
+<image d="lk7tc.bvs"  x="356" y="176" s="2" />
+<image d="lk7tc.bvs"  x="508" y="176" s="18" />
+<image d="lk7tc.bvs"  x="492" y="234" s="20" />
+<image d="lk7tc.bvs"  x="439" y="282" s="22" />
+<image d="lk7tc.bvs"  x="544" y="282" s="16" />
+<image d="lk7tc.bvs"  x="492" y="332" s="0" />
+<image d="ztrba.nec"  x="544" y="304" s="0" />
+<image d="ztrba.nec"  x="576" y="304" s="1" />
+<image d="ztrba.nec"  x="544" y="324" s="2" />
+<image d="ztrba.nec"  x="576" y="324" s="3" />
+<image d="ztrba.nec"  x="544" y="344" s="4" />
+<image d="ztrba.nec"  x="576" y="344" s="5" />
+<image d="ztrba.nec"  x="544" y="364" s="6" />
+<image d="ztrba.nec"  x="576" y="364" s="7" />
+<image d="ztrba.nec"  x="544" y="384" s="8" />
+<image d="ztrba.nec"  x="576" y="384" s="9" />
+<image d="ztrba.nec"  x="544" y="404" s="26" />
+<image d="ztrba.nec"  x="576" y="404" s="11" />
+</preview>
+
+<preview name="Pause – Joystick – MD – A – TZ selected">
+<image d="gpapi.bvs"  x="0"   y="0" />
+<image d="mczwq.ikb"  x="0"   y="0"   s="3" />
+<image d="bttlve.kbp" x="560" y="8"   s="3" />
+<image d="hctml.ers"  x="320" y="64"  s="3" />
+<image d="dsuei.cpl"  x="72"  y="77"  s="0" />
+<image d="dsuei.cpl"  x="72"  y="141" s="1" />
+<image d="dsuei.cpl"  x="72"  y="205" s="2" />
+<image d="dsuei.cpl"  x="72"  y="269" s="3" />
+<image d="dsuei.cpl"  x="72"  y="333" s="4" />
+<image d="lk7tc.bvs"  x="356" y="176" s="2" />
+<image d="lk7tc.bvs"  x="508" y="176" s="18" />
+<image d="lk7tc.bvs"  x="492" y="234" s="20" />
+<image d="lk7tc.bvs"  x="439" y="282" s="22" />
+<image d="lk7tc.bvs"  x="544" y="282" s="16" />
+<image d="lk7tc.bvs"  x="492" y="332" s="0" />
+<image d="ztrba.nec"  x="544" y="304" s="0" />
+<image d="ztrba.nec"  x="576" y="304" s="1" />
+<image d="ztrba.nec"  x="544" y="324" s="2" />
+<image d="ztrba.nec"  x="576" y="324" s="3" />
+<image d="ztrba.nec"  x="544" y="344" s="4" />
+<image d="ztrba.nec"  x="576" y="344" s="5" />
+<image d="ztrba.nec"  x="544" y="364" s="6" />
+<image d="ztrba.nec"  x="576" y="364" s="7" />
+<image d="ztrba.nec"  x="544" y="384" s="8" />
+<image d="ztrba.nec"  x="576" y="384" s="9" />
+<image d="ztrba.nec"  x="544" y="404" s="10" />
+<image d="ztrba.nec"  x="576" y="404" s="27" />
+</preview>
+
 <preview name="Pause – Joystick – GB – B – B selected">
 <image d="gpapi.bvs"  x="0"   y="0" />
 <image d="mczwq.ikb"  x="0"   y="0"   s="4" />
@@ -946,4 +1321,144 @@ GBA: 2004MBit - GBAdev
 <image d="ztrba.nec"  x="560" y="352" s="19" />
 </preview>
 
-</uselessrootelement>
+<preview name="Pause – Joystick – GBA – R – L selected">
+<image d="gpapi.bvs"  x="0"   y="0" />
+<image d="mczwq.ikb"  x="0"   y="0"   s="5" />
+<image d="bttlve.kbp" x="560" y="8"   s="5" />
+<image d="hctml.ers"  x="320" y="64"  s="5" />
+<image d="dsuei.cpl"  x="72"  y="77"  s="0" />
+<image d="dsuei.cpl"  x="72"  y="141" s="1" />
+<image d="dsuei.cpl"  x="72"  y="205" s="2" />
+<image d="dsuei.cpl"  x="72"  y="269" s="3" />
+<image d="dsuei.cpl"  x="72"  y="333" s="4" />
+<image d="lk7tc.bvs"  x="356" y="176" s="12" />
+<image d="lk7tc.bvs"  x="508" y="176" s="14" />
+<image d="lk7tc.bvs"  x="492" y="234" s="20" />
+<image d="lk7tc.bvs"  x="439" y="282" s="22" />
+<image d="lk7tc.bvs"  x="544" y="282" s="16" />
+<image d="lk7tc.bvs"  x="492" y="332" s="0" />
+<image d="ztrba.nec"  x="360" y="200" s="0" />
+<image d="ztrba.nec"  x="392" y="200" s="1" />
+<image d="ztrba.nec"  x="360" y="220" s="2" />
+<image d="ztrba.nec"  x="392" y="220" s="3" />
+<image d="ztrba.nec"  x="360" y="240" s="4" />
+<image d="ztrba.nec"  x="392" y="240" s="5" />
+<image d="ztrba.nec"  x="360" y="260" s="6" />
+<image d="ztrba.nec"  x="392" y="260" s="7" />
+<image d="ztrba.nec"  x="360" y="280" s="28" />
+<image d="ztrba.nec"  x="392" y="280" s="13" />
+<image d="ztrba.nec"  x="360" y="300" s="14" />
+<image d="ztrba.nec"  x="392" y="300" s="15" />
+</preview>
+
+<preview name="Pause – Joystick – GBA – R – TL selected">
+<image d="gpapi.bvs"  x="0"   y="0" />
+<image d="mczwq.ikb"  x="0"   y="0"   s="5" />
+<image d="bttlve.kbp" x="560" y="8"   s="5" />
+<image d="hctml.ers"  x="320" y="64"  s="5" />
+<image d="dsuei.cpl"  x="72"  y="77"  s="0" />
+<image d="dsuei.cpl"  x="72"  y="141" s="1" />
+<image d="dsuei.cpl"  x="72"  y="205" s="2" />
+<image d="dsuei.cpl"  x="72"  y="269" s="3" />
+<image d="dsuei.cpl"  x="72"  y="333" s="4" />
+<image d="lk7tc.bvs"  x="356" y="176" s="12" />
+<image d="lk7tc.bvs"  x="508" y="176" s="14" />
+<image d="lk7tc.bvs"  x="492" y="234" s="20" />
+<image d="lk7tc.bvs"  x="439" y="282" s="22" />
+<image d="lk7tc.bvs"  x="544" y="282" s="16" />
+<image d="lk7tc.bvs"  x="492" y="332" s="0" />
+<image d="ztrba.nec"  x="360" y="200" s="0" />
+<image d="ztrba.nec"  x="392" y="200" s="1" />
+<image d="ztrba.nec"  x="360" y="220" s="2" />
+<image d="ztrba.nec"  x="392" y="220" s="3" />
+<image d="ztrba.nec"  x="360" y="240" s="4" />
+<image d="ztrba.nec"  x="392" y="240" s="5" />
+<image d="ztrba.nec"  x="360" y="260" s="6" />
+<image d="ztrba.nec"  x="392" y="260" s="7" />
+<image d="ztrba.nec"  x="360" y="280" s="12" />
+<image d="ztrba.nec"  x="392" y="280" s="29" />
+<image d="ztrba.nec"  x="360" y="300" s="14" />
+<image d="ztrba.nec"  x="392" y="300" s="15" />
+</preview>
+
+<preview name="Pause – Joystick – GBA – R – R selected">
+<image d="gpapi.bvs"  x="0"   y="0" />
+<image d="mczwq.ikb"  x="0"   y="0"   s="5" />
+<image d="bttlve.kbp" x="560" y="8"   s="5" />
+<image d="hctml.ers"  x="320" y="64"  s="5" />
+<image d="dsuei.cpl"  x="72"  y="77"  s="0" />
+<image d="dsuei.cpl"  x="72"  y="141" s="1" />
+<image d="dsuei.cpl"  x="72"  y="205" s="2" />
+<image d="dsuei.cpl"  x="72"  y="269" s="3" />
+<image d="dsuei.cpl"  x="72"  y="333" s="4" />
+<image d="lk7tc.bvs"  x="356" y="176" s="12" />
+<image d="lk7tc.bvs"  x="508" y="176" s="14" />
+<image d="lk7tc.bvs"  x="492" y="234" s="20" />
+<image d="lk7tc.bvs"  x="439" y="282" s="22" />
+<image d="lk7tc.bvs"  x="544" y="282" s="16" />
+<image d="lk7tc.bvs"  x="492" y="332" s="0" />
+<image d="ztrba.nec"  x="360" y="200" s="0" />
+<image d="ztrba.nec"  x="392" y="200" s="1" />
+<image d="ztrba.nec"  x="360" y="220" s="2" />
+<image d="ztrba.nec"  x="392" y="220" s="3" />
+<image d="ztrba.nec"  x="360" y="240" s="4" />
+<image d="ztrba.nec"  x="392" y="240" s="5" />
+<image d="ztrba.nec"  x="360" y="260" s="6" />
+<image d="ztrba.nec"  x="392" y="260" s="7" />
+<image d="ztrba.nec"  x="360" y="280" s="12" />
+<image d="ztrba.nec"  x="392" y="280" s="13" />
+<image d="ztrba.nec"  x="360" y="300" s="30" />
+<image d="ztrba.nec"  x="392" y="300" s="15" />
+</preview>
+
+<preview name="Pause – Joystick – GBA – R – TR selected">
+<image d="gpapi.bvs"  x="0"   y="0" />
+<image d="mczwq.ikb"  x="0"   y="0"   s="5" />
+<image d="bttlve.kbp" x="560" y="8"   s="5" />
+<image d="hctml.ers"  x="320" y="64"  s="5" />
+<image d="dsuei.cpl"  x="72"  y="77"  s="0" />
+<image d="dsuei.cpl"  x="72"  y="141" s="1" />
+<image d="dsuei.cpl"  x="72"  y="205" s="2" />
+<image d="dsuei.cpl"  x="72"  y="269" s="3" />
+<image d="dsuei.cpl"  x="72"  y="333" s="4" />
+<image d="lk7tc.bvs"  x="356" y="176" s="12" />
+<image d="lk7tc.bvs"  x="508" y="176" s="14" />
+<image d="lk7tc.bvs"  x="492" y="234" s="20" />
+<image d="lk7tc.bvs"  x="439" y="282" s="22" />
+<image d="lk7tc.bvs"  x="544" y="282" s="16" />
+<image d="lk7tc.bvs"  x="492" y="332" s="0" />
+<image d="ztrba.nec"  x="360" y="200" s="0" />
+<image d="ztrba.nec"  x="392" y="200" s="1" />
+<image d="ztrba.nec"  x="360" y="220" s="2" />
+<image d="ztrba.nec"  x="392" y="220" s="3" />
+<image d="ztrba.nec"  x="360" y="240" s="4" />
+<image d="ztrba.nec"  x="392" y="240" s="5" />
+<image d="ztrba.nec"  x="360" y="260" s="6" />
+<image d="ztrba.nec"  x="392" y="260" s="7" />
+<image d="ztrba.nec"  x="360" y="280" s="12" />
+<image d="ztrba.nec"  x="392" y="280" s="13" />
+<image d="ztrba.nec"  x="360" y="300" s="14" />
+<image d="ztrba.nec"  x="392" y="300" s="31" />
+</preview>
+
+<preview name="Pause – Low Battery">
+<image d="d2d1.hgp"   x="0"   y="0" />
+<!-- no battery status -->
+<image d="dsuei.cpl"  x="72"  y="77"  s="0" />
+<image d="dsuei.cpl"  x="72"  y="141" s="1" />
+<image d="dsuei.cpl"  x="72"  y="205" s="2" />
+<image d="dsuei.cpl"  x="72"  y="269" s="3" />
+<image d="dsuei.cpl"  x="72"  y="333" s="4" />
+<static x="272" y="88" s="2005" />
+<text d="Cube Tech" x="264" y="377" s="27"/>
+<text x="20" y="6" s="35" c="-3" d="LOW BATTERY!" />
+<text x="20" y="441" s="31" c="-3" d="Save the progress, Power off and charge." />
+</preview>
+
+<preview name="Low Battery in Menu">
+<image d="jccatm.kbp"  x="0"   y="0" />
+<text x="200" y="322" s="35" c="-2" d="LOW BATTERY!" />
+<text x="160" y="362" s="35" c="-2" d="Please charge it in time." /><!-- I want to point out that I guessed the coordinates correctly on the first try. -->
+</preview>
+
+</previews>

@@ -5,6 +5,141 @@ object FrameUI: TFrameUI
   Height = 669
   Align = alClient
   TabOrder = 0
+  object PanelRight: TPanel
+    Left = 360
+    Top = 0
+    Width = 840
+    Height = 669
+    Align = alClient
+    BevelOuter = bvNone
+    TabOrder = 2
+    Visible = False
+    object ScrollBoxPreview: TScrollBox
+      Left = 0
+      Top = 32
+      Width = 840
+      Height = 637
+      Align = alClient
+      BorderStyle = bsNone
+      DoubleBuffered = True
+      Color = clGray
+      ParentColor = False
+      ParentDoubleBuffered = False
+      TabOrder = 0
+      OnMouseDown = ImagePreviewMouseDown
+      object ImagePreview: TImage
+        Left = 0
+        Top = 0
+        Width = 105
+        Height = 105
+        AutoSize = True
+        Transparent = True
+        OnMouseDown = ImagePreviewMouseDown
+      end
+      object ImagePreview2: TImage
+        Left = 0
+        Top = 488
+        Width = 320
+        Height = 240
+        OnMouseDown = ImagePreviewMouseDown
+      end
+    end
+    object PanelTop: TPanel
+      Left = 0
+      Top = 0
+      Width = 840
+      Height = 32
+      Align = alTop
+      BevelOuter = bvNone
+      TabOrder = 1
+      object LabelFormat: TLabel
+        Left = 0
+        Top = 4
+        Width = 38
+        Height = 15
+        Caption = 'Format'
+      end
+      object Label1: TLabel
+        Left = 304
+        Top = 4
+        Width = 32
+        Height = 15
+        Caption = 'Show:'
+      end
+      object LabelSliceLanguage: TLabel
+        Left = 688
+        Top = 4
+        Width = 56
+        Height = 15
+        Caption = 'Slice Lang:'
+        Visible = False
+      end
+      object ButtonSave: TButton
+        Left = 120
+        Top = 0
+        Width = 80
+        Height = 24
+        Caption = 'Save File...'
+        DropDownMenu = PopupMenuSave
+        Style = bsSplitButton
+        TabOrder = 0
+        OnClick = ButtonSaveClick
+      end
+      object ButtonReplace: TButton
+        Left = 208
+        Top = 0
+        Width = 80
+        Height = 24
+        Caption = 'Replace...'
+        TabOrder = 1
+        OnClick = ButtonReplaceClick
+      end
+      object ComboBoxDisplayMode: TComboBox
+        Left = 344
+        Top = 1
+        Width = 104
+        Height = 23
+        Style = csDropDownList
+        ItemIndex = 0
+        TabOrder = 2
+        Text = 'Image / Slices'
+        OnSelect = ComboBoxDisplayModeSelect
+        Items.Strings = (
+          'Image / Slices'
+          'Live Previews')
+      end
+      object ComboBoxImageList: TComboBox
+        Left = 456
+        Top = 1
+        Width = 224
+        Height = 23
+        Style = csDropDownList
+        DropDownCount = 30
+        TabOrder = 3
+        OnSelect = ComboBoxImageListSelect
+      end
+      object ComboBoxSliceLanguage: TComboBox
+        Left = 752
+        Top = 1
+        Width = 88
+        Height = 23
+        Style = csDropDownList
+        ItemIndex = 0
+        TabOrder = 4
+        Text = 'English'
+        Visible = False
+        OnSelect = ComboBoxSliceLanguageSelect
+        Items.Strings = (
+          'English'
+          'Chinese'
+          'Arabic'
+          'Russian'
+          'Spanish'
+          'Portuguese'
+          'Korean')
+      end
+    end
+  end
   object PanelRightFoldername: TPanel
     Left = 360
     Top = 0
@@ -730,143 +865,6 @@ object FrameUI: TFrameUI
     BevelOuter = bvNone
     TabOrder = 1
   end
-  object PanelRight: TPanel
-    Left = 360
-    Top = 0
-    Width = 840
-    Height = 669
-    Align = alClient
-    BevelOuter = bvNone
-    TabOrder = 2
-    Visible = False
-    object ScrollBoxPreview: TScrollBox
-      Left = 0
-      Top = 32
-      Width = 840
-      Height = 637
-      Align = alClient
-      BorderStyle = bsNone
-      DoubleBuffered = True
-      Color = clGray
-      ParentColor = False
-      ParentDoubleBuffered = False
-      TabOrder = 0
-      OnMouseDown = ImagePreviewMouseDown
-      object ImagePreview: TImage
-        Left = 0
-        Top = 0
-        Width = 105
-        Height = 105
-        AutoSize = True
-        Transparent = True
-        OnMouseDown = ImagePreviewMouseDown
-      end
-      object ImagePreview2: TImage
-        Left = 0
-        Top = 488
-        Width = 320
-        Height = 240
-        Stretch = True
-        Transparent = True
-        OnMouseDown = ImagePreviewMouseDown
-      end
-    end
-    object PanelTop: TPanel
-      Left = 0
-      Top = 0
-      Width = 840
-      Height = 32
-      Align = alTop
-      BevelOuter = bvNone
-      TabOrder = 1
-      object LabelFormat: TLabel
-        Left = 0
-        Top = 4
-        Width = 38
-        Height = 15
-        Caption = 'Format'
-      end
-      object Label1: TLabel
-        Left = 304
-        Top = 4
-        Width = 32
-        Height = 15
-        Caption = 'Show:'
-      end
-      object LabelSliceLanguage: TLabel
-        Left = 688
-        Top = 4
-        Width = 56
-        Height = 15
-        Caption = 'Slice Lang:'
-        Visible = False
-      end
-      object ButtonSave: TButton
-        Left = 120
-        Top = 0
-        Width = 80
-        Height = 24
-        Caption = 'Save File...'
-        DropDownMenu = PopupMenuSave
-        Style = bsSplitButton
-        TabOrder = 0
-        OnClick = ButtonSaveClick
-      end
-      object ButtonReplace: TButton
-        Left = 208
-        Top = 0
-        Width = 80
-        Height = 24
-        Caption = 'Replace...'
-        TabOrder = 1
-        OnClick = ButtonReplaceClick
-      end
-      object ComboBoxDisplayMode: TComboBox
-        Left = 344
-        Top = 1
-        Width = 104
-        Height = 23
-        Style = csDropDownList
-        ItemIndex = 0
-        TabOrder = 2
-        Text = 'Image / Slices'
-        OnSelect = ComboBoxDisplayModeSelect
-        Items.Strings = (
-          'Image / Slices'
-          'Live Previews')
-      end
-      object ComboBoxImageList: TComboBox
-        Left = 456
-        Top = 1
-        Width = 224
-        Height = 23
-        Style = csDropDownList
-        DropDownCount = 30
-        TabOrder = 3
-        OnSelect = ComboBoxImageListSelect
-      end
-      object ComboBoxSliceLanguage: TComboBox
-        Left = 752
-        Top = 1
-        Width = 88
-        Height = 23
-        Style = csDropDownList
-        ItemIndex = 0
-        TabOrder = 4
-        Text = 'English'
-        Visible = False
-        OnSelect = ComboBoxSliceLanguageSelect
-        Items.Strings = (
-          'English'
-          'Chinese'
-          'Arabic'
-          'Russian'
-          'Spanish'
-          'Portuguese'
-          'Korean')
-      end
-    end
-  end
   object TimerLazyLoad: TTimer
     Interval = 1
     OnTimer = TimerLazyLoadTimer
@@ -893,11 +891,16 @@ object FrameUI: TFrameUI
     Top = 366
   end
   object PopupMenuSave: TPopupMenu
+    OnPopup = PopupMenuSavePopup
     Left = 168
     Top = 432
     object MenuItemCopy: TMenuItem
       Caption = 'Copy Current Image to Clipboard'
       OnClick = MenuItemCopyClick
+    end
+    object MenuItemCopySmall: TMenuItem
+      Caption = 'Copy Small Preview to Clipboard'
+      OnClick = MenuItemCopySmallClick
     end
     object N2: TMenuItem
       Caption = '-'

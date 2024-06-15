@@ -1,37 +1,37 @@
 object FrameBIOS: TFrameBIOS
   Left = 0
   Top = 0
-  Width = 1112
-  Height = 552
+  Width = 1200
+  Height = 648
   TabOrder = 0
   object GroupBoxBootloader: TGroupBox
     Left = 0
     Top = 0
-    Width = 1112
-    Height = 143
+    Width = 1200
+    Height = 95
     Caption = 'Bootloader'
     TabOrder = 0
     object LabelPatchBootloader: TLabel
       Left = 32
       Top = 32
-      Width = 1058
+      Width = 1124
       Height = 15
       Caption = 
-        'Improves FAT32 compatibility, especially if there are/were more ' +
-        'files in the '#39'bios'#39' folder. Does not work if the device already ' +
-        'doesn'#39't boot and will not run if already patched. Make sure your' +
-        ' battery is full!'
+        'This patch improves FAT32 compatibility, especially if there are' +
+        '/were more files in the '#39'bios'#39' folder. It does not work if the d' +
+        'evice already doesn'#39't boot and will not run if already patched. ' +
+        'Make sure your battery is full!'
     end
     object LabelPointlessFile: TLabel
       Left = 32
-      Top = 120
-      Width = 1059
+      Top = 72
+      Width = 1095
       Height = 15
       Caption = 
         'If your device doesn'#39't boot, check any one of these checkboxes t' +
         'ry to boot. If the device still doesn'#39't boot, check one more an ' +
         'try again. Repeat until it boots. Then patch the bootloader to f' +
-        'ix it for good.'
+        'ix this bug for good.'
     end
     object CheckBoxPatchBootloader: TCheckBox
       Left = 8
@@ -46,7 +46,7 @@ object FrameBIOS: TFrameBIOS
       Tag = 1
       Left = 8
       Top = 56
-      Width = 224
+      Width = 144
       Height = 16
       Caption = 'Create pointless file 1'
       TabOrder = 1
@@ -54,9 +54,9 @@ object FrameBIOS: TFrameBIOS
     end
     object CheckBoxPointlessFile2: TCheckBox
       Tag = 2
-      Left = 8
-      Top = 72
-      Width = 224
+      Left = 160
+      Top = 56
+      Width = 144
       Height = 16
       Caption = 'Create pointless file 2'
       TabOrder = 2
@@ -64,9 +64,9 @@ object FrameBIOS: TFrameBIOS
     end
     object CheckBoxPointlessFile3: TCheckBox
       Tag = 3
-      Left = 8
-      Top = 88
-      Width = 224
+      Left = 312
+      Top = 56
+      Width = 144
       Height = 16
       Caption = 'Create pointless file 3'
       TabOrder = 3
@@ -74,9 +74,9 @@ object FrameBIOS: TFrameBIOS
     end
     object CheckBoxPointlessFile4: TCheckBox
       Tag = 4
-      Left = 8
-      Top = 104
-      Width = 224
+      Left = 464
+      Top = 56
+      Width = 144
       Height = 16
       Caption = 'Create pointless file 4'
       TabOrder = 4
@@ -85,21 +85,21 @@ object FrameBIOS: TFrameBIOS
   end
   object GroupBoxGBABIOS: TGroupBox
     Left = 0
-    Top = 159
-    Width = 1112
+    Top = 111
+    Width = 1200
     Height = 57
-    Caption = 'GBA BIOS (Stock GBA Emulator)'
+    Caption = 'GBA BIOS (Stock GBA Emulator) '#8211' gba_bios.bin'
     TabOrder = 1
     object LabelGBABIOS: TLabel
       Left = 32
       Top = 34
-      Width = 1040
+      Width = 1143
       Height = 15
       Caption = 
         'Improves compatibility with a few games (but not performance). S' +
         'ave states created with and without the official BIOS are mutual' +
         'ly incompatible. '#39'bios\gba_bios.bin'#39' must be present on the TF c' +
-        'ard.'
+        'ard like it is on delivery.'
     end
     object LabelGBABIOS1: TLabel
       Left = 8
@@ -182,10 +182,10 @@ object FrameBIOS: TFrameBIOS
   end
   object GroupBoxBIOS: TGroupBox
     Left = 0
-    Top = 232
-    Width = 1112
-    Height = 160
-    Caption = 'BIOS (Firmware)'
+    Top = 184
+    Width = 1200
+    Height = 208
+    Caption = 'GB300 BIOS (Firmware) '#8211' bisrv.asd'
     TabOrder = 2
     object LabelCRC: TLabel
       Left = 656
@@ -202,43 +202,81 @@ object FrameBIOS: TFrameBIOS
       Caption = '...'
     end
     object LabelCRCInfo: TLabel
-      Left = 656
-      Top = 44
-      Width = 372
+      Left = 960
+      Top = 20
+      Width = 223
       Height = 15
-      Caption = 
-        'If you made any manual change to the BIOS file, you must fix the' +
-        ' CRC.'
+      Caption = 'Fix CRC after manual changes to the BIOS.'
     end
     object LabelBootLogo: TLabel
-      Left = 656
-      Top = 76
-      Width = 113
+      Left = 8
+      Top = 164
+      Width = 110
       Height = 15
-      Caption = 'Boot Logo (640'#215'136):'
+      Caption = 'Boot logo (640'#215'136):'
     end
     object LabelBootLogo1: TLabel
-      Left = 656
-      Top = 100
-      Width = 344
+      Left = 8
+      Top = 185
+      Width = 413
       Height = 15
       Caption = 
-        'Click '#39'Replace...'#39' or drop the image on the boot logo to change ' +
-        'it.'
+        'Click '#39'Replace...'#39' or drop a correctly-sized image on the boot l' +
+        'ogo to change it.'
     end
     object LabelScreen: TLabel
       Left = 656
-      Top = 133
+      Top = 98
       Width = 38
       Height = 15
       Caption = 'Screen:'
+    end
+    object LabelScreen2: TLabel
+      AlignWithMargins = True
+      Left = 944
+      Top = 98
+      Width = 191
+      Height = 15
+      Caption = 'This does not affect multicore cores.'
+    end
+    object LabelSearchResultSelColor: TLabel
+      Left = 656
+      Top = 67
+      Width = 150
+      Height = 15
+      Caption = 'Search result selection color:'
+    end
+    object LabelSearchResultSelColor2: TLabel
+      Left = 944
+      Top = 67
+      Width = 160
+      Height = 15
+      Caption = 'The default color here is black.'
+    end
+    object Label2: TLabel
+      Left = 680
+      Top = 141
+      Width = 496
+      Height = 15
+      Caption = 
+        'Also adds a dropdown menu for the '#39'Add'#39' button in ROM tabs to en' +
+        'sure a proper iNES header.'
+    end
+    object Label3: TLabel
+      Left = 656
+      Top = 48
+      Width = 104
+      Height = 15
+      Caption = 'BIOS modifications:'
     end
     object PanelBootLogoDoubleBufferer: TPanel
       Left = 8
       Top = 16
       Width = 640
       Height = 136
+      Color = clBlack
       DoubleBuffered = True
+      ParentBackground = False
       ParentDoubleBuffered = False
       TabOrder = 0
       object ImageBootLogo: TImage
@@ -247,6 +285,7 @@ object FrameBIOS: TFrameBIOS
         Width = 640
         Height = 136
         Enabled = False
+        Stretch = True
       end
     end
     object ButtonCRCFix: TButton
@@ -268,8 +307,8 @@ object FrameBIOS: TFrameBIOS
       OnClick = ButtonCRCRefreshClick
     end
     object ButtonBootLogoSave: TButton
-      Left = 784
-      Top = 72
+      Left = 136
+      Top = 160
       Width = 80
       Height = 24
       Caption = 'Save...'
@@ -277,8 +316,8 @@ object FrameBIOS: TFrameBIOS
       OnClick = ButtonBootLogoSaveClick
     end
     object ButtonBootLogoReplace: TButton
-      Left = 872
-      Top = 72
+      Left = 224
+      Top = 160
       Width = 80
       Height = 24
       Caption = 'Replace...'
@@ -286,8 +325,8 @@ object FrameBIOS: TFrameBIOS
       OnClick = ButtonBootLogoReplaceClick
     end
     object ButtonBootLogoRefresh: TButton
-      Left = 960
-      Top = 72
+      Left = 312
+      Top = 160
       Width = 80
       Height = 24
       Caption = 'Refresh'
@@ -296,33 +335,78 @@ object FrameBIOS: TFrameBIOS
     end
     object ComboBoxScreen: TComboBox
       Left = 712
-      Top = 129
+      Top = 94
       Width = 224
       Height = 23
       Style = csDropDownList
-      TabOrder = 6
+      TabOrder = 7
       OnSelect = ComboBoxScreenSelect
       Items.Strings = (
         'I'#39'm using the original GB300 screen'
         'I swapped in the SF2000'#39's screen')
     end
+    object CheckBoxVT03: TCheckBox
+      Left = 656
+      Top = 125
+      Width = 536
+      Height = 16
+      Caption = 
+        'Enable VT02/VT03 support for .nfc with iNES header and mapper 12' +
+        ' (note: very bad compatibility)'
+      TabOrder = 8
+      OnClick = CheckBoxVT03Click
+    end
+    object ColorBoxSearchResultSelColor: TColorBox
+      Left = 816
+      Top = 64
+      Width = 120
+      Height = 22
+      Style = [cbStandardColors, cbCustomColor, cbPrettyNames, cbCustomColors]
+      DropDownCount = 20
+      TabOrder = 6
+      OnChange = ColorBoxSearchResultSelColorChange
+    end
+    object CheckBoxPatchVT03LUT: TCheckBox
+      Left = 656
+      Top = 157
+      Width = 536
+      Height = 16
+      Caption = 
+        'Patch VT03 LUT from RGB555 to RGB565 (fixes color issues for VT0' +
+        '3 ROMs, no known side effects)'
+      TabOrder = 9
+      OnClick = CheckBoxPatchVT03LUTClick
+    end
+    object CheckBoxVT03SizeHack: TCheckBox
+      Left = 656
+      Top = 173
+      Width = 536
+      Height = 16
+      Caption = 
+        #8805' 4'#8201'MiB VTxx hack (experimental, breaks .nfc NES ROMs (use '#39'Alwa' +
+        'ys Use FCEUmm'#39' below to fix))'
+      TabOrder = 10
+      Visible = False
+      OnClick = CheckBoxVT03Click
+    end
   end
   object GroupBoxROMFixes: TGroupBox
     Left = 0
     Top = 408
-    Width = 1112
+    Width = 1200
     Height = 80
     Caption = 'General ROM Fixes'
     TabOrder = 3
     object LabelFixMDThumbs: TLabel
       Left = 144
       Top = 20
-      Width = 918
+      Width = 1029
       Height = 15
       Caption = 
         '45 MD files have a thumbnail in an incorrect format (BGRA8888 in' +
-        'stead of RGB565). This will analyse all .zmd files in the MD fol' +
-        'der and fix the broken ones. Takes half a minute.'
+        'stead of RGB565). This will analyse all .zmd files in the '#39'MD'#39' f' +
+        'older and fix the broken ones. The process takes around half a m' +
+        'inute.'
     end
     object LabelFixGlazedThumb: TLabel
       Left = 144
@@ -333,6 +417,17 @@ object FrameBIOS: TFrameBIOS
         'Fixes the thumbnail of '#39'Pokemon - Glazed Version (CN).zgb'#39' which' +
         ' features a way too large thumbnail. The correct one is hardcode' +
         'd inside this tool.'
+    end
+    object Label1: TLabel
+      Left = 144
+      Top = 84
+      Width = 956
+      Height = 15
+      Caption = 
+        'Changes the file extension in the .zfc files'#39' header in '#39'FC'#39' fro' +
+        'm .nfc to .nes to make them run with FCEUmm. Breaks their existi' +
+        'ng save states. Improves compatibility. Takes some time.'
+      Visible = False
     end
     object ButtonFixMDThumbs: TButton
       Left = 8
@@ -352,22 +447,32 @@ object FrameBIOS: TFrameBIOS
       TabOrder = 1
       OnClick = ButtonFixGlazedThumbClick
     end
+    object ButtonAlwaysUseFCEUmm: TButton
+      Left = 8
+      Top = 80
+      Width = 128
+      Height = 24
+      Caption = 'Always Use FCEUmm'
+      TabOrder = 2
+      Visible = False
+      OnClick = ButtonAlwaysUseFCEUmmClick
+    end
   end
   object GroupBoxReset: TGroupBox
     Left = 0
     Top = 504
-    Width = 1112
+    Width = 1200
     Height = 48
     Caption = 'Reset User Files'
     TabOrder = 4
     object LabelReset: TLabel
       Left = 320
       Top = 20
-      Width = 419
+      Width = 503
       Height = 15
       Caption = 
-        'Deletes the corresponding files. The GB300 will create them agai' +
-        'n when needed.'
+        'Deletes the corresponding files. The GB300 and GB300 Tool will c' +
+        'reate them again when needed.'
     end
     object ButtonClearFavorites: TButton
       Left = 8
@@ -401,20 +506,20 @@ object FrameBIOS: TFrameBIOS
     Interval = 1
     OnTimer = TimerLazyLoadTimer
     Left = 64
-    Top = 288
+    Top = 240
   end
   object SaveDialogBootLogo: TSaveDialog
     DefaultExt = '.dib'
     Filter = 'Device Independent Bitmap (*.dib, *.bmp)|*.dib;*.bmp'
     Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]
     Left = 176
-    Top = 288
+    Top = 240
   end
   object OpenDialogBootLogo: TOpenDialog
     Filter = 
       'Images (*.bmp, *.dib, *.png, *.jpg, *.jpeg)|*.bmp;*.dib;*.png;*.' +
       'jpg;*.jpeg'
     Left = 304
-    Top = 288
+    Top = 240
   end
 end

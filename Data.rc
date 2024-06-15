@@ -15,6 +15,8 @@
 1010 PNG Data\UI\Buttons.png
 1011 PNG Data\UI\UI.png
 1012 PNG Data\UI\Gears.png
+997 PNG Data\UI\Check.png
+998 PNG Data\UI\FavoriteOff.png
 999 PNG Data\UI\Favorite.png
 1101 PNG Data\UI\Button_A.png
 1102 PNG Data\UI\Button_B.png
@@ -34,6 +36,7 @@
 
 // Defaults
 1 RCDATA Data\KeyMapInfo.kmp
+555 RCDATA Data\bisrv_vt3_lut_555.bin
 
 // No-Intro (IDs are their official platform IDs, but the formats have been simplified to include only the data this program needs)
 12 DAT Data\NoIntro\12.bin // NEC - PC Engine
@@ -49,7 +52,7 @@
 
 // No-Intro for multicore
 88 DAT Data\NoIntro\88.bin // Atari - 2600
-//1 DAT Data\NoIntro\1.bin // Atari - 5200
+1 DAT Data\NoIntro\1.bin // Atari - 5200
 74 DAT Data\NoIntro\74.bin // Atari - 7800 [BIN]
 30 DAT Data\NoIntro\30.bin // Atari - Lynx [LYX]
 50 DAT Data\NoIntro\50.bin // Bandai - WonderSwan

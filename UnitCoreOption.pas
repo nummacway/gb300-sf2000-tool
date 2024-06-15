@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
-  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, MulticoreUtils,
+  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, MulticoreUtils, pngimage,
   Vcl.StdCtrls;
 
 type
@@ -24,6 +24,9 @@ type
   end;
 
 implementation
+
+uses
+  GUIHelpers, GambatteColors, Types;
 
 {$R *.dfm}
 
@@ -50,8 +53,8 @@ begin
   finally
     sl.Free();
   end;
-  LabelDescription.Caption := Value.Name + ':';
-  LabelDefault.Caption := '(default: ' + Value.Default + ')';
+  LabelDescription.Caption := StringReplace(Value.Name, '&', '&&', [rfReplaceAll]) + ':';
+  LabelDefault.Caption := '(default: ' + StringReplace(Value.Default, '&', '&&', [rfReplaceAll]) + ')';
 end;
 
 end.

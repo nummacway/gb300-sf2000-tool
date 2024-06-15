@@ -21,7 +21,13 @@ uses
   MulticoreUtils in 'MulticoreUtils.pas',
   UnitMulticore in 'UnitMulticore.pas' {FrameMulticore: TFrame},
   UnitMulticoreSelection in 'UnitMulticoreSelection.pas' {FormMulticoreSelection},
-  UnitCoreOption in 'UnitCoreOption.pas' {FrameCoreOption: TFrame};
+  UnitCoreOption in 'UnitCoreOption.pas' {FrameCoreOption: TFrame},
+  GambatteColors in 'GambatteColors.pas',
+  UnitCoreOptions in 'UnitCoreOptions.pas' {FrameCoreOptions: TFrame},
+  UnitGambatteColorPicker in 'UnitGambatteColorPicker.pas' {FrameGambatteColorPicker: TFrame},
+  UnitPerGameCoreConfig in 'UnitPerGameCoreConfig.pas' {FormPerGameCoreConfig},
+  UnitMulticoreLog in 'UnitMulticoreLog.pas' {FrameMulticoreLog: TFrame},
+  PaletteColors in 'PaletteColors.pas';
 
 {$R *.res}
 
@@ -29,6 +35,5 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TForm1, Form1);
-  Application.CreateForm(TFormMulticoreSelection, FormMulticoreSelection);
   Application.Run;
 end.

@@ -77,7 +77,7 @@ object FormMulticoreSelection: TFormMulticoreSelection
     Caption = 
       'Always use this core for this extension (can be disabled in the ' +
       #39'multicore'#39' tab)'
-    TabOrder = 0
+    TabOrder = 1
   end
   object ListViewBIOS: TListView
     Left = 8
@@ -106,7 +106,8 @@ object FormMulticoreSelection: TFormMulticoreSelection
     ReadOnly = True
     RowSelect = True
     ParentDoubleBuffered = False
-    TabOrder = 1
+    SmallImages = Form1.ImageListCheckResults
+    TabOrder = 2
     ViewStyle = vsReport
   end
   object ButtonOK: TButton
@@ -118,7 +119,7 @@ object FormMulticoreSelection: TFormMulticoreSelection
     Default = True
     Enabled = False
     ModalResult = 1
-    TabOrder = 2
+    TabOrder = 3
   end
   object ButtonSkip: TButton
     Left = 244
@@ -127,7 +128,7 @@ object FormMulticoreSelection: TFormMulticoreSelection
     Height = 24
     Caption = 'Skip File'
     ModalResult = 5
-    TabOrder = 3
+    TabOrder = 5
   end
   object ComboBoxAnyCore: TComboBox
     Left = 8
@@ -135,7 +136,7 @@ object FormMulticoreSelection: TFormMulticoreSelection
     Width = 464
     Height = 23
     Style = csDropDownList
-    TabOrder = 4
+    TabOrder = 0
     OnSelect = ComboBoxAnyCoreSelect
   end
   object ButtonCopyOnly: TButton
@@ -146,7 +147,7 @@ object FormMulticoreSelection: TFormMulticoreSelection
     Caption = 'Copy Only'
     Enabled = False
     ModalResult = 7
-    TabOrder = 5
+    TabOrder = 4
   end
   object ButtonAbort: TButton
     Left = 324

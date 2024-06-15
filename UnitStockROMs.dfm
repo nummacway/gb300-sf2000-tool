@@ -87,6 +87,7 @@ object FrameStockROMs: TFrameStockROMs
       ShowColumnHeaders = False
       TabOrder = 1
       ViewStyle = vsReport
+      OnDblClick = ListViewFilesDblClick
       OnEdited = ListViewFilesEdited
       OnDragDrop = ListViewFilesDragDrop
       OnDragOver = ListViewFilesDragOver

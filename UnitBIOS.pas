@@ -56,6 +56,17 @@ type
     ButtonClearFavorites: TButton;
     ButtonClearHistory: TButton;
     ButtonClearKeyMap: TButton;
+    LabelScreen2: TLabel;
+    CheckBoxVT03: TCheckBox;
+    LabelSearchResultSelColor: TLabel;
+    ColorBoxSearchResultSelColor: TColorBox;
+    LabelSearchResultSelColor2: TLabel;
+    ButtonAlwaysUseFCEUmm: TButton;
+    Label1: TLabel;
+    CheckBoxPatchVT03LUT: TCheckBox;
+    Label2: TLabel;
+    CheckBoxVT03SizeHack: TCheckBox;
+    Label3: TLabel;
     procedure TimerLazyLoadTimer(Sender: TObject);
     procedure ButtonCRCRefreshClick(Sender: TObject);
     procedure ButtonBootLogoRefreshClick(Sender: TObject);
@@ -71,6 +82,10 @@ type
     procedure ButtonClearHistoryClick(Sender: TObject);
     procedure ButtonClearKeyMapClick(Sender: TObject);
     procedure CheckBoxGBABIOSClick(Sender: TObject);
+    procedure CheckBoxVT03Click(Sender: TObject);
+    procedure ColorBoxSearchResultSelColorChange(Sender: TObject);
+    procedure ButtonAlwaysUseFCEUmmClick(Sender: TObject);
+    procedure CheckBoxPatchVT03LUTClick(Sender: TObject);
   private
     { Private declarations }
     procedure DoCRCCheckReset();
@@ -97,6 +112,50 @@ uses
 {$R *.dfm}
 
 { TFrameBIOS }
+
+procedure TFrameBIOS.ButtonAlwaysUseFCEUmmClick(Sender: TObject);
+var
+  sl: TStringList;
+  Candidate: string;
+  ROM: TROMFile;
+  ROMROM: TMemoryStream;
+  Line: string;
+  i: Integer;
+  b: Byte;
+  NL: TNameList;
+begin
+  // this is not the function you can expect from the name of the function but generates some testing output of iNES files in ROMS
+  sl := TStringList.Create();
+  try
+    NL := TNameList.Create();
+    NL.LoadFromFile(FileNamesFilenames[7]);
+    for Candidate in {TDirectory.GetFiles(Path + 'FC', '*.zfc')} NL do
+    begin
+      ROM := TROMFile.Create();
+      try
+        ROM.LoadFromFile(7, ExtractFileName(Candidate));
+        ROMROM := ROM.ROM;
+        try
+          Line := ROM.ROMFileName;
+          Line := ExtractFileName(Candidate) + ';' + ChangeFileExt(Line, '') + ';' + ExtractFileExt(Line);
+          for i := 0 to 15 do
+          begin
+            ROMROM.ReadData(b);
+            Line := Line + ';="' + IntToHex(b, 2) + '"';
+          end;
+          sl.Add(Line);
+        finally
+          ROMROM.Free();
+        end;
+      finally
+        ROM.Free();
+      end;
+    end;
+  finally
+    sl.SaveToFile('ines.csv');
+    sl.Free();
+  end;
+end;
 
 procedure TFrameBIOS.ButtonBootLogoRefreshClick(Sender: TObject);
 var
@@ -311,6 +370,23 @@ begin
   end;
 end;
 
+procedure TFrameBIOS.CheckBoxPatchVT03LUTClick(Sender: TObject);
+var
+  BIOS: TBIOS;
+begin
+  DoCRCCheckReset();
+  BIOS := TBIOS.Create();
+  try
+    BIOS.LoadFromFile(TBIOS.Path);
+    BIOS.VT03LUT565 := CheckBoxPatchVT03LUT.Checked;
+    BIOS.StoredCRC := BIOS.CalculatedCRC;
+    BIOS.SaveToFile(TBIOS.Path);
+    ButtonCRCRefreshClick(nil);
+  finally
+    BIOS.Free();
+  end;
+end;
+
 procedure TFrameBIOS.CheckBoxPointlessFileClick(Sender: TObject);
 var
   FS: TFileStream;
@@ -322,6 +398,40 @@ begin
   end
   else
   DeleteFile(GetPointlessFileName((Sender as TCheckBox).Tag));
+end;
+
+procedure TFrameBIOS.CheckBoxVT03Click(Sender: TObject);
+var
+  BIOS: TBIOS;
+begin
+  DoCRCCheckReset();
+  BIOS := TBIOS.Create();
+  try
+    BIOS.LoadFromFile(TBIOS.Path);
+    BIOS.VT03 := CheckBoxVT03.Checked;
+    BIOS.StoredCRC := BIOS.CalculatedCRC;
+    BIOS.SaveToFile(TBIOS.Path);
+    ButtonCRCRefreshClick(nil);
+  finally
+    BIOS.Free();
+  end;
+end;
+
+procedure TFrameBIOS.ColorBoxSearchResultSelColorChange(Sender: TObject);
+var
+  BIOS: TBIOS;
+begin
+  DoCRCCheckReset();
+  BIOS := TBIOS.Create();
+  try
+    BIOS.LoadFromFile(TBIOS.Path);
+    BIOS.SearchResultSelColor := ColorBoxSearchResultSelColor.Selected;
+    BIOS.StoredCRC := BIOS.CalculatedCRC;
+    BIOS.SaveToFile(TBIOS.Path);
+    ButtonCRCRefreshClick(nil);
+  finally
+    BIOS.Free();
+  end;
 end;
 
 procedure TFrameBIOS.ComboBoxScreenSelect(Sender: TObject);
@@ -479,6 +589,10 @@ begin
     end;
     DoCRCCheck(BIOS);
     DoUpdateBootLogo(BIOS);
+    VTxxEnabled := BIOS.VT03;
+    CheckBoxVT03.CheckedNoClick := VTxxEnabled;
+    CheckBoxPatchVT03LUT.CheckedNoClick := BIOS.VT03LUT565;
+    ColorBoxSearchResultSelColor.Selected := BIOS.SearchResultSelColor;
     ComboBoxScreen.ItemIndex := Ord(BIOS.GetScreenIndex);
   finally
     BIOS.Free();
