@@ -36,7 +36,6 @@
 
 // Defaults
 1 RCDATA Data\KeyMapInfo.kmp
-555 RCDATA Data\bisrv_vt3_lut_555.bin
 
 // No-Intro (IDs are their official platform IDs, but the formats have been simplified to include only the data this program needs)
 12 DAT Data\NoIntro\12.bin // NEC - PC Engine
@@ -49,6 +48,7 @@
 18 DAT Data\NoIntro\18.bin // Sega - Kids Computer Pico
 26 DAT Data\NoIntro\26.bin // Sega - Master System
 32 DAT Data\NoIntro\32.bin // Sega - Mega Drive
+31 DAT Data\NoIntro\31.bin // Nintendo - Famicom Disk System
 
 // No-Intro for multicore
 88 DAT Data\NoIntro\88.bin // Atari - 2600
@@ -74,9 +74,12 @@
 // GG2SMS advisory
 // GG2SMS results
 
-// Screen swap
+// BIOS hacks
 300 RCDATA Data\GB300_Screen.bin
 2000 RCDATA Data\SF2000_Screen.bin
+3190 RCDATA Data\LoadProc_80319a30_original.bin
+3191 RCDATA Data\LoadProc_80319a30.bin
+555 RCDATA Data\bisrv_vt3_lut_555.bin
 
 // Bootloader
 42 RCDATA Data\Firmware.upk

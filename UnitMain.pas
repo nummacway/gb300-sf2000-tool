@@ -310,7 +310,7 @@ end;
 
 procedure TForm1.LazyCreate;
 const
-  NoIntroPlatforms: array[0..27] of Word = (//12, 23, 25, 26, 32, 45, 46, 47, 49
+  NoIntroPlatforms: array[0..28] of Word = (//12, 23, 25, 26, 32, 45, 46, 47, 49
     12,
     46,
     23,
@@ -338,7 +338,8 @@ const
     73,
     35,
     36,
-    22);
+    22,
+    31);
 var
   RS: TResourceStream;
   NoIntroPlatform: Word;

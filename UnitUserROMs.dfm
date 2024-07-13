@@ -27,7 +27,6 @@ object FrameUserROMs: TFrameUserROMs
         Width = 72
         Height = 24
         Caption = 'Add...'
-        DropDownMenu = PopupMenuAdd
         TabOrder = 0
         OnClick = ButtonAddClick
       end
@@ -86,40 +85,12 @@ object FrameUserROMs: TFrameUserROMs
     Left = 496
     Top = 408
   end
-  object PopupMenuAdd: TPopupMenu
-    Left = 176
-    Top = 512
-    object MenuItemAddVTxx: TMenuItem
-      Caption = 'Add VTxx and Ensure iNES Header...'
-      OnClick = MenuItemAddVTxxClick
-    end
-    object N1: TMenuItem
-      Caption = '-'
-    end
-    object MenuItemKeepiNES: TMenuItem
-      AutoCheck = True
-      Caption = 'Keep Most of iNES if PRG Size is Valid'
-    end
-    object MenuItemOnlyOneBus: TMenuItem
-      AutoCheck = True
-      Caption = 'Skip Non-OneBus (CHR Size <> 0)'
-      Checked = True
-    end
-  end
-  object OpenDialogVTxx: TOpenDialog
-    Filter = 
-      'Famiclone ROMs (*.nes, *.unf, *.unif, *.bin, *.nfc)|*.nes;*.unf;' +
-      '*.unif;*.bin;*.nfc|All files (*.*)|*.*'
-    Options = [ofHideReadOnly, ofAllowMultiSelect, ofEnableSizing]
-    Left = 456
-    Top = 240
-  end
   object PopupMenu: TPopupMenu
     Left = 208
     Top = 304
-    object SavetsmfktaxasText1: TMenuItem
+    object MenuItemSaveTSMFKTaxAsText: TMenuItem
       Caption = 'Save tsmfk.tax as Text...'
-      OnClick = SavetsmfktaxasText1Click
+      OnClick = MenuItemSaveTSMFKTaxAsTextClick
     end
   end
   object SaveDialogTXT: TSaveDialog

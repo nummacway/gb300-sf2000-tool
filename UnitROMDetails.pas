@@ -49,6 +49,19 @@ type
     ImageFavorite: TImage;
     N2: TMenuItem;
     MenuItemMakeMulticore: TMenuItem;
+    MenuItemPerGameCoreConfig: TMenuItem;
+    ImageFavoriteOff: TImage;
+    MenuItemStateCopyThumb: TMenuItem;
+    N3: TMenuItem;
+    MenuItemStateImport: TMenuItem;
+    MenuItemStateExport: TMenuItem;
+    SaveDialogState: TSaveDialog;
+    OpenDialogState: TOpenDialog;
+    MenuItemStateCreate: TMenuItem;
+    N4: TMenuItem;
+    MenuItemNESEmulator: TMenuItem;
+    MenuItemFCEUmm: TMenuItem;
+    MenuItemWiseemu: TMenuItem;
     procedure ButtonExportROMClick(Sender: TObject);
     procedure ButtonPatchROMClick(Sender: TObject);
     procedure MenuItemStateSaveDIBClick(Sender: TObject);
@@ -68,6 +81,14 @@ type
     procedure ListViewStatesKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure MenuItemMakeMulticoreClick(Sender: TObject);
+    procedure MenuItemPerGameCoreConfigClick(Sender: TObject);
+    procedure MenuItemStateCopyThumbClick(Sender: TObject);
+    procedure ButtonExportThumbClick(Sender: TObject);
+    procedure MenuItemStateExportClick(Sender: TObject);
+    procedure MenuItemStateImportClick(Sender: TObject);
+    procedure MenuItemStateCreateClick(Sender: TObject);
+    procedure MenuItemFCEUmmClick(Sender: TObject);
+    procedure MenuItemWiseemuClick(Sender: TObject);
   private
     { Private declarations }
     procedure InputQueryHook(Sender: TObject);
@@ -95,7 +116,7 @@ implementation
 
 uses
   GB300UIConst, Clipbrd, RedeemerXML, StrUtils, GUIHelpers, UITypes,
-  UnitStockROMs, UnitUserROMs;
+  UnitStockROMs, UnitUserROMs, UnitPerGameCoreConfig, MulticoreUtils;
 
 {$R *.dfm}
 
@@ -121,6 +142,40 @@ begin
   end;
 end;
 
+procedure TFrameROMDetails.ButtonExportThumbClick(Sender: TObject);
+var
+  MS2: TMemoryStream;
+  PNG: TPNGImage;
+begin
+  if not ROM.HasImage then
+  raise Exception.Create('This is not a thumbnailed file');
+
+  if SaveDialogImage.Execute() then
+  begin
+    case SaveDialogImage.FilterIndex of
+      1:
+        begin
+          PNG := ROM.GetThumbnailAsPNG();
+          try
+            PNG.SaveToFile(SaveDialogImage.FileName);
+          finally
+            PNG.Free();
+          end;
+        end;
+      2:
+        begin
+          MS2 := TMemoryStream.Create();
+          ROM.SaveThumbnailToStreamDIB(MS2);
+          try
+            MS2.SaveToFile(SaveDialogImage.FileName);
+          finally
+            MS2.Free();
+          end;
+        end;
+    end;
+  end;
+end;
+
 procedure TFrameROMDetails.ButtonImportROMClick(Sender: TObject);
 var
   Stream: TFileStream;
@@ -134,7 +189,7 @@ begin
     finally
       Stream.Free();
     end;
-    ROM.SaveToFile(FFolderIndex, FFileName);
+    ROM.SaveToFile(FFolderIndex, FFileName, False);
     ShowFile(FFolderIndex, FItem, True);
   end;
 end;
@@ -145,49 +200,42 @@ var
   HadImage: Boolean;
   FileName: string;
   Thumb: TGraphic;
-  IsMulticore: Boolean;
 begin
-  if OpenDialogImageRGB565.Execute() then
+ if OpenDialogImageRGB565.Execute() then
   begin
     Picture := TPicture.Create();
     try
       Picture.LoadFromFile(OpenDialogImageRGB565.FileName);
+
+      AutoScaleThumbnail(Picture);
+
       HadImage := ROM.HasImage;
       FileName := FFileName;
       if not HadImage then
       begin
-        IsMultiCore := ROM.IsMultiCore;
-        if IsMultiCore then
-        //FileName := ChangeFileExt(FFileName, '.zfb')
-        raise Exception.Create('The GB300''s firmware does not support thumbnailed link files (ZFB) and other thumbnailed files (ZFC, ZPC, ZSF, ZMD, ZGB) will inevitably run a stock emulator')
-        else
         FileName := ChangeFileExt(FFileName, TROMFile.FileTypeToThumbExt(TROMFile.FileNameToType(ROM.ROMFileName)));
         if FileExists(Foldername.AbsoluteFolder[FFolderIndex] + FileName) then
         raise Exception.Create('There is already a thumbnailed file of this ROM''s name');
-        ROM.Thumbnail := Picture.Graphic;
-        if IsMultiCore then
-        ROM.MakeFinalBurn();
-      end
-      else
+      end;
       ROM.Thumbnail := Picture.Graphic;
-      ROM.SaveToFile(FFolderIndex, FFileName);
-      if FFileName <> FileName then
-      begin
-        if not RenameFile(Foldername.AbsoluteFolder[FFolderIndex] + FFileName,
-                          Foldername.AbsoluteFolder[FFolderIndex] + FileName) then
-        raise Exception.Create('Could not rename the file');
-        FFileName := FileName;
-        try
+      ROM.SaveToFile(FFolderIndex, FFileName, True);
+      try
+        if FFileName <> FileName then
+        begin
+          if not RenameFile(Foldername.AbsoluteFolder[FFolderIndex] + FFileName,
+                            Foldername.AbsoluteFolder[FFolderIndex] + FileName) then
+          raise Exception.Create('Could not rename the file');
+          FFileName := FileName;
           if Assigned(FOnRename) then
           FOnRename(FItem, FFileName);
+        end;
+      finally
+        Thumb := ROM.Thumbnail;
+        try
+          ImageThumbnail.Picture.Assign(Thumb);
+          ImageThumbnail.Show();
         finally
-          Thumb := ROM.Thumbnail;
-          try
-            ImageThumbnail.Picture.Assign(Thumb);
-            ImageThumbnail.Show();
-          finally
-            Thumb.Free();
-          end;
+          Thumb.Free();
         end;
       end;
     finally
@@ -198,60 +246,48 @@ end;
 
 procedure TFrameROMDetails.ButtonPatchROMClick(Sender: TObject);
 var
-  MS: TMemoryStream;
   FileName: string;
   Exists: Boolean;
 begin
   FileName := FFileName;
-  {SaveDialogPatchedFile.FileName := FileName;
-  SaveDialogPatchedFile.InitialDir := Foldername.AbsoluteFolder[FFolderIndex];
-  SaveDialogPatchedFile.DefaultExt := ExtractFileExt(FileName);
-  SaveDialogPatchedFile.Filter := TROMFile.FileTypeToFilter(TROMFile.FileNameToType(FileName), False);       }
   if OpenDialogPatch.Execute() then
   try
     Application.OnModalBegin := InputQueryHook;
     if InputQuery(Application.Title, 'New file name:'#13#10'(leave unchanged to overwrite current file)', FileName) then
     begin
-      MS := ROM.ROM;
+      ROM.Patch(OpenDialogPatch.FileName);
+      Exists := FileExists(Foldername.AbsoluteFolder[FFolderIndex] + FileName);
+
+      ROM.SaveToFile(FFolderIndex, FileName, False);
+
+      if Exists then
+      if FileName <> FFileName then // FItem is now invalid so we cannot continue
+      begin
+        FItem.Selected := False;
+        FItem := nil;
+        Hide();
+        Exit;
+      end;
+
+      FFileName := FileName;
+
       try
-        TROMFile.Patch(MS, OpenDialogPatch.FileName);
-        MS.Position := 0;
-        ROM.SetROM(MS, ROM.ROMFileName);
-        Exists := FileExists(Foldername.AbsoluteFolder[FFolderIndex] + FileName);
-
-        ROM.SaveToFile(FFolderIndex, FileName);
-
-        if Exists then
-        if FileName <> FFileName then // FItem is now invalid so we cannot continue
+        FItem.Selected := False;
+        if not Exists then
+        if Assigned(FOnDuplicate) then
         begin
-          FItem.Selected := False;
-          FItem := nil;
-          Hide();
-          Exit;
-        end;
-
-        FFileName := FileName;
-
-        try
-          FItem.Selected := False;
-          if not Exists then
-          if Assigned(FOnDuplicate) then
+          FOnDuplicate(FItem, FileName);
+          FItem.ListView.ClearSelection();
+          FItem.ListView.Selected := FItem;
+          if not Assigned(FItem) then
           begin
-            FOnDuplicate(FItem, FileName);
-            FItem.ListView.ClearSelection();
-            FItem.ListView.Selected := FItem;
-            if not Assigned(FItem) then
-            begin
-              Hide();
-              Exit;
-            end;
+            Hide();
+            Exit;
           end;
-        finally
-          if Visible then
-          ShowFile(FFolderIndex, FItem, True);
         end;
       finally
-        MS.Free();
+        if Visible then
+        ShowFile(FFolderIndex, FItem, True);
       end;
     end;
   finally
@@ -268,7 +304,7 @@ begin
     Application.OnModalBegin := InputQueryHook;
     if InputQuery(Application.Title, 'New file name:', FileName) then
     begin
-      if TROMFile.GetIsMultiCore(FileName) xor TROMFile.GetIsMultiCore(FileName) then
+      if TROMFile.GetIsMultiCore(FileName) xor TROMFile.GetIsMultiCore(FFileName) then
       raise Exception.Create('Cannot switch between multicore and stock by renaming a file');
 
       if FileExists(Foldername.AbsoluteFolder[FFolderIndex] + FileName) then
@@ -308,18 +344,18 @@ begin
       PNG.Free();
     end;
   end;
-  LabelImportThumb.Caption := Format(LabelImportThumb.Caption, [Foldername.ThumbnailSize.X, Foldername.ThumbnailSize.Y]);
   LoadPNGTo(999, ImageFavorite.Picture);
+  LoadPNGTo(998, ImageFavoriteOff.Picture);
   MenuItemConvertDAT.Visible := ParamStr(1) = '-dev';
 end;
 
 procedure TFrameROMDetails.ImageFavoriteClick(Sender: TObject);
 begin
-  if ImageFavorite.Center then
+  if ImageFavorite.Visible then
   Favorites.RemoveFile(FFolderIndex, FFileName)
   else
   Favorites.AddFile(FFolderIndex, FFileName);
-  ImageFavorite.Center := Favorites.ContainsFile(FFolderIndex, FFileName);
+  RefreshFavoriteStatus();
   Favorites.SaveToFile(rfFavorites);
 end;
 
@@ -369,6 +405,9 @@ var
 begin
   sl := TStringList.Create();
   try
+    if ROM.IsMultiCore then
+    sl.Add(ROM.MCName.AbsoluteFileName)
+    else
     sl.Add(Foldername.AbsoluteFolder[FFolderIndex] + FFileName);
     if Owner is TFrameUserROMs then
     (Owner as TFrameUserROMs).DoAdd(sl);
@@ -379,15 +418,30 @@ begin
   end;
 end;
 
+procedure TFrameROMDetails.MenuItemPerGameCoreConfigClick(Sender: TObject);
+begin
+  Application.CreateForm(TFormPerGameCoreConfig, FormPerGameCoreConfig);
+  try
+    with TROMFile.GetMCName(FFileName) do
+    FormPerGameCoreConfig.Init(CoresDict[Core], AbsoluteFileName);
+    case FormPerGameCoreConfig.ShowModal() of
+      mrOk: FormPerGameCoreConfig.Frame.Save();
+      mrAbort: FormPerGameCoreConfig.Frame.Delete();
+    end;
+  finally
+    FormPerGameCoreConfig.Free();
+  end;
+end;
+
 procedure TFrameROMDetails.MenuItemCompressClick(Sender: TObject);
 var
   FileName: string;
 begin
-  FileName := ChangeFileExt(ROM.ROMFileName, '.zip');
+  FileName := ChangeFileExt(FFileName, '.zip');
   if FileExists(Foldername.AbsoluteFolder[FFolderIndex] + FileName) then
   raise Exception.Create('There is already a ZIP file of this ROM''s name');
   ROM.Compress(0);
-  ROM.SaveToFile(FFolderIndex, FFileName); // assuming that overwriting is more prone to errors than renaming now that the non-existance of the target file has been checked
+  ROM.SaveToFile(FFolderIndex, FFileName, True); // assuming that overwriting is more prone to errors than renaming now that the non-existance of the target file has been checked
   if not RenameFile(Foldername.AbsoluteFolder[FFolderIndex] + FFileName,
                     Foldername.AbsoluteFolder[FFolderIndex] + FileName) then
   raise Exception.Create('Could not rename the file to .zip');
@@ -456,11 +510,14 @@ procedure TFrameROMDetails.MenuItemDecompressClick(Sender: TObject);
 var
   FileName: string;
 begin
+  if ROM.IsMultiCore then
+  FileName := ChangeFileExt(FFileName, '.gba')
+  else
   FileName := ROM.ROMFileName;
   if FileExists(Foldername.AbsoluteFolder[FFolderIndex] + FileName) then
-  raise Exception.Create('There is already a file of the contained ROM''s name');
+  raise Exception.CreateFmt('There is already a file named ''%s''', [FileName]);
   ROM.Decompress();
-  ROM.SaveToFile(FFolderIndex, FFileName); // assuming that overwriting is more prone to errors than renaming now that the non-existance of the target file has been checked
+  ROM.SaveToFile(FFolderIndex, FFileName, True); // assuming that overwriting is more prone to errors than renaming now that the non-existance of the target file has been checked
   if not RenameFile(Foldername.AbsoluteFolder[FFolderIndex] + FFileName,
                     Foldername.AbsoluteFolder[FFolderIndex] + FileName) then
   raise Exception.Create('Could not rename the file to the uncompressed ROM name');
@@ -482,7 +539,7 @@ begin
       if FileExists(Foldername.AbsoluteFolder[FFolderIndex] + FileName) then
       raise Exception.Create('File already exists');
 
-      ROM.SaveToFile(FFolderIndex, FileName);
+      ROM.SaveToFile(FFolderIndex, FileName, False); // SaveStubIfMC doesn't matter - file doesn't exist anyway
       try
         FItem.Selected := False;
         if Assigned(FOnDuplicate) then
@@ -503,6 +560,118 @@ begin
     end;
   finally
     Application.OnModalBegin := nil;
+  end;
+end;
+
+procedure TFrameROMDetails.MenuItemFCEUmmClick(Sender: TObject);
+begin
+  if ROM.ChangeExt('.nfc', '.nes') then
+  begin
+    ROM.SaveToFile(FFolderIndex, FFileName, False);
+    ShowFile(FFolderIndex, FItem, True);
+  end;
+end;
+
+procedure TFrameROMDetails.MenuItemStateCopyThumbClick(Sender: TObject);
+var
+  State: TState;
+  MS: TMemoryStream;
+  Dimensions: TPoint;
+  PNG: TPngImage; // easier to handle than TWicImage I believe
+begin
+  State := TState.Create();
+  try
+    State.LoadFromFile(ListViewStates.Selected.SubItems[0]);
+    MS := State.GetScreenshotData(Dimensions);
+    try
+      MS.Position := 0;
+      PNG := GetPNGImageFromStream(MS, idfRGB565, Dimensions.X, Dimensions.Y);
+      try
+        Clipboard.Assign(PNG);
+      finally
+        PNG.Free();
+      end;
+    finally
+      MS.Free();
+    end;
+  finally
+    State.Free();
+  end;
+end;
+
+procedure TFrameROMDetails.MenuItemStateCreateClick(Sender: TObject);
+var
+  Candidate: string;
+  State: TState;
+  FS: TFileStream;
+  i: Byte;
+begin
+  for i := 0 to 3 do
+  begin
+    Candidate := IncludeTrailingPathDelimiter(IncludeTrailingPathDelimiter(Path + Foldername.Folders[FFolderIndex]) + 'save') + FFileName + '.sa' + IntToStr(i);
+    if FileExists(Candidate) then
+    Continue;
+
+    if OpenDialogState.Execute() then
+    begin
+      FS := TFileStream.Create(OpenDialogState.FileName, fmOpenRead or fmShareDenyNone);
+      try
+        State := TState.CreateStateFromStream(Candidate, FS, ImageListStates.Width, ImageListStates.Height, EndsText('.nfc', ROM.ROMFileName));
+        try
+        finally
+          State.Free();
+        end;
+      finally
+        FS.Free();
+      end;
+      ShowFile(FFolderIndex, FItem, True);
+    end;
+    Exit;
+  end;
+  raise Exception.Create('All 4 save state slots are currently occupied.');
+end;
+
+procedure TFrameROMDetails.MenuItemStateExportClick(Sender: TObject);
+var
+  State: TState;
+  FS: TFileStream;
+begin
+  if SaveDialogState.Execute() then
+  begin
+    State := TState.Create();
+    try
+      State.LoadFromFile(ListViewStates.Selected.SubItems[0]);
+      FS := TFileStream.Create(SaveDialogState.FileName, fmCreate);
+      try
+        State.SaveStateToStream(ListViewStates.Selected.SubItems[0], FS);
+      finally
+        FS.Free();
+      end;
+    finally
+      State.Free();
+    end;
+  end;
+end;
+
+procedure TFrameROMDetails.MenuItemStateImportClick(Sender: TObject);
+var
+  State: TState;
+  FS: TFileStream;
+begin
+  if OpenDialogState.Execute() then
+  begin
+    State := TState.Create();
+    try
+      State.LoadFromFile(ListViewStates.Selected.SubItems[0]);
+      FS := TFileStream.Create(OpenDialogState.FileName, fmOpenRead or fmShareDenyNone);
+      try
+        State.WriteStateFromStream(ListViewStates.Selected.SubItems[0], FS);
+      finally
+        FS.Free();
+      end;
+    finally
+      State.Free();
+    end;
   end;
 end;
 
@@ -552,24 +721,66 @@ begin
   end;
 end;
 
+procedure TFrameROMDetails.MenuItemWiseemuClick(Sender: TObject);
+begin
+  if ROM.ChangeExt('.nes', '.nfc') then
+  begin
+    ROM.SaveToFile(FFolderIndex, FFileName, False);
+    ShowFile(FFolderIndex, FItem, True);
+  end;
+end;
+
 procedure TFrameROMDetails.PopupMenuRenamePopup(Sender: TObject);
 begin
   MenuItemCompress.Enabled := not ROM.IsCompressed and not ROM.IsMultiCore;
   MenuItemDecompress.Enabled := ROM.IsCompressed and not ROM.IsMultiCore;
-  MenuItemMakeMulticore.Enabled := not ROM.IsMultiCore;
+  MenuItemMakeMulticore.Enabled := not ROM.IsCompressed or ROM.IsMultiCore;
+  MenuItemPerGameCoreConfig.Enabled := not ROM.IsMultiCore;
+  MenuItemPerGameCoreConfig.Enabled := False;
+  MenuItemPerGameCoreConfig.Checked := False;
+  if ROM.IsMultiCore then
+  with TROMFile.GetMCName(FFileName) do
+  begin
+    if CoresDict.ContainsKey(Core) then
+    if CoresDict[Core].Config <> '' then
+    begin
+      MenuItemPerGameCoreConfig.Enabled := True;
+      MenuItemPerGameCoreConfig.Checked := FileExists(CoresDict[Core].GetConfigPath(ExtractFileName(AbsoluteFileName)));
+    end;
+  end;
+
+  MenuItemNESEmulator.Visible := False;
+  if ROM.IsCompressed then
+  if not ROM.IsMultiCore then
+  if EndsText('.nes', ROM.ROMFileName) then
+  begin
+    MenuItemNESEmulator.Visible := True;
+    MenuItemFCEUmm.Checked := True;
+  end
+  else
+  if EndsText('.nfc', ROM.ROMFileName) then
+  begin
+    MenuItemNESEmulator.Visible := True;
+    MenuItemWiseemu.Checked := True;
+  end;
 end;
 
 procedure TFrameROMDetails.PopupMenuStatePopup(Sender: TObject);
 begin
   MenuItemStateSaveDIB.Enabled := ListViewStates.SelCount > 0;
+  MenuItemStateCopyThumb.Enabled := ListViewStates.SelCount > 0;
+  MenuItemStateImport.Enabled := ListViewStates.SelCount > 0;
+  MenuItemStateExport.Enabled := ListViewStates.SelCount > 0;
 end;
 
 procedure TFrameROMDetails.RefreshFavoriteStatus;
 begin
-  if ImageFavorite.Visible then
+  if ImageFavorite.Visible or ImageFavoriteOff.Visible then
   begin
-    ImageFavorite.Center := Favorites.ContainsFile(FFolderIndex, FFileName);
+    ImageFavorite.Visible := Favorites.ContainsFile(FFolderIndex, FFileName);
+    ImageFavoriteOff.Visible := not ImageFavorite.Visible;
     ImageFavorite.Left := LabelROMName.Left + LabelROMName.Width;
+    ImageFavoriteOff.Left := LabelROMName.Left + LabelROMName.Width;
   end;
 end;
 
@@ -615,7 +826,7 @@ begin
     if NoIntro.ContainsKey(CRC) then
     begin
       NoIntroData := NoIntro[CRC];
-      LabelNoIntro.Caption := 'No-Intro: #' + RightStr('000' + IntToStr(NoIntroData.GameID), 4) + ' – ' + string(NoIntroData.Name) + IfThen(NoIntroData.IsVerified, ' [verified]');
+      LabelNoIntro.Caption := 'No-Intro: #' + RightStr('000' + IntToStr(NoIntroData.GameID), 4) + ' – ' + StringReplace(string(NoIntroData.Name), '&', '&&', [rfReplaceAll]) + IfThen(NoIntroData.IsVerified, ' [verified]');
     end
     else
     LabelNoIntro.Caption := 'No-Intro: unmatched';

@@ -1,7 +1,7 @@
 object Form1: TForm1
   Left = 0
   Top = 0
-  Caption = 'GB300 Tool [v1.0]'
+  Caption = 'GB300 Tool [v1.0-final]'
   ClientHeight = 808
   ClientWidth = 1232
   Color = clWhite
@@ -31,7 +31,7 @@ object Form1: TForm1
   end
   object PanelOnboarding: TPanel
     Left = 396
-    Top = 267
+    Top = 266
     Width = 440
     Height = 216
     Anchors = []

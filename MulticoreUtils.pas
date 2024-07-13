@@ -58,7 +58,23 @@ type
     class function DoCheckBIOS(OnlyRequired: Boolean): TBIOSCheckResults; override;
   end;
 
+  TBIOSCheckerGameBoyGambatteGB = class(TBIOSCheckerGameBoyGambatte)
+    class function DoCheckBIOS(OnlyRequired: Boolean): TBIOSCheckResults; override;
+  end;
+
+  TBIOSCheckerGameBoyGambatteGBB = class(TBIOSCheckerGameBoyGambatte)
+    class function DoCheckBIOS(OnlyRequired: Boolean): TBIOSCheckResults; override;
+  end;
+
   TBIOSCheckerGameBoyColorGambatte = class(TBIOSChecker)
+    class function DoCheckBIOS(OnlyRequired: Boolean): TBIOSCheckResults; override;
+  end;
+
+  TBIOSCheckerGameBoyColorGambatteGB = class(TBIOSCheckerGameBoyGambatte)
+    class function DoCheckBIOS(OnlyRequired: Boolean): TBIOSCheckResults; override;
+  end;
+
+  TBIOSCheckerGameBoyColorGambatteGBB = class(TBIOSCheckerGameBoyGambatte)
     class function DoCheckBIOS(OnlyRequired: Boolean): TBIOSCheckResults; override;
   end;
 
@@ -91,6 +107,10 @@ type
   end;
 
   TBIOSCheckerFamicomDiskSystemStock = class(TBIOSChecker)
+    class function DoCheckBIOS(OnlyRequired: Boolean): TBIOSCheckResults; override;
+  end;
+
+  TBIOSCheckerVTxx = class(TBIOSChecker)
     class function DoCheckBIOS(OnlyRequired: Boolean): TBIOSCheckResults; override;
   end;
 
@@ -150,10 +170,14 @@ type
   end;
 
 const
+  //Beetle = 'My emulator doesn''t need a frickin'' excellent name – ';
+  Beetle = 'Mednafen ';
+
+var
   CoreConsoles: array[0..73] of TCoreConsole =
     ((Core: 'Stock';    Console: 'Nintendo - Nintendo Entertainment System (Famicom) [FCEUmm]';                        NoIntro:  45; Extensions: 'nes|unf'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'Stock';    Console: 'Nintendo - Famicom Disk System [FCEUmm; not working]';                               NoIntro:  31; Extensions: 'fds'; BIOSChecker: TBIOSCheckerFamicomDiskSystemStock),
-     (Core: 'Stock';    Console: 'V.R. Technology - VTxx (incl. NES/Famicom) - mapper 12 only [wiseemu]';              NoIntro:  45; Extensions: 'nfc'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'Stock';    Console: 'Nintendo - Famicom Disk System [FCEUmm]';                                            NoIntro:  31; Extensions: 'fds'; BIOSChecker: TBIOSCheckerFamicomDiskSystemStock),
+     (Core: 'Stock';    Console: 'V.R. Technology - VTxx (incl. NES/Famicom) - mapper 12 only [wiseemu]';              NoIntro:  45; Extensions: 'nfc'; BIOSChecker: TBIOSCheckerVTxx),
      (Core: 'Stock';    Console: 'NEC - PC Engine (Turbografx-16) [Mednafen PCE Fast v0.9.38.7]';                      NoIntro:  12; Extensions: 'pce'; BIOSChecker: TBIOSCheckerNone),
      (Core: 'Stock';    Console: 'Nintendo - Super Nintendo Entertainment System (Super Famicom) [Snes9x 2005 v1.36]'; NoIntro:  49; Extensions: 'smc|fig|sfc|gd3|gd7|dx2|bsx|swc'; BIOSChecker: TBIOSCheckerNone),
      (Core: 'Stock';    Console: 'Sega - Mega Drive (Genesis) [PicoDrive 1.91]';                                       NoIntro:  32; Extensions: 'md|smd|bin|gen'; BIOSChecker: TBIOSCheckerNone),
@@ -173,12 +197,12 @@ const
      (Core: 'col';      Console: 'Coleco - ColecoVision';                                                              NoIntro:   3; Extensions: 'col|cv|bin|rom'; BIOSChecker: TBIOSCheckerColecoVision),
      (Core: 'fake08';   Console: 'Fantasy Console - PICO-8';                                                           NoIntro:   0; Extensions: 'p8|png'; BIOSChecker: TBIOSCheckerNone),
      (Core: 'fcf';      Console: 'Fairchild - Channel F';                                                              NoIntro:   6; Extensions: 'bin|rom|chf'; BIOSChecker: TBIOSCheckerChannelF),
-     (Core: 'gb';       Console: 'Nintendo - Dot Matrix Game ("Game Boy")';                                            NoIntro:  46; Extensions: 'gb|sgb'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'gb';       Console: 'Nintendo - Game Boy Color';                                                          NoIntro:  47; Extensions: 'gbc|sgb'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'gb';       Console: 'Nintendo - Dot Matrix Game ("Game Boy")';                                            NoIntro:  46; Extensions: 'gb|sgb'; BIOSChecker: TBIOSCheckerGameBoyGambatteGB),
+     (Core: 'gb';       Console: 'Nintendo - Game Boy Color';                                                          NoIntro:  47; Extensions: 'gbc|sgb'; BIOSChecker: TBIOSCheckerGameBoyColorGambatteGB),
      (Core: 'gba';      Console: 'Nintendo - Game Boy Advance';                                                        NoIntro:  23; Extensions: 'gba|bin'; BIOSChecker: TBIOSCheckerGameBoyAdvance),
      (Core: 'gbav';     Console: 'Nintendo - Game Boy Advance';                                                        NoIntro:  23; Extensions: 'gba'; BIOSChecker: TBIOSCheckerGameBoyAdvance),
-     (Core: 'gbb';      Console: 'Nintendo - Dot Matrix Game ("Game Boy")';                                            NoIntro:  46; Extensions: 'gb|dmg'; BIOSChecker: TBIOSCheckerGameBoyGambatte),
-     (Core: 'gbb';      Console: 'Nintendo - Game Boy Color';                                                          NoIntro:  47; Extensions: 'gbc'; BIOSChecker: TBIOSCheckerGameBoyColorGambatte),
+     (Core: 'gbb';      Console: 'Nintendo - Dot Matrix Game ("Game Boy")';                                            NoIntro:  46; Extensions: 'gb|dmg'; BIOSChecker: TBIOSCheckerGameBoyGambatteGBB),
+     (Core: 'gbb';      Console: 'Nintendo - Game Boy Color';                                                          NoIntro:  47; Extensions: 'gbc'; BIOSChecker: TBIOSCheckerGameBoyColorGambatteGBB),
      (Core: 'gbgb';     Console: 'Nintendo - Dot Matrix Game ("Game Boy")';                                            NoIntro:  46; Extensions: 'gb|dmg|sgb'; BIOSChecker: TBIOSCheckerGameBoy),
      (Core: 'gbgb';     Console: 'Nintendo - Game Boy Color';                                                          NoIntro:  47; Extensions: 'gbc|sgb'; BIOSChecker: TBIOSCheckerGameBoyColor),
      (Core: 'gg';       Console: 'Sega - SG-1000';                                                                     NoIntro:  19; Extensions: 'sg|bin|rom'; BIOSChecker: TBIOSCheckerNone),
@@ -231,19 +255,18 @@ const
      (Core: 'wswan';    Console: 'Benesse - Pocket Challenge v2';                                                      NoIntro:  87; Extensions: 'pc2'; BIOSChecker: TBIOSCheckerNone),
      (Core: 'zx81';     Console: 'Sinclair - ZX 81';                                                                   NoIntro:   0; Extensions: 'p|tzx|t81'; BIOSChecker: TBIOSCheckerNone));
 
-var
   Cores: array[0..92] of TCore =
     ((Core: 'multicore'; Name: 'multicore General Options';   Config: 'multicore';               Description: 'configuration only'),
      (Core: 'Stock';     Name: 'GB300 Stock Emulators';       Config: '';                        Description: 'NES, VTxx, PCE, SNES, MD, SMS, GB, GBC, GBA'),
      (Core: 'arduboy';   Name: 'Arduous';                     Config: 'arduous';                 Description: 'Arduboy'),
      (Core: 'a5200';     Name: 'Atari800';                    Config: 'a5200';                   Description: 'Atari 5200, Atari 8-Bit/800'),
      (Core: 'a800';      Name: 'libatari800';                 Config: 'Atari 800 (libatari800)'; Description: 'Atari 5200, Atari 8-Bit/800'),
-     (Core: 'lnxb';      Name: 'Beetle Lynx';                 Config: 'Beetle Lynx';             Description: 'Atari Lynx'),
-     (Core: 'pce';       Name: 'Beetle PCE Fast';             Config: 'Beetle PCE Fast';         Description: 'PC Engine, PC Engine-CD'),
-     (Core: 'pcfx';      Name: 'Beetle PC-FX';                Config: 'Beetle PC-FX';            Description: 'NEC PC-FX'),
-     (Core: 'pcesgx';    Name: 'Beetle SGX';                  Config: 'Beetle SuperGrafx';       Description: 'NEC PC Engine, PC Engine CD, SuperGrafx'),
-     (Core: 'vb';        Name: 'Beetle VB';                   Config: 'Beetle VB';               Description: 'Nintendo Virtual Boy'),
-     (Core: 'wswan';     Name: 'Beetle Cygne';                Config: 'Beetle WonderSwan';       Description: 'Bandai WonderSwan Classic, Color'),
+     (Core: 'lnxb';      Name: Beetle+'Lynx';                 Config: 'Beetle Lynx';             Description: 'Atari Lynx'),
+     (Core: 'pce';       Name: Beetle+'PCE Fast';             Config: 'Beetle PCE Fast';         Description: 'PC Engine, PC Engine-CD'),
+     (Core: 'pcfx';      Name: Beetle+'PC-FX';                Config: 'Beetle PC-FX';            Description: 'NEC PC-FX'),
+     (Core: 'pcesgx';    Name: Beetle+'SGX';                  Config: 'Beetle SuperGrafx';       Description: 'NEC PC Engine, PC Engine CD, SuperGrafx'),
+     (Core: 'vb';        Name: Beetle+'VB';                   Config: 'Beetle VB';               Description: 'Nintendo Virtual Boy'),
+     (Core: 'wswan';     Name: Beetle+'Cygne';                Config: 'Beetle WonderSwan';       Description: 'Bandai WonderSwan Classic, Color'),
      (Core: 'msx';       Name: 'blueMSX';                     Config: 'blueMSX';                 Description: 'Microsoft MSX, MSX2, Coleco ColecoVision, Sega SG-1000'),
      (Core: 'outrun';    Name: 'Cannonball';                  Config: 'Cannonball';              Description: 'OutRun Game Engine'),
      (Core: 'amstradb';  Name: 'Caprice32';                   Config: 'cap32';                   Description: 'Amstrad CPC'),
@@ -884,9 +907,26 @@ end;
 { TBIOSCheckerFamicomDiskSystemStock }
 
 class function TBIOSCheckerFamicomDiskSystemStock.DoCheckBIOS(OnlyRequired: Boolean): TBIOSCheckResults;
+var
+  BIOS: TBIOS;
 begin
-  SetLength(Result, 1);
-  Result[0] := CheckBIOSFileAbs(IncludeTrailingPathDelimiter(Path + 'ROMS') + 'disksys.rom', True, [$5E607DCF]);
+  SetLength(Result, 2);
+  Result[1] := CheckBIOSFileAbs(IncludeTrailingPathDelimiter(Path + 'ROMS') + 'disksys.rom', True, [$5E607DCF]);
+  Result[0].FileName := 'FDS enabled in BIOS tab'  {Copy(TBIOS.Path, Length(Path) - 1, 1337)};
+  Result[0].Required := True;
+  if FileExists(TBIOS.Path) then
+  begin
+    BIOS := TBIOS.Create();
+    try
+      BIOS.LoadFromFile(TBIOS.Path);
+      Result[0].CRCValid := BIOS.FDS;
+    finally
+      BIOS.Free();
+    end;
+  end
+  else
+  Result[0].CRCValid := False;
+  Result[0].Exists := Result[0].CRCValid;
 end;
 
 { TBIOSCheckerPCEngineCD }
@@ -966,6 +1006,76 @@ begin
 
     Item.GroupID := Group;
   end;
+end;
+
+{ TBIOSCheckerGameBoyGambatteGB }
+
+class function TBIOSCheckerGameBoyGambatteGB.DoCheckBIOS(OnlyRequired: Boolean): TBIOSCheckResults;
+begin
+  if CoresDict['gb'].Config = 'Gambatte' then
+  Result := inherited
+  else
+  SetLength(Result, 0);
+end;
+
+{ TBIOSCheckerGameBoyGambatteGBB }
+
+class function TBIOSCheckerGameBoyGambatteGBB.DoCheckBIOS(OnlyRequired: Boolean): TBIOSCheckResults;
+begin
+  if CoresDict['gbb'].Config = 'Gambatte' then
+  Result := inherited
+  else
+  SetLength(Result, 0);
+end;
+
+{ TBIOSCheckerGameBoyColorGambatteGB }
+
+class function TBIOSCheckerGameBoyColorGambatteGB.DoCheckBIOS(OnlyRequired: Boolean): TBIOSCheckResults;
+begin
+  if CoresDict['gb'].Config = 'Gambatte' then
+  Result := inherited
+  else
+  SetLength(Result, 0);
+end;
+
+{ TBIOSCheckerGameBoyColorGambatteGBB }
+
+class function TBIOSCheckerGameBoyColorGambatteGBB.DoCheckBIOS(OnlyRequired: Boolean): TBIOSCheckResults;
+begin
+  if CoresDict['gbb'].Config = 'Gambatte' then
+  Result := inherited
+  else
+  SetLength(Result, 0);
+end;
+
+{ TBIOSCheckerVTxx }
+
+class function TBIOSCheckerVTxx.DoCheckBIOS(OnlyRequired: Boolean): TBIOSCheckResults;
+var
+  BIOS: TBIOS;
+begin
+  SetLength(Result, 2);
+  Result[0].FileName := 'VT02/03 enabled in BIOS tab';
+  Result[0].Required := True;
+  Result[1].FileName := 'VT03 LUT patched in BIOS tab';
+  Result[1].Required := False;
+  if FileExists(TBIOS.Path) then
+  begin
+    BIOS := TBIOS.Create();
+    try
+      BIOS.LoadFromFile(TBIOS.Path);
+      Result[0].CRCValid := BIOS.VT03;
+      Result[1].CRCValid := BIOS.VT03LUT565;
+    finally
+      BIOS.Free();
+    end;
+  end
+  else
+  begin
+    Result[0].CRCValid := False;
+    Result[1].CRCValid := False;
+  end;
+  Result[0].Exists := Result[0].CRCValid;
 end;
 
 end.

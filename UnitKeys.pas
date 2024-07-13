@@ -234,8 +234,8 @@ type
       ConsoleNames: array[0..5] of string = ('FC', 'PCE', 'SFC', 'MD', 'GB', 'GBA');
       ButtonNames: array[0..11] of string = ('1X', '1Y', '1L', '1A', '1B', '1R', '2X', '2Y', '2L', '2A', '2B', '2R');
       // for populating controls
-      KeyNamesFC:   array[0..1] of string = ('A',   'B'); // also used by GB
-      KeyValuesFC:  array[0..1] of Word   = ($0008, $0000); // also used by GB
+      KeyNamesFC:   array[0..3] of string = ('A',   'B',   'Turn Disk', 'Eject/Insert'); // also used by GB
+      KeyValuesFC:  array[0..3] of Word   = ($0008, $0000, $000a, $000b); // also used by GB
       KeyNamesSFC:  array[0..5] of string = ('A',   'B',   'X',   'Y',   'L',   'R');
       KeyValuesSFC: array[0..5] of Word   = ($0008, $0000, $000a, $000b, $0009, $0001);
       KeyNamesPCE:  array[0..5] of string = ('I',   'II',        'invalid',   'invalid', 'invalid', 'invalid');

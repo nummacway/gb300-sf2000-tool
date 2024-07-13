@@ -33,11 +33,11 @@ object FrameROMDetails: TFrameROMDetails
     object LabelRename: TLabel
       Left = 272
       Top = 44
-      Width = 410
+      Width = 502
       Height = 15
       Caption = 
-        'Rename (menu: duplicate, (de)compress) the file and update the R' +
-        'OM list file.'
+        'Rename the file (and accompanying ones) and update the ROM list ' +
+        'file. More features in menu.'
     end
     object LabelExportROM: TLabel
       Left = 272
@@ -58,11 +58,11 @@ object FrameROMDetails: TFrameROMDetails
     object LabelPatchROM: TLabel
       Left = 272
       Top = 144
-      Width = 423
+      Width = 460
       Height = 15
       Caption = 
-        'Apply an IPS patch (overwrite or new file). Be sure to have the ' +
-        'correct base ROM!'
+        'Apply an IPS or BPS patch (overwrite or new file). Be sure to ha' +
+        've the correct base ROM!'
     end
     object LabelExportThumb: TLabel
       Left = 272
@@ -74,11 +74,11 @@ object FrameROMDetails: TFrameROMDetails
     object LabelImportThumb: TLabel
       Left = 272
       Top = 212
-      Width = 430
+      Width = 476
       Height = 15
       Caption = 
-        'Add a thumbnail or replace the existing one. Must have the corre' +
-        'ct size (%d'#215'%d).'
+        'Add a thumbnail or replace the existing one. Will automatically ' +
+        'be resized (proportionally).'
     end
     object LabelCRC: TLabel
       Left = 754
@@ -103,6 +103,16 @@ object FrameROMDetails: TFrameROMDetails
       Top = 2
       Width = 16
       Height = 16
+      Stretch = True
+      OnClick = ImageFavoriteClick
+    end
+    object ImageFavoriteOff: TImage
+      Left = 224
+      Top = 2
+      Width = 16
+      Height = 16
+      Stretch = True
+      Visible = False
       OnClick = ImageFavoriteClick
     end
     object ButtonExportROM: TButton
@@ -130,6 +140,7 @@ object FrameROMDetails: TFrameROMDetails
       Height = 24
       Caption = 'Export Thumb...'
       TabOrder = 2
+      OnClick = ButtonExportThumbClick
     end
     object ButtonImportThumb: TButton
       Left = 168
@@ -172,12 +183,14 @@ object FrameROMDetails: TFrameROMDetails
         Top = 13
         Width = 150
         Height = 214
+        Stretch = True
       end
       object ImageThumbnail: TImage
         Left = 8
         Top = 16
         Width = 144
         Height = 208
+        Stretch = True
       end
     end
   end
@@ -214,12 +227,32 @@ object FrameROMDetails: TFrameROMDetails
       Caption = 'Decompress'
       OnClick = MenuItemDecompressClick
     end
+    object N4: TMenuItem
+      Caption = '-'
+    end
+    object MenuItemNESEmulator: TMenuItem
+      Caption = 'FC/NES Stock Emulator'
+      object MenuItemFCEUmm: TMenuItem
+        Caption = 'FCEUmm'
+        RadioItem = True
+        OnClick = MenuItemFCEUmmClick
+      end
+      object MenuItemWiseemu: TMenuItem
+        Caption = 'wiseemu/libvrt'
+        RadioItem = True
+        OnClick = MenuItemWiseemuClick
+      end
+    end
     object N2: TMenuItem
       Caption = '-'
     end
     object MenuItemMakeMulticore: TMenuItem
       Caption = 'Duplicate as multicore...'
       OnClick = MenuItemMakeMulticoreClick
+    end
+    object MenuItemPerGameCoreConfig: TMenuItem
+      Caption = 'Per-Game Core Config...'
+      OnClick = MenuItemPerGameCoreConfigClick
     end
     object N1: TMenuItem
       Caption = '-'
@@ -230,6 +263,8 @@ object FrameROMDetails: TFrameROMDetails
     end
   end
   object ImageListStates: TImageList
+    Height = 160
+    Width = 120
     Left = 640
     Top = 272
   end
@@ -244,8 +279,8 @@ object FrameROMDetails: TFrameROMDetails
   end
   object OpenDialogPatch: TOpenDialog
     Filter = 
-      'International Patching System patch (*.ips)|*.ips|All files (*.*' +
-      ')|*.*'
+      'Patches (*.ips, *.bps)|*.ips;*.bps|International Patching System' +
+      ' patch (*.ips)|*.ips|beat Patching System patch (*.bps)|*.bps'
     Left = 552
     Top = 384
   end
@@ -257,6 +292,25 @@ object FrameROMDetails: TFrameROMDetails
       Caption = 'Save Screenshot...'
       Default = True
       OnClick = MenuItemStateSaveDIBClick
+    end
+    object MenuItemStateCopyThumb: TMenuItem
+      Caption = 'Copy Screenshot to Clipboard'
+      OnClick = MenuItemStateCopyThumbClick
+    end
+    object N3: TMenuItem
+      Caption = '-'
+    end
+    object MenuItemStateCreate: TMenuItem
+      Caption = 'Create State with Data...'
+      OnClick = MenuItemStateCreateClick
+    end
+    object MenuItemStateImport: TMenuItem
+      Caption = 'Replace State Data...'
+      OnClick = MenuItemStateImportClick
+    end
+    object MenuItemStateExport: TMenuItem
+      Caption = 'Export State Data...'
+      OnClick = MenuItemStateExportClick
     end
   end
   object SaveDialogImage: TSaveDialog
@@ -281,5 +335,13 @@ object FrameROMDetails: TFrameROMDetails
       'jpg;*.jpeg'
     Left = 512
     Top = 518
+  end
+  object SaveDialogState: TSaveDialog
+    Left = 624
+    Top = 496
+  end
+  object OpenDialogState: TOpenDialog
+    Left = 720
+    Top = 512
   end
 end

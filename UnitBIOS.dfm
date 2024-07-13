@@ -253,15 +253,6 @@ object FrameBIOS: TFrameBIOS
       Height = 15
       Caption = 'The default color here is black.'
     end
-    object Label2: TLabel
-      Left = 680
-      Top = 141
-      Width = 496
-      Height = 15
-      Caption = 
-        'Also adds a dropdown menu for the '#39'Add'#39' button in ROM tabs to en' +
-        'sure a proper iNES header.'
-    end
     object Label3: TLabel
       Left = 656
       Top = 48
@@ -347,12 +338,12 @@ object FrameBIOS: TFrameBIOS
     end
     object CheckBoxVT03: TCheckBox
       Left = 656
-      Top = 125
+      Top = 149
       Width = 536
       Height = 16
       Caption = 
-        'Enable VT02/VT03 support for .nfc with iNES header and mapper 12' +
-        ' (note: very bad compatibility)'
+        'Enable VT02/VT03 support for .nfc files (note: very bad compatib' +
+        'ility; MUST have .nfc extension!)'
       TabOrder = 8
       OnClick = CheckBoxVT03Click
     end
@@ -367,34 +358,33 @@ object FrameBIOS: TFrameBIOS
       OnChange = ColorBoxSearchResultSelColorChange
     end
     object CheckBoxPatchVT03LUT: TCheckBox
-      Left = 656
-      Top = 157
-      Width = 536
+      Left = 672
+      Top = 165
+      Width = 520
       Height = 16
       Caption = 
         'Patch VT03 LUT from RGB555 to RGB565 (fixes color issues for VT0' +
-        '3 ROMs, no known side effects)'
+        '3 ROMs)'
       TabOrder = 9
       OnClick = CheckBoxPatchVT03LUTClick
     end
-    object CheckBoxVT03SizeHack: TCheckBox
+    object CheckBoxFDS: TCheckBox
       Left = 656
-      Top = 173
+      Top = 125
       Width = 536
       Height = 16
       Caption = 
-        #8805' 4'#8201'MiB VTxx hack (experimental, breaks .nfc NES ROMs (use '#39'Alwa' +
-        'ys Use FCEUmm'#39' below to fix))'
+        'Enable Famicom Disk System support in FCEUmm (requires '#39'disksys.' +
+        'rom'#39' in '#39'ROMS'#39')'
       TabOrder = 10
-      Visible = False
-      OnClick = CheckBoxVT03Click
+      OnClick = CheckBoxFDSClick
     end
   end
   object GroupBoxROMFixes: TGroupBox
     Left = 0
     Top = 408
     Width = 1200
-    Height = 80
+    Height = 112
     Caption = 'General ROM Fixes'
     TabOrder = 3
     object LabelFixMDThumbs: TLabel
@@ -421,13 +411,13 @@ object FrameBIOS: TFrameBIOS
     object Label1: TLabel
       Left = 144
       Top = 84
-      Width = 956
+      Width = 1022
       Height = 15
       Caption = 
         'Changes the file extension in the .zfc files'#39' header in '#39'FC'#39' fro' +
         'm .nfc to .nes to make them run with FCEUmm. Breaks their existi' +
-        'ng save states. Improves compatibility. Takes some time.'
-      Visible = False
+        'ng save states. Improves compatibility. Takes little over half a' +
+        ' minute.'
     end
     object ButtonFixMDThumbs: TButton
       Left = 8
@@ -454,13 +444,12 @@ object FrameBIOS: TFrameBIOS
       Height = 24
       Caption = 'Always Use FCEUmm'
       TabOrder = 2
-      Visible = False
       OnClick = ButtonAlwaysUseFCEUmmClick
     end
   end
   object GroupBoxReset: TGroupBox
     Left = 0
-    Top = 504
+    Top = 536
     Width = 1200
     Height = 48
     Caption = 'Reset User Files'

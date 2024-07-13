@@ -100,6 +100,7 @@
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <Icon_MainIcon>GB300Tool_Icon.ico</Icon_MainIcon>
+        <VerInfo_Keys>CompanyName=JN-GAMES Software;FileDescription=GB300 Tool;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=gb300tool.exe;ProgramID=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
@@ -168,6 +169,27 @@
             <FormType>dfm</FormType>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
+        <DCCReference Include="GambatteColors.pas"/>
+        <DCCReference Include="UnitCoreOptions.pas">
+            <Form>FrameCoreOptions</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="UnitGambatteColorPicker.pas">
+            <Form>FrameGambatteColorPicker</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="UnitPerGameCoreConfig.pas">
+            <Form>FormPerGameCoreConfig</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="UnitMulticoreLog.pas">
+            <Form>FrameMulticoreLog</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="PaletteColors.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

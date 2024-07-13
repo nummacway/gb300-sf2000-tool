@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, GB300Utils, Vcl.ComCtrls,
-  Vcl.StdCtrls, Vcl.ExtCtrls, UnitROMDetails;
+  Vcl.StdCtrls, Vcl.ExtCtrls, UnitROMDetails, Vcl.Menus;
 
 type
   TFrameStockROMs = class(TFrame)
@@ -21,6 +21,8 @@ type
     TimerSave: TTimer;
     OpenDialogROMs: TOpenDialog;
     TimerDnDScroll: TTimer;
+    PopupMenu: TPopupMenu;
+    MenuItemImportAllImages: TMenuItem;
     procedure ListViewFilesSelectItem(Sender: TObject; Item: TListItem;
       Selected: Boolean);
     procedure TimerSaveTimer(Sender: TObject);
@@ -42,6 +44,7 @@ type
     procedure ListViewFilesDragDrop(Sender, Source: TObject; X, Y: Integer);
     procedure ListViewFilesKeyPress(Sender: TObject; var Key: Char);
     procedure ListViewFilesDblClick(Sender: TObject);
+    procedure MenuItemImportAllImagesClick(Sender: TObject);
   private
     { Private declarations }
     procedure DropFiles(Sender: TObject);
@@ -307,6 +310,9 @@ begin
   try
     ListViewFiles.OnItemChecked := nil;
     for Item in ListViewFiles.Items do
+    if NewState then
+    Item.Checked := FileExists(Foldername.AbsoluteFolder[FolderIndex] + Item.Caption)
+    else
     Item.Checked := NewState;
   finally
     ListViewFiles.Items.EndUpdate();
@@ -407,11 +413,12 @@ begin
   if RenameFile(Foldername.AbsoluteFolder[FolderIndex] + Item.Caption,
                 Foldername.AbsoluteFolder[FolderIndex] + S) then
   begin
-    Favorites.Rename(FolderIndex, Item.Caption, S);
-    History.Rename(FolderIndex, Item.Caption, S);
-    if not TROMFile.RenameRelated(FolderIndex, Item.Caption, S) then
-    MessageDlg('Could not rename all existing related files, likely because there is some conflict or damage', mtWarning, [mbOk], 0);
+    if Favorites.Rename(FolderIndex, Item.Caption, S) then
     MustSaveReferenceLists := True;
+    if History.Rename(FolderIndex, Item.Caption, S) then
+    MustSaveReferenceLists := True;
+    if not TROMFile.RenameRelated(FolderIndex, Item.Caption, S) then
+    MessageDlg('Could not rename all existing related files, likely because there is some conflict or corruption', mtWarning, [mbOk], 0);
     Item.Caption := S;
     ROMDetailsFrame.ShowFile(FolderIndex, Item);
     ApplyAndSave();
@@ -478,38 +485,9 @@ var
   KnownFiles: TDictionary<string, Integer>; // the second argument is not needed
   AllFiles: TList<string>;
   FN: string;
-{function CanPreview(Index: Integer): Boolean; // this method was used to select the games for the previews
-var
-  j: Integer;
-  Name: string;
-begin
-  Result := True;
-  for j := Index to Index + 7 do
-  begin
-    Name := ChangeFileExt(Names.FileNames[j mod Names.FileNames.Count], '');
-    if Pos('g', Name) > 0 then Exit(False);
-    if Pos('j', Name) > 0 then Exit(False);
-    if Pos('p', Name) > 0 then Exit(False);
-    if Pos('q', Name) > 0 then Exit(False);
-    if Pos('y', Name) > 0 then Exit(False);
-  end;
-  for j := Index + 5 to Index + 7 do
-  begin
-    Name := ChangeFileExt(Names.FileNames[j mod Names.FileNames.Count], '');
-    if Pos('g', Name) > 0 then Exit(False);
-    if Pos('j', Name) > 0 then Exit(False);
-    if Pos('p', Name) > 0 then Exit(False);
-    if Pos('q', Name) > 0 then Exit(False);
-    if Pos('y', Name) > 0 then Exit(False);
-  end;
-end;  }
 begin
   Self.FolderIndex := FolderIndex;
   Names.LoadFromFiles(FolderIndex);
-  //for i := 0 to Names.FileNames.Count - 1 do
-  //if CanPreview(i) then
-  //FN := FN + IntToStr(i) + '. ' + Names.FileNames[i] + #13#10;
-  //ShowMessage(FN);
   ListViewFiles.Items.BeginUpdate();
   KnownFiles := TDictionary<string, Integer>.Create();
   try
@@ -522,11 +500,8 @@ begin
       KnownFiles.Add(AnsiLowercase(Names.FileNames[i]), 0);
       Item.Checked := True;
       Item.ImageIndex := TROMFile.FileNameToImageIndex(Names.FileNames[i]);
-      //if ShowChineseNames then
-      //begin
       Item.SubItems.Add(Names.ChineseNames[i]);
       Item.SubItems.Add(Names.PinyinNames[i]);
-      //end;
     end;
     AllFiles := TROMFile.GetROMsIn(FolderIndex);
     try
@@ -545,6 +520,106 @@ begin
   end;
 end;
 
+procedure TFrameStockROMs.MenuItemImportAllImagesClick(Sender: TObject);
+var
+  AbsFolder: string;
+  Caption: string;
+  Del: Boolean;
+function DoProcess(Item: TListItem; const CandidateImage: string): Boolean;
+var
+  ROM: TROMFile;
+  Picture: TPicture;
+  HadImage: Boolean;
+  Filename: string;
+begin
+  Result := False;
+  if FileExists(CandidateImage) then
+  begin
+    ROM := TROMFile.Create();
+    try
+      ROM.LoadFromFile(FolderIndex, Caption);
+
+      Picture := TPicture.Create();
+      try
+        Picture.LoadFromFile(CandidateImage);
+
+        AutoScaleThumbnail(Picture);
+
+        HadImage := ROM.HasImage;
+        FileName := Caption;
+        if not HadImage then
+        begin
+          FileName := ChangeFileExt(Caption, TROMFile.FileTypeToThumbExt(TROMFile.FileNameToType(ROM.ROMFileName)));
+          if FileExists(Foldername.AbsoluteFolder[FolderIndex] + FileName) then
+          Exit();
+        end;
+        ROM.Thumbnail := Picture.Graphic;
+        ROM.SaveToFile(FolderIndex, Caption, True);
+        if Caption <> FileName then
+        begin
+          if not RenameFile(Foldername.AbsoluteFolder[FolderIndex] + Caption,
+                            Foldername.AbsoluteFolder[FolderIndex] + FileName) then
+          raise Exception.CreateFmt('Could not rename file ''%s'' to ''%s''', [Caption, FileName]);
+
+          if not TROMFile.RenameRelated(FolderIndex, Caption, Filename) then
+          MessageDlg(Format('Could not rename all existing related files after renaming ''%s'' to ''%s'', likely because there is some conflict or corruption', [Caption, FileName]), mtWarning, [mbOk], 0);
+          Item.Caption := Filename;
+          Item.ImageIndex := TROMFile.FileNameToImageIndex(Filename);
+          if ROMDetailsFrame.Item = Item then         
+          ROMDetailsFrame.ShowFile(FolderIndex, Item, True);
+        end;
+      finally
+        Picture.Free();
+      end;
+      Result := True;
+
+      if Del then
+      DeleteFile(CandidateImage);
+    finally
+      ROM.Free();
+    end;
+  end;
+end;
+var
+  Item: TListItem;
+begin
+  case MessageDlg('This checks this folder for ROMs that have images where .png and .jpg have added to the extension or replaced it. ' +
+                  'For multicore stubs, it also checks the actual ROMs'' location using the same pattern. Those images are then used as thumbnail.'#13#10#13#10 +
+                  'Do you want to delete images that were successfully imported in this process?', mtWarning, mbYesNoCancel, 0, mbNo) of
+    mrYes: Del := True;
+    mrNo: Del := False;
+    else Exit;
+  end;
+
+  AbsFolder := Foldername.AbsoluteFolder[FolderIndex];
+  try
+    try
+      for Item in ListViewFiles.Items do
+      begin
+        Caption := Item.Caption;
+        if DoProcess(Item, AbsFolder + Caption + '.png') then Continue;
+        if DoProcess(Item, AbsFolder + Caption + '.jpg') then Continue;
+        if DoProcess(Item, AbsFolder + ChangeFileExt(Caption, '.png')) then Continue;
+        if DoProcess(Item, AbsFolder + ChangeFileExt(Caption, '.jpg')) then Continue;
+        if TROMFile.GetIsMultiCore(Caption) then
+        with TROMFile.GetMCName(Caption) do
+        begin
+          if DoProcess(Item, AbsFolder + AbsoluteFileName + '.png') then Continue;
+          if DoProcess(Item, AbsFolder + AbsoluteFileName + '.jpg') then Continue;
+          if DoProcess(Item, AbsFolder + ChangeFileExt(AbsoluteFileName, '.png')) then Continue;
+          if DoProcess(Item, AbsFolder + ChangeFileExt(AbsoluteFileName, '.jpg')) then Continue;
+        end;
+      end;         
+    finally
+      MustSaveReferenceLists := True;
+      ApplyAndSave();
+    end;
+  except    
+    LoadFromFiles(FolderIndex);
+    raise;
+  end;
+end;
+
 procedure TFrameStockROMs.ROMDuplicate(var Item: TListItem; const NewName: string);
 begin
   try
@@ -559,11 +634,12 @@ end;
 
 procedure TFrameStockROMs.ROMRename(var Item: TListItem; const NewName: string);
 begin
-  Favorites.Rename(FolderIndex, Item.Caption, NewName);
-  History.Rename(FolderIndex, Item.Caption, NewName);
-  if not TROMFile.RenameRelated(FolderIndex, Item.Caption, NewName) then
-  MessageDlg('Could not rename all existing related files, likely because there is some conflict or damage', mtWarning, [mbOk], 0);
+  if Favorites.Rename(FolderIndex, Item.Caption, NewName) then
   MustSaveReferenceLists := True;
+  if History.Rename(FolderIndex, Item.Caption, NewName) then
+  MustSaveReferenceLists := True;
+  if not TROMFile.RenameRelated(FolderIndex, Item.Caption, NewName) then
+  MessageDlg('Could not rename all existing related files, likely because there is some conflict or corruption', mtWarning, [mbOk], 0);
   Item.Caption := NewName;
   Item.ImageIndex := TROMFile.FileNameToImageIndex(NewName);
   ApplyAndSave();

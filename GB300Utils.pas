@@ -17,8 +17,9 @@ function  GetDIBStreamFromStream(Input: TStream; Format: TImageDataFormat; Width
 function  GetDIBImageFromStream(Input: TStream; Format: TImageDataFormat; Width: Integer; Height: Integer = 0): TWICImage;
 function  GetPNGImageFromStream(Input: TStream; Format: TImageDataFormat; Width: Integer; Height: Integer = 0): TPngImage;
 procedure WriteGraphicToStream(Input: TGraphic; Output: TStream; Format: TImageDataFormat; ExpectedWidth, ExpectedHeight: Integer; ExpectAlpha: Boolean);
-function GetFileSize(const FileName: string): Int64;
-function SwapColor(Color: TColor): TColor;
+function  GetFileSize(const FileName: string): Int64;
+function  SwapColor(Color: TColor): TColor; // LE to BE
+procedure AutoScaleThumbnail(Picture: TPicture);
 
 
 type
@@ -83,7 +84,7 @@ type
       CRC32: Cardinal;
       CompressedSize: Cardinal;
       UncompressedSize: Cardinal;
-    strict private
+    private
       FileNameLength: Word;
       ExtraFieldLength: Word;
     public
@@ -106,7 +107,7 @@ type
       CRC32: Cardinal;
       CompressedSize: Cardinal;
       UncompressedSize: Cardinal;
-    strict private
+    private
       FileNameLength: Word;
       ExtraFieldLength: Word;
       FileCommentLength: Word;
@@ -155,11 +156,14 @@ type
       function GetIsCRCValid: Boolean;
       class function GetPath: string; static;
       function GetVT03: Boolean;
-      procedure SetVT03(const Value: Boolean);
       function GetSearchResultSelColor: TColor;
       procedure SetSearchResultSelColor(const Value: TColor);
       function GetVT03LUT565: Boolean;
       procedure SetVT03LUT565(const Value: Boolean);
+      function GetFDS: Boolean;
+      procedure SetFDS(const Value: Boolean);
+      function Match(Resource: Word; Offset: Int64): Boolean;
+      procedure DoPatch(Resource: Word; Offset: Int64);
     public
       property StoredCRC: Cardinal read GetStoredCRC write SetStoredCRC;
       property CalculatedCRC: Cardinal read GetCalculatedCRC;
@@ -168,18 +172,21 @@ type
       procedure SaveBootLogoToStream(Stream: TStream);
       function GetScreenIndex(): TScreenIndex;
       class property Path: string read GetPath;
-      property VT03: Boolean read GetVT03 write SetVT03;
+      property VT03: Boolean read GetVT03;
       property VT03LUT565: Boolean read GetVT03LUT565 write SetVT03LUT565;
       property SearchResultSelColor: TColor read GetSearchResultSelColor write SetSearchResultSelColor;
+      property FDS: Boolean read GetFDS write SetFDS;
+      class procedure Patch(Resource: Word; Offset: Int64);
       const
         CRCOffset = $18c;
         DisplayInitOffset = $6cbfa4; // we're starting 2 bytes early because the init code basically starts there
         BootLogoOffset = $670a54;
         BootLogoWidth = 640;
         BootLogoHeight = 136;
-        VT03Offset = $319ccc;
+        VT03Offset = $319a30;
         VT03LUTOffset = $62270;
         SearchResultSelColorOffset = $6cec30;
+        FDSOffset = $34f170;
   end;
 
   TFoldername = record
@@ -228,7 +235,7 @@ type
       FROMName: string;
       FFileName: string;
       FStream: TMemoryStream;
-      function GetROM: TMemoryStream;
+      function GetROM: TBytesStream;
       function GetThumbnail: TGraphic;
       procedure SetThumbnail(const Value: TGraphic);
       function GetROMFileName: string;
@@ -237,6 +244,7 @@ type
       class function GetDefaultThumbnailSize: Integer; static;
       function GetIsMultiCore: Boolean; overload;
       function GetMCName: TMulticoreName; overload;
+      type FourCharString = packed array[1..4] of AnsiChar;
     public
       property HasImage: Boolean read FHasImage;
       property IsCompressed: Boolean read FIsCompressed;
@@ -253,7 +261,7 @@ type
       class function GetMCName(FN: string): TMulticoreName; overload;
       property IsMultiCore: Boolean read GetIsMultiCore;
       class function GetIsMultiCore(FN: string): Boolean; overload;
-      property ROM: TMemoryStream read GetROM; // needs to be freed by caller
+      property ROM: TBytesStream read GetROM; // needs to be freed by caller
       procedure SetROM(Value: TStream; const Name: string);
       procedure LoadFromFile(FolderIndex: Byte; FileName: string);
       procedure SaveToFile(FolderIndex: Byte; FileName: string; SaveStubIfMC: Boolean);
@@ -264,21 +272,25 @@ type
       class function FileNameToImageIndex(const FileName: string): Integer;
       class function FileTypeToFilter(FileType: TFileType; AllFiles: Boolean): string;
       class function FileTypeToThumbExt(FileType: TFileType): string;
-      class procedure Patch(ROM: TStream; PatchFile: string); overload;
+      class procedure PatchIPS(ROM: TStream; PatchFile: string);
+      class function PatchBPS(ROM: TBytesStream; PatchFile: string): TBytesStream;
       class function UnUNIF(ROM: TMemoryStream): TPoint; // converts UNIF to raw NES; needs TMemoryStream because other streams are not guaranteed to be able to become smaller (which they will in this method); returns PRG (X) and CHR (Y) size
-      class procedure MakeVTxxArchaiciNES(ROM: TStream; Mapper: Byte = 12);
-      procedure Patch(PatchFile: string); overload;
+      procedure Patch(PatchFile: string);
       class function GetROMsIn(FolderIndex: Byte): TList<string>;
       function GetCRC: Cardinal;
       class function RenameRelated(FolderIndex: Byte; OldFileName, NewFileName: string): Boolean;
+      function ChangeExt(const OldExtWithDot, NewExtWithDot: FourCharString): Boolean;
   end;
 
   TState = class (TMemoryStream)
     function GetScreenshot: TPngImage; // PNG
     function GetScreenshotData(var Dimensions: TPoint): TMemoryStream; // no header
     procedure SaveScreenshotToStream(Stream: TStream); // DIB
-    procedure SaveStateToStream(StateFileName: string; Stream: TStream);
-    procedure WriteStateFromStream(StateFileName: string; Stream: TStream);
+    procedure SaveStateToStream(const StateFileName: string; Stream: TStream);
+    procedure WriteStateFromStream(const StateFileName: string; Stream: TStream); // also saves the state to disk
+    constructor CreateStateFromStream(const StateFileName: string; Stream: TStream; Height, Width: Integer; IsUncompressed: Boolean); // also saves the state to disk
+    class function GetMCStateFileName(const StateFileName: string): string; overload;
+    class function GetMCStateFileName(ROMFileName: string; Index: Integer): string; overload;
   end;
 
   TNameList = class (TList<string>)
@@ -314,7 +326,7 @@ type
     procedure SaveToFile(const RelativeFilename: string); overload;
     procedure SaveToFile(FileName: TReferenceFileName); overload;
     function Apply(FileNameList: TNameList; FolderIndex: Byte): Boolean; // supports moving and deleting in static lists (appending is not required because it will not change anything)
-    procedure Rename(FolderIndex: Byte; OldFileName: string; NewFileName: string);
+    function Rename(FolderIndex: Byte; OldFileName: string; NewFileName: string): Boolean;
     function ContainsFile(FolderIndex: Byte; FileName: string): Boolean;
     function AddFile(FolderIndex: Byte; FileName: string): Boolean;
     procedure RemoveFile(FolderIndex: Byte; FileName: string);
@@ -390,12 +402,11 @@ var
   HasMulticore: Boolean;
   NoIntro: TDictionary<Cardinal, TNoIntro> = nil;
   INI: TIniFile;
-  VTxxEnabled: Boolean;
 
 implementation
 
 uses
-  Zlib, DateUtils, System.Types, StrUtils;
+  Zlib, DateUtils, System.Types, StrUtils, GraphUtil, Math, AnsiStrings;
 
 procedure GetDIBStreamFromStream(Input, Output: TStream; Format: TImageDataFormat; Width: Integer; Height: Integer = 0); overload;
 var
@@ -548,7 +559,6 @@ begin
     end;
     raise;
   end;
-  Result.SaveToFile('temp.png');
 end;
 
 procedure WriteGraphicToStream(Input: TGraphic; Output: TStream; Format: TImageDataFormat; ExpectedWidth, ExpectedHeight: Integer; ExpectAlpha: Boolean);
@@ -693,6 +703,37 @@ begin
   Result := (Color shr 16) or (Color and $ff00) or ((Color and $ff) shl 16);
 end;
 
+procedure AutoScaleThumbnail(Picture: TPicture);
+var
+  PNG: TPNGImage;
+  BMP, BMP2: Graphics.TBitmap;
+begin
+  if (Picture.Width <> Foldername.ThumbnailSize.X) or (Picture.Height <> Foldername.ThumbnailSize.Y) then
+  begin
+    PNG := TPNGImage.CreateBlank(COLOR_RGB, 8, Picture.Width, Picture.Height);
+    try
+      PNG.Canvas.Draw(0,0,Picture.Graphic);
+      BMP := Graphics.TBitmap.Create();
+      try
+        PNG.AssignTo(BMP);
+        BMP2 := Graphics.TBitmap.Create();
+        try
+          ScaleImage(BMP, BMP2, Max(Foldername.ThumbnailSize.X / BMP.Width, Foldername.ThumbnailSize.Y / BMP.Height));
+          PNG.SetSize(Foldername.ThumbnailSize.X, Foldername.ThumbnailSize.Y);
+          PNG.Canvas.Draw((Foldername.ThumbnailSize.X - BMP2.Width) div 2, (Foldername.ThumbnailSize.Y - BMP2.Height) div 2, BMP2);
+          Picture.Graphic.Assign(PNG);
+        finally
+          BMP2.Free();
+        end;
+      finally
+        BMP.Free();
+      end;
+    finally
+      PNG.Free();
+    end;
+  end;
+end;
+
 { TStreamHelper }
 
 function TStreamHelper.CopyFrom2(const Source: TStream; Count: Int64; BufferSize: Integer): Int64;
@@ -773,6 +814,20 @@ end;
 
 { TBIOS }
 
+procedure TBIOS.DoPatch(Resource: Word; Offset: Int64);
+var
+  RS: TResourceStream;
+begin
+  RS := TResourceStream.CreateFromID(HInstance, Resource, RT_RCDATA);
+  try
+    Self.Position := Offset;
+    Self.CopyFrom(RS);
+    Self.StoredCRC := Self.CalculatedCRC;
+  finally
+    RS.Free();
+  end;
+end;
+
 function TBIOS.GetBootLogo: TGraphic;
 begin
   Position := BootLogoOffset;
@@ -802,6 +857,21 @@ begin
   end;
 end;
 
+function TBIOS.GetFDS: Boolean;
+begin
+  if Bytes[FDSOffset    ] = $a7 then
+  if Bytes[FDSOffset+$01] = $f0 then
+  if Bytes[FDSOffset+$02] = $0b then
+  if Bytes[FDSOffset+$24] = $a7 then
+  if Bytes[FDSOffset+$25] = $f0 then
+  if Bytes[FDSOffset+$26] = $0b then
+  if Bytes[FDSOffset+$40] = $a7 then
+  if Bytes[FDSOffset+$41] = $f0 then
+  if Bytes[FDSOffset+$42] = $0b then
+  Exit(True);
+  Result := False;
+end;
+
 function TBIOS.GetIsCRCValid: Boolean;
 begin
   Result := StoredCRC = CalculatedCRC;
@@ -813,30 +883,10 @@ begin
 end;
 
 function TBIOS.GetScreenIndex: TScreenIndex;
-function Match(Resource: Word): Boolean;
-var
-  RS: TResourceStream;
-  B1, B2: Byte;
 begin
-  RS := TResourceStream.CreateFromID(HInstance, Resource, RT_RCDATA);
-  try
-    Self.Position := TBIOS.DisplayInitOffset;
-    while RS.Position < RS.Size do
-    begin
-      RS.ReadData(B1);
-      Self.ReadData(B2);
-      if B1 <> B2 then
-      Exit(False);
-    end;
-  finally
-    RS.Free();
-  end;
-  Result := True;
-end;
-begin
-  if Match(300) then
+  if Match(300, TBIOS.DisplayInitOffset) then
   Exit(siGB300);
-  if Match(2000) then
+  if Match(2000, TBIOS.DisplayInitOffset) then
   Exit(siSF2000);
   Result := siUnmatched;
 end;
@@ -860,12 +910,8 @@ begin
 end;
 
 function TBIOS.GetVT03: Boolean;
-var
-  b: Byte;
 begin
-  Position := VT03Offset;
-  ReadData(b);
-  Result := b = 2;
+  Result := Match(3191, TBIOS.VT03Offset);
 end;
 
 function TBIOS.GetVT03LUT565: Boolean;
@@ -883,6 +929,41 @@ begin
   Result := True;
 end;
 
+function TBIOS.Match(Resource: Word; Offset: Int64): Boolean;
+var
+  RS: TResourceStream;
+  B1, B2: Byte;
+begin
+  RS := TResourceStream.CreateFromID(HInstance, Resource, RT_RCDATA);
+  try
+    Self.Position := Offset;
+    while RS.Position < RS.Size do
+    begin
+      RS.ReadData(B1);
+      Self.ReadData(B2);
+      if B1 <> B2 then
+      Exit(False);
+    end;
+  finally
+    RS.Free();
+  end;
+  Result := True;
+end;
+
+class procedure TBIOS.Patch(Resource: Word; Offset: Int64);
+var
+  BIOS: TBIOS;
+begin
+  BIOS := TBIOS.Create();
+  try
+    BIOS.LoadFromFile(TBIOS.Path);
+    BIOS.DoPatch(Resource, Offset);
+    BIOS.SaveToFile(TBIOS.Path);
+  finally
+    BIOS.Free();
+  end;
+end;
+
 procedure TBIOS.SaveBootLogoToStream(Stream: TStream);
 begin
   Position := BootLogoOffset;
@@ -893,6 +974,18 @@ procedure TBIOS.SetBootLogo(Value: TGraphic);
 begin
   Position := BootLogoOffset;
   WriteGraphicToStream(Value, Self, idfRGB565, BootLogoWidth, BootLogoHeight, False);
+end;
+
+procedure TBIOS.SetFDS(const Value: Boolean);
+const
+  Data: array[Boolean] of Cardinal = ($c098c98, $c0bf0a7); // they're actually only 3-byte values, but there no convenient datatype (cannot make multi-dimensional array constants), so I'm using 4-byte here
+begin
+  Position := FDSOffset;
+  WriteData(Data[Value]);
+  Position := FDSOffset+$24;
+  WriteData(Data[Value]);
+  Position := FDSOffset+$40;
+  WriteData(Data[Value]);
 end;
 
 procedure TBIOS.SetSearchResultSelColor(const Value: TColor);
@@ -910,12 +1003,6 @@ procedure TBIOS.SetStoredCRC(Value: Cardinal);
 begin
   Position := CRCOffset;
   WriteData(Value);
-end;
-
-procedure TBIOS.SetVT03(const Value: Boolean);
-begin
-  Position := VT03Offset;
-  WriteData(Byte(Value) + 1);
 end;
 
 procedure TBIOS.SetVT03LUT565(const Value: Boolean);
@@ -1205,11 +1292,12 @@ begin
   Delete(i);
 end;
 
-procedure TReferenceList.Rename(FolderIndex: Byte; OldFileName, NewFileName: string);
+function TReferenceList.Rename(FolderIndex: Byte; OldFileName, NewFileName: string): Boolean;
 var
   i: Integer;
   r: TReference;
 begin
+  Result := False;
   for i := 0 to Self.Count - 1 do
   if Self[i].FolderIndex = FolderIndex then
   if Self[i].FileName = OldFileName then
@@ -1217,6 +1305,7 @@ begin
     r := Self[i];
     r.FileName := NewFileName;
     Self[i] := r;
+    Result := True;
     // No break here, reference lists can theoretically contain the same entry more than once (even though this isn't normally possible)
   end;
 end;
@@ -1347,6 +1436,50 @@ destructor TROMFile.Destroy;
 begin
   FStream.Free();
   inherited;
+end;
+
+function TROMFile.ChangeExt(const OldExtWithDot, NewExtWithDot: FourCharString): Boolean;
+type
+  TFourChars = record
+    case Boolean of
+      False: (Int: Cardinal);
+      True: (Str: FourCharString);
+end;
+var
+  Header: TZipLocalHeader;
+  CentralDirOffset: Cardinal;
+  CentralDir: TZipCentralDirectory;
+  Ext: TFourChars;
+begin
+  Result := False;
+
+  if not IsCompressed then
+  Exit;
+
+  Header := GetHeader();
+  if not EndsText(string(OldExtWithDot), Header.FileName) then
+  Exit;
+
+  CentralDirOffset := FStream.Position + Header.CompressedSize;
+
+  FStream.Position := FStream.Position - Header.ExtraFieldLength - 4;
+  FStream.ReadData(Ext);
+  if AnsiStrings.SameText(Ext.Str, OldExtWithDot) then
+  Ext.Str := NewExtWithDot // not wisewang'ed
+  else
+  begin // if EndsText matched with the decoded header, the file has the correct extension, but if it's still binarily different, the header must be wisewang'ed
+    Ext.Str := NewExtWithDot;
+    Ext.Int := Ext.Int xor $e5e5e5e5;
+  end;
+  FStream.Position := FStream.Position - 4;
+  FStream.WriteData(Ext);
+
+  FStream.Position := CentralDirOffset;
+  CentralDir.LoadFromStream(FStream);
+  FStream.Position := FStream.Position - CentralDir.FileCommentLength - CentralDir.ExtraFieldLength - 4;
+  FStream.WriteData(Ext);
+
+  Result := True;
 end;
 
 class function TROMFile.FileNameToImageIndex(const FileName: string): Integer;
@@ -1626,12 +1759,12 @@ begin
   Result := GetMCName(FFileName);
 end;
 
-function TROMFile.GetROM: TMemoryStream;
+function TROMFile.GetROM: TBytesStream;
 var
   Header: TZipLocalHeader;
   ZLib: TZDecompressionStream;
 begin
-  Result := TMemoryStream.Create();
+  Result := TBytesStream.Create();
   try
     if IsMultiCore then
     begin
@@ -1826,70 +1959,142 @@ begin
   end;
 end;
 
-class procedure TROMFile.MakeVTxxArchaiciNES(ROM: TStream; Mapper: Byte);
-begin
-
-end;
-
 procedure TROMFile.Patch(PatchFile: string);
 var
-  TempROM: TMemoryStream;
+  TempROM: TBytesStream;
+  NewROM: TBytesStream;
 begin
   TempROM := ROM;
   try
-    Patch(TempROM, PatchFile);
-    SetROM(TempROM, ROMFileName);
+    if SameText(ExtractFileExt(PatchFile), '.ips') then
+    begin
+      PatchIPS(TempROM, PatchFile);
+      SetROM(TempROM, ROMFileName);
+    end
+    else
+    if SameText(ExtractFileExt(PatchFile), '.bps') then
+    begin
+      NewROM := PatchBPS(TempROM, PatchFile);
+      try
+        SetROM(NewROM, ROMFileName);
+      finally
+        NewROM.Free();
+      end;
+    end
+    else
+    raise Exception.Create('Please select an IPS or BPS file');
   finally
     TempROM.Free();
   end;
 end;
 
-class function TROMFile.RenameRelated(FolderIndex: Byte; OldFileName, NewFileName: string): Boolean;
-function TryRenameFile(const OldName, NewName: string): Boolean;
+class function TROMFile.PatchBPS(ROM: TBytesStream; PatchFile: string): TBytesStream;
+var
+  Patch: TBytesStream;
+function ReadBigint(): UInt64;
+var
+  Shift: Integer;
+  X: Byte;
 begin
-  if FileExists(OldName) then
+  Result := 0;
+  Shift := 0;
+  while True do
   begin
-    ForceDirectories(ExtractFilePath(NewName));
-    Result := RenameFile(OldName, NewName)
-  end
-  else
-  Result := True;
+    Patch.ReadData(X);
+    Result := Result + UInt64(X and $7f) shl Shift;
+    if (X and $80) <> 0 then
+    Exit;
+    Inc(Shift, 7);
+    Result := Result + UInt64(1) shl Shift;
+  end;
 end;
 var
-  OldBase, NewBase: string;
-  i: Byte;
+  Header: Cardinal;
+  Checksum: Cardinal;
+  SourceChecksum: Cardinal;
+  Action: UInt64;
+  Count: UInt64;
+  ArgumentRaw: UInt64;
+  SourceRelativeOffset: Int64; // offsets that aren't relative
+  TargetRelativeOffset: Int64;
 begin
-  Result := True;
-  //OldFileName := Foldername.AbsoluteFolder[FolderIndex] + OldFileName;
-  //NewFileName := Foldername.AbsoluteFolder[FolderIndex] + NewFileName;
+  SourceRelativeOffset := 0;
+  TargetRelativeOffset := 0;
+  Result := TBytesStream.Create();
+  try
+    Patch := TBytesStream.Create();
+    try
+      Patch.LoadFromFile(PatchFile);
 
-  OldBase := IncludeTrailingPathDelimiter(Foldername.AbsoluteFolder[FolderIndex] + 'save') + OldFileName + '.sa';
-  NewBase := IncludeTrailingPathDelimiter(Foldername.AbsoluteFolder[FolderIndex] + 'save') + NewFileName + '.sa';
-  for i := 0 to 3 do
-  if not TryRenameFile(OldBase + IntToStr(i), NewBase + IntToStr(i)) then
-  Result := False;
+      Patch.ReadData(Header);
+      if Header <> $31535042 then
+      raise EInvalidImage.Create('This is not a valid BPS file');
 
-  if GetIsMultiCore(OldFileName) then
-  if GetIsMultiCore(NewFileName) then
-  begin
-    if not TryRenameFile(GetMCName(OldFileName).AbsoluteFileName, GetMCName(NewFileName).AbsoluteFileName) then
-    Result := False;
+      // how to make bad file formats: put the most important information that is required to open the file at the end (I'm talking about you, MP4 creators!)
+      Patch.Position := Patch.Size - 12;
+      Patch.ReadData(SourceChecksum);
+      Checksum := not update_crc($ffffffff, ROM.Memory, ROM.Size);
+      if Checksum <> SourceChecksum then
+      raise Exception.Create('CRC mismatch in source file');
+      // don't care about the rest
 
-    OldBase := IncludeTrailingPathDelimiter(IncludeTrailingPathDelimiter(Path + 'ROMS') + 'save') + ChangeFileExt(GetMCName(OldFileName).Name, '') + '.state';
-    NewBase := IncludeTrailingPathDelimiter(IncludeTrailingPathDelimiter(Path + 'ROMS') + 'save') + ChangeFileExt(GetMCName(NewFileName).Name, '') + '.state';
-    for i := 0 to 3 do
-    if not TryRenameFile(OldBase + IntToStr(i), NewBase + IntToStr(i)) then
-    Result := False;
+      Patch.Position := 4;
+      if ROM.Size <> ReadBigInt() then
+      raise EStreamError.Create('Incorrect input ROM size');
+      Result.Size := ReadBigInt();
+      Count := ReadBigInt(); // must read this before reading Patch.Position
+      Patch.Position := Patch.Position + Int64(Count); // don't care about metadata
+
+      while Patch.Position < Patch.Size - 12 do
+      begin
+        Action := ReadBigint();
+        Count := Action shr 2 + 1;
+        case Action and 3 of
+          0: // SourceRead
+            begin
+              ROM.Position := Result.Position;
+              Result.CopyFrom2(ROM, Count);
+            end;
+          1: // TargetRead - what a shitty name for method that does not read from the target at all
+            Result.CopyFrom2(Patch, Count);
+          2: // SourceCopy
+            begin
+              ArgumentRaw := ReadBigint();
+              if (ArgumentRaw and 1) = 0 then
+              SourceRelativeOffset := SourceRelativeOffset + Int64(ArgumentRaw shr 1)
+              else
+              SourceRelativeOffset := SourceRelativeOffset - Int64(ArgumentRaw shr 1);
+              for Count := Count downto 1 do
+              begin
+                Result.WriteData(ROM.Bytes[SourceRelativeOffset]);
+                Inc(SourceRelativeOffset);
+              end;
+            end;
+          3: // TargetCopy
+            begin
+              ArgumentRaw := ReadBigint();
+              if (ArgumentRaw and 1) = 0 then
+              TargetRelativeOffset := TargetRelativeOffset + Int64(ArgumentRaw shr 1)
+              else
+              TargetRelativeOffset := TargetRelativeOffset - Int64(ArgumentRaw shr 1);
+              for Count := Count downto 1 do
+              begin
+                Result.WriteData(Result.Bytes[TargetRelativeOffset]);
+                Inc(TargetRelativeOffset);
+              end;
+            end;
+        end;
+      end;
+    finally
+      Patch.Free();
+    end;
+  except
+    Result.Free();
+    raise;
   end;
-
-  // Battery, GBA only
-  // it is debatable if we should rename `.sav` in ROMs as well, as it is sometimes put there
-  if FileNameToType(OldFileName) = ftGBA then
-  if not TryRenameFile(ChangeFileExt(OldFileName, '.sav'), ChangeFileExt(NewFileName, '.sav')) then
-  Result := False;
 end;
 
-class procedure TROMFile.Patch(ROM: TStream; PatchFile: string);
+class procedure TROMFile.PatchIPS(ROM: TStream; PatchFile: string);
 var
   Patch: TMemoryStream;
 function ReadBE(Count: Byte): Cardinal;
@@ -1953,6 +2158,51 @@ begin
   finally
     Patch.Free();
   end;
+end;
+
+class function TROMFile.RenameRelated(FolderIndex: Byte; OldFileName, NewFileName: string): Boolean;
+function TryRenameFile(const OldName, NewName: string): Boolean;
+begin
+  if FileExists(OldName) then
+  begin
+    ForceDirectories(ExtractFilePath(NewName));
+    Result := RenameFile(OldName, NewName)
+  end
+  else
+  Result := True;
+end;
+var
+  OldBase, NewBase: string;
+  i: Byte;
+begin
+  Result := True;
+  //OldFileName := Foldername.AbsoluteFolder[FolderIndex] + OldFileName;
+  //NewFileName := Foldername.AbsoluteFolder[FolderIndex] + NewFileName;
+
+  OldBase := IncludeTrailingPathDelimiter(Foldername.AbsoluteFolder[FolderIndex] + 'save') + OldFileName + '.sa';
+  NewBase := IncludeTrailingPathDelimiter(Foldername.AbsoluteFolder[FolderIndex] + 'save') + NewFileName + '.sa';
+  for i := 0 to 3 do
+  if not TryRenameFile(OldBase + IntToStr(i), NewBase + IntToStr(i)) then
+  Result := False;
+
+  if GetIsMultiCore(OldFileName) then
+  if GetIsMultiCore(NewFileName) then
+  begin
+    if not TryRenameFile(GetMCName(OldFileName).AbsoluteFileName, GetMCName(NewFileName).AbsoluteFileName) then
+    Result := False;
+
+    OldBase := IncludeTrailingPathDelimiter(IncludeTrailingPathDelimiter(Path + 'ROMS') + 'save') + ChangeFileExt(GetMCName(OldFileName).Name, '') + '.state';
+    NewBase := IncludeTrailingPathDelimiter(IncludeTrailingPathDelimiter(Path + 'ROMS') + 'save') + ChangeFileExt(GetMCName(NewFileName).Name, '') + '.state';
+    for i := 0 to 3 do
+    if not TryRenameFile(OldBase + IntToStr(i), NewBase + IntToStr(i)) then
+    Result := False;
+  end;
+
+  // Battery, GBA only
+  // it is debatable if we should rename `.sav` in ROMs as well, as it is sometimes put there
+  if FileNameToType(OldFileName) = ftGBA then
+  if not TryRenameFile(ChangeFileExt(OldFileName, '.sav'), ChangeFileExt(NewFileName, '.sav')) then
+  Result := False;
 end;
 
 procedure TROMFile.SaveThumbnailToStreamDIB(Stream: TStream);
@@ -2185,8 +2435,8 @@ var
 begin
   Stream.Read(Self, 30);
   SetLength(TempFileName, FileNameLength);
-  Stream.Read(TempFileName[1], FileNameLength);
   if FileNameLength > 0 then
+  Stream.Read(TempFileName[1], FileNameLength);
   SetLength(ExtraField, ExtraFieldLength);
   if ExtraFieldLength > 0 then
   Stream.Read(ExtraField[1], ExtraFieldLength);
@@ -2252,10 +2502,13 @@ var
 begin
   Stream.Read(Self, 46);
   SetLength(TempFileName, FileNameLength);
+  if FileNameLength > 0 then
   Stream.Read(TempFileName[1], FileNameLength);
   SetLength(ExtraField, ExtraFieldLength);
+  if ExtraFieldLength > 0 then
   Stream.Read(ExtraField[1], ExtraFieldLength);
   SetLength(TempFileComment, FileCommentLength);
+  if FileCommentLength > 0 then
   Stream.Read(TempFileComment[1], FileCommentLength);
   // Adjustment for WQW
   if MagicNumber = $02575157 then
@@ -2489,6 +2742,68 @@ end;
 
 { TState }
 
+constructor TState.CreateStateFromStream(const StateFileName: string; Stream: TStream; Height, Width: Integer; IsUncompressed: Boolean);
+var
+  MCFNCandidate: string;
+  Dummy: TPNGImage;
+  Value: Cardinal;
+  Zlib: TZCompressionStream;
+  Offset2: Cardinal;
+  BeforeZlib: Cardinal;
+begin
+  inherited Create();
+
+  MCFNCandidate := ChangeFileExt(ExtractFileName(StateFileName), '');
+  if not IsUncompressed then
+  if TROMFile.GetIsMultiCore(MCFNCandidate) then
+  IsUncompressed := True;
+
+  Value := 0;
+  if not IsUncompressed then
+  WriteData(Value); // Size of zlib (0, because none exists right now)
+  Offset2 := Position;
+
+  Dummy := TPngImage.CreateBlank(COLOR_RGB, 8, Width, Height);
+  try
+    Value := Dummy.Width;
+    WriteData(Value);
+    Value := Dummy.Height;
+    WriteData(Value);
+    WriteData(Value); // just write anything to overwrite it later
+    BeforeZlib := Position;
+
+    Zlib := TZCompressionStream.Create(Self, zcMax, 15); // no negative window - both deflated files have zlib header!
+    try
+      WriteGraphicToStream(Dummy, Zlib, idfRGB565, Dummy.Width, Dummy.Height, False);
+    finally
+      Zlib.Free();
+    end;
+  finally
+    Dummy.Free();
+  end;
+  WriteData(Offset2);
+  Position := BeforeZlib - 4;
+  Value := Size - BeforeZlib - 4;
+  WriteData(Value);
+
+  WriteStateFromStream(StateFileName, Stream);
+  if TROMFile.GetIsMultiCore(MCFNCandidate) then // multicore needs the screenshot to be written
+  Self.SaveToFile(StateFileName);
+end;
+
+class function TState.GetMCStateFileName(ROMFileName: string; Index: Integer): string;
+begin
+  Result := IncludeTrailingPathDelimiter(IncludeTrailingPathDelimiter(Path + 'ROMS') + 'save') + ChangeFileExt(TROMFile.GetMCName(ROMFileName).Name, '.state' + IntToStr(Index));
+end;
+
+class function TState.GetMCStateFileName(const StateFileName: string): string;
+var
+  MCFNCandidate: string;
+begin
+  MCFNCandidate := ChangeFileExt(ExtractFileName(StateFileName), '');
+  Result := IncludeTrailingPathDelimiter(IncludeTrailingPathDelimiter(Path + 'ROMS') + 'save') + ChangeFileExt(TROMFile.GetMCName(MCFNCandidate).Name, '.state' + RightStr(StateFileName, 1));
+end;
+
 function TState.GetScreenshot: TPngImage;
 var
   MS: TMemoryStream;
@@ -2516,7 +2831,7 @@ begin
   Position := Position + 4;
   Result := TMemoryStream.Create();
   try
-    Zlib := TZDecompressionStream.Create(Self);
+    Zlib := TZDecompressionStream.Create(Self); // no negative window - both deflated files have zlib header!
     try
       Result.CopyFrom(Zlib, Dimensions.X * Dimensions.Y * 2);
     finally
@@ -2544,7 +2859,7 @@ begin
   end;
 end;
 
-procedure TState.SaveStateToStream(StateFileName: string; Stream: TStream);
+procedure TState.SaveStateToStream(const StateFileName: string; Stream: TStream);
 var
   Offset1, Offset2: Cardinal;
   Zlib: TZDecompressionStream;
@@ -2554,7 +2869,7 @@ begin
   MCFNCandidate := ChangeFileExt(ExtractFileName(StateFileName), '');
   if TROMFile.GetIsMultiCore(MCFNCandidate) then
   begin
-    FS := TFileStream.Create(IncludeTrailingPathDelimiter(IncludeTrailingPathDelimiter(Path + 'ROMS') + 'save') + ChangeFileExt(TROMFile.GetMCName(MCFNCandidate).Name, '.state' + RightStr(StateFileName, 1)), fmOpenRead or fmShareDenyNone);
+    FS := TFileStream.Create(GetMCStateFileName(StateFileName), fmOpenRead or fmShareDenyNone);
     Stream.CopyFrom(FS);
     Exit;
   end;
@@ -2565,7 +2880,7 @@ begin
   ReadData(Offset1);
   if Offset1 + 4 = Offset2 then // not .nfc
   begin
-    Zlib := TZDecompressionStream.Create(Self);
+    Zlib := TZDecompressionStream.Create(Self); // no negative window - both deflated files have zlib header!
     try
       Stream.CopyFrom(Zlib);
     finally
@@ -2579,38 +2894,58 @@ begin
   end;
 end;
 
-procedure TState.WriteStateFromStream(StateFileName: string; Stream: TStream);
+procedure TState.WriteStateFromStream(const StateFileName: string; Stream: TStream);
 var
   Offset1, Offset2: Cardinal;
-  Zlib: TZDecompressionStream;
+  Zlib: TZCompressionStream;
   MCFNCandidate: string;
   FS: TFileStream;
+  ScreenshotData: TMemoryStream;
 begin
   MCFNCandidate := ChangeFileExt(ExtractFileName(StateFileName), '');
   if TROMFile.GetIsMultiCore(MCFNCandidate) then
   begin
-    FS := TFileStream.Create(IncludeTrailingPathDelimiter(IncludeTrailingPathDelimiter(Path + 'ROMS') + 'save') + ChangeFileExt(TROMFile.GetMCName(MCFNCandidate).Name, '.state' + RightStr(StateFileName, 1)), fmCreate);
+    FS := TFileStream.Create(GetMCStateFileName(StateFileName), fmCreate);
     FS.CopyFrom(Stream);
     Exit;
   end;
 
   Position := Size - 4;
   ReadData(Offset2);
-  Position := 0;
-  ReadData(Offset1);
-  if Offset1 + 4 = Offset2 then // not .nfc
-  begin
-    Zlib := TZDecompressionStream.Create(Self);
-    try
-      Stream.CopyFrom(Zlib);
-    finally
-      Zlib.Free();
-    end;
-  end
-  else
-  begin
+  Position := Offset2;
+  ScreenshotData := TMemoryStream.Create();
+  try
+    ScreenshotData.CopyFrom2(Self, Self.Size - Self.Position - 4);
     Position := 0;
-    Stream.CopyFrom2(Self, Offset2);
+    ReadData(Offset1);
+    Clear();
+    WriteData(Offset1); // just write some 4 bytes, doesn't matter which
+    if Offset1 + 4 = Offset2 then // not .nfc
+    begin
+      Zlib := TZCompressionStream.Create(Self, zcMax, 15); // no negative window - both deflated files have zlib header!
+      try
+        Zlib.CopyFrom(Stream);
+      finally
+        Zlib.Free();
+      end;
+      // Write "header"
+      Position := 0;
+      Offset1 := Size - 4;
+      WriteData(Offset1);
+    end
+    else
+    begin
+      Position := 0;
+      CopyFrom(Stream);
+    end;
+    // Write Screenshot
+    Position := Size;
+    Offset2 := Size;
+    CopyFrom(ScreenshotData);
+    WriteData(Offset2);
+    SaveToFile(StateFileName);
+  finally
+    ScreenshotData.Free();
   end;
 end;
 

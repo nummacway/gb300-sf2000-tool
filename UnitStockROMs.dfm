@@ -84,6 +84,7 @@ object FrameStockROMs: TFrameStockROMs
       MultiSelect = True
       RowSelect = True
       ParentDoubleBuffered = False
+      PopupMenu = PopupMenu
       ShowColumnHeaders = False
       TabOrder = 1
       ViewStyle = vsReport
@@ -125,5 +126,13 @@ object FrameStockROMs: TFrameStockROMs
     OnTimer = TimerDnDScrollTimer
     Left = 288
     Top = 392
+  end
+  object PopupMenu: TPopupMenu
+    Left = 272
+    Top = 256
+    object MenuItemImportAllImages: TMenuItem
+      Caption = 'Import All Images...'
+      OnClick = MenuItemImportAllImagesClick
+    end
   end
 end
