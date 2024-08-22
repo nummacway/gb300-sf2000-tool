@@ -344,7 +344,7 @@ object FrameBIOS: TFrameBIOS
       Caption = 
         'Enable VT02/VT03 support for .nfc files (note: very bad compatib' +
         'ility; MUST have .nfc extension!)'
-      TabOrder = 8
+      TabOrder = 9
       OnClick = CheckBoxVT03Click
     end
     object ColorBoxSearchResultSelColor: TColorBox
@@ -365,7 +365,7 @@ object FrameBIOS: TFrameBIOS
       Caption = 
         'Patch VT03 LUT from RGB555 to RGB565 (fixes color issues for VT0' +
         '3 ROMs)'
-      TabOrder = 9
+      TabOrder = 10
       OnClick = CheckBoxPatchVT03LUTClick
     end
     object CheckBoxFDS: TCheckBox
@@ -376,7 +376,7 @@ object FrameBIOS: TFrameBIOS
       Caption = 
         'Enable Famicom Disk System support in FCEUmm (requires '#39'disksys.' +
         'rom'#39' in '#39'ROMS'#39')'
-      TabOrder = 10
+      TabOrder = 8
       OnClick = CheckBoxFDSClick
     end
   end
@@ -457,11 +457,11 @@ object FrameBIOS: TFrameBIOS
     object LabelReset: TLabel
       Left = 320
       Top = 20
-      Width = 503
+      Width = 531
       Height = 15
       Caption = 
-        'Deletes the corresponding files. The GB300 and GB300 Tool will c' +
-        'reate them again when needed.'
+        'Deletes the corresponding files. The GB300 and GB300 Tool will b' +
+        'oth create them again when needed.'
     end
     object ButtonClearFavorites: TButton
       Left = 8

@@ -195,13 +195,16 @@ begin
 end;
 
 procedure TFrameUserROMs.ListViewFilesEdited(Sender: TObject; Item: TListItem; var S: string);
+var
+  OldName: string;
 begin
   if RenameFile(Foldername.AbsoluteFolder[7] + Item.Caption,
                 Foldername.AbsoluteFolder[7] + S) then
   begin
+    OldName := Item.Caption;
     Item.Caption := S;
-    if not TROMFile.RenameRelated(7, Item.Caption, S) then
-  MessageDlg('Could not rename all existing related files, likely because there is some conflict or damage', mtWarning, [mbOk], 0);
+    if not TROMFile.RenameRelated(7, OldName, S) then
+    MessageDlg('Could not rename all existing related files, likely because there is some conflict or damage', mtWarning, [mbOk], 0);
     ROMDetailsFrame.ShowFile(7, Item);
   end
   else

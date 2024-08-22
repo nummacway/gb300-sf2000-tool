@@ -1,7 +1,7 @@
 object Form1: TForm1
   Left = 0
   Top = 0
-  Caption = 'GB300 Tool [v1.0-final]'
+  Caption = 'GB300 Tool [v1.0b]'
   ClientHeight = 808
   ClientWidth = 1232
   Color = clWhite
@@ -31,7 +31,7 @@ object Form1: TForm1
   end
   object PanelOnboarding: TPanel
     Left = 396
-    Top = 266
+    Top = 264
     Width = 440
     Height = 216
     Anchors = []
@@ -90,6 +90,7 @@ object Form1: TForm1
       Top = 190
       Width = 76
       Height = 17
+      Cursor = crHandPoint
       Caption = 'numma_cway'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
@@ -97,6 +98,7 @@ object Form1: TForm1
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
+      OnClick = LabelUnboardingDiscordHandleClick
     end
     object ImageOnboardingOctocat: TImage
       Left = 192
@@ -109,6 +111,7 @@ object Form1: TForm1
       Top = 190
       Width = 136
       Height = 17
+      Cursor = crHandPoint
       Caption = 'nummacway/gb300tool'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
@@ -116,6 +119,7 @@ object Form1: TForm1
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
+      OnClick = LabelOnboardingGithubRepositoryClick
     end
     object LabelOnboardingChinese: TLabel
       Left = 152
@@ -587,10 +591,26 @@ object Form1: TForm1
     Top = 640
     object BrowseURL: TBrowseURL
     end
+    object ActionFind: TAction
+      Caption = 'ActionFind'
+      ShortCut = 16454
+      OnExecute = ActionFindExecute
+    end
+    object ActionFindNext: TAction
+      Caption = 'ActionFindNext'
+      ShortCut = 114
+      OnExecute = FindDialogFind
+    end
   end
   object ImageListCheckResults: TImageList
     ColorDepth = cd32Bit
     Left = 216
     Top = 400
+  end
+  object FindDialog: TFindDialog
+    Options = [frDown, frHideWholeWord]
+    OnFind = FindDialogFind
+    Left = 200
+    Top = 560
   end
 end

@@ -244,7 +244,8 @@ type
       KeyNamesGBA:  array[0..5] of string = ('A',   'B',   'invalid', 'invalid', 'L', 'R');
       KeyValuesGBA: array[0..5] of Word   = ($0008, $0000, $0001,     $0009,     $000a,    $000b);
 
-      MulticoreData: array[0..16] of TMulticoreMapping = (
+      MulticoreData: array[0..17] of TMulticoreMapping = (
+         // Default GBA Mapping:         A            B            X            Y            L         R
         (Name: 'blueMSX CV';       x08: 'L';    x00: 'R';    x09: '1';    x01: '2';    x0a: '4'; x0b: '3'),
         (Name: 'blueMSX SG';       x08: 'L';    x00: 'R'                                                 ),
         (Name: 'Caprice32';        x08: 'Joy 1';x00: 'Joy 2'                                             ),
@@ -256,6 +257,7 @@ type
         (Name: 'Gearsystem SG';    x08: 'R';    x00: 'L'                                                 ),
         (Name: 'Gearsystem SMS/GG';x08: '2';    x00: '1'                                                 ),
         (Name: 'gpSP';             x08: 'A';    x00: 'B';    x09: 'TA';   x01: 'TB';   x0a: 'L'; x0b: 'R'),
+        (Name: 'MAME2000 Neo Geo'; x08: 'B';    x00: 'A';    x09: 'D';    x01: 'C';                      ),
         (Name: 'Picodrive MD';     x08: 'C';    x00: 'B';    x09: 'Y';    x01: 'A';    x0a: 'X'; x0b: 'Z'),
         (Name: 'Picodrive SG';     x08: 'R';    x00: 'L'                                                 ),
         (Name: 'Picodrive SMS/GG'; x08: '2';    x00: '1'                                                 ),

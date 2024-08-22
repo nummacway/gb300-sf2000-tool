@@ -399,15 +399,14 @@ object FrameKeys: TFrameKeys
     Stretch = True
   end
   object Label7: TLabel
-    Left = 285
+    Left = 648
     Top = 359
-    Width = 911
+    Width = 548
     Height = 15
     Alignment = taRightJustify
     Caption = 
-      'requires a very special type of proprietary Micro USB (adapted t' +
-      'o USB-C) wired gamepad from some other consoles '#8211' it'#39's pretty mu' +
-      'ch impossible to acquire a compatible one'
+      'requires a very special type of proprietary wired gamepad '#8211' for ' +
+      'details, see nummacway.github.io/gb300'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 13421823
     Font.Height = -12

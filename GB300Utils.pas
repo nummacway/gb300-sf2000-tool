@@ -1545,6 +1545,9 @@ begin
     if (MCName.Core = 'sega') or (MCName.Core = 'gpgx') then
     Exit(3);
 
+    if (MCName.Core = 'm2k') or (MCExt = 'geo') then
+    Exit(3);
+
     if StartsStr('snes', MCName.Core) then
     Exit(2);
 
@@ -1638,8 +1641,9 @@ begin
     ftPCE: Result := '.zpc';
     ftSFC: Result := '.zsf';
     ftMD: Result := '.zmd';
-    ftGB, ftGBA: Result := '.zgb';
-    else Result := '.zfb';
+    //ftGB, ftGBA: Result := '.zgb';
+    //else Result := '.zfb'; // is not a file that is created from _other_ files even on the SF2000, and prevents the feature from working on the GB300 because .zfb is not even thumbnailed
+    else Result := '.zgb';
   end;
 end;
 
@@ -2647,7 +2651,7 @@ begin
     SL.LoadFromFile(IncludeTrailingPathDelimiter(Path + 'Resources') + 'Foldername.ini', TEncoding.UTF8);
 
     if SL.Count <> 17 then
-    raise Exception.Create('Invalid ''Foldername.ini'' line count');
+    raise Exception.Create('Invalid ''Foldername.ini'' line count.'#13#10#13#10'Support for "GB300 v2" (the one with MAME) is coming with the next version.');
 
     // Row 0
     if SL[0] <> 'GB300' then
@@ -2906,8 +2910,12 @@ begin
   if TROMFile.GetIsMultiCore(MCFNCandidate) then
   begin
     FS := TFileStream.Create(GetMCStateFileName(StateFileName), fmCreate);
-    FS.CopyFrom(Stream);
-    Exit;
+    try
+      FS.CopyFrom(Stream);
+      Exit;
+    finally
+      FS.Free();
+    end;
   end;
 
   Position := Size - 4;

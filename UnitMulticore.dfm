@@ -186,7 +186,7 @@ object FrameMulticore: TFrameMulticore
           Height = 15
           Caption = 'Always use for extensions:'
         end
-        object Label4: TLabel
+        object LabelConfig: TLabel
           Left = 0
           Top = 276
           Width = 126

@@ -28,7 +28,7 @@ type
     Label3: TLabel;
     ListViewAlways: TListView;
     ListViewBIOS: TListView;
-    Label4: TLabel;
+    LabelConfig: TLabel;
     LabelBIOSInfo: TLabel;
     PanelConfigActions: TPanel;
     ButtonSaveConfig: TButton;
@@ -102,11 +102,15 @@ begin
       Core := CoresDict[Item.Caption];
       LabelEmuName.Caption := StringReplace(Core.GetNameAndDescription(), '&', '&&', [rfReplaceAll]);
       ButtonSaveConfig.Visible := Frame.LoadCore(Core, '');
+      LabelConfig.Show();
+      Frame.Show();
     end
     else
     begin
       LabelEmuName.Caption := Item.Caption;
       ButtonSaveConfig.Hide();
+      LabelConfig.Hide();
+      Frame.Hide();
     end;
 
     // Handle Extensions

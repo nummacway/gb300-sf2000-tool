@@ -430,12 +430,21 @@ end;
 procedure TFrameStockROMs.ListViewFilesItemChecked(Sender: TObject;
   Item: TListItem);
 begin
+  if GetAsyncKeyState(VK_SPACE) < 0 then
+  begin
+    ListViewFiles.OnItemChecked := nil;
+    Item.Checked := not Item.Checked;
+    ListViewFiles.OnItemChecked := ListViewFilesItemChecked;
+    Exit;
+  end;
+
   TimerSave.Enabled := False;
   TimerSave.Enabled := True;
 end;
 
-procedure TFrameStockROMs.ListViewFilesKeyDown(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
+procedure TFrameStockROMs.ListViewFilesKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+var
+  Item: TListItem;
 begin
   if not ListViewFiles.IsEditing then
   if ListViewFiles.SelCount > 0 then
@@ -444,6 +453,24 @@ begin
     ButtonDeleteClick(nil);
     if Key = VK_F2 then
     ListViewFiles.Selected.EditCaption();
+    if Key = VK_ADD then
+    begin
+      //ListViewFiles.OnItemChecked := nil;
+      for Item in ListViewFiles.Items do
+      if Item.Selected then
+      Item.Checked := True;
+      //ListViewFiles.OnItemChecked := ListViewFilesItemChecked;
+      //TimerSave.Enabled := True;
+    end;
+    if Key = VK_SUBTRACT then
+    begin
+      //ListViewFiles.OnItemChecked := nil;
+      for Item in ListViewFiles.Items do
+      if Item.Selected then
+      Item.Checked := False;
+      //ListViewFiles.OnItemChecked := ListViewFilesItemChecked;
+      //TimerSave.Enabled := True;
+    end;
   end;
 end;
 
@@ -604,10 +631,10 @@ begin
         if TROMFile.GetIsMultiCore(Caption) then
         with TROMFile.GetMCName(Caption) do
         begin
-          if DoProcess(Item, AbsFolder + AbsoluteFileName + '.png') then Continue;
-          if DoProcess(Item, AbsFolder + AbsoluteFileName + '.jpg') then Continue;
-          if DoProcess(Item, AbsFolder + ChangeFileExt(AbsoluteFileName, '.png')) then Continue;
-          if DoProcess(Item, AbsFolder + ChangeFileExt(AbsoluteFileName, '.jpg')) then Continue;
+          if DoProcess(Item, AbsoluteFileName + '.png') then Continue;
+          if DoProcess(Item, AbsoluteFileName + '.jpg') then Continue;
+          if DoProcess(Item, ChangeFileExt(AbsoluteFileName, '.png')) then Continue;
+          if DoProcess(Item, ChangeFileExt(AbsoluteFileName, '.jpg')) then Continue;
         end;
       end;         
     finally

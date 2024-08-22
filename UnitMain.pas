@@ -74,6 +74,9 @@ type
     Label13: TLabel;
     ImageListCheckResults: TImageList;
     LabelOnboardingChinese: TLabel;
+    FindDialog: TFindDialog;
+    ActionFind: TAction;
+    ActionFindNext: TAction;
     procedure FormCreate(Sender: TObject);
     procedure EditOnboardingWorkingDirChange(Sender: TObject);
     procedure ButtonOnboardingStartClick(Sender: TObject);
@@ -85,6 +88,10 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure CheckBoxOnboardingChineseClick(Sender: TObject);
+    procedure LabelOnboardingGithubRepositoryClick(Sender: TObject);
+    procedure LabelUnboardingDiscordHandleClick(Sender: TObject);
+    procedure ActionFindExecute(Sender: TObject);
+    procedure FindDialogFind(Sender: TObject);
   private
     { Private declarations }
     var
@@ -109,11 +116,19 @@ implementation
 uses
   GB300Utils, GB300UIConst, DateUtils, GUIHelpers, Generics.Collections,
   UnitBIOS, UnitUI, UnitStockROMs, UnitKeys, UnitUserROMs, UnitFavorites,
-  UnitMulticore, MulticoreUtils, System.UITypes;
+  UnitMulticore, MulticoreUtils, System.UITypes, ComCtrls;
 
 {$R *.dfm}
 
 { TForm1 }
+
+procedure TForm1.ActionFindExecute(Sender: TObject);
+begin
+  if (Frame is TFrameKeys) or (Frame is TFrameKeys) then
+  Exit;
+
+  FindDialog.Execute();
+end;
 
 procedure TForm1.ButtonOnboardingStartClick(Sender: TObject);
 var
@@ -202,6 +217,81 @@ begin
   ButtonOnboardingStart.Enabled := Length(EditOnboardingWorkingDir.Text) > 0;
 end;
 
+procedure TForm1.FindDialogFind(Sender: TObject);
+var
+  MatchCase: Boolean;
+  Down: Boolean;
+procedure DoFind(Target: TListView);
+var
+  i, count, start: Integer;
+  s: string;
+function ConditionalLC(const s: string): string;
+begin
+  if MatchCase then
+  Result := s
+  else
+  Result := lowercase(s, loUserLocale);
+end;
+function Matches(const Item: TListItem): Boolean;
+  var
+    j: Integer;
+begin
+  Result := True;
+  if Pos(s, ConditionalLC(Item.Caption)) > 0 then
+  Exit;
+  for j := 0 to Item.SubItems.Count - 1 do
+  if j + 1 < Target.Columns.Count then // column exists
+  if Target.Columns[j+1].Width > 0 then // column is visible
+  if Pos(s, ConditionalLC(Item.SubItems[j])) > 0 then
+  Exit;
+  Result := False;
+end;
+begin
+  if Target.Items.Count = 0 then
+  Exit;
+
+  if Target.SelCount = 0 then
+  i := Target.Items.Count - 1
+  else
+  i := Target.Selected.Index;
+  count := Target.Items.Count;
+  start := i;
+  s := ConditionalLC(FindDialog.FindText);
+  repeat
+    if Down then
+    inc(i)
+    else
+    dec(i);
+    if Matches(Target.Items[(i + count) mod count]) then
+    begin
+      Target.ClearSelection;
+      Target.Selected := Target.Items[(i + count) mod count];
+      Target.Selected.Focused := True;
+      Target.Selected.MakeVisible(False);
+      Exit;
+    end;
+  until (i + count) mod count = start;
+end;
+begin
+  MatchCase := frMatchCase in FindDialog.Options;
+  Down := frDown in FindDialog.Options;
+
+  if Frame is TFrameStockROMs then
+  DoFind((Frame as TFrameStockROMs).ListViewFiles)
+  else
+  if Frame is TFrameUserROMs then
+  DoFind((Frame as TFrameUserROMs).ListViewFiles)
+  else
+  if Frame is TFrameFavorites then
+  DoFind((Frame as TFrameFavorites).ListViewFiles)
+  else
+  if Frame is TFrameMulticore then
+  DoFind((Frame as TFrameMulticore).ListViewFiles)
+  else
+  if Frame is TFrameUI then
+  DoFind((Frame as TFrameUI).ListViewFiles);
+end;
+
 procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   DragIn.Free(); // separate call prevents really odd bug in drag and drop component causing access violations when you exit (they are invisible, delay closing the form by some seconds)
@@ -212,7 +302,7 @@ var
   INIPath: string;
 begin
   if (Screen.Width < 1200) or (Screen.Height < 864) then
-  MessageDlg('Your screen resolution seems to be lower than that of the OLPC XO-1, better known as the world’s cheapest laptop, released in 2007. GB300 Tool does not support such a low resolution.', mtWarning, [mbOk], 0);
+  MessageDlg('Your screen resolution seems to be lower than that of the OLPC XO-1, better known as the world’s cheapest laptop, released in 2007. GB300 Tool does not and will never support such a low resolution.', mtWarning, [mbOk], 0);
 
   Randomize(); // used for the random background colors of the UI editor
   Application.Title := Caption;
@@ -249,6 +339,7 @@ procedure TForm1.HandleDown(NewTag: Byte);
 var
   i: Byte;
 begin
+  FindDialog.CloseDialog();
   case NewTag of
     1..7:
       begin
@@ -306,6 +397,17 @@ begin
   begin
     Pen.Style := psClear;
   end;
+end;
+
+procedure TForm1.LabelOnboardingGithubRepositoryClick(Sender: TObject);
+begin
+  OpenURL('https://github.com/nummacway/gb300tool');
+end;
+
+procedure TForm1.LabelUnboardingDiscordHandleClick(Sender: TObject);
+begin
+  MessageDlg('You are now taken to Retro Handhelds Discord.'#13#10'Select Data Frog SF2000 during onboarding and join #TeamFrog to chat in the #data_frog_sf2000 channel. You can find me there.', mtInformation, [mbOk], 0);
+  OpenURL('https://discord.gg/retrohandhelds');
 end;
 
 procedure TForm1.LazyCreate;

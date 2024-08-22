@@ -174,181 +174,186 @@ const
   Beetle = 'Mednafen ';
 
 var
-  CoreConsoles: array[0..73] of TCoreConsole =
-    ((Core: 'Stock';    Console: 'Nintendo - Nintendo Entertainment System (Famicom) [FCEUmm]';                        NoIntro:  45; Extensions: 'nes|unf'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'Stock';    Console: 'Nintendo - Famicom Disk System [FCEUmm]';                                            NoIntro:  31; Extensions: 'fds'; BIOSChecker: TBIOSCheckerFamicomDiskSystemStock),
-     (Core: 'Stock';    Console: 'V.R. Technology - VTxx (incl. NES/Famicom) - mapper 12 only [wiseemu]';              NoIntro:  45; Extensions: 'nfc'; BIOSChecker: TBIOSCheckerVTxx),
-     (Core: 'Stock';    Console: 'NEC - PC Engine (Turbografx-16) [Mednafen PCE Fast v0.9.38.7]';                      NoIntro:  12; Extensions: 'pce'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'Stock';    Console: 'Nintendo - Super Nintendo Entertainment System (Super Famicom) [Snes9x 2005 v1.36]'; NoIntro:  49; Extensions: 'smc|fig|sfc|gd3|gd7|dx2|bsx|swc'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'Stock';    Console: 'Sega - Mega Drive (Genesis) [PicoDrive 1.91]';                                       NoIntro:  32; Extensions: 'md|smd|bin|gen'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'Stock';    Console: 'Sega - Kids Computer Pico [PicoDrive 1.91]';                                         NoIntro:  18; Extensions: 'md|smd|bin|gen'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'Stock';    Console: 'Sega - Master System [PicoDrive 1.91]';                                              NoIntro:  26; Extensions: 'sms'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'Stock';    Console: 'Nintendo - Dot Matrix Game ("Game Boy") [TGB Dual v0.8.3]';                          NoIntro:  46; Extensions: 'gb'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'Stock';    Console: 'Nintendo - Game Boy Color [TGB Dual v0.8.3]';                                        NoIntro:  47; Extensions: 'gbc|sgb'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'Stock';    Console: 'Nintendo - Game Boy Advance [gpSP v0.91]';                                           NoIntro:  23; Extensions: 'gba|agb|zgb'; BIOSChecker: TBIOSCheckerGameBoyAdvanceStock),
-     (Core: 'Stock';    Console: 'Compressed and/or thumbnailed ("Wise" Wang QunWei obfuscated) file';                 NoIntro:   0; Extensions: 'bkp|zip|zfc|zsf|zpc|zmd|zgb|zfb'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'a26';      Console: 'Atari - 2600';                                                                       NoIntro:  88; Extensions: 'a26|bin|zip'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'a5200';    Console: 'Atari - 5200';                                                                       NoIntro:   1; Extensions: 'a52|bin|zip'; BIOSChecker: TBIOSCheckerAtari5200),
-     (Core: 'a78';      Console: 'Atari - 7800';                                                                       NoIntro:  74; Extensions: 'a78|bin'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'amstrad';  Console: 'Amstrad - CPC';                                                                      NoIntro: 250; Extensions: 'dsk|sna|kcr'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'amstradb'; Console: 'Amstrad - CPC';                                                                      NoIntro: 250; Extensions: 'dsk|sna|tap|cdt|voc|m3u|cpr|zip'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'cdg';      Console: 'Game - Pocket CDG';                                                                  NoIntro:   0; Extensions: 'cdg'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'chip8';    Console: 'Fantasy Console - XO-CHIP/S-CHIP/CHIP-8';                                            NoIntro:   0; Extensions: 'ch8|sc8|xo8'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'col';      Console: 'Coleco - ColecoVision';                                                              NoIntro:   3; Extensions: 'col|cv|bin|rom'; BIOSChecker: TBIOSCheckerColecoVision),
-     (Core: 'fake08';   Console: 'Fantasy Console - PICO-8';                                                           NoIntro:   0; Extensions: 'p8|png'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'fcf';      Console: 'Fairchild - Channel F';                                                              NoIntro:   6; Extensions: 'bin|rom|chf'; BIOSChecker: TBIOSCheckerChannelF),
-     (Core: 'gb';       Console: 'Nintendo - Dot Matrix Game ("Game Boy")';                                            NoIntro:  46; Extensions: 'gb|sgb'; BIOSChecker: TBIOSCheckerGameBoyGambatteGB),
-     (Core: 'gb';       Console: 'Nintendo - Game Boy Color';                                                          NoIntro:  47; Extensions: 'gbc|sgb'; BIOSChecker: TBIOSCheckerGameBoyColorGambatteGB),
-     (Core: 'gba';      Console: 'Nintendo - Game Boy Advance';                                                        NoIntro:  23; Extensions: 'gba|bin'; BIOSChecker: TBIOSCheckerGameBoyAdvance),
-     (Core: 'gbav';     Console: 'Nintendo - Game Boy Advance';                                                        NoIntro:  23; Extensions: 'gba'; BIOSChecker: TBIOSCheckerGameBoyAdvance),
-     (Core: 'gbb';      Console: 'Nintendo - Dot Matrix Game ("Game Boy")';                                            NoIntro:  46; Extensions: 'gb|dmg'; BIOSChecker: TBIOSCheckerGameBoyGambatteGBB),
-     (Core: 'gbb';      Console: 'Nintendo - Game Boy Color';                                                          NoIntro:  47; Extensions: 'gbc'; BIOSChecker: TBIOSCheckerGameBoyColorGambatteGBB),
-     (Core: 'gbgb';     Console: 'Nintendo - Dot Matrix Game ("Game Boy")';                                            NoIntro:  46; Extensions: 'gb|dmg|sgb'; BIOSChecker: TBIOSCheckerGameBoy),
-     (Core: 'gbgb';     Console: 'Nintendo - Game Boy Color';                                                          NoIntro:  47; Extensions: 'gbc|sgb'; BIOSChecker: TBIOSCheckerGameBoyColor),
-     (Core: 'gg';       Console: 'Sega - SG-1000';                                                                     NoIntro:  19; Extensions: 'sg|bin|rom'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'gg';       Console: 'Sega - Game Gear';                                                                   NoIntro:  25; Extensions: 'gg|sms|bin'; BIOSChecker: TBIOSCheckerNone), // optional BIOS Checker needed
-     (Core: 'gg';       Console: 'Sega - Master System';                                                               NoIntro:  26; Extensions: 'sms|bin'; BIOSChecker: TBIOSCheckerNone), // optional BIOS Checker needed
-     (Core: 'gme';      Console: 'Media - Game Music Emu';                                                             NoIntro:   0; Extensions: 'ay|gbs|gym|hes|kss|nsf|nsfe|sap|spc|vgm|vgz'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'gw';       Console: 'Nintendo - Game & Watch';                                                            NoIntro: 226; Extensions: 'mgw'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'int';      Console: 'Mattel - Intellivision';                                                             NoIntro: 105; Extensions: 'int|rom|bin'; BIOSChecker: TBIOSCheckerIntelliVision),
-     (Core: 'lnx';      Console: 'Atari - Lynx';                                                                       NoIntro:  30; Extensions: 'lnx'; BIOSChecker: TBIOSCheckerLynx),
-     //(Core: 'lnxb';     Console: 'Atari - Lynx';                                                                       NoIntro:  30; Extensions: 'lnx|o'; BIOSChecker: TBIOSCheckerLynx),
-     (Core: 'm2k';      Console: 'Arcade';                                                                             NoIntro:   0; Extensions: 'zip'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'msx';      Console: 'Sega - SG-1000';                                                                     NoIntro:  19; Extensions: 'sg|sc|ri'; BIOSChecker: TBIOSCheckerMSXSegaSG1000),
-     (Core: 'msx';      Console: 'Coleco - ColecoVision';                                                              NoIntro:   3; Extensions: 'col'; BIOSChecker: TBIOSCheckerMSXColecoVision),
-     (Core: 'nes';      Console: 'Nintendo - Nintendo Entertainment System';                                           NoIntro:  45; Extensions: 'nes|unif|unf'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'nes';      Console: 'Nintendo - Family Computer Disk System [not working]';                               NoIntro:  31; Extensions: 'fds|nes'; BIOSChecker: TBIOSCheckerFamicomDiskSystem),
-     (Core: 'nesq';     Console: 'Nintendo - Nintendo Entertainment System';                                           NoIntro:  45; Extensions: 'nes'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'nest';     Console: 'Nintendo - Family Computer Disk System [not working?]';                              NoIntro:  31; Extensions: 'fds|nes'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'nest';     Console: 'Nintendo - Nintendo Entertainment System';                                           NoIntro:  45; Extensions: 'nes|unif|unf'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'ngpc';     Console: 'SNK - NeoGeo Pocket Color';                                                          NoIntro:  36; Extensions: 'ngc'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'ngpc';     Console: 'SNK - NeoGeo Pocket';                                                                NoIntro:  35; Extensions: 'ngp'; BIOSChecker: TBIOSCheckerNone),
-     //(Core: 'o2em';     Console: 'Philips - Videopac G7000 ("Magnavox Odyssey2")';                                     NoIntro:  9; Extensions: 'bin'; BIOSChecker: TBIOSCheckerMagnavoxOdyssey2), // this thing is waaay too confusing
-     //(Core: 'o2em';     Console: 'Philips - Videopac+ G7400 ("Odyssey3 Command Center")';                              NoIntro:  16; Extensions: 'bin'; BIOSChecker: TBIOSCheckerVideopacPlus),
-     (Core: 'pc8800';   Console: 'NEC - PC-88';                                                                        NoIntro: 242; Extensions: 'd88|u88|m3u'; BIOSChecker: TBIOSCheckerPC88),
-     (Core: 'pce';      Console: 'NEC - PC Engine';                                                                    NoIntro:  12; Extensions: 'pce'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'pce';      Console: 'NEC - PC Engine CD';                                                                 NoIntro: 159; Extensions: 'cue|ccd|iso|img|bin|chd'; BIOSChecker: TBIOSCheckerPCEngineCD),
-     (Core: 'pcesgx';   Console: 'NEC - PC Engine';                                                                    NoIntro:  12; Extensions: 'pce'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'pcesgx';   Console: 'NEC - PC Engine Supergrafx';                                                         NoIntro:  13; Extensions: 'sgx'; BIOSChecker: TBIOSCheckerNone), // optional BIOS Checker needed
-     (Core: 'pcesgx';   Console: 'NEC - PC Engine CD';                                                                 NoIntro: 159; Extensions: 'cue|ccd|chd'; BIOSChecker: TBIOSCheckerPCEngineCD),
-     //(Core: 'pcfx';     Console: 'NEC - PC-FX';                                                                        NoIntro:   0; Extensions: 'cue|ccd|toc|chd'; BIOSChecker: TBIOSCheckerPCFX),
-     (Core: 'pokem';    Console: 'Nintendo - Pokémon Mini';                                                            NoIntro:  14; Extensions: 'min'; BIOSChecker: TBIOSCheckerNone), // optional BIOS Checker
-     //(Core: 'retro8';   Console: 'Fantasy Console - PICO-8';                                                           NoIntro:   0; Extensions: 'p8|png'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'sega';     Console: 'Sega - SG-1000 [unofficial]';                                                        NoIntro:  19; Extensions: 'sg'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'sega';     Console: 'Sega - Game Gear [unofficial]';                                                      NoIntro:  25; Extensions: 'gg'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'sega';     Console: 'Sega - Master System';                                                               NoIntro:  26; Extensions: 'sms|68k|bin'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'sega';     Console: 'Sega - Mega Drive';                                                                  NoIntro:  32; Extensions: 'md|smd|gen|bin'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'sega';     Console: 'Sega - Kids Computer Pico';                                                          NoIntro:  18; Extensions: 'md|smd|gen|bin'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'sega';     Console: 'Sega - 32X';                                                                         NoIntro:  17; Extensions: '32x|bin'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'sega';     Console: 'Sega - Mega-CD';                                                                     NoIntro: 166; Extensions: 'iso|chd|bin|cue'; BIOSChecker: TBIOSCheckerMegaCD),
-     (Core: 'snes';     Console: 'Nintendo - Super Nintendo Entertainment System';                                     NoIntro:  49; Extensions: 'smc|fig|sfc|gd3|gd7|dx2|bsx|wsc'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'snes';     Console: 'Bandai - SuFami Turbo [not working]';                                                NoIntro:  78; Extensions: 'st'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'snes02';   Console: 'Nintendo - Super Nintendo Entertainment System';                                     NoIntro:  49; Extensions: 'smc|fig|sfc|gd3|gd7|dx2|bsx|wsc'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'snes02';   Console: 'Bandai - SuFami Turbo [not working]';                                                NoIntro:  78; Extensions: 'st'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'spec';     Console: 'Sinclair - ZX Spectrum';                                                             NoIntro:  73; Extensions: 'tzx|tap|z80|rzx|scl|trd'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'thom';     Console: 'Thomson - MO, TO';                                                                   NoIntro:   0; Extensions: 'fd|sap|k7|rom|m7|m5'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'vapor';    Console: 'Fantasy Console - VaporSpec';                                                        NoIntro:   0; Extensions: 'vaporbin'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'vec';      Console: 'GCE - Vectrex';                                                                      NoIntro:   7; Extensions: 'bin|vec'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'wsv';      Console: 'Watara - SuperVision';                                                               NoIntro:  22; Extensions: 'bin|sv'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'wswan';    Console: 'Bandai - WonderSwan';                                                                NoIntro:  50; Extensions: 'ws'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'wswan';    Console: 'Bandai - WonderSwan Color';                                                          NoIntro:  51; Extensions: 'wsc'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'wswan';    Console: 'Benesse - Pocket Challenge v2';                                                      NoIntro:  87; Extensions: 'pc2'; BIOSChecker: TBIOSCheckerNone),
-     (Core: 'zx81';     Console: 'Sinclair - ZX 81';                                                                   NoIntro:   0; Extensions: 'p|tzx|t81'; BIOSChecker: TBIOSCheckerNone));
+  CoreConsoles: array[0..76] of TCoreConsole =
+    ((Core: 'Stock';      Console: 'Nintendo - Nintendo Entertainment System (Famicom) [FCEUmm]';                        NoIntro:  45; Extensions: 'nes|unf'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'Stock';      Console: 'Nintendo - Famicom Disk System [FCEUmm]';                                            NoIntro:  31; Extensions: 'fds'; BIOSChecker: TBIOSCheckerFamicomDiskSystemStock),
+     (Core: 'Stock';      Console: 'V.R. Technology - VTxx (incl. NES/Famicom) - mapper 12 only [wiseemu]';              NoIntro:  45; Extensions: 'nfc'; BIOSChecker: TBIOSCheckerVTxx),
+     (Core: 'Stock';      Console: 'NEC - PC Engine (Turbografx-16) [Mednafen PCE Fast v0.9.38.7]';                      NoIntro:  12; Extensions: 'pce'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'Stock';      Console: 'Nintendo - Super Nintendo Entertainment System (Super Famicom) [Snes9x 2005 v1.36]'; NoIntro:  49; Extensions: 'smc|fig|sfc|gd3|gd7|dx2|bsx|swc'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'Stock';      Console: 'Sega - Mega Drive (Genesis) [PicoDrive 1.91]';                                       NoIntro:  32; Extensions: 'md|smd|bin|gen'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'Stock';      Console: 'Sega - Kids Computer Pico [PicoDrive 1.91]';                                         NoIntro:  18; Extensions: 'md|smd|bin|gen'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'Stock';      Console: 'Sega - Master System [PicoDrive 1.91]';                                              NoIntro:  26; Extensions: 'sms'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'Stock';      Console: 'Nintendo - Dot Matrix Game ("Game Boy") [TGB Dual v0.8.3]';                          NoIntro:  46; Extensions: 'gb'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'Stock';      Console: 'Nintendo - Game Boy Color [TGB Dual v0.8.3]';                                        NoIntro:  47; Extensions: 'gbc|sgb'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'Stock';      Console: 'Nintendo - Game Boy Advance [gpSP v0.91]';                                           NoIntro:  23; Extensions: 'gba|agb|zgb'; BIOSChecker: TBIOSCheckerGameBoyAdvanceStock),
+     (Core: 'Stock';      Console: 'Compressed and/or thumbnailed ("Wise" Wang QunWei obfuscated) file';                 NoIntro:   0; Extensions: 'bkp|zip|zfc|zsf|zpc|zmd|zgb|zfb'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'a26';        Console: 'Atari - 2600';                                                                       NoIntro:  88; Extensions: 'a26|bin|zip'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'a5200';      Console: 'Atari - 5200';                                                                       NoIntro:   1; Extensions: 'a52|bin|zip'; BIOSChecker: TBIOSCheckerAtari5200),
+     (Core: 'a78';        Console: 'Atari - 7800';                                                                       NoIntro:  74; Extensions: 'a78|bin'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'amstrad';    Console: 'Amstrad - CPC';                                                                      NoIntro: 250; Extensions: 'dsk|sna|kcr'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'amstradb';   Console: 'Amstrad - CPC';                                                                      NoIntro: 250; Extensions: 'dsk|sna|tap|cdt|voc|m3u|cpr|zip'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'cdg';        Console: 'Game - Pocket CDG';                                                                  NoIntro:   0; Extensions: 'cdg'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'chip8';      Console: 'Fantasy Console - XO-CHIP/S-CHIP/CHIP-8';                                            NoIntro:   0; Extensions: 'ch8|sc8|xo8'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'col';        Console: 'Coleco - ColecoVision';                                                              NoIntro:   3; Extensions: 'col|cv|bin|rom'; BIOSChecker: TBIOSCheckerColecoVision),
+     (Core: 'dblcherrygb';Console: 'Nintendo - Dot Matrix Game ("Game Boy")';                                            NoIntro:  46; Extensions: 'gb|dmg|sgb'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'dblcherrygb';Console: 'Nintendo - Game Boy Color';                                                          NoIntro:  47; Extensions: 'gbc|cgb|sgb'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'fake08';     Console: 'Fantasy Console - PICO-8';                                                           NoIntro:   0; Extensions: 'p8|png'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'fcf';        Console: 'Fairchild - Channel F';                                                              NoIntro:   6; Extensions: 'bin|rom|chf'; BIOSChecker: TBIOSCheckerChannelF),
+     (Core: 'gb';         Console: 'Nintendo - Dot Matrix Game ("Game Boy")';                                            NoIntro:  46; Extensions: 'gb|sgb'; BIOSChecker: TBIOSCheckerGameBoyGambatteGB),
+     (Core: 'gb';         Console: 'Nintendo - Game Boy Color';                                                          NoIntro:  47; Extensions: 'gbc|sgb'; BIOSChecker: TBIOSCheckerGameBoyColorGambatteGB),
+     (Core: 'gba';        Console: 'Nintendo - Game Boy Advance';                                                        NoIntro:  23; Extensions: 'gba|bin'; BIOSChecker: TBIOSCheckerGameBoyAdvance),
+     (Core: 'gbav';       Console: 'Nintendo - Game Boy Advance';                                                        NoIntro:  23; Extensions: 'gba'; BIOSChecker: TBIOSCheckerGameBoyAdvance),
+     (Core: 'gbb';        Console: 'Nintendo - Dot Matrix Game ("Game Boy")';                                            NoIntro:  46; Extensions: 'gb|dmg'; BIOSChecker: TBIOSCheckerGameBoyGambatteGBB),
+     (Core: 'gbb';        Console: 'Nintendo - Game Boy Color';                                                          NoIntro:  47; Extensions: 'gbc'; BIOSChecker: TBIOSCheckerGameBoyColorGambatteGBB),
+     (Core: 'gbgb';       Console: 'Nintendo - Dot Matrix Game ("Game Boy")';                                            NoIntro:  46; Extensions: 'gb|dmg|sgb'; BIOSChecker: TBIOSCheckerGameBoy),
+     (Core: 'gbgb';       Console: 'Nintendo - Game Boy Color';                                                          NoIntro:  47; Extensions: 'gbc|sgb'; BIOSChecker: TBIOSCheckerGameBoyColor),
+     (Core: 'geolith';    Console: 'SNK - Neo Geo MVS/AES';                                                              NoIntro:   0; Extensions: 'neo'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'gg';         Console: 'Sega - SG-1000';                                                                     NoIntro:  19; Extensions: 'sg|bin|rom'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'gg';         Console: 'Sega - Game Gear';                                                                   NoIntro:  25; Extensions: 'gg|sms|bin'; BIOSChecker: TBIOSCheckerNone), // optional BIOS Checker needed
+     (Core: 'gg';         Console: 'Sega - Master System';                                                               NoIntro:  26; Extensions: 'sms|bin'; BIOSChecker: TBIOSCheckerNone), // optional BIOS Checker needed
+     (Core: 'gme';        Console: 'Media - Game Music Emu';                                                             NoIntro:   0; Extensions: 'ay|gbs|gym|hes|kss|nsf|nsfe|sap|spc|vgm|vgz'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'gw';         Console: 'Nintendo - Game & Watch';                                                            NoIntro: 226; Extensions: 'mgw'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'int';        Console: 'Mattel - Intellivision';                                                             NoIntro: 105; Extensions: 'int|rom|bin'; BIOSChecker: TBIOSCheckerIntelliVision),
+     (Core: 'lnx';        Console: 'Atari - Lynx';                                                                       NoIntro:  30; Extensions: 'lnx'; BIOSChecker: TBIOSCheckerLynx),
+     //(Core: 'lnxb';       Console: 'Atari - Lynx';                                                                       NoIntro:  30; Extensions: 'lnx|o'; BIOSChecker: TBIOSCheckerLynx),
+     (Core: 'm2k';        Console: 'Arcade';                                                                             NoIntro:   0; Extensions: 'zip'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'msx';        Console: 'Sega - SG-1000';                                                                     NoIntro:  19; Extensions: 'sg|sc|ri'; BIOSChecker: TBIOSCheckerMSXSegaSG1000),
+     (Core: 'msx';        Console: 'Coleco - ColecoVision';                                                              NoIntro:   3; Extensions: 'col'; BIOSChecker: TBIOSCheckerMSXColecoVision),
+     (Core: 'nes';        Console: 'Nintendo - Nintendo Entertainment System';                                           NoIntro:  45; Extensions: 'nes|unif|unf'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'nes';        Console: 'Nintendo - Family Computer Disk System [not working]';                               NoIntro:  31; Extensions: 'fds|nes'; BIOSChecker: TBIOSCheckerFamicomDiskSystem),
+     (Core: 'nesq';       Console: 'Nintendo - Nintendo Entertainment System';                                           NoIntro:  45; Extensions: 'nes'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'nest';       Console: 'Nintendo - Family Computer Disk System [not working?]';                              NoIntro:  31; Extensions: 'fds|nes'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'nest';       Console: 'Nintendo - Nintendo Entertainment System';                                           NoIntro:  45; Extensions: 'nes|unif|unf'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'ngpc';       Console: 'SNK - NeoGeo Pocket Color';                                                          NoIntro:  36; Extensions: 'ngc'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'ngpc';       Console: 'SNK - NeoGeo Pocket';                                                                NoIntro:  35; Extensions: 'ngp'; BIOSChecker: TBIOSCheckerNone),
+     //(Core: 'o2em';       Console: 'Philips - Videopac G7000 ("Magnavox Odyssey2")';                                     NoIntro:  9; Extensions: 'bin'; BIOSChecker: TBIOSCheckerMagnavoxOdyssey2), // this thing is waaay too confusing
+     //(Core: 'o2em';       Console: 'Philips - Videopac+ G7400 ("Odyssey3 Command Center")';                              NoIntro:  16; Extensions: 'bin'; BIOSChecker: TBIOSCheckerVideopacPlus),
+     (Core: 'pc8800';     Console: 'NEC - PC-88';                                                                        NoIntro: 242; Extensions: 'd88|u88|m3u'; BIOSChecker: TBIOSCheckerPC88),
+     (Core: 'pce';        Console: 'NEC - PC Engine';                                                                    NoIntro:  12; Extensions: 'pce'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'pce';        Console: 'NEC - PC Engine CD';                                                                 NoIntro: 159; Extensions: 'cue|ccd|iso|img|bin|chd'; BIOSChecker: TBIOSCheckerPCEngineCD),
+     (Core: 'pcesgx';     Console: 'NEC - PC Engine';                                                                    NoIntro:  12; Extensions: 'pce'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'pcesgx';     Console: 'NEC - PC Engine Supergrafx';                                                         NoIntro:  13; Extensions: 'sgx'; BIOSChecker: TBIOSCheckerNone), // optional BIOS Checker needed
+     (Core: 'pcesgx';     Console: 'NEC - PC Engine CD';                                                                 NoIntro: 159; Extensions: 'cue|ccd|chd'; BIOSChecker: TBIOSCheckerPCEngineCD),
+     //(Core: 'pcfx';       Console: 'NEC - PC-FX';                                                                        NoIntro:   0; Extensions: 'cue|ccd|toc|chd'; BIOSChecker: TBIOSCheckerPCFX),
+     (Core: 'pokem';      Console: 'Nintendo - Pokémon Mini';                                                            NoIntro:  14; Extensions: 'min'; BIOSChecker: TBIOSCheckerNone), // optional BIOS Checker
+     //(Core: 'retro8';     Console: 'Fantasy Console - PICO-8';                                                           NoIntro:   0; Extensions: 'p8|png'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'sega';       Console: 'Sega - SG-1000 [unofficial]';                                                        NoIntro:  19; Extensions: 'sg'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'sega';       Console: 'Sega - Game Gear [unofficial]';                                                      NoIntro:  25; Extensions: 'gg'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'sega';       Console: 'Sega - Master System';                                                               NoIntro:  26; Extensions: 'sms|68k|bin'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'sega';       Console: 'Sega - Mega Drive';                                                                  NoIntro:  32; Extensions: 'md|smd|gen|bin'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'sega';       Console: 'Sega - Kids Computer Pico';                                                          NoIntro:  18; Extensions: 'md|smd|gen|bin'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'sega';       Console: 'Sega - 32X';                                                                         NoIntro:  17; Extensions: '32x|bin'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'sega';       Console: 'Sega - Mega-CD';                                                                     NoIntro: 166; Extensions: 'iso|chd|bin|cue'; BIOSChecker: TBIOSCheckerMegaCD),
+     (Core: 'snes';       Console: 'Nintendo - Super Nintendo Entertainment System';                                     NoIntro:  49; Extensions: 'smc|fig|sfc|gd3|gd7|dx2|bsx|wsc'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'snes';       Console: 'Bandai - SuFami Turbo [not working]';                                                NoIntro:  78; Extensions: 'st'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'snes02';     Console: 'Nintendo - Super Nintendo Entertainment System';                                     NoIntro:  49; Extensions: 'smc|fig|sfc|gd3|gd7|dx2|bsx|wsc'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'snes02';     Console: 'Bandai - SuFami Turbo [not working]';                                                NoIntro:  78; Extensions: 'st'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'spec';       Console: 'Sinclair - ZX Spectrum';                                                             NoIntro:  73; Extensions: 'tzx|tap|z80|rzx|scl|trd'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'thom';       Console: 'Thomson - MO, TO';                                                                   NoIntro:   0; Extensions: 'fd|sap|k7|rom|m7|m5'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'vapor';      Console: 'Fantasy Console - VaporSpec';                                                        NoIntro:   0; Extensions: 'vaporbin'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'vec';        Console: 'GCE - Vectrex';                                                                      NoIntro:   7; Extensions: 'bin|vec'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'wsv';        Console: 'Watara - SuperVision';                                                               NoIntro:  22; Extensions: 'bin|sv'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'wswan';      Console: 'Bandai - WonderSwan';                                                                NoIntro:  50; Extensions: 'ws'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'wswan';      Console: 'Bandai - WonderSwan Color';                                                          NoIntro:  51; Extensions: 'wsc'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'wswan';      Console: 'Benesse - Pocket Challenge v2';                                                      NoIntro:  87; Extensions: 'pc2'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'zx81';       Console: 'Sinclair - ZX 81';                                                                   NoIntro:   0; Extensions: 'p|tzx|t81'; BIOSChecker: TBIOSCheckerNone));
 
-  Cores: array[0..92] of TCore =
-    ((Core: 'multicore'; Name: 'multicore General Options';   Config: 'multicore';               Description: 'configuration only'),
-     (Core: 'Stock';     Name: 'GB300 Stock Emulators';       Config: '';                        Description: 'NES, VTxx, PCE, SNES, MD, SMS, GB, GBC, GBA'),
-     (Core: 'arduboy';   Name: 'Arduous';                     Config: 'arduous';                 Description: 'Arduboy'),
-     (Core: 'a5200';     Name: 'Atari800';                    Config: 'a5200';                   Description: 'Atari 5200, Atari 8-Bit/800'),
-     (Core: 'a800';      Name: 'libatari800';                 Config: 'Atari 800 (libatari800)'; Description: 'Atari 5200, Atari 8-Bit/800'),
-     (Core: 'lnxb';      Name: Beetle+'Lynx';                 Config: 'Beetle Lynx';             Description: 'Atari Lynx'),
-     (Core: 'pce';       Name: Beetle+'PCE Fast';             Config: 'Beetle PCE Fast';         Description: 'PC Engine, PC Engine-CD'),
-     (Core: 'pcfx';      Name: Beetle+'PC-FX';                Config: 'Beetle PC-FX';            Description: 'NEC PC-FX'),
-     (Core: 'pcesgx';    Name: Beetle+'SGX';                  Config: 'Beetle SuperGrafx';       Description: 'NEC PC Engine, PC Engine CD, SuperGrafx'),
-     (Core: 'vb';        Name: Beetle+'VB';                   Config: 'Beetle VB';               Description: 'Nintendo Virtual Boy'),
-     (Core: 'wswan';     Name: Beetle+'Cygne';                Config: 'Beetle WonderSwan';       Description: 'Bandai WonderSwan Classic, Color'),
-     (Core: 'msx';       Name: 'blueMSX';                     Config: 'blueMSX';                 Description: 'Microsoft MSX, MSX2, Coleco ColecoVision, Sega SG-1000'),
-     (Core: 'outrun';    Name: 'Cannonball';                  Config: 'Cannonball';              Description: 'OutRun Game Engine'),
-     (Core: 'amstradb';  Name: 'Caprice32';                   Config: 'cap32';                   Description: 'Amstrad CPC'),
-     (Core: 'amstrad';   Name: 'CrocoDS';                     Config: 'crocods';                 Description: 'AmstradCPC'),
-     (Core: 'wolf3d';    Name: 'ECWolf';                      Config: 'ecwolf';                  Description: 'Wolfenstein 3D Game Engine'),
-     (Core: 'zx81';      Name: 'EightyOne';                   Config: 'EightyOne';               Description: 'Sinclair ZX 81'),
-     (Core: 'fake08';    Name: 'FAKE-08';                     Config: 'fake-08';                 Description: 'PICO-08 Fantasy Console'),
-     (Core: 'nes';       Name: 'FCEUmm';                      Config: 'FCEUmm';                  Description: 'Nintendo Entertainment System/Famicom'),
-     (Core: 'fcf';       Name: 'FreeChaF';                    Config: 'FreeChaF';                Description: 'Fairchild Channel F'),
-     (Core: 'int';       Name: 'FreeIntV';                    Config: 'FreeInv';                 Description: 'Mattel Intellivision'),
-     (Core: 'c64f';      Name: 'Frodo';                       Config: 'Frodo';                   Description: 'Commodore 64'),
-     (Core: 'c64fc';     Name: 'FrodoSC';                     Config: 'Frodo';                   Description: 'Commodore 64'),
-     (Core: 'spec';      Name: 'Fuse';                        Config: 'fuse';                    Description: 'Sinclair ZX Spectrum'),
-     (Core: 'gw';        Name: 'GW';                          Config: 'Game & Watch';            Description: 'Nintendo Game & Watch'),
-     (Core: 'gme';       Name: 'Game Music Emu';              Config: 'Game Music Emulator';     Description: 'Music Player'),
-     (Core: 'gbgb';      Name: 'Gearboy';                     Config: 'Gearboy';                 Description: 'Game Boy Classic/Color'),
-     (Core: 'col';       Name: 'GearColeco';                  Config: 'Gearcoleco';              Description: 'Coleco ColecoVision'),
-     (Core: 'gg';        Name: 'Gearsystem';                  Config: 'Gearsystem';              Description: 'Sega SG-1000, Master System, Game Gear'),
-     (Core: 'gpgx';      Name: 'Genesis Plus GX';             Config: 'Genesis Plus GX';         Description: 'Sega SG-1000, Master System, Game Gear, Mega Drive, PICO, Mega-CD'),
-     (Core: 'gong';      Name: 'Gong';                        Config: 'gong';                    Description: 'Pong Game'),
-     (Core: 'gba';       Name: 'gpSP';                        Config: 'gpSP';                    Description: 'Game Boy Advance'),
-     (Core: 'lnx';       Name: 'Handy';                       Config: 'Handy';                   Description: 'Atari Lynx'),
-     (Core: 'chip8';     Name: 'JAXE';                        Config: 'JAXE';                    Description: 'Fantasy Consoles XO-CHIP, S-CHIP CHIP-8'),
-     (Core: 'jnb';       Name: 'Jump ''n Bump';               Config: 'Jump ''n Bump';           Description: 'Game Engine'),
-     (Core: 'lowres-nx'; Name: 'LowRes NX';                   Config: 'LowRes NX';               Description: 'LowRes NX Fantasy Console'),
-     (Core: 'm2k';       Name: 'MAME 2000';                   Config: 'MAME 2000';               Description: 'Arcade'),
-     (Core: 'mgba';      Name: 'mGBA';                        Config: 'mGBA';                    Description: 'Game Boy Classic, Color, Advance'),
-     (Core: 'nest';      Name: 'Nestopia UE';                 Config: 'Nestopia';                Description: 'Nintendo Entertainment System/Famicom'),
-     (Core: 'cavestory'; Name: 'NXEngine';                    Config: 'NXEngine';                Description: 'Cave Story Game Engine'),
-     (Core: 'o2em';      Name: 'O2EM';                        Config: 'O2EM';                    Description: 'Magnavox Odyssey, Philips VideoPac+'),
-     (Core: 'sega';      Name: 'PicoDrive';                   Config: 'PicoDrive';               Description: 'Sega Master System, Game Gear, Mega Drive, PICO, Mega-CD, 32x'),
-     (Core: 'cdg';       Name: 'Pocket CDG';                  Config: 'pocketcdg';               Description: 'Karaoke'),
-     (Core: 'pokem';     Name: 'PokeMini';                    Config: 'PokeMini';                Description: 'Pokémon Mini'),
-     (Core: 'wsv';       Name: 'Potator';                     Config: 'Potator';                 Description: 'Watara SuperVision'),
-     (Core: 'prboom';    Name: 'PrBoom';                      Config: 'PrBoom';                  Description: 'Doom Game Engine'),
-     (Core: 'a78';       Name: 'ProSystem';                   Config: 'ProSystem';               Description: 'Atari 7800'),
-     (Core: 'pc8800';    Name: 'QUASI88';                     Config: 'QUASI88';                 Description: 'PC8800'),
-     (Core: 'nesq';      Name: 'QuickNES';                    Config: 'QuickNES';                Description: 'Nintendo Entertainment System/Famicom'),
-     (Core: 'ngpc';      Name: 'RACE';                        Config: 'RACE';                    Description: 'NeoGeo Pocket Classic, Color'),
-     (Core: 'flashback'; Name: 'REminiscence';                Config: 'REminiscence';            Description: 'Flashback Game Engine'),
-     (Core: 'retro8';    Name: 'Retro8';                      Config: 'retro-8 (alpha)';         Description: 'PICO-8 Fantasy Console'),
-     (Core: 'snes02';    Name: 'Snes9x 2002';                 Config: 'Snes9x 2002';             Description: 'Super Nintendo Entertainment System/Super Famicom'),
-     (Core: 'snes';      Name: 'Snes9x 2005';                 Config: 'Snes9x 2005';             Description: 'Super Nintendo Entertainment System/Super Famicom'),
-     (Core: 'a26';       Name: 'Stella';                      Config: 'Stella 2014';             Description: 'Atari 2600'),
-     (Core: 'gb';        Name: 'TGB Dual';                    Config: 'TGB Dual';                Description: 'Game Boy Classic, Color'), // adjust TForm1.ButtonOnboardingStartClick if you swap gb and gbb by default!
-     (Core: 'gbb';       Name: 'Gambatte';                    Config: 'Gambatte';                Description: 'Game Boy Classic, Color'),
-     (Core: 'thom';      Name: 'Theodore';                    Config: 'theodore';                Description: 'Thomson MO/TO Series'),
-     (Core: 'quake';     Name: 'TyrQuake';                    Config: 'TyrQuake';                Description: 'Quake Game Engine'),
-     (Core: 'vapor';     Name: 'VaporSpec';                   Config: 'Vaporspec';               Description: 'VaporSpec Fantasy Console'),
-     (Core: 'gbav';      Name: 'VBA Next';                    Config: 'VBA Next';                Description: 'Game Boy Advance'),
-     (Core: 'vec';       Name: 'vecx';                        Config: 'VecX';                    Description: 'GCE Vectrex'),
-     (Core: 'c64';       Name: 'VICE x64';                    Config: 'VICE x64';                Description: 'Commodore 64'),
-     (Core: 'c64sc';     Name: 'VICE x64sc';                  Config: 'VICE x64sc';              Description: 'Commodore 64'),
-     (Core: 'vic20';     Name: 'VICE';                        Config: 'VICE xvic';               Description: 'Commodore VIC-20'),
-     (Core: 'xrick';     Name: 'XRick';                       Config: 'xrick';                   Description: 'Rick Dangerous Game Engine'),
-     (Core: 'psx';       Name: 'Beetle PSX';                  Config: '';                        Description: 'PlayStation'),
-     (Core: 'snesc';     Name: 'ChimeraSNES';                 Config: '';                        Description: 'Super Nintendo Entertainment System/Super Famicom'),
-     (Core: 'dossvn';    Name: 'DOSBox-SVN';                  Config: '';                        Description: 'Disk Operating System'),
-     (Core: 'neogeo';    Name: 'FB Alpha';                    Config: '';                        Description: 'Arcade'),
-     (Core: 'cps1';      Name: 'Final Burn Alpha 2012 CPS-1'; Config: '';                        Description: 'Arcade'),
-     (Core: 'cps2';      Name: 'Final Burn Alpha 2012 CPS-2'; Config: '';                        Description: 'Arcade'),
-     (Core: 'cps3';      Name: 'Final Burn Alpha 2012 CPS-3'; Config: '';                        Description: 'Arcade'),
-     (Core: 'fmsx';      Name: 'fMSX';                        Config: '';                        Description: 'Microsoft MSX, MSX2'),
-     (Core: 'glxy';      Name: 'Galaxy';                      Config: '';                        Description: 'Galaksija'),
-     (Core: 'img';       Name: 'image-viewer-legacy';         Config: '';                        Description: 'Image Viewer'),
-     (Core: 'testadv';   Name: 'libretro_test_advanced';      Config: '';                        Description: 'Test'),
-     (Core: 'uw8';       Name: 'MicroW8';                     Config: '';                        Description: 'Microw8 Fantasy Console'),
-     (Core: 'mac';       Name: 'minivmac';                    Config: '';                        Description: 'Mac II'),
-     (Core: 'zork';      Name: 'mojozork';                    Config: '';                        Description: 'Z-Machine'),
-     (Core: 'nogg';      Name: 'nogg';                        Config: '';                        Description: 'eggnogg Game'),
-     (Core: 'numero';    Name: 'Numero';                      Config: '';                        Description: 'Texas Instruments TI-83'),
-     (Core: 'risc';      Name: 'Oberon';                      Config: '';                        Description: 'Oberon RISC Machine'),
-     (Core: '3do';       Name: 'Opera';                       Config: '';                        Description: 'Panasonic 3DO'),
-     (Core: 'x68k';      Name: 'PX68k';                       Config: '';                        Description: 'Sharp X86000'),
-     (Core: 'gbs';       Name: 'SameBoy';                     Config: '';                        Description: 'Game Boy Classic, Color'),
-     (Core: 'snesn';     Name: 'Snes9x';                      Config: '';                        Description: 'Super Nintendo Entertainment System/Super Famicom'),
-     (Core: 'sbw';       Name: 'Super Bros War';              Config: '';                        Description: 'Super Bros. War Game'),
-     (Core: 'uzem';      Name: 'Uzem';                        Config: '';                        Description: 'Uzebox'),
-     (Core: 'gbam';      Name: 'VBA-M';                       Config: '';                        Description: 'Game Boy Classic, Color, Advance'),
-     (Core: 'jag';       Name: 'Virtual Jaguar';              Config: '';                        Description: 'Atari Jaguar'),
-     (Core: 'quake2';    Name: 'vitaQuake 2';                 Config: '';                        Description: 'Quake2 Game Engine'),
-     (Core: 'xmil';      Name: 'X Millennium';                Config: '';                        Description: 'Sharp X1'));
+  Cores: array[0..94] of TCore =
+    ((Core: 'multicore';  Name: 'multicore General Options';   Config: 'multicore';               Description: 'configuration only'),
+     (Core: 'Stock';      Name: 'GB300 Stock Emulators';       Config: '';                        Description: 'NES, VTxx, PCE, SNES, MD, SMS, GB, GBC, GBA'),
+     (Core: 'arduboy';    Name: 'Arduous';                     Config: 'arduous';                 Description: 'Arduboy'),
+     (Core: 'a5200';      Name: 'Atari800';                    Config: 'a5200';                   Description: 'Atari 5200, Atari 8-Bit/800'),
+     (Core: 'a800';       Name: 'libatari800';                 Config: 'Atari 800 (libatari800)'; Description: 'Atari 5200, Atari 8-Bit/800'),
+     (Core: 'lnxb';       Name: Beetle+'Lynx';                 Config: 'Beetle Lynx';             Description: 'Atari Lynx'),
+     (Core: 'pce';        Name: Beetle+'PCE Fast';             Config: 'Beetle PCE Fast';         Description: 'PC Engine, PC Engine-CD'),
+     (Core: 'pcfx';       Name: Beetle+'PC-FX';                Config: 'Beetle PC-FX';            Description: 'NEC PC-FX'),
+     (Core: 'pcesgx';     Name: Beetle+'SGX';                  Config: 'Beetle SuperGrafx';       Description: 'NEC PC Engine, PC Engine CD, SuperGrafx'),
+     (Core: 'vb';         Name: Beetle+'VB';                   Config: 'Beetle VB';               Description: 'Nintendo Virtual Boy'),
+     (Core: 'wswan';      Name: Beetle+'Cygne';                Config: 'Beetle WonderSwan';       Description: 'Bandai WonderSwan Classic, Color'),
+     (Core: 'msx';        Name: 'blueMSX';                     Config: 'blueMSX';                 Description: 'Microsoft MSX, MSX2, Coleco ColecoVision, Sega SG-1000'),
+     (Core: 'outrun';     Name: 'Cannonball';                  Config: 'Cannonball';              Description: 'OutRun Game Engine'),
+     (Core: 'amstradb';   Name: 'Caprice32';                   Config: 'cap32';                   Description: 'Amstrad CPC'),
+     (Core: 'amstrad';    Name: 'CrocoDS';                     Config: 'crocods';                 Description: 'Amstrad CPC'),
+     (Core: 'dblcherrygb';Name: 'DoubleCherryGB';              Config: 'DoubleCherryGB';          Description: 'Game Boy Classic, Color'),
+     (Core: 'wolf3d';     Name: 'ECWolf';                      Config: 'ecwolf';                  Description: 'Wolfenstein 3D Game Engine'),
+     (Core: 'zx81';       Name: 'EightyOne';                   Config: 'EightyOne';               Description: 'Sinclair ZX 81'),
+     (Core: 'fake08';     Name: 'FAKE-08';                     Config: 'fake-08';                 Description: 'PICO-08 Fantasy Console'),
+     (Core: 'nes';        Name: 'FCEUmm';                      Config: 'FCEUmm';                  Description: 'Nintendo Entertainment System/Famicom'),
+     (Core: 'fcf';        Name: 'FreeChaF';                    Config: 'FreeChaF';                Description: 'Fairchild Channel F'),
+     (Core: 'int';        Name: 'FreeIntV';                    Config: 'FreeInv';                 Description: 'Mattel Intellivision'),
+     (Core: 'c64f';       Name: 'Frodo';                       Config: 'Frodo';                   Description: 'Commodore 64'),
+     (Core: 'c64fc';      Name: 'FrodoSC';                     Config: 'Frodo';                   Description: 'Commodore 64'),
+     (Core: 'spec';       Name: 'Fuse';                        Config: 'fuse';                    Description: 'Sinclair ZX Spectrum'),
+     (Core: 'gw';         Name: 'GW';                          Config: 'Game & Watch';            Description: 'Nintendo Game & Watch'),
+     (Core: 'gme';        Name: 'Game Music Emu';              Config: 'Game Music Emulator';     Description: 'Music Player'),
+     (Core: 'gbgb';       Name: 'Gearboy';                     Config: 'Gearboy';                 Description: 'Game Boy Classic/Color'),
+     (Core: 'col';        Name: 'GearColeco';                  Config: 'Gearcoleco';              Description: 'Coleco ColecoVision'),
+     (Core: 'gg';         Name: 'Gearsystem';                  Config: 'Gearsystem';              Description: 'Sega SG-1000, Master System, Game Gear'),
+     (Core: 'gpgx';       Name: 'Genesis Plus GX';             Config: 'Genesis Plus GX';         Description: 'Sega SG-1000, Master System, Game Gear, Mega Drive, PICO, Mega-CD'),
+     (Core: 'geolith';    Name: 'Geolith';                     Config: 'Geolith';                 Description: 'Neo Geo AES/MVS'),
+     (Core: 'gong';       Name: 'Gong';                        Config: 'gong';                    Description: 'Pong Game'),
+     (Core: 'gba';        Name: 'gpSP';                        Config: 'gpSP';                    Description: 'Game Boy Advance'),
+     (Core: 'lnx';        Name: 'Handy';                       Config: 'Handy';                   Description: 'Atari Lynx'),
+     (Core: 'chip8';      Name: 'JAXE';                        Config: 'JAXE';                    Description: 'Fantasy Consoles XO-CHIP, S-CHIP CHIP-8'),
+     (Core: 'jnb';        Name: 'Jump ''n Bump';               Config: 'Jump ''n Bump';           Description: 'Game Engine'),
+     (Core: 'lowres-nx';  Name: 'LowRes NX';                   Config: 'LowRes NX';               Description: 'LowRes NX Fantasy Console'),
+     (Core: 'm2k';        Name: 'MAME 2000';                   Config: 'MAME 2000';               Description: 'Arcade'),
+     (Core: 'mgba';       Name: 'mGBA';                        Config: 'mGBA';                    Description: 'Game Boy Classic, Color, Advance'),
+     (Core: 'nest';       Name: 'Nestopia UE';                 Config: 'Nestopia';                Description: 'Nintendo Entertainment System/Famicom'),
+     (Core: 'cavestory';  Name: 'NXEngine';                    Config: 'NXEngine';                Description: 'Cave Story Game Engine'),
+     (Core: 'o2em';       Name: 'O2EM';                        Config: 'O2EM';                    Description: 'Magnavox Odyssey, Philips VideoPac+'),
+     (Core: 'sega';       Name: 'PicoDrive';                   Config: 'PicoDrive';               Description: 'Sega Master System, Game Gear, Mega Drive, PICO, Mega-CD, 32x'),
+     (Core: 'cdg';        Name: 'Pocket CDG';                  Config: 'pocketcdg';               Description: 'Karaoke'),
+     (Core: 'pokem';      Name: 'PokeMini';                    Config: 'PokeMini';                Description: 'Pokémon Mini'),
+     (Core: 'wsv';        Name: 'Potator';                     Config: 'Potator';                 Description: 'Watara SuperVision'),
+     (Core: 'prboom';     Name: 'PrBoom';                      Config: 'PrBoom';                  Description: 'Doom Game Engine'),
+     (Core: 'a78';        Name: 'ProSystem';                   Config: 'ProSystem';               Description: 'Atari 7800'),
+     (Core: 'pc8800';     Name: 'QUASI88';                     Config: 'QUASI88';                 Description: 'PC8800'),
+     (Core: 'nesq';       Name: 'QuickNES';                    Config: 'QuickNES';                Description: 'Nintendo Entertainment System/Famicom'),
+     (Core: 'ngpc';       Name: 'RACE';                        Config: 'RACE';                    Description: 'NeoGeo Pocket Classic, Color'),
+     (Core: 'flashback';  Name: 'REminiscence';                Config: 'REminiscence';            Description: 'Flashback Game Engine'),
+     (Core: 'retro8';     Name: 'Retro8';                      Config: 'retro-8 (alpha)';         Description: 'PICO-8 Fantasy Console'),
+     (Core: 'snes02';     Name: 'Snes9x 2002';                 Config: 'Snes9x 2002';             Description: 'Super Nintendo Entertainment System/Super Famicom'),
+     (Core: 'snes';       Name: 'Snes9x 2005';                 Config: 'Snes9x 2005';             Description: 'Super Nintendo Entertainment System/Super Famicom'),
+     (Core: 'a26';        Name: 'Stella';                      Config: 'Stella 2014';             Description: 'Atari 2600'),
+     (Core: 'gb';         Name: 'TGB Dual';                    Config: 'TGB Dual';                Description: 'Game Boy Classic, Color'), // adjust TForm1.ButtonOnboardingStartClick if you swap gb and gbb by default!
+     (Core: 'gbb';        Name: 'Gambatte';                    Config: 'Gambatte';                Description: 'Game Boy Classic, Color'),
+     (Core: 'thom';       Name: 'Theodore';                    Config: 'theodore';                Description: 'Thomson MO/TO Series'),
+     (Core: 'quake';      Name: 'TyrQuake';                    Config: 'TyrQuake';                Description: 'Quake Game Engine'),
+     (Core: 'vapor';      Name: 'VaporSpec';                   Config: 'Vaporspec';               Description: 'VaporSpec Fantasy Console'),
+     (Core: 'gbav';       Name: 'VBA Next';                    Config: 'VBA Next';                Description: 'Game Boy Advance'),
+     (Core: 'vec';        Name: 'vecx';                        Config: 'VecX';                    Description: 'GCE Vectrex'),
+     (Core: 'c64';        Name: 'VICE x64';                    Config: 'VICE x64';                Description: 'Commodore 64'),
+     (Core: 'c64sc';      Name: 'VICE x64sc';                  Config: 'VICE x64sc';              Description: 'Commodore 64'),
+     (Core: 'vic20';      Name: 'VICE';                        Config: 'VICE xvic';               Description: 'Commodore VIC-20'),
+     (Core: 'xrick';      Name: 'XRick';                       Config: 'xrick';                   Description: 'Rick Dangerous Game Engine'),
+     (Core: 'psx';        Name: 'Beetle PSX';                  Config: '';                        Description: 'PlayStation'),
+     (Core: 'snesc';      Name: 'ChimeraSNES';                 Config: '';                        Description: 'Super Nintendo Entertainment System/Super Famicom'),
+     (Core: 'dossvn';     Name: 'DOSBox-SVN';                  Config: '';                        Description: 'Disk Operating System'),
+     (Core: 'neogeo';     Name: 'FB Alpha';                    Config: '';                        Description: 'Arcade'),
+     (Core: 'cps1';       Name: 'Final Burn Alpha 2012 CPS-1'; Config: '';                        Description: 'Arcade'),
+     (Core: 'cps2';       Name: 'Final Burn Alpha 2012 CPS-2'; Config: '';                        Description: 'Arcade'),
+     (Core: 'cps3';       Name: 'Final Burn Alpha 2012 CPS-3'; Config: '';                        Description: 'Arcade'),
+     (Core: 'fmsx';       Name: 'fMSX';                        Config: '';                        Description: 'Microsoft MSX, MSX2'),
+     (Core: 'glxy';       Name: 'Galaxy';                      Config: '';                        Description: 'Galaksija'),
+     (Core: 'img';        Name: 'image-viewer-legacy';         Config: '';                        Description: 'Image Viewer'),
+     (Core: 'testadv';    Name: 'libretro_test_advanced';      Config: '';                        Description: 'Test'),
+     (Core: 'uw8';        Name: 'MicroW8';                     Config: '';                        Description: 'Microw8 Fantasy Console'),
+     (Core: 'mac';        Name: 'minivmac';                    Config: '';                        Description: 'Mac II'),
+     (Core: 'zork';       Name: 'mojozork';                    Config: '';                        Description: 'Z-Machine'),
+     (Core: 'nogg';       Name: 'nogg';                        Config: '';                        Description: 'eggnogg Game'),
+     (Core: 'numero';     Name: 'Numero';                      Config: '';                        Description: 'Texas Instruments TI-83'),
+     (Core: 'risc';       Name: 'Oberon';                      Config: '';                        Description: 'Oberon RISC Machine'),
+     (Core: '3do';        Name: 'Opera';                       Config: '';                        Description: 'Panasonic 3DO'),
+     (Core: 'x68k';       Name: 'PX68k';                       Config: '';                        Description: 'Sharp X86000'),
+     (Core: 'gbs';        Name: 'SameBoy';                     Config: '';                        Description: 'Game Boy Classic, Color'),
+     (Core: 'snesn';      Name: 'Snes9x';                      Config: '';                        Description: 'Super Nintendo Entertainment System/Super Famicom'),
+     (Core: 'sbw';        Name: 'Super Bros War';              Config: '';                        Description: 'Super Bros. War Game'),
+     (Core: 'uzem';       Name: 'Uzem';                        Config: '';                        Description: 'Uzebox'),
+     (Core: 'gbam';       Name: 'VBA-M';                       Config: '';                        Description: 'Game Boy Classic, Color, Advance'),
+     (Core: 'jag';        Name: 'Virtual Jaguar';              Config: '';                        Description: 'Atari Jaguar'),
+     (Core: 'quake2';     Name: 'vitaQuake 2';                 Config: '';                        Description: 'Quake2 Game Engine'),
+     (Core: 'xmil';       Name: 'X Millennium';                Config: '';                        Description: 'Sharp X1'));
 
 var
   CoresDict: TDictionary<string, TCore>;
@@ -532,17 +537,40 @@ var
   TempName: string;
   TempValue: string;
   ParseState: (psInit, psName, psFirstColon, psDefault, psSecondColon, psValues);
+  TempData: string;
 begin
   OptFile := TStringList.Create();
   Values := TDictionary<string, string>.Create();
   try
     TempFN := GetConfigPath(ROMFileNameNoPathButExt);
     if ROMFileNameNoPathButExt <> '' then
-    if not FileExists(TempFN) then
-    TempFN := GetConfigPath();
-    OptFile.LoadFromFile(TempFN);
+    if FileExists(TempFN) then
+    OptFile.LoadFromFile(TempFN)
+    else
+    begin
+      TempFN := GetConfigPath();
+      OptFile.LoadFromFile(TempFN);
+
+      // load default multicore settings if per-game config does not exist
+      if ROMFileNameNoPathButExt <> '' then
+      begin
+        TempFN := CoresDict['multicore'].GetConfigPath;
+        if FileExists(TempFN) then
+        begin
+          TempData := OptFile.Text;
+          OptFile.LoadFromFile(TempFN);
+          OptFile.Text := TempData + #13#10 + OptFile.Text; // Add() stores multiline text in a single row
+        end;
+      end;
+    end
+    else
+    OptFile.LoadFromFile(GetConfigPath());
+
+
     for Row in OptFile do
     begin
+      if Row = '' then
+      Continue;
       if StartsStr('###', Row) then // definition
       begin
         // this is essentially an automaton
@@ -612,6 +640,10 @@ begin
 
     if Values.Count <> Length(Result) then
     raise Exception.CreateFmt('Cannot parse %s options (%s.opt) because the number of set options (%d) and available options (%d) do not match. This is a multicore issue.', [Core, Config, Values.Count, Length(Result)]);
+
+    for i := Low(Result) to High(Result) do
+    if not Values.ContainsKey(Result[i].Name) then
+    raise Exception.CreateFmt('Cannot parse %s options (%s.opt) because the set options and available options do not match (e.g. no value set for %s). This is a multicore issue.', [Core, Config, Result[i].Name]);
 
     for i := Low(Result) to High(Result) do
     Result[i].Value := Values[Result[i].Name];

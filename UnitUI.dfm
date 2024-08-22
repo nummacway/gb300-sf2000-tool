@@ -19,6 +19,7 @@ object FrameUI: TFrameUI
       Top = 32
       Width = 840
       Height = 637
+      VertScrollBar.Tracking = True
       Align = alClient
       BorderStyle = bsNone
       DoubleBuffered = True
