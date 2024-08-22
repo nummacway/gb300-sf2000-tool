@@ -2,6 +2,8 @@ This is a tool for managing your [Sup+ GB300 (Game Box) console](https://nummacw
 
 It is supposed to be the GB300's counterpart to what Tadpole is for the similar Data Frog SF2000, even though the interface is completely different. GB300 Tool does not work with the SF2000 and prevents you from even trying to do so. (There is [a hack of GB300's `bisrv.asd` for SF2000](https://vonmillhausen.github.io/sf2000/#gb300-firmware-ported) made with the intention of using GB300 Tool. There is also [a version with multicore](https://discord.com/channels/741895796315914271/1092831839955193987/1237247978520055828).)
 
+**GB300 Tool does not yet work with "GB300 v2" (the one that has MAME).** The "GB300 v1" (which this tool is for) is the one where you navigate the menu using the shoulder buttons.
+
 
 ## Download
 
@@ -17,6 +19,8 @@ Hardware:
 - microSD (TF) reader (or SD reader with an adapter) that – unlike a phone – has a drive letter
 - Screen resolution must not be lower than that of the [OLPC XO-1](https://en.wikipedia.org/wiki/OLPC_XO), the world's cheapest laptop ever made, released in 2007
 
+**Because I was repeatedly asked: No, I will _not_ support laptops that are even worse than a 2007 50-dollar children's laptop.**
+
 If you want to build it yourself, you need Embarcadero Delphi. It should compile with no to minimal changes starting from Delphi XE2. GB300 Tool makes heavy use of negative Zlib window sizes (aka headerless Deflate streams) which are not possible in earlier versions (maybe XE works as well, I don't know). There is a way newer free Community Edition that will do the job.
 
 
@@ -24,7 +28,7 @@ If you want to build it yourself, you need Embarcadero Delphi. It should compile
 
 **General features:**
 
-- Quite small
+- Small
 - Fast startup times
 - Works quite smooth (depends on Windows GDI and TF card/reader performance)
 - Clean interface with all icons handcrafted just for this software, according to the OpenMoji style guide
@@ -207,7 +211,7 @@ Here you can change all images used by the GB300's UI. Only the boot logo and th
 - Select a file from the list on the left.
 - Click _Save File_ to save the current file.
   **Technical note:** This will always use PNG because there are different ways to decode/encode RGB565 bitmaps: `shl`-type (higher performance, supports true grays) and full byte range (supports true white, seems to be the more common one). Because RGB565 isn't natively supported by most image editors, they must decode RGB565 first to convert it to RGB888. Should your image editor use a different algorithm than GB300 Tool (full byte range), importing an edited file will cause rounding errors. This means that if you made changes based on the original image, any untouched areas will also be altered. PNG however is unambiguous (as long as gamma is unset, which is the case for GB300), because encoding and decoding depend on the implementation in GB300 Tool.
-- Use this button's the drop down menu to _Copy Current Image to Clipboard_. This applies to whatever is currently displayed, whereas _Save File_ saves the image from the selected files, even if something else is currently displayed here. Copying BGRA8888 images doesn't make sense because Windows clipboard cannot realy handle transparency.
+- Use this button's drop down menu to _Copy Current Image to Clipboard_. This applies to whatever is currently displayed, whereas _Save File_ saves the image from the selected files, even if something else is currently displayed here. Copying BGRA8888 images doesn't make sense because Windows clipboard cannot realy handle transparency.
 - Click _Replace..._ to load a new image. This overwrites the current file. GB300 Tool makes sure your image has the correct dimensions. You cannot overwrite BGRA8888 with an image that does not feature alpha.
 - The left combo box is for selecting the mode.
   - _Image / Slices_
@@ -245,7 +249,7 @@ The User ROMs tab has a context menu for the list where you can save the list fi
 There are 22879 entries in the tool's initial No-Intro database. The chance that all of these have different hashes ("birthday paradox") is around 94.1% <!--(2^32)!/((2^32)^22879*(2^32-22879)!)--> There is actually one duplicate game, but that one is an SMS game released for the MD with just a physical adapter, but still exactly the same ROM. In A5200, one identical file is listed twice inside only one game.
 
 Fun Facts about making the live previews:
-- To not promote even more downloading of commercial games, the sample screenshot for "Download ROMs" contains one free homebrew ROM for each of the 8 supported systems. All ROMs were considered the best on their respective systems according to various sources. I took considerable time to create this list, leading to delays in publishing thsi tool. You should give all of these ROMs a try.
+- To not promote even more downloading of commercial games, the sample screenshot for "Download ROMs" contains one free homebrew ROM for each of the 8 supported systems. All ROMs were considered the best on their respective systems according to various sources. I took considerable time to create this list, leading to delays in publishing this tool. You should give all of these ROMs a try.
 - The three screenshots used in the samples are the most memorable situations (or memes) I recalled when thinking about ROMs.
 
 The BPS support was added because I wanted to patch Pokémon Crystal into Pokémon Prism myself. When I finished my work, I noticed that the patch was in BSP format rather than BPS. BSP seems way more advanced than BPS as it can even upgrade battery saves.
@@ -254,6 +258,26 @@ v1.0-rc2's title bar reads "v1.0", so the actual v1.0 is called "v1.0-final".
 
 
 ## Changelog
+
+### v1.0b (22 Aug 2024)
+
+- Updated the BIOS features' tab order
+- Fixed a bug that prevented _Import All Images..._ from finding images located in multicore actual ROMs path
+- Fixed a bug that prevented _Import All Images..._ from working with `.zip` files
+- Fixed memory leak when importing or creating a multicore state, that also caused the target file to be locked for reading and writing
+- Changed hotkey for adding/removing checkmarks to <kbd>+</kbd> (NUM) and <kbd>-</kbd> (NUM) because you often press space when you search in a list
+- Per-game core configuration can now configure multicore itself<br>Note: This feature does not affect existing per-game core configurations. In that case, click _Delete_ and configure again to make this feature appear.<br>Note: This is supposed to be overhauled again in the next version, allowing you to choose the options to override. This is then set to support overriding multicore (`sf2000_*`) options in core configuration, e.g. you can set your preferred tearing fix on per-core basis.
+- Added support for DoubleCherryGB multicore core
+- If configuring an unknown core, option comboboxes (of the previously-selected core) are now hidden
+- Added support for Geolith multicore core<br>Note: Despite this core needing one of two BIOS files to work, no BIOS checker was implemented because the core is waaaay too slow (around 12 FPS), the BIOS is a ZIP file (so it can be different even with the same data inside) and MAME 2000 can run 114 of the 155 games – at full speed.
+- Updated description of second-player gamepad in key editor, as these have become available now
+- Added message saying that "GB300 v2" (the firmware that looks like SF2000) is not yet supported
+- Made the two "links" on the onboarding page clickable
+- Added arcade icon (which is being used for `m2k` core and `.geo` files)
+- Fixed renaming related files failing because it tried to rename the new name into the new name
+- Added _Find_ (<kbd>Ctrl</kbd>+<kbd>F</kbd>) and _Find Next_ (<kbd>F3</kbd>), only accessible by these shortcuts
+- This is likely the last version to support "GB300 v1" (the one without MAME where you navigate the menu using shoulder buttons)
+
 
 ### v1.0-final (13 Jul 2024)
 
