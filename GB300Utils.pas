@@ -1546,7 +1546,7 @@ begin
     Exit(3);
 
     if (MCName.Core = 'm2k') or (MCExt = 'geo') then
-    Exit(3);
+    Exit(24);
 
     if StartsStr('snes', MCName.Core) then
     Exit(2);
