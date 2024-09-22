@@ -114,6 +114,7 @@ var
   FileName: string;
   i: Integer;
   MS: TMemoryStream;
+  ROM: TROMFile;
 begin
   if Core = '' then
   Exit(False);
@@ -147,6 +148,19 @@ begin
     else
     if not MakeStub then
     OutputFile := ''
+    else
+    if UseZFBForMulticore then
+    begin
+      ROM := TROMFile.CreateFinalBurn(Core + ';' + ExtractFileName(FileNameList[0]) + '.gba');
+      try
+        OutputFile := ChangeFileExt(ExtractFileName(FileNameList[0]), '') + '.zfb';
+        Existed := FileExists(Foldername.AbsoluteFolder[FolderIndex] + OutputFile);
+        ROM.SaveToFile(FolderIndex, OutputFile, True);
+        OutputFile := Foldername.AbsoluteFolder[FolderIndex] + OutputFile;
+      finally
+        ROM.Free();
+      end;
+    end
     else
     begin
       MS := TMemoryStream.Create();

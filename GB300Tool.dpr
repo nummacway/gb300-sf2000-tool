@@ -27,13 +27,23 @@ uses
   UnitGambatteColorPicker in 'UnitGambatteColorPicker.pas' {FrameGambatteColorPicker: TFrame},
   UnitPerGameCoreConfig in 'UnitPerGameCoreConfig.pas' {FormPerGameCoreConfig},
   UnitMulticoreLog in 'UnitMulticoreLog.pas' {FrameMulticoreLog: TFrame},
-  PaletteColors in 'PaletteColors.pas';
+  PaletteColors in 'PaletteColors.pas',
+  UnitNeoGeoFaker in 'UnitNeoGeoFaker.pas' {FormNeoGeoFaker},
+  UnitFinalBurn in 'UnitFinalBurn.pas' {FormFinalBurn},
+  NeoGeoFaker in 'NeoGeoFaker.pas';
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
+  if False then
+  begin
+    Application.Run; // stops Delphi from creating newly-created forms
+  end;
+  if paramstr(1) = '-neogeo' then
+  Application.CreateForm(TFormNeoGeoFaker, FormNeoGeoFaker)
+  else
   Application.CreateForm(TForm1, Form1);
   Application.Run;
 end.

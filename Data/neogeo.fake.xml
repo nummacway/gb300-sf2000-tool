@@ -1,0 +1,6499 @@
+<?xml version="1.0"?>
+<fakes>
+<fake name="19yyo" status="good" p="1">
+<title>19YY [Neo CD conversion, ADK World][Original release]</title>
+<p crc="59374c47"/>
+<s crc="219b6f40"/>
+<c crc="622719d5"/>
+<c crc="41b07be5"/>
+<m crc="636d8ac8"/>
+<v crc="7bb79a6a"/>
+<v crc="1908a7ce"/>
+</fake>
+<fake name="19yy" status="good" p="1">
+<title>19YY [Neo CD conversion, ADK World]</title>
+<p crc="59374c47"/>
+<s crc="219b6f40"/>
+<c crc="622719d5"/>
+<c crc="41b07be5"/>
+<m crc="8e05762a"/>
+<v crc="944146c2"/>
+<v crc="a4bafe45"/>
+</fake>
+<fake name="2020bbcd">
+<title>2020 Super Baseball [Neo CD conversion]</title>
+<p crc="e13d8a8a"/>
+<s crc="7015b8fc"/>
+<c crc="4f5e19bd"/>
+<c crc="d6314bf0"/>
+<c crc="47fddfee"/>
+<c crc="780d1c4e"/>
+<m crc="124d7b4f"/>
+<v crc="d725a649"/>
+<v crc="54994455"/>
+</fake>
+<fake name="test240p" status="good">
+<title>240p Test Suite [v1.0]</title>
+<p crc="69196380"/>
+<s crc="5023f1ee"/>
+<c crc="1df22c5b"/>
+<c crc="68fbb87d"/>
+<m crc="25058131"/>
+<v crc="74730639"/>
+</fake>
+<fake name="3countba" c="3">
+<title>3 Count Bout (Fire Suplex) [NGM-043]</title>
+<p crc="eb2714c4"/>
+<p crc="5e764567"/>
+<s crc="c362d484"/>
+<c crc="bad2d67f"/>
+<c crc="a7fbda95"/>
+<c crc="f00be011"/>
+<c crc="1887e5c0"/>
+<m crc="7eab59cb"/>
+<v crc="63688ce8"/>
+<v crc="c69a827b"/>
+</fake>
+<fake name="4play" c="0">
+<title>4 player input test</title>
+<p crc="3c3d741b"/>
+<s crc="de828076"/>
+<c crc="7ee8cdcd"/>
+<m crc="5132580e"/>
+<v crc="7ee8cdcd"/>
+</fake>
+<fake name="abyssali" status="good">
+<title>Abyssal Infants</title>
+<p crc="a8a2a8a6"/>
+<s crc="1ebbb83e"/>
+<c crc="24dabe27"/>
+<c crc="bbdacc24"/>
+<m crc="3ddf772b"/>
+<v crc="1fae3797"/>
+</fake>
+<fake name="alpham2p" status="good" p="2" c="2">
+<title>Alpha Mission II (ASO II - Last Guardian) [prototype]</title>
+<p crc="c763e52a"/>
+<p crc="7a0b435c"/>
+<s crc="efc9ae2e"/>
+<c crc="24841639"/>
+<c crc="912763ab"/>
+<c crc="0743bde2"/>
+<c crc="61240212"/>
+<c crc="cf9f4c53"/>
+<c crc="3d903b19"/>
+<c crc="e41e3875"/>
+<c crc="4483e2cf"/>
+<m crc="5976b464"/>
+<v crc="18eaa9e1"/>
+<v crc="2487d495"/>
+<v crc="25e60f25"/>
+<v crc="ac44b75a"/>
+</fake>
+<fake name="aof2bhs">
+<title>Art of Fighting 2 (Ryuuko no Ken 2) [Boss With Simple Attack Edition, Hack]</title>
+<p crc="89eb2c94"/>
+<s crc="8b02638e"/>
+<c crc="17b9cbd2"/>
+<c crc="5fd76b67"/>
+<c crc="d2c88768"/>
+<c crc="db39b883"/>
+<c crc="c3074137"/>
+<c crc="31de68d3"/>
+<c crc="e546d7a8"/>
+<c crc="3f36df57"/>
+<m crc="f27e9d52"/>
+<v crc="4628fde0"/>
+<v crc="b710e2f2"/>
+<v crc="d168c301"/>
+</fake>
+<fake name="aof2bh">
+<title>Art of Fighting 2 (Ryuuko no Ken 2) [Enable hidden characters V2]</title>
+<p crc="3af1e484"/>
+<s crc="8b02638e"/>
+<c crc="17b9cbd2"/>
+<c crc="5fd76b67"/>
+<c crc="d2c88768"/>
+<c crc="db39b883"/>
+<c crc="c3074137"/>
+<c crc="31de68d3"/>
+<c crc="e546d7a8"/>
+<c crc="3f36df57"/>
+<m crc="f27e9d52"/>
+<v crc="4628fde0"/>
+<v crc="b710e2f2"/>
+<v crc="d168c301"/>
+</fake>
+<fake name="aof3bh">
+<title>Art of Fighting 3 - The Path of the Warrior (Art of Fighting - Ryuuko no Ken Gaiden) [Enable Hidden Characters V2]</title>
+<p crc="70969ff1"/>
+<p crc="4d5a2602"/>
+<s crc="cc7fd344"/>
+<c crc="f17b8d89"/>
+<c crc="3840c508"/>
+<c crc="55f9ee1e"/>
+<c crc="585b7e47"/>
+<c crc="9a9d2f7a"/>
+<c crc="c75a753c"/>
+<c crc="51bd8ab2"/>
+<c crc="9a34f99c"/>
+<m crc="cb07b659"/>
+<v crc="e2c32074"/>
+<v crc="a290eee7"/>
+<v crc="199d12ea"/>
+</fake>
+<fake name="badapple" status="error" msg="black screen+freeze">
+<title>Bad Apple [Tech-Demo]</title>
+<p crc="f68ade5a"/>
+<s crc="bc7ebee7"/>
+<c crc="88ddc443"/>
+<c crc="b64face4"/>
+<m crc="c11e8874"/>
+<v crc="3b741894"/>
+</fake>
+<fake name="b2b" status="error" msg="black screen+freeze">
+<title>Bang Bang Busters [2010 NCI release]</title>
+<p crc="7687197d"/>
+<s crc="44e5f154"/>
+<c crc="23d84a7a"/>
+<c crc="ce7b6248"/>
+<m crc="6da739ad"/>
+<v crc="50feffb0"/>
+</fake>
+<fake name="bangbedp" stock="noload" p="1">
+<title>Bang Bead [possibly Prototype]</title>
+<p crc="88a37f8b"/>
+<s crc="bb50fb2d"/>
+<c crc="e3919e44"/>
+<c crc="baf5a320"/>
+<c crc="c8e52157"/>
+<c crc="69fa8e60"/>
+<m crc="85668ee9"/>
+<v crc="e97b9385"/>
+<v crc="b0cbd70a"/>
+<v crc="97528fe9"/>
+</fake>
+<fake name="bstarsh">
+<title>Baseball Stars Professional [NGH-002]</title>
+<p crc="3bc7790e"/>
+<s crc="1a7fd0c6"/>
+<c crc="aaff2a45"/>
+<c crc="3ba0f7e4"/>
+<c crc="96f0fdfa"/>
+<c crc="5fd87f2f"/>
+<c crc="807ed83b"/>
+<c crc="5a3cad41"/>
+<m crc="4ecaa4ee"/>
+<v crc="b7b925bd"/>
+<v crc="329f26fc"/>
+<v crc="0c39f3c8"/>
+<v crc="c7e11c38"/>
+<v crc="04a733d1"/>
+</fake>
+<fake name="blazstarcm">
+<title>Blazing Star [Stage Select Hack]</title>
+<p crc="077ba687"/>
+<p crc="9a9f4154"/>
+<s crc="d56cb498"/>
+<c crc="84f6d584"/>
+<c crc="05a0cb22"/>
+<c crc="5fb69c9e"/>
+<c crc="0be028c4"/>
+<c crc="74bae5f8"/>
+<c crc="4e0700d2"/>
+<c crc="db60460e"/>
+<c crc="010ff4fd"/>
+<m crc="d31a3aea"/>
+<v crc="1b8d5bf7"/>
+<v crc="74cf0a70"/>
+</fake>
+<fake name="bjourneyh">
+<title>Blue's Journey (Raguy) [ALH-001]</title>
+<p crc="62cbe7b2"/>
+<s crc="843c3624"/>
+<c crc="4d47a48c"/>
+<c crc="e8c1491a"/>
+<c crc="66e69753"/>
+<c crc="71bfd48a"/>
+<m crc="8e1d4ab6"/>
+<v crc="2cb4ad91"/>
+<v crc="65a54d13"/>
+</fake>
+<fake name="bonusstage">
+<title>Bonus Stage</title>
+<p crc="de637e0b"/>
+<s crc="a12d8990"/>
+<c crc="bfe4eb8d"/>
+<c crc="41fab784"/>
+<m crc="dee563b2"/>
+<v crc="87bdd5fa"/>
+</fake>
+<fake name="breakrevbh" p="1">
+<title>Breakers Revenge [Boss Hack]</title>
+<p crc="52c978b5"/>
+<s crc="e7660a5d"/>
+<c crc="68d4ae76"/>
+<c crc="fdee05cd"/>
+<c crc="645077f3"/>
+<c crc="63aeb74c"/>
+<c crc="b5f40e7f"/>
+<c crc="d0337328"/>
+<m crc="00f31c66"/>
+<v crc="e255446c"/>
+<v crc="9068198a"/>
+</fake>
+<fake name="brkrevjq">
+<title>Breakers Revenge [Enhanced, Hack]</title>
+<p crc="85779451"/>
+<p crc="615bdad6"/>
+<s crc="e7660a5d"/>
+<c crc="68d4ae76"/>
+<c crc="fdee05cd"/>
+<c crc="645077f3"/>
+<c crc="63aeb74c"/>
+<c crc="b5f40e7f"/>
+<c crc="d0337328"/>
+<m crc="00f31c66"/>
+<v crc="e255446c"/>
+<v crc="9068198a"/>
+</fake>
+<fake name="brkrevext" p="1">
+<title>Breakers Revenge [Extra Mode, Hack]</title>
+<p crc="603b47a4"/>
+<s crc="e7660a5d"/>
+<c crc="68d4ae76"/>
+<c crc="fdee05cd"/>
+<c crc="645077f3"/>
+<c crc="63aeb74c"/>
+<c crc="b5f40e7f"/>
+<c crc="d0337328"/>
+<m crc="00f31c66"/>
+<v crc="e255446c"/>
+<v crc="9068198a"/>
+</fake>
+<fake name="burningfh">
+<title>Burning Fight [NGH-018, US]</title>
+<p crc="ddffcbf4"/>
+<s crc="6799ea0d"/>
+<c crc="25a25e9b"/>
+<c crc="d4378876"/>
+<c crc="862b60da"/>
+<c crc="e2e0aff7"/>
+<m crc="0c939ee2"/>
+<v crc="508c9ffc"/>
+<v crc="854ef277"/>
+</fake>
+<fake name="burningfpa" p="2">
+<title>Burning Fight [prototype, near final, ver 23.3, 910326]</title>
+<p crc="f7d15752"/>
+<p crc="ffae22fb"/>
+<s crc="6799ea0d"/>
+<c crc="3a441c6a"/>
+<c crc="bb72404b"/>
+<c crc="87bffd2f"/>
+<c crc="33803163"/>
+<c crc="74391952"/>
+<c crc="95e220e6"/>
+<c crc="41326c0d"/>
+<c crc="ed3b1f04"/>
+<m crc="2b0c0415"/>
+<v crc="b55b9670"/>
+<v crc="a0bcf260"/>
+<v crc="270f4707"/>
+<v crc="924e3d69"/>
+</fake>
+<fake name="burningfpb" p="2">
+<title>Burning Fight [prototype, newer, V07]</title>
+<p crc="f05ce157"/>
+<p crc="768ddc90"/>
+<s crc="3effc183"/>
+<c crc="8fd6a9bb"/>
+<c crc="7c3464b8"/>
+<c crc="0ac8f1be"/>
+<c crc="3af6b235"/>
+<c crc="707205ab"/>
+<c crc="10d0d2cf"/>
+<c crc="def06900"/>
+<c crc="6fdc1691"/>
+<m crc="3031af09"/>
+<v crc="20b40b70"/>
+<v crc="a0bcf260"/>
+<v crc="a4e0e58a"/>
+<REMOVE crc="4389e65a"/>
+<v crc="924e3d69"/>
+</fake>
+<fake name="burningfp" p="2">
+<title>Burning Fight [prototype, older]</title>
+<p crc="5b4032e7"/>
+<p crc="78762f68"/>
+<s crc="f3d130e8"/>
+<c crc="6569018b"/>
+<c crc="6949b501"/>
+<c crc="410f653b"/>
+<c crc="d43bf2a5"/>
+<c crc="837d09d3"/>
+<c crc="5fee51e7"/>
+<c crc="0f3f0823"/>
+<c crc="67cc9e34"/>
+<m crc="470dd5d4"/>
+<v crc="dc07ea3c"/>
+<v crc="f1ae637c"/>
+<v crc="9f3b4eda"/>
+</fake>
+<fake name="cabalng">
+<title>Cabal [Neo-Geo Conversion]</title>
+<p crc="bb193926"/>
+<s crc="45f0bc5e"/>
+<c crc="9f5ea8bb"/>
+<c crc="edf277f2"/>
+<m crc="efd97334"/>
+<v crc="1a5bbc12"/>
+<v crc="a2b9c011"/>
+</fake>
+<fake name="cakefght" p="1">
+<title>Cake Fighter [hack of Twinkle Star Sprites]</title>
+<p crc="8fea9dc4"/>
+<s crc="10037303"/>
+<c crc="5c56060d"/>
+<c crc="b51249d0"/>
+<c crc="9f634b11"/>
+<c crc="1a120e61"/>
+<m crc="364d6f96"/>
+<v crc="3eb19769"/>
+<v crc="7ad26599"/>
+</fake>
+<fake name="neodemo">
+<title>Chaos Demo [Neo Geo]</title>
+<p crc="fbfce2a4"/>
+<s crc="cd19264f"/>
+<c crc="870b28ea"/>
+<c crc="1ecf8128"/>
+<m crc="9c0291ea"/>
+<v crc="debeb8fb"/>
+</fake>
+<fake name="cndi">
+<title>Chip n Dale [FMV Demo]</title>
+<p crc="2df9a41d"/>
+<s crc="63b8b25e"/>
+<c crc="55bd32fc"/>
+<c crc="bbb43733"/>
+<c crc="715e0318"/>
+<c crc="016f3c7e"/>
+<c crc="28c6cb8c"/>
+<c crc="9c89503f"/>
+<c crc="074dd407"/>
+<c crc="5ddb7db5"/>
+<m crc="ae120a59"/>
+<v crc="91d45537"/>
+</fake>
+<fake name="ironclad" p="1">
+<title>Choutetsu Brikin'ger (Iron Clad) [prototype]</title>
+<p crc="62a942c6"/>
+<s crc="372fe217"/>
+<c crc="9aa2b7dc"/>
+<c crc="8a2ad708"/>
+<c crc="d67fb15a"/>
+<c crc="e73ea38b"/>
+<m crc="3a08bb63"/>
+<v crc="8f30a215"/>
+</fake>
+<fake name="ironclado" p="1">
+<title>Choutetsu Brikin'ger (Iron Clad) [prototype, bootleg]</title>
+<p crc="ce37e3a0"/>
+<s crc="372fe217"/>
+<c crc="9aa2b7dc"/>
+<c crc="8a2ad708"/>
+<c crc="d67fb15a"/>
+<c crc="e73ea38b"/>
+<m crc="3a08bb63"/>
+<v crc="8f30a215"/>
+</fake>
+<fake name="cnbe">
+<title>Codename - Blut Engel [2006-01-19]</title>
+<p crc="7ece4186"/>
+<s crc="40a4698f"/>
+<c crc="0f4fea6f"/>
+<c crc="3d5fc36f"/>
+<m crc="a5821c9c"/>
+<v crc="70191764"/>
+</fake>
+<fake name="cnbe2018">
+<title>Codename - Blut Engel [2018-09-05]</title>
+<p crc="189fecd5"/>
+<s crc="ec227c62"/>
+<c crc="db0e9083"/>
+<c crc="6114b6fb"/>
+<m crc="b94f41b4"/>
+<v crc="54947995"/>
+</fake>
+<fake name="columnsn">
+<title>Columns [Neo Geo]</title>
+<p crc="c6c9888d"/>
+<s crc="089a28a8"/>
+<c crc="9a579cab"/>
+<c crc="91d14043"/>
+<m crc="7669de64"/>
+<v crc="504bf849"/>
+</fake>
+<fake name="crswd2bl" p="1">
+<title>Crossed Swords 2 [bootleg of CD version]</title>
+<p crc="64836147"/>
+<s crc="22e02ddd"/>
+<c crc="8221b712"/>
+<c crc="d6c6183d"/>
+<m crc="63e28343"/>
+<v crc="22d4b93b"/>
+</fake>
+<fake name="cphd" target="garoup">
+<title>Crouching Poney Hidden Dragon [DEMO]</title>
+<p crc="de032a95"/>
+<p crc="7a3a2e41"/>
+<s crc="1736099a"/>
+<c crc="f3a4b475"/>
+<c crc="05ce93a9"/>
+<m crc="535a7397"/>
+<v crc="04eb9c07"/>
+</fake>
+<fake name="cthd2k3a">
+<title>Crouching Tiger Hidden Dragon 2003 [The King of Fighters 2001 bootleg, set 2]</title>
+<p crc="1185fe39"/>
+<p crc="ea71faf7"/>
+<s crc="174ccffd"/>
+<c crc="dc90c563"/>
+<c crc="7b08d331"/>
+<c crc="ac4aff71"/>
+<c crc="afef5d66"/>
+<c crc="c7c1ae50"/>
+<c crc="613197f9"/>
+<c crc="ad2d72b3"/>
+<c crc="8c3fc1b5"/>
+<m crc="a37cc447"/>
+<v crc="83d49ecf"/>
+<v crc="2b498449"/>
+<v crc="2ae38dbe"/>
+<v crc="26ec4dd9"/>
+</fake>
+<fake name="cyborgforce" target="garoup">
+<title>Cyborg Force!</title>
+<p crc="89e1c728"/>
+<p crc="e4a8b27a"/>
+<s crc="5bd29810"/>
+<c crc="77078687"/>
+<c crc="a5abdb83"/>
+<m crc="06da3cec"/>
+<v crc="dc50718c"/>
+<v crc="8135d5a8"/>
+</fake>
+<fake name="dwi">
+<title>DarkWing Duck [FMV Demo]</title>
+<p crc="8e3f2ea8"/>
+<s crc="3dc5c1ef"/>
+<c crc="2b8bda94"/>
+<c crc="5345e4de"/>
+<c crc="c6185f14"/>
+<c crc="c9e59701"/>
+<c crc="42dd1c90"/>
+<c crc="9fa6d651"/>
+<c crc="5cfa6886"/>
+<c crc="59c37871"/>
+<m crc="2249e065"/>
+<v crc="13bb4ce4"/>
+</fake>
+<fake name="dwia">
+<title>DarkWing Duck [FMV Demo, alt]</title>
+<p crc="8e3f2ea8"/>
+<s crc="63b8b25e"/>
+<c crc="2b8bda94"/>
+<c crc="5345e4de"/>
+<c crc="c6185f14"/>
+<c crc="c9e59701"/>
+<c crc="42dd1c90"/>
+<c crc="9fa6d651"/>
+<c crc="5cfa6886"/>
+<c crc="59c37871"/>
+<m crc="b9f8df96"/>
+<v crc="13bb4ce4"/>
+</fake>
+<fake name="doubledrbh" p="1">
+<title>Double Dragon [Boss hack]</title>
+<p crc="92826c06"/>
+<s crc="bef995c5"/>
+<c crc="b478c725"/>
+<c crc="2857da32"/>
+<c crc="8b0d378e"/>
+<c crc="c7d2f596"/>
+<c crc="ec87bff6"/>
+<c crc="844a8a11"/>
+<c crc="727c4d02"/>
+<c crc="69a5fa37"/>
+<m crc="10b144de"/>
+<v crc="cc1128e4"/>
+<v crc="c3ff5554"/>
+</fake>
+<fake name="doubledt">
+<title>Double Dragon [Optimized, Hack]</title>
+<p crc="0f4b369e"/>
+<p crc="0e2616ab"/>
+<s crc="bef995c5"/>
+<c crc="b478c725"/>
+<c crc="2857da32"/>
+<c crc="8b0d378e"/>
+<c crc="c7d2f596"/>
+<c crc="ec87bff6"/>
+<c crc="844a8a11"/>
+<c crc="727c4d02"/>
+<c crc="69a5fa37"/>
+<m crc="10b144de"/>
+<v crc="cc1128e4"/>
+<v crc="c3ff5554"/>
+</fake>
+<fake name="doubledp">
+<title>Double Dragon [Plus, Hack]</title>
+<p crc="f77b2081"/>
+<p crc="0e2616ab"/>
+<s crc="bef995c5"/>
+<c crc="b478c725"/>
+<c crc="2857da32"/>
+<c crc="8b0d378e"/>
+<c crc="c7d2f596"/>
+<c crc="ec87bff6"/>
+<c crc="844a8a11"/>
+<c crc="727c4d02"/>
+<c crc="69a5fa37"/>
+<m crc="10b144de"/>
+<v crc="cc1128e4"/>
+<v crc="c3ff5554"/>
+</fake>
+<fake name="doubldsp">
+<title>Double Dragon [Special 2017, Hack]</title>
+<p crc="616cbffc"/>
+<p crc="0e2616ab"/>
+<p crc="237aa1c0"/>
+<s crc="bef995c5"/>
+<c crc="b478c725"/>
+<c crc="2857da32"/>
+<c crc="8b0d378e"/>
+<c crc="c7d2f596"/>
+<c crc="b9c799fe"/>
+<c crc="11569bc9"/>
+<c crc="727c4d02"/>
+<c crc="69a5fa37"/>
+<m crc="10b144de"/>
+<v crc="cc1128e4"/>
+<v crc="c3ff5554"/>
+</fake>
+<fake name="dragonsh" p="2">
+<title>Dragon's Heaven [development board]</title>
+<p crc="f353448c"/>
+<p crc="f25c71ad"/>
+<s crc="706477a7"/>
+<c crc="81821826"/>
+<c crc="3601d568"/>
+</fake>
+<fake name="ducki">
+<title>Duck Tales [FMV Demo]</title>
+<p crc="f975711c"/>
+<s crc="63b8b25e"/>
+<c crc="02adabba"/>
+<c crc="00bd87ac"/>
+<c crc="263307c8"/>
+<c crc="b8330c1e"/>
+<c crc="ce99fcb8"/>
+<c crc="a6d30781"/>
+<c crc="eda15323"/>
+<c crc="400fd4cd"/>
+<m crc="7761d993"/>
+<v crc="24b716ee"/>
+</fake>
+<fake name="kabukiklb" p="1">
+<title>Far East of Eden - Kabuki Klash (Tengai Makyou - Shin Den) [Add hidden characters]</title>
+<p crc="9e814a43"/>
+<s crc="a3d68ee2"/>
+<c crc="2a9fab01"/>
+<c crc="6d2bac02"/>
+<c crc="5da735d6"/>
+<c crc="de07f997"/>
+<m crc="91957ef6"/>
+<v crc="69e90596"/>
+<v crc="7abdb75d"/>
+<v crc="eccc98d3"/>
+<v crc="a7c9c949"/>
+</fake>
+<fake name="kabukijq">
+<title>Far East of Eden - Kabuki Klash (Tengai Makyou - Shin Den) [Enhanced, Hack]</title>
+<p crc="bcc0fbec"/>
+<p crc="9e5fbe42"/>
+<s crc="a3d68ee2"/>
+<c crc="2a9fab01"/>
+<c crc="6d2bac02"/>
+<c crc="5da735d6"/>
+<c crc="de07f997"/>
+<m crc="91957ef6"/>
+<v crc="69e90596"/>
+<v crc="7abdb75d"/>
+<v crc="eccc98d3"/>
+<v crc="a7c9c949"/>
+</fake>
+<fake name="ffury1bs">
+<title>Fatal Fury - King of Fighters (Garou Densetsu - Shukumei no Tatakai) [Boss, Hack]</title>
+<p crc="fc051e1d"/>
+<p crc="c473af1c"/>
+<s crc="3c3bdf8c"/>
+<c crc="74317e54"/>
+<c crc="5bb952f3"/>
+<c crc="9b714a7c"/>
+<c crc="9397476a"/>
+<m crc="5be10ffd"/>
+<v crc="212fd20d"/>
+<v crc="fa2ae47f"/>
+</fake>
+<fake name="ffury2es">
+<title>Fatal Fury 2 (Garou Densetsu 2 - Arata-naru Tatakai) [Easy Special Attacks, Hack]</title>
+<p crc="dde4ef62"/>
+<s crc="d7dbbf39"/>
+<c crc="f72a939e"/>
+<c crc="05119a0d"/>
+<c crc="01e00738"/>
+<c crc="9fe27432"/>
+<m crc="820b0ba7"/>
+<v crc="d9d00784"/>
+<v crc="2c9a4b33"/>
+</fake>
+<fake name="fatfury2a">
+<title>Fatal Fury 2 (Garou Densetsu 2 - arata-naru tatakai) [NGM-047]</title>
+<p crc="be40ea92"/>
+<p crc="2a9beac5"/>
+<s crc="d7dbbf39"/>
+<c crc="f72a939e"/>
+<c crc="05119a0d"/>
+<c crc="01e00738"/>
+<c crc="9fe27432"/>
+<m crc="820b0ba7"/>
+<v crc="d9d00784"/>
+<v crc="2c9a4b33"/>
+</fake>
+<fake name="ffury3eh">
+<title>Fatal Fury 3 - Road to the Final Victory (Garou Densetsu 3 - Haruka-naru Tatakai) [Add Char - Ultra kill style changed, Hack]</title>
+<p crc="e07140da"/>
+<s crc="dbe963ed"/>
+<s crc="0b33a800"/>
+<c crc="e302f93c"/>
+<c crc="1053a455"/>
+<c crc="1c0fde2f"/>
+<c crc="a25fc3d0"/>
+<c crc="b3ec6fa6"/>
+<c crc="69210441"/>
+<m crc="fce72926"/>
+<v crc="2bdbd4db"/>
+<v crc="a698a487"/>
+<v crc="581c5304"/>
+</fake>
+<fake name="ffury3bs">
+<title>Fatal Fury 3 - Road to the Final Victory (Garou Densetsu 3 - Haruka-naru Tatakai) [Ancient Battles Resurgence, Hack]</title>
+<p crc="b8362f59"/>
+<s crc="dbe963ed"/>
+<s crc="0b33a800"/>
+<c crc="e302f93c"/>
+<c crc="1053a455"/>
+<c crc="1c0fde2f"/>
+<c crc="a25fc3d0"/>
+<c crc="b3ec6fa6"/>
+<c crc="69210441"/>
+<m crc="fce72926"/>
+<v crc="2bdbd4db"/>
+<v crc="a698a487"/>
+<v crc="581c5304"/>
+</fake>
+<fake name="fatfury3a">
+<title>Fatal Fury 3 - Road to the Final Victory (Garou Densetsu 3 - haruka-naru tatakai) [NGM-069 ~ NGH-069] [alternate set]</title>
+<p crc="4e27bd16"/>
+<s crc="dbe963ed"/>
+<s crc="0b33a800"/>
+<c crc="e302f93c"/>
+<c crc="1053a455"/>
+<c crc="1c0fde2f"/>
+<c crc="a25fc3d0"/>
+<c crc="b3ec6fa6"/>
+<c crc="69210441"/>
+<m crc="fce72926"/>
+<v crc="2bdbd4db"/>
+<v crc="a698a487"/>
+<v crc="581c5304"/>
+</fake>
+<fake name="ffurspbt">
+<title>Fatal Fury Special (Garou Densetsu Special) [BT Version PPX, Hack]</title>
+<p crc="67354471"/>
+<p crc="d7c71a6b"/>
+<s crc="2df03197"/>
+<c crc="044ab13c"/>
+<c crc="11e6bf96"/>
+<c crc="6f7938d5"/>
+<c crc="4ad066ff"/>
+<c crc="49c5e0bf"/>
+<c crc="8ff1f43d"/>
+<m crc="ccc5186e"/>
+<v crc="55d7ce84"/>
+<v crc="ee080b10"/>
+<v crc="f9eb3d4a"/>
+</fake>
+<fake name="fatfurspa">
+<title>Fatal Fury Special (Garou Densetsu Special) [NGM-058 ~ NGH-058, set 2]</title>
+<p crc="2f585ba2"/>
+<p crc="d7c71a6b"/>
+<s crc="2df03197"/>
+<c crc="044ab13c"/>
+<c crc="11e6bf96"/>
+<c crc="6f7938d5"/>
+<c crc="4ad066ff"/>
+<c crc="49c5e0bf"/>
+<c crc="8ff1f43d"/>
+<m crc="ccc5186e"/>
+<v crc="55d7ce84"/>
+<v crc="ee080b10"/>
+<v crc="f9eb3d4a"/>
+<p crc="9f0c1e1a"/>
+</fake>
+<fake name="ffurspbs">
+<title>Fatal Fury Special (Garou Densetsu Special) [Optional Hidden Character Third Edition, Hack]</title>
+<p crc="8cd18f7f"/>
+<p crc="d7c71a6b"/>
+<s crc="2df03197"/>
+<c crc="044ab13c"/>
+<c crc="11e6bf96"/>
+<c crc="6f7938d5"/>
+<c crc="4ad066ff"/>
+<c crc="49c5e0bf"/>
+<c crc="8ff1f43d"/>
+<m crc="ccc5186e"/>
+<v crc="55d7ce84"/>
+<v crc="ee080b10"/>
+<v crc="f9eb3d4a"/>
+</fake>
+<fake name="fightfeva">
+<title>Fight Fever (Wang Jung Wang) [set 2]</title>
+<p crc="2a104b50"/>
+<s crc="d62a72e9"/>
+<c crc="8908fff9"/>
+<c crc="c6649492"/>
+<c crc="0956b437"/>
+<c crc="026f3b62"/>
+<m crc="0b7c4e65"/>
+<v crc="f417c215"/>
+<v crc="efcff7cf"/>
+<s crc="3032041b"/>
+</fake>
+<fake name="ngfrog">
+<title>Frog Feast [Neo Geo]</title>
+<p crc="c26848da"/>
+<s crc="88f4cd13"/>
+<c crc="7b2f9fb3"/>
+<c crc="a7f18a6f"/>
+<m crc="c825b484"/>
+<v crc="2639da11"/>
+<v crc="e5eda58b"/>
+</fake>
+<fake name="neogalag">
+<title>Galaga Demo [set 1]</title>
+<p crc="7226db5c"/>
+<s crc="90557449"/>
+<c crc="6de8c6f6"/>
+<c crc="fa5f0c1d"/>
+<m crc="9c0291ea"/>
+<v crc="debeb8fb"/>
+</fake>
+<fake name="neogalaga">
+<title>Galaga Demo [set 2]</title>
+<p crc="01dc85fd"/>
+<s crc="90557449"/>
+<c crc="f8221e34"/>
+<c crc="c30cf1fc"/>
+<m crc="9c0291ea"/>
+<v crc="debeb8fb"/>
+</fake>
+<fake name="garoubs" target="garou">
+<title>Garou - Mark of the Wolves [Enable hidden characters, Hack]</title>
+<p crc="98bc93dc"/>
+<p crc="ea3171a4"/>
+<p crc="382f704b"/>
+<p crc="e395bfdd"/>
+<p crc="c1fb6ff4"/>
+<c crc="0603e046"/>
+<c crc="0917d2a4"/>
+<c crc="6737c92d"/>
+<c crc="5ba92ec6"/>
+<c crc="3eab5557"/>
+<c crc="308d098b"/>
+<c crc="c0e995ae"/>
+<c crc="21a11303"/>
+<m crc="36a806be"/>
+<v crc="263e388c"/>
+<v crc="2c6bc7be"/>
+<v crc="0425b27d"/>
+<v crc="a54be8a9"/>
+</fake>
+<fake name="garoujq">
+<title>Garou - Mark of the Wolves [Enhanced, Hack]</title>
+<p crc="452d8c4a"/>
+<p crc="1eeecc14"/>
+<s crc="779989de"/>
+<c crc="5bb5d137"/>
+<c crc="5c8d2960"/>
+<c crc="234d16fc"/>
+<c crc="b9b5b993"/>
+<c crc="722615d2"/>
+<c crc="0a6fab38"/>
+<c crc="d68e806f"/>
+<c crc="f778fe99"/>
+<m crc="bbe464f7"/>
+<v crc="274f3923"/>
+<v crc="8f86dabe"/>
+<v crc="05fd06cd"/>
+<v crc="14984063"/>
+</fake>
+<fake name="garouha">
+<title>Garou - Mark of the Wolves [NGH-2530]</title>
+<p crc="9aa450e6"/>
+<p crc="ea3171a4"/>
+<p crc="382f704b"/>
+<p crc="e395bfdd"/>
+<p crc="da92c08e"/>
+<c crc="0603e046"/>
+<c crc="0917d2a4"/>
+<c crc="6737c92d"/>
+<c crc="5ba92ec6"/>
+<c crc="3eab5557"/>
+<c crc="308d098b"/>
+<c crc="c0e995ae"/>
+<c crc="21a11303"/>
+<m crc="36a806be"/>
+<v crc="263e388c"/>
+<v crc="2c6bc7be"/>
+<v crc="0425b27d"/>
+<v crc="a54be8a9"/>
+</fake>
+<fake name="garouh" target="garou">
+<title>Garou - Mark of the Wolves [NGM-2530 ~ NGH-2530]</title>
+<p crc="96c72233"/>
+<p crc="18ae5d7e"/>
+<p crc="afffa779"/>
+<c crc="0603e046"/>
+<c crc="0917d2a4"/>
+<c crc="6737c92d"/>
+<c crc="5ba92ec6"/>
+<c crc="3eab5557"/>
+<c crc="308d098b"/>
+<c crc="c0e995ae"/>
+<c crc="21a11303"/>
+<m crc="36a806be"/>
+<v crc="263e388c"/>
+<v crc="2c6bc7be"/>
+<v crc="0425b27d"/>
+<v crc="a54be8a9"/>
+</fake>
+<fake name="ghostbi">
+<title>Ghost Busters [FMV Demo]</title>
+<p crc="af69ef5f"/>
+<p crc="f57e393f"/>
+<s crc="63b8b25e"/>
+<c crc="4281fecd"/>
+<c crc="0f07018c"/>
+<c crc="a4589b2a"/>
+<c crc="2a72bd04"/>
+<c crc="ad3b72f9"/>
+<c crc="963e0941"/>
+<m crc="6624e642"/>
+<v crc="44864761"/>
+</fake>
+<fake name="gpilotsp" p="2">
+<title>Ghost Pilots [prototype]</title>
+<p crc="c42125b4"/>
+<p crc="5a4db1f3"/>
+<s crc="a6d83d53"/>
+<c crc="7a5158b3"/>
+<c crc="41e67a5a"/>
+<c crc="5f80c0d0"/>
+<c crc="61227b93"/>
+<c crc="96de9bb5"/>
+<c crc="2b904c85"/>
+<c crc="c0d7517d"/>
+<c crc="75569e35"/>
+<m crc="32a108cf"/>
+<v crc="8cc44140"/>
+<v crc="415c61cd"/>
+<v crc="4a9e6f03"/>
+<v crc="7abf113d"/>
+</fake>
+<fake name="gladmort">
+<title>GladMort [Demo 2]</title>
+<p crc="d7712425"/>
+<s crc="8304be52"/>
+<c crc="bcb081ba"/>
+<c crc="1b927329"/>
+<m crc="0dfddae3"/>
+<v crc="3b5e1408"/>
+<v crc="d44f004d"/>
+<v crc="e9e8de2f"/>
+<v crc="aaf3f4e2"/>
+</fake>
+<fake name="hypernoid">
+<title>Hypernoid [Ver. 20220224]</title>
+<p crc="43515e22"/>
+<s crc="bb82ab71"/>
+<c crc="41d6140a"/>
+<c crc="36f35df2"/>
+<m crc="6c8eaacc"/>
+<v crc="dafa1bdd"/>
+<v crc="85ad8283"/>
+<v crc="86c27f0c"/>
+<v crc="a3982244"/>
+</fake>
+<fake name="froman2b">
+<title>Idol Mahjong Final Romance 2 [Neo-Geo, bootleg of CD version]</title>
+<p crc="09675541"/>
+<s crc="0e6a7c73"/>
+<c crc="29148bf7"/>
+<c crc="226b1263"/>
+<m crc="da4878cf"/>
+<v crc="6f8ccddc"/>
+</fake>
+<fake name="jockeygpa" target="jockeygp">
+<title>Jockey Grand Prix [set 2]</title>
+<p crc="b8f35532"/>
+<c crc="a9acbf18"/>
+<c crc="6289eef9"/>
+<m crc="d163c690"/>
+<v crc="443eadba"/>
+</fake>
+<fake name="ltorb">
+<title>Jonas Indiana and the Lost Temple of RA [20050717]</title>
+<p crc="353f6b05"/>
+<s crc="8224d8b7"/>
+<c crc="8b607198"/>
+<c crc="6b96b59c"/>
+<m crc="6847fd52"/>
+<v crc="0329c2e7"/>
+</fake>
+<fake name="karnovre">
+<title>Karnov's Revenge (Fighter's History Dynamite) [Revolution v0.2, Hack]</title>
+<p crc="07af175f"/>
+<s crc="bae5d5e5"/>
+<c crc="09dfe061"/>
+<c crc="e0f6682a"/>
+<c crc="a673b4f7"/>
+<c crc="cb3dc5f4"/>
+<c crc="9a28785d"/>
+<c crc="c15c01ed"/>
+<m crc="030beae4"/>
+<v crc="0b7ea37a"/>
+</fake>
+<fake name="horekidb3">
+<title>Kid no Hore Hore Daisakusen [Neo-Geo Conversion]</title>
+<p crc="f0b31d22"/>
+<s crc="b88013e2"/>
+<c crc="18b0b56b"/>
+<c crc="9ccea1d5"/>
+<m crc="d82c2064"/>
+<v crc="fccb11f4"/>
+<v crc="c65a5900"/>
+</fake>
+<fake name="kof98bsc">
+<title>King of Fighters '98 - Dream Match Never Ends [Boss Chinese Edition, Hack]</title>
+<p crc="b51a342a"/>
+<p crc="8239edf1"/>
+<s crc="65080259"/>
+<c crc="40aceac9"/>
+<c crc="3aa0b16b"/>
+<c crc="3e554882"/>
+<c crc="e9e0f676"/>
+<c crc="9d10bed3"/>
+<c crc="da07b6a2"/>
+<c crc="f6d7a38a"/>
+<c crc="c823e045"/>
+<m crc="4ef7016b"/>
+<v crc="b9ea8051"/>
+<v crc="cc11106e"/>
+<v crc="044ea4e1"/>
+<v crc="7985ea30"/>
+</fake>
+<fake name="kof98plc">
+<title>King of Fighters '98 - Dream Match Never Ends [Plus Chinese Edition, Hack]</title>
+<p crc="0139fd5d"/>
+<p crc="b3f70317"/>
+<s crc="65080259"/>
+<c crc="a2752759"/>
+<c crc="4e00cd4b"/>
+<c crc="39c4210d"/>
+<c crc="9089241f"/>
+<c crc="9d10bed3"/>
+<c crc="da07b6a2"/>
+<c crc="737249a8"/>
+<c crc="3489c788"/>
+<m crc="4e7a6b1b"/>
+<v crc="b9ea8051"/>
+<v crc="cc11106e"/>
+<v crc="044ea4e1"/>
+<v crc="7985ea30"/>
+</fake>
+<fake name="kog">
+<title>King of Gladiator [bootleg of The King of Fighters '97]</title>
+<p crc="d2413ec6"/>
+<p crc="158b23f6"/>
+<s crc="0bef69da"/>
+<c crc="4eab9b0a"/>
+<c crc="697f8fd0"/>
+<c crc="1143fdf3"/>
+<c crc="ea82cf8f"/>
+<c crc="abd1be07"/>
+<c crc="d2bd967b"/>
+<m crc="45348747"/>
+<v crc="22a2b5b5"/>
+<v crc="2304e744"/>
+<v crc="759eb954"/>
+</fake>
+<fake name="kogplus">
+<title>King of Gladiator Plus [The King of Fighters '97 bootleg]</title>
+<p crc="0338f453"/>
+<p crc="5502b020"/>
+<s crc="6271e9ba"/>
+<c crc="4eab9b0a"/>
+<c crc="697f8fd0"/>
+<c crc="1143fdf3"/>
+<c crc="ea82cf8f"/>
+<c crc="abd1be07"/>
+<c crc="d2bd967b"/>
+<m crc="45348747"/>
+<v crc="22a2b5b5"/>
+<v crc="2304e744"/>
+<v crc="759eb954"/>
+</fake>
+<fake name="kotm2a">
+<title>King of the Monsters 2 - The Next Thing [older]</title>
+<p crc="8d186638"/>
+<p crc="28661afe"/>
+<s crc="63ee053a"/>
+<c crc="6d1c4aa9"/>
+<c crc="f7b75337"/>
+<c crc="bfc4f0b2"/>
+<c crc="81c9c250"/>
+<m crc="0c5b2ad5"/>
+<v crc="86d34b25"/>
+<v crc="8fa62a0b"/>
+</fake>
+<fake name="kotm2p" p="2">
+<title>King of the Monsters 2 - The Next Thing [prototype]</title>
+<p crc="3c1d17e7"/>
+<p crc="bc9691f0"/>
+<s crc="63ee053a"/>
+<c crc="7192a787"/>
+<c crc="7157eca1"/>
+<c crc="11d75727"/>
+<c crc="7ad48b28"/>
+<c crc="5bdaf9ca"/>
+<c crc="21d4be8c"/>
+<c crc="da55fd00"/>
+<c crc="592e9267"/>
+<m crc="0c5b2ad5"/>
+<v crc="dd3566f1"/>
+<v crc="57f60274"/>
+<v crc="0f008a07"/>
+<v crc="1943d0fe"/>
+<v crc="13be045b"/>
+<v crc="d1dd3fd6"/>
+</fake>
+<fake name="knightsch">
+<title>Knight's Chance</title>
+<p crc="d7ac5077"/>
+<s crc="d007e769"/>
+<c crc="206ca233"/>
+<c crc="782437cb"/>
+<m crc="aaf76ef5"/>
+<v crc="b8e55619"/>
+</fake>
+<fake name="lasthope">
+<title>Last Hope [bootleg AES to MVS conversion, no coin support]</title>
+<p crc="3776a88f"/>
+<s crc="0c0ff9e6"/>
+<c crc="53ef41b5"/>
+<c crc="f9b15ab3"/>
+<c crc="50cc21cf"/>
+<c crc="8486ad9e"/>
+<m crc="113c870f"/>
+<v crc="b765bafe"/>
+<v crc="9fd0d559"/>
+<v crc="6d5107e2"/>
+</fake>
+<fake name="lhcdb">
+<title>Last Hope CD Beta [Neo CD conversion]</title>
+<p crc="0f7405d7"/>
+<s crc="298495d6"/>
+<c crc="554e6b73"/>
+<c crc="7c84b0fc"/>
+<c crc="28ec7555"/>
+<c crc="8b7c236b"/>
+<m crc="d9f6c153"/>
+<v crc="de563ec3"/>
+<v crc="93478033"/>
+<v crc="e0fc99ca"/>
+</fake>
+<fake name="lresortp" p="2">
+<title>Last Resort [prototype]</title>
+<p crc="8e6008ee"/>
+<p crc="6d9ee90f"/>
+<s crc="5cef5cc6"/>
+<c crc="677749ec"/>
+<c crc="104d7b59"/>
+<c crc="b0965a74"/>
+<c crc="dcfc3860"/>
+<c crc="50322397"/>
+<c crc="c3c93894"/>
+<c crc="21faf72b"/>
+<c crc="fb57217b"/>
+<m crc="22122875"/>
+<v crc="0722da38"/>
+<v crc="670ce3ec"/>
+<v crc="2e39462b"/>
+<v crc="7944754f"/>
+</fake>
+<fake name="looptris">
+<title>Looptris [v.2021-12-26]</title>
+<p crc="8fcb5104"/>
+<s crc="70e70448"/>
+<c crc="b9413f13"/>
+<c crc="9409dbe8"/>
+<m crc="e7105df8"/>
+<v crc="dfa63cd2"/>
+</fake>
+<fake name="looptrsp">
+<title>Looptris Plus [v.2022-12-24]</title>
+<p crc="894bb290"/>
+<s crc="70e70448"/>
+<c crc="b9413f13"/>
+<c crc="9409dbe8"/>
+<m crc="249bba11"/>
+<v crc="c9f86637"/>
+<v crc="41b3e17a"/>
+<v crc="1ed4e538"/>
+<v crc="705e7065"/>
+</fake>
+<fake name="magdrop3bh">
+<title>Magical Drop III [Secret Character Hack]</title>
+<p crc="80bfe2a9"/>
+<s crc="7399e68a"/>
+<c crc="65e3f4c4"/>
+<c crc="35dea6c9"/>
+<c crc="0ba2c502"/>
+<c crc="70dbbd6d"/>
+<m crc="5beaf34e"/>
+<v crc="58839298"/>
+<v crc="d5e30df4"/>
+</fake>
+<fake name="magdrop3te">
+<title>Magical Drop III Tournament Edition</title>
+<p crc="e2068d05"/>
+<s crc="7399e68a"/>
+<c crc="65e3f4c4"/>
+<c crc="35dea6c9"/>
+<c crc="0ba2c502"/>
+<c crc="70dbbd6d"/>
+<m crc="5beaf34e"/>
+<v crc="58839298"/>
+<v crc="d5e30df4"/>
+</fake>
+<fake name="matrimbh" target="matrim">
+<title>Matrimelee (Shin Gouketsuji Ichizoku Toukon) [Enable Hidden Characters V2]</title>
+<p crc="5f7b6942"/>
+<p crc="a14b1906"/>
+<c crc="505f4e30"/>
+<c crc="3cb57482"/>
+<c crc="f1cc6ad0"/>
+<c crc="45b806b7"/>
+<c crc="9a15dd6b"/>
+<c crc="281cb939"/>
+<c crc="4b71f780"/>
+<c crc="29873d33"/>
+<m crc="456c3e6c"/>
+<v crc="a4f83690"/>
+<v crc="d0f69eda"/>
+</fake>
+<fake name="mslug1v2">
+<title>Metal Slug - Super Vehicle-001 [1v2 Mode, Hack]</title>
+<p crc="18301e60"/>
+<p crc="c4d10926"/>
+<s crc="2f55958d"/>
+<c crc="72813676"/>
+<c crc="96f62574"/>
+<c crc="5121456a"/>
+<c crc="f4ad59a3"/>
+<m crc="c28b3253"/>
+<v crc="23d22ed1"/>
+<v crc="472cf9db"/>
+</fake>
+<fake name="mslugfs">
+<title>Metal Slug - Super Vehicle-001 [Firepower Showdown, Hack]</title>
+<p crc="aa1c9f84"/>
+<p crc="057962bd"/>
+<s crc="2f55958d"/>
+<c crc="72813676"/>
+<c crc="96f62574"/>
+<c crc="5121456a"/>
+<c crc="f4ad59a3"/>
+<m crc="c28b3253"/>
+<v crc="23d22ed1"/>
+<v crc="472cf9db"/>
+</fake>
+<fake name="mslugdg">
+<title>Metal Slug - Super Vehicle-001 [Multifunction, Hack]</title>
+<p crc="7f66b97f"/>
+<p crc="c3cb544c"/>
+<s crc="2f55958d"/>
+<c crc="72813676"/>
+<c crc="96f62574"/>
+<c crc="5121456a"/>
+<c crc="f4ad59a3"/>
+<m crc="c28b3253"/>
+<v crc="23d22ed1"/>
+<v crc="472cf9db"/>
+</fake>
+<fake name="msqyfc1">
+<title>Metal Slug - Super Vehicle-001 [Origins Item Random, Hack]</title>
+<p crc="4f107600"/>
+<p crc="f0b93488"/>
+<s crc="2f55958d"/>
+<c crc="72813676"/>
+<c crc="96f62574"/>
+<c crc="5121456a"/>
+<c crc="f4ad59a3"/>
+<m crc="c28b3253"/>
+<v crc="23d22ed1"/>
+<v crc="472cf9db"/>
+</fake>
+<fake name="mslugqy">
+<title>Metal Slug - Super Vehicle-001 [Origins, Hack]</title>
+<p crc="16068dc1"/>
+<p crc="c3cb544c"/>
+<s crc="2f55958d"/>
+<c crc="72813676"/>
+<c crc="96f62574"/>
+<c crc="5121456a"/>
+<c crc="f4ad59a3"/>
+<m crc="c28b3253"/>
+<v crc="23d22ed1"/>
+<v crc="472cf9db"/>
+</fake>
+<fake name="mslugfc2">
+<title>Metal Slug - Super Vehicle-001 [Random Item &amp; Powerful Enemy Defense, Hack]</title>
+<p crc="4d86e27f"/>
+<p crc="14b67778"/>
+<s crc="2f55958d"/>
+<c crc="72813676"/>
+<c crc="96f62574"/>
+<c crc="5121456a"/>
+<c crc="f4ad59a3"/>
+<m crc="c28b3253"/>
+<v crc="23d22ed1"/>
+<v crc="472cf9db"/>
+</fake>
+<fake name="mslugfc1">
+<title>Metal Slug - Super Vehicle-001 [Random Item, Hack]</title>
+<p crc="267042be"/>
+<p crc="65749e35"/>
+<s crc="2f55958d"/>
+<c crc="72813676"/>
+<c crc="96f62574"/>
+<c crc="5121456a"/>
+<c crc="f4ad59a3"/>
+<m crc="c28b3253"/>
+<v crc="23d22ed1"/>
+<v crc="472cf9db"/>
+</fake>
+<fake name="ms21v2">
+<title>Metal Slug 2 - Super Vehicle-001/II [1v2 Mode, Hack]</title>
+<p crc="c3efed6c"/>
+<p crc="38883f44"/>
+<s crc="f3d32f0f"/>
+<c crc="394b5e0d"/>
+<c crc="e5806221"/>
+<c crc="9f6bfa6f"/>
+<c crc="7d3e306f"/>
+<m crc="94520ebd"/>
+<v crc="99ec20e8"/>
+<v crc="ecb16799"/>
+</fake>
+<fake name="mslug2r">
+<title>Metal Slug 2 - Super Vehicle-001/II [Enemy Remix, Hack]</title>
+<p crc="f882d50d"/>
+<p crc="38883f44"/>
+<s crc="f3d32f0f"/>
+<c crc="394b5e0d"/>
+<c crc="e5806221"/>
+<c crc="9f6bfa6f"/>
+<c crc="7d3e306f"/>
+<m crc="94520ebd"/>
+<v crc="99ec20e8"/>
+<v crc="ecb16799"/>
+</fake>
+<fake name="mslug2eg">
+<title>Metal Slug 2 - Super Vehicle-001/II [Extraction Green Turbo, Hack]</title>
+<p crc="bb312904"/>
+<p crc="abf37360"/>
+<s crc="d983067f"/>
+<c crc="394b5e0d"/>
+<c crc="e5806221"/>
+<c crc="9f6bfa6f"/>
+<c crc="7d3e306f"/>
+<c crc="cae9af4f"/>
+<c crc="7cf51055"/>
+<m crc="94520ebd"/>
+<v crc="99ec20e8"/>
+<v crc="ecb16799"/>
+</fake>
+<fake name="mslug2fm">
+<title>Metal Slug 2 - Super Vehicle-001/II [Friendly Fire FC2, Hack]</title>
+<p crc="487173f6"/>
+<p crc="37a118fc"/>
+<s crc="f3d32f0f"/>
+<c crc="394b5e0d"/>
+<c crc="e5806221"/>
+<c crc="9f6bfa6f"/>
+<c crc="7d3e306f"/>
+<m crc="94520ebd"/>
+<v crc="99ec20e8"/>
+<v crc="ecb16799"/>
+</fake>
+<fake name="mslug2dg">
+<title>Metal Slug 2 - Super Vehicle-001/II [Multifunction, Hack]</title>
+<p crc="00c455e7"/>
+<p crc="1bf6b12a"/>
+<s crc="f3d32f0f"/>
+<c crc="394b5e0d"/>
+<c crc="e5806221"/>
+<c crc="9f6bfa6f"/>
+<c crc="7d3e306f"/>
+<m crc="94520ebd"/>
+<v crc="99ec20e8"/>
+<v crc="ecb16799"/>
+</fake>
+<fake name="mslug2dd">
+<title>Metal Slug 2 - Super Vehicle-001/II [Starlight, Hack]</title>
+<p crc="da22fd32"/>
+<p crc="89adbf97"/>
+<s crc="f3d32f0f"/>
+<c crc="394b5e0d"/>
+<c crc="e5806221"/>
+<c crc="c54c2548"/>
+<c crc="f8168521"/>
+<m crc="94520ebd"/>
+<v crc="99ec20e8"/>
+<v crc="ecb16799"/>
+</fake>
+<fake name="mslug2ct">
+<title>Metal Slug 2 - Super Vehicle-001/II [Survival, Hack]</title>
+<p crc="78ad6864"/>
+<p crc="fe36f353"/>
+<s crc="f3d32f0f"/>
+<c crc="394b5e0d"/>
+<c crc="e5806221"/>
+<c crc="9f6bfa6f"/>
+<c crc="7d3e306f"/>
+<m crc="94520ebd"/>
+<v crc="99ec20e8"/>
+<v crc="ecb16799"/>
+</fake>
+<fake name="mslug2p">
+<title>Metal Slug 2 - Super Vehicle-001/II [Weapon Storage, Hack]</title>
+<p crc="fe803784"/>
+<p crc="38883f44"/>
+<s crc="f3d32f0f"/>
+<c crc="394b5e0d"/>
+<c crc="e5806221"/>
+<c crc="9f6bfa6f"/>
+<c crc="7d3e306f"/>
+<m crc="94520ebd"/>
+<v crc="99ec20e8"/>
+<v crc="ecb16799"/>
+</fake>
+<fake name="mslug2unity">
+<title>Metal Slug 2 - Super Vehicle-001/II Unity [Added Timer Ver. 2021-01-22]</title>
+<p crc="1562cf23"/>
+<p crc="38883f44"/>
+<s crc="f3d32f0f"/>
+<c crc="394b5e0d"/>
+<c crc="e5806221"/>
+<c crc="9f6bfa6f"/>
+<c crc="7d3e306f"/>
+<m crc="94520ebd"/>
+<v crc="99ec20e8"/>
+<v crc="ecb16799"/>
+</fake>
+<fake name="mslug2t">
+<title>Metal Slug 2 Turbo [NGM-9410] [hack]</title>
+<p crc="df5d6fbc"/>
+<p crc="38883f44"/>
+<s crc="f3d32f0f"/>
+<c crc="394b5e0d"/>
+<c crc="e5806221"/>
+<c crc="9f6bfa6f"/>
+<c crc="7d3e306f"/>
+<m crc="94520ebd"/>
+<v crc="99ec20e8"/>
+<v crc="ecb16799"/>
+</fake>
+<fake name="ms31v2" target="mslug3">
+<title>Metal Slug 3 [1v2 Mode, Hack]</title>
+<p crc="1c090500"/>
+<p crc="b07edfd5"/>
+<p crc="45db3f1d"/>
+<c crc="5a79c34e"/>
+<c crc="944c362c"/>
+<c crc="6e69d36f"/>
+<c crc="b755b4eb"/>
+<c crc="7aacab47"/>
+<c crc="c698fd5d"/>
+<c crc="cfceddd2"/>
+<c crc="4d9be34c"/>
+<m crc="eaeec116"/>
+<v crc="f2690241"/>
+<v crc="7e2a10bd"/>
+<v crc="0eaec17c"/>
+<v crc="9b4b22d4"/>
+</fake>
+<fake name="mslug3eb" target="mslug3">
+<title>Metal Slug 3 [Blue, Hack]</title>
+<p crc="c2dc0b28"/>
+<p crc="6ec2e58d"/>
+<p crc="faaf8cd8"/>
+<c crc="5a79c34e"/>
+<c crc="944c362c"/>
+<c crc="6e69d36f"/>
+<c crc="b755b4eb"/>
+<c crc="7aacab47"/>
+<c crc="c698fd5d"/>
+<c crc="cfceddd2"/>
+<c crc="4d9be34c"/>
+<m crc="eaeec116"/>
+<v crc="f2690241"/>
+<v crc="7e2a10bd"/>
+<v crc="0eaec17c"/>
+<v crc="9b4b22d4"/>
+</fake>
+<fake name="mslug3c">
+<title>Metal Slug 3 [Enemy Remix, Hack]</title>
+<p crc="05c99714"/>
+<p crc="b948a472"/>
+<s crc="8458fff9"/>
+<c crc="3540398c"/>
+<c crc="bdd220f0"/>
+<c crc="bfaade82"/>
+<c crc="1463add6"/>
+<c crc="48ca7f28"/>
+<c crc="806eb36f"/>
+<c crc="9395b809"/>
+<c crc="a369f9d4"/>
+<m crc="eaeec116"/>
+<v crc="f2690241"/>
+<v crc="7e2a10bd"/>
+<v crc="0eaec17c"/>
+<v crc="9b4b22d4"/>
+</fake>
+<fake name="mslug3v">
+<title>Metal Slug 3 [Enhanced Violence, Hack]</title>
+<p crc="47f9aeea"/>
+<p crc="1f3d8ce8"/>
+<s crc="8458fff9"/>
+<c crc="3540398c"/>
+<c crc="bdd220f0"/>
+<c crc="bfaade82"/>
+<c crc="1463add6"/>
+<c crc="48ca7f28"/>
+<c crc="806eb36f"/>
+<c crc="9395b809"/>
+<c crc="a369f9d4"/>
+<m crc="eaeec116"/>
+<v crc="f2690241"/>
+<v crc="7e2a10bd"/>
+<v crc="0eaec17c"/>
+<v crc="9b4b22d4"/>
+</fake>
+<fake name="mslug3i" target="mslug3">
+<title>Metal Slug 3 [Firepower Enhance, Hack]</title>
+<p crc="3a631f79"/>
+<p crc="b07edfd5"/>
+<p crc="3a040bcc"/>
+<c crc="5a79c34e"/>
+<c crc="944c362c"/>
+<c crc="6e69d36f"/>
+<c crc="b755b4eb"/>
+<c crc="7aacab47"/>
+<c crc="c698fd5d"/>
+<c crc="cfceddd2"/>
+<c crc="4d9be34c"/>
+<m crc="eaeec116"/>
+<v crc="f2690241"/>
+<v crc="7e2a10bd"/>
+<v crc="0eaec17c"/>
+<v crc="9b4b22d4"/>
+</fake>
+<fake name="mslug3fd">
+<title>Metal Slug 3 [Fully Decrypted]</title>
+<p crc="9c42ca85"/>
+<p crc="1f3d8ce8"/>
+<s crc="8458fff9"/>
+<c crc="3540398c"/>
+<c crc="bdd220f0"/>
+<c crc="bfaade82"/>
+<c crc="1463add6"/>
+<c crc="48ca7f28"/>
+<c crc="806eb36f"/>
+<c crc="9395b809"/>
+<c crc="a369f9d4"/>
+<m crc="eaeec116"/>
+<v crc="f2690241"/>
+<v crc="7e2a10bd"/>
+<v crc="0eaec17c"/>
+<v crc="9b4b22d4"/>
+</fake>
+<fake name="mslug3ki">
+<title>Metal Slug 3 [Komorebi, Hack]</title>
+<p crc="16a83b0a"/>
+<p crc="57f01937"/>
+<s crc="8458fff9"/>
+<c crc="3540398c"/>
+<c crc="bdd220f0"/>
+<c crc="bfaade82"/>
+<c crc="1463add6"/>
+<c crc="48ca7f28"/>
+<c crc="806eb36f"/>
+<c crc="ec74423d"/>
+<c crc="a9fe9b98"/>
+<m crc="eaeec116"/>
+<v crc="f2690241"/>
+<v crc="7e2a10bd"/>
+<v crc="0eaec17c"/>
+<v crc="9b4b22d4"/>
+</fake>
+<fake name="mslug3lw">
+<title>Metal Slug 3 [Last Bullet Remix, Hack]</title>
+<p crc="94527837"/>
+<p crc="08ee1fe3"/>
+<s crc="8458fff9"/>
+<c crc="3540398c"/>
+<c crc="bdd220f0"/>
+<c crc="bfaade82"/>
+<c crc="1463add6"/>
+<c crc="48ca7f28"/>
+<c crc="806eb36f"/>
+<c crc="9395b809"/>
+<c crc="a369f9d4"/>
+<m crc="eaeec116"/>
+<v crc="f2690241"/>
+<v crc="7e2a10bd"/>
+<v crc="0eaec17c"/>
+<v crc="9b4b22d4"/>
+</fake>
+<fake name="mslug3cq">
+<title>Metal Slug 3 [Legend, Hack]</title>
+<p crc="6f84cdee"/>
+<p crc="14b0a9cf"/>
+<s crc="8458fff9"/>
+<c crc="3540398c"/>
+<c crc="bdd220f0"/>
+<c crc="bfaade82"/>
+<c crc="1463add6"/>
+<c crc="48ca7f28"/>
+<c crc="806eb36f"/>
+<c crc="2d54bf3c"/>
+<c crc="e7f00844"/>
+<m crc="eaeec116"/>
+<v crc="f2690241"/>
+<v crc="7e2a10bd"/>
+<v crc="0eaec17c"/>
+<v crc="9b4b22d4"/>
+</fake>
+<fake name="mslug3cqi">
+<title>Metal Slug 3 [Legendary Unlimited Fire, Hack]</title>
+<p crc="18b951c2"/>
+<p crc="d60f631d"/>
+<c crc="3540398c"/>
+<c crc="bdd220f0"/>
+<c crc="bfaade82"/>
+<c crc="1463add6"/>
+<c crc="48ca7f28"/>
+<c crc="806eb36f"/>
+<c crc="a5f46605"/>
+<c crc="03bbcf95"/>
+<m crc="eaeec116"/>
+<v crc="f2690241"/>
+<v crc="7e2a10bd"/>
+<v crc="0eaec17c"/>
+<v crc="9b4b22d4"/>
+</fake>
+<fake name="mslug3g">
+<title>Metal Slug 3 [Multifunction, Hack]</title>
+<p crc="b23bd9b7"/>
+<p crc="8053a3fb"/>
+<s crc="af90d166"/>
+<c crc="3540398c"/>
+<c crc="bdd220f0"/>
+<c crc="bfaade82"/>
+<c crc="1463add6"/>
+<c crc="48ca7f28"/>
+<c crc="806eb36f"/>
+<c crc="ed559fac"/>
+<c crc="1c52378b"/>
+<m crc="eaeec116"/>
+<v crc="f2690241"/>
+<v crc="7e2a10bd"/>
+<v crc="0eaec17c"/>
+<v crc="9b4b22d4"/>
+</fake>
+<fake name="mslug3a" target="mslug3">
+<title>Metal Slug 3 [NGM-2560, earlier]</title>
+<p crc="c60d29b2"/>
+<p crc="a1177628"/>
+<p crc="9b659826"/>
+<c crc="5a79c34e"/>
+<c crc="944c362c"/>
+<c crc="6e69d36f"/>
+<c crc="b755b4eb"/>
+<c crc="7aacab47"/>
+<c crc="c698fd5d"/>
+<c crc="cfceddd2"/>
+<c crc="4d9be34c"/>
+<m crc="eaeec116"/>
+<v crc="f2690241"/>
+<v crc="7e2a10bd"/>
+<v crc="0eaec17c"/>
+<v crc="9b4b22d4"/>
+</fake>
+<fake name="mslug3gw">
+<title>Metal Slug 3 [Onimusha Samanosuke, Hack]</title>
+<p crc="fafde0b4"/>
+<p crc="1f3d8ce8"/>
+<s crc="8458fff9"/>
+<c crc="3540398c"/>
+<c crc="bdd220f0"/>
+<c crc="bfaade82"/>
+<c crc="1463add6"/>
+<c crc="48ca7f28"/>
+<c crc="806eb36f"/>
+<c crc="9395b809"/>
+<c crc="a369f9d4"/>
+<m crc="c84d22f2"/>
+<v crc="f2690241"/>
+<v crc="7e2a10bd"/>
+<v crc="0eaec17c"/>
+<v crc="b45d9a3b"/>
+</fake>
+<fake name="mslug3ps">
+<title>Metal Slug 3 [Pigeon Slug, Hack]</title>
+<p crc="3f9c4361"/>
+<p crc="08ee1fe3"/>
+<s crc="8458fff9"/>
+<c crc="3540398c"/>
+<c crc="bdd220f0"/>
+<c crc="bfaade82"/>
+<c crc="1463add6"/>
+<c crc="3dd2c01f"/>
+<c crc="1ea253a8"/>
+<c crc="9395b809"/>
+<c crc="a369f9d4"/>
+<m crc="0c876e7f"/>
+<v crc="f2690241"/>
+<v crc="7e2a10bd"/>
+<v crc="0eaec17c"/>
+<v crc="e4421cbf"/>
+</fake>
+<fake name="mslug3sd">
+<title>Metal Slug 3 [Shop, Hack]</title>
+<p crc="e1e21cc4"/>
+<p crc="7343335b"/>
+<s crc="8458fff9"/>
+<c crc="3540398c"/>
+<c crc="bdd220f0"/>
+<c crc="bfaade82"/>
+<c crc="1463add6"/>
+<c crc="48ca7f28"/>
+<c crc="806eb36f"/>
+<c crc="9395b809"/>
+<c crc="a369f9d4"/>
+<m crc="eaeec116"/>
+<v crc="f2690241"/>
+<v crc="7e2a10bd"/>
+<v crc="0eaec17c"/>
+<v crc="9b4b22d4"/>
+</fake>
+<fake name="mslug3se">
+<title>Metal Slug 3 [Special, Hack]</title>
+<p crc="46330db5"/>
+<p crc="1f3d8ce8"/>
+<s crc="8458fff9"/>
+<c crc="3540398c"/>
+<c crc="bdd220f0"/>
+<c crc="bfaade82"/>
+<c crc="1463add6"/>
+<c crc="48ca7f28"/>
+<c crc="806eb36f"/>
+<c crc="9395b809"/>
+<c crc="a369f9d4"/>
+<m crc="eaeec116"/>
+<v crc="f2690241"/>
+<v crc="7e2a10bd"/>
+<v crc="0eaec17c"/>
+<v crc="9b4b22d4"/>
+</fake>
+<fake name="mslug3dd">
+<title>Metal Slug 3 [Starlight, Hack]</title>
+<p crc="9a83cb7a"/>
+<p crc="e82fc07a"/>
+<s crc="8458fff9"/>
+<c crc="3540398c"/>
+<c crc="bdd220f0"/>
+<c crc="bfaade82"/>
+<c crc="1463add6"/>
+<c crc="48ca7f28"/>
+<c crc="806eb36f"/>
+<c crc="ec74423d"/>
+<c crc="a9fe9b98"/>
+<m crc="eaeec116"/>
+<v crc="f2690241"/>
+<v crc="7e2a10bd"/>
+<v crc="0eaec17c"/>
+<v crc="9b4b22d4"/>
+</fake>
+<fake name="mslug3sc">
+<title>Metal Slug 3 [Survival, Hack]</title>
+<p crc="dc0b9622"/>
+<p crc="3e880fe2"/>
+<s crc="8458fff9"/>
+<c crc="3540398c"/>
+<c crc="bdd220f0"/>
+<c crc="bfaade82"/>
+<c crc="1463add6"/>
+<c crc="48ca7f28"/>
+<c crc="806eb36f"/>
+<c crc="f7a5eeeb"/>
+<c crc="03c3ad8f"/>
+<m crc="eaeec116"/>
+<v crc="f2690241"/>
+<v crc="7e2a10bd"/>
+<v crc="0eaec17c"/>
+<v crc="9b4b22d4"/>
+</fake>
+<fake name="mslug3zh">
+<title>Metal Slug 3 [Vehicle Summon, Hack]</title>
+<p crc="257fa6b9"/>
+<p crc="badc753c"/>
+<s crc="8458fff9"/>
+<c crc="3540398c"/>
+<c crc="bdd220f0"/>
+<c crc="bfaade82"/>
+<c crc="1463add6"/>
+<c crc="48ca7f28"/>
+<c crc="806eb36f"/>
+<c crc="9395b809"/>
+<c crc="a369f9d4"/>
+<m crc="eaeec116"/>
+<v crc="f2690241"/>
+<v crc="7e2a10bd"/>
+<v crc="0eaec17c"/>
+<v crc="9b4b22d4"/>
+</fake>
+<fake name="mslug3unity" target="mslug3">
+<title>Metal Slug 3 Unity [Added Timer Ver. 2021-02-13]</title>
+<p crc="3c6c536b"/>
+<p crc="b07edfd5"/>
+<p crc="ea0c22b6"/>
+<c crc="5a79c34e"/>
+<c crc="944c362c"/>
+<c crc="6e69d36f"/>
+<c crc="b755b4eb"/>
+<c crc="7aacab47"/>
+<c crc="c698fd5d"/>
+<c crc="cfceddd2"/>
+<c crc="4d9be34c"/>
+<m crc="eaeec116"/>
+<v crc="f2690241"/>
+<v crc="7e2a10bd"/>
+<v crc="0eaec17c"/>
+<v crc="9b4b22d4"/>
+</fake>
+<fake name="mslug3x">
+<title>Metal Slug 3X [Complete Collection]</title>
+<p crc="0d327ddb"/>
+<s crc="d2af5597"/>
+<c crc="7eb33146"/>
+<c crc="a193a88a"/>
+<m crc="0e339fdf"/>
+<v crc="67cc9264"/>
+</fake>
+<fake name="ms41v2">
+<title>Metal Slug 4 [1v2 Mode, Hack]</title>
+<p crc="dddca463"/>
+<p crc="fdb7aed8"/>
+<s crc="a9446774"/>
+<c crc="a75ffcde"/>
+<c crc="5ab0d12b"/>
+<c crc="61af560c"/>
+<c crc="f2c544fd"/>
+<c crc="84c66c44"/>
+<c crc="5ed018ab"/>
+<m crc="ef5db532"/>
+<v crc="8cb5a9ef"/>
+<v crc="94217b1e"/>
+<v crc="7616fcec"/>
+<v crc="c5967f91"/>
+</fake>
+<fake name="mslug4a">
+<title>Metal Slug 4 [20th Anniversary, Hack]</title>
+<p crc="0f2b0fc2"/>
+<p crc="87dc01b9"/>
+<s crc="a9446774"/>
+<c crc="a75ffcde"/>
+<c crc="5ab0d12b"/>
+<c crc="61af560c"/>
+<c crc="f2c544fd"/>
+<c crc="84c66c44"/>
+<c crc="5ed018ab"/>
+<m crc="ef5db532"/>
+<v crc="8cb5a9ef"/>
+<v crc="94217b1e"/>
+<v crc="7616fcec"/>
+<v crc="c5967f91"/>
+</fake>
+<fake name="mslug4c">
+<title>Metal Slug 4 [Enemy Remix, Hack]</title>
+<p crc="f8145f8d"/>
+<p crc="fdb7aed8"/>
+<s crc="a9446774"/>
+<c crc="a75ffcde"/>
+<c crc="5ab0d12b"/>
+<c crc="61af560c"/>
+<c crc="f2c544fd"/>
+<c crc="84c66c44"/>
+<c crc="5ed018ab"/>
+<m crc="ef5db532"/>
+<v crc="8cb5a9ef"/>
+<v crc="94217b1e"/>
+<v crc="7616fcec"/>
+<v crc="c5967f91"/>
+</fake>
+<fake name="mslug4fd">
+<title>Metal Slug 4 [Fully Decrypted]</title>
+<p crc="27e4def3"/>
+<p crc="fdb7aed8"/>
+<s crc="a9446774"/>
+<c crc="a75ffcde"/>
+<c crc="5ab0d12b"/>
+<c crc="61af560c"/>
+<c crc="f2c544fd"/>
+<c crc="84c66c44"/>
+<c crc="5ed018ab"/>
+<m crc="ef5db532"/>
+<v crc="8cb5a9ef"/>
+<v crc="94217b1e"/>
+<v crc="7616fcec"/>
+<v crc="c5967f91"/>
+</fake>
+<fake name="mslug4ki">
+<title>Metal Slug 4 [Komorebi, Hack]</title>
+<p crc="4e2363d3"/>
+<p crc="e95f6bd8"/>
+<s crc="a9446774"/>
+<c crc="a75ffcde"/>
+<c crc="5ab0d12b"/>
+<c crc="61af560c"/>
+<c crc="f2c544fd"/>
+<c crc="1d340215"/>
+<c crc="231d54ea"/>
+<m crc="ef5db532"/>
+<v crc="8cb5a9ef"/>
+<v crc="94217b1e"/>
+<v crc="7616fcec"/>
+<v crc="c5967f91"/>
+</fake>
+<fake name="mslug4lq">
+<title>Metal Slug 4 [Last Bullet Remix - Without body armor, Hack]</title>
+<p crc="9ebe335e"/>
+<p crc="7deba8eb"/>
+<s crc="a9446774"/>
+<c crc="a75ffcde"/>
+<c crc="5ab0d12b"/>
+<c crc="e296612c"/>
+<c crc="c22e3ad0"/>
+<c crc="288cd91f"/>
+<c crc="b015aeee"/>
+<m crc="49b1453e"/>
+<v crc="8cb5a9ef"/>
+<v crc="c9572c14"/>
+<v crc="e7c14624"/>
+<v crc="9260c539"/>
+</fake>
+<fake name="mslug4lw">
+<title>Metal Slug 4 [Last Bullet Remix, Hack]</title>
+<p crc="ad713169"/>
+<p crc="7deba8eb"/>
+<s crc="a9446774"/>
+<c crc="a75ffcde"/>
+<c crc="5ab0d12b"/>
+<c crc="e296612c"/>
+<c crc="c22e3ad0"/>
+<c crc="288cd91f"/>
+<c crc="b015aeee"/>
+<m crc="49b1453e"/>
+<v crc="8cb5a9ef"/>
+<v crc="c9572c14"/>
+<v crc="e7c14624"/>
+<v crc="9260c539"/>
+</fake>
+<fake name="mslug4dg">
+<title>Metal Slug 4 [Multifunction, Hack]</title>
+<p crc="36dfa877"/>
+<p crc="cf6feb75"/>
+<s crc="a9446774"/>
+<c crc="a75ffcde"/>
+<c crc="5ab0d12b"/>
+<c crc="61af560c"/>
+<c crc="f2c544fd"/>
+<c crc="84c66c44"/>
+<c crc="5ed018ab"/>
+<m crc="ef5db532"/>
+<v crc="8cb5a9ef"/>
+<v crc="94217b1e"/>
+<v crc="7616fcec"/>
+<v crc="c5967f91"/>
+</fake>
+<fake name="mslug4h" target="mslug4">
+<title>Metal Slug 4 [NGH-2630]</title>
+<p crc="c67f5c8d"/>
+<p crc="bc3ec89e"/>
+<c crc="84865f8a"/>
+<c crc="81df97f2"/>
+<c crc="1a343323"/>
+<c crc="942cfb44"/>
+<c crc="a748854f"/>
+<c crc="5c8ba116"/>
+<m crc="46ac8228"/>
+<v crc="01e9b9cd"/>
+<v crc="4ab2bf81"/>
+</fake>
+<fake name="mslug4ar">
+<title>Metal Slug 4 [Random Ammunition, Hack]</title>
+<p crc="21b68d31"/>
+<p crc="7deba8eb"/>
+<s crc="a9446774"/>
+<c crc="a75ffcde"/>
+<c crc="5ab0d12b"/>
+<c crc="61af560c"/>
+<c crc="f2c544fd"/>
+<c crc="84c66c44"/>
+<c crc="5ed018ab"/>
+<m crc="ef5db532"/>
+<v crc="8cb5a9ef"/>
+<v crc="94217b1e"/>
+<v crc="7616fcec"/>
+<v crc="c5967f91"/>
+</fake>
+<fake name="mslug4dd">
+<title>Metal Slug 4 [Starlight, Hack]</title>
+<p crc="02ce0fcd"/>
+<p crc="4569a092"/>
+<s crc="a9446774"/>
+<c crc="a75ffcde"/>
+<c crc="5ab0d12b"/>
+<c crc="61af560c"/>
+<c crc="f2c544fd"/>
+<c crc="1d340215"/>
+<c crc="231d54ea"/>
+<m crc="ef5db532"/>
+<v crc="8cb5a9ef"/>
+<v crc="94217b1e"/>
+<v crc="7616fcec"/>
+<v crc="c5967f91"/>
+</fake>
+<fake name="mslug4q">
+<title>Metal Slug 4 [The Longest Battle, Hack]</title>
+<p crc="1b5121b6"/>
+<p crc="f132898f"/>
+<s crc="a9446774"/>
+<c crc="a75ffcde"/>
+<c crc="5ab0d12b"/>
+<c crc="61af560c"/>
+<c crc="f2c544fd"/>
+<c crc="84c66c44"/>
+<c crc="5ed018ab"/>
+<m crc="ef5db532"/>
+<v crc="8cb5a9ef"/>
+<v crc="94217b1e"/>
+<v crc="7616fcec"/>
+<v crc="c5967f91"/>
+</fake>
+<fake name="mslug4unity" target="mslug4">
+<title>Metal Slug 4 Unity [Added Timer Ver. 2021-01-30]</title>
+<p crc="ef3501b6"/>
+<p crc="fdb7aed8"/>
+<c crc="84865f8a"/>
+<c crc="81df97f2"/>
+<c crc="1a343323"/>
+<c crc="942cfb44"/>
+<c crc="a748854f"/>
+<c crc="5c8ba116"/>
+<m crc="46ac8228"/>
+<v crc="01e9b9cd"/>
+<v crc="4ab2bf81"/>
+</fake>
+<fake name="ms51v2">
+<title>Metal Slug 5 [1v2 Mode, Hack]</title>
+<p crc="953d6e11"/>
+<s crc="64952683"/>
+<c crc="e8239365"/>
+<c crc="89b21d4c"/>
+<c crc="3cda13a0"/>
+<c crc="9c00160d"/>
+<c crc="38754256"/>
+<c crc="59d33e9c"/>
+<c crc="c9f8c357"/>
+<c crc="fafc3eb9"/>
+<m crc="346d4a30"/>
+<v crc="7ff6ca47"/>
+<v crc="696cce3b"/>
+</fake>
+<fake name="mslug5b">
+<title>Metal Slug 5 [bootleg, set 1]</title>
+<p crc="1376f43c"/>
+<p crc="4becfba0"/>
+<s crc="3a427c9f"/>
+<c crc="4b0e5998"/>
+<c crc="022fc30b"/>
+<c crc="ead86d28"/>
+<c crc="0be6be35"/>
+<c crc="2a23e569"/>
+<c crc="6eb6bc9e"/>
+<c crc="57f4e53f"/>
+<c crc="9d59ff7c"/>
+<m crc="bf1601bc"/>
+<v crc="e3f9fd75"/>
+<v crc="a53618f6"/>
+<v crc="14f000ee"/>
+<v crc="0ccee813"/>
+</fake>
+<fake name="mslug5b2" target="ms5plus">
+<title>Metal Slug 5 [bootleg, set 2]</title>
+<p crc="d05853ea"/>
+<c crc="ab7c389a"/>
+<c crc="3560881b"/>
+<c crc="3af955ea"/>
+<c crc="c329c373"/>
+<c crc="959c8177"/>
+<c crc="010a831b"/>
+<c crc="6d72a969"/>
+<c crc="551d720e"/>
+<m crc="4a5a6e0e"/>
+<v crc="ae31d60c"/>
+<v crc="c40613ed"/>
+</fake>
+<fake name="mslug5bs">
+<title>Metal Slug 5 [Boss Battles, Hack]</title>
+<p crc="8bb8c097"/>
+<s crc="64952683"/>
+<c crc="e8239365"/>
+<c crc="89b21d4c"/>
+<c crc="3cda13a0"/>
+<c crc="9c00160d"/>
+<c crc="38754256"/>
+<c crc="59d33e9c"/>
+<c crc="c9f8c357"/>
+<c crc="fafc3eb9"/>
+<m crc="346d4a30"/>
+<v crc="7ff6ca47"/>
+<v crc="696cce3b"/>
+</fake>
+<fake name="mslug5mg">
+<title>Metal Slug 5 [Devil Enemy Remix, Hack]</title>
+<p crc="1fc7de70"/>
+<s crc="64952683"/>
+<c crc="e8239365"/>
+<c crc="89b21d4c"/>
+<c crc="3cda13a0"/>
+<c crc="9c00160d"/>
+<c crc="38754256"/>
+<c crc="59d33e9c"/>
+<c crc="c9f8c357"/>
+<c crc="fafc3eb9"/>
+<m crc="346d4a30"/>
+<v crc="7ff6ca47"/>
+<v crc="696cce3b"/>
+</fake>
+<fake name="ms5esr">
+<title>Metal Slug 5 [Double Enemy, Hack]</title>
+<p crc="8f8327a1"/>
+<s crc="64952683"/>
+<c crc="e8239365"/>
+<c crc="89b21d4c"/>
+<c crc="3cda13a0"/>
+<c crc="9c00160d"/>
+<c crc="38754256"/>
+<c crc="59d33e9c"/>
+<c crc="c9f8c357"/>
+<c crc="fafc3eb9"/>
+<m crc="346d4a30"/>
+<v crc="7ff6ca47"/>
+<v crc="696cce3b"/>
+</fake>
+<fake name="mslug5db">
+<title>Metal Slug 5 [Enemy Enhance, Hack]</title>
+<p crc="1527c4dd"/>
+<s crc="64952683"/>
+<c crc="e8239365"/>
+<c crc="89b21d4c"/>
+<c crc="3cda13a0"/>
+<c crc="9c00160d"/>
+<c crc="38754256"/>
+<c crc="59d33e9c"/>
+<c crc="c9f8c357"/>
+<c crc="fafc3eb9"/>
+<m crc="346d4a30"/>
+<v crc="7ff6ca47"/>
+<v crc="696cce3b"/>
+</fake>
+<fake name="mslug5c">
+<title>Metal Slug 5 [Enemy Remix, Hack]</title>
+<p crc="e876d1e7"/>
+<s crc="64952683"/>
+<c crc="e8239365"/>
+<c crc="89b21d4c"/>
+<c crc="3cda13a0"/>
+<c crc="9c00160d"/>
+<c crc="38754256"/>
+<c crc="59d33e9c"/>
+<c crc="c9f8c357"/>
+<c crc="fafc3eb9"/>
+<m crc="346d4a30"/>
+<v crc="7ff6ca47"/>
+<v crc="696cce3b"/>
+</fake>
+<fake name="mslug5ex">
+<title>Metal Slug 5 [Extend v1.2, Hack]</title>
+<p crc="7ff5364b"/>
+<s crc="64952683"/>
+<c crc="e8239365"/>
+<c crc="89b21d4c"/>
+<c crc="3cda13a0"/>
+<c crc="9c00160d"/>
+<c crc="38754256"/>
+<c crc="59d33e9c"/>
+<c crc="c9f8c357"/>
+<c crc="fafc3eb9"/>
+<m crc="346d4a30"/>
+<v crc="7ff6ca47"/>
+<v crc="696cce3b"/>
+</fake>
+<fake name="mslug5f">
+<title>Metal Slug 5 [Fierce Battle, Hack]</title>
+<p crc="6be7043d"/>
+<p crc="f06c589a"/>
+<s crc="64952683"/>
+<c crc="e8239365"/>
+<c crc="89b21d4c"/>
+<c crc="3cda13a0"/>
+<c crc="9c00160d"/>
+<c crc="3bc09dbf"/>
+<c crc="0db5ce14"/>
+<c crc="aa4f3214"/>
+<c crc="c86d0d81"/>
+<m crc="9577a692"/>
+<v crc="ebae8143"/>
+<v crc="84aac915"/>
+</fake>
+<fake name="mslug5fd">
+<title>Metal Slug 5 [Fully Decrypted]</title>
+<p crc="24ae2e4d"/>
+<p crc="768ee64a"/>
+<s crc="64952683"/>
+<c crc="e8239365"/>
+<c crc="89b21d4c"/>
+<c crc="3cda13a0"/>
+<c crc="9c00160d"/>
+<c crc="38754256"/>
+<c crc="59d33e9c"/>
+<c crc="c9f8c357"/>
+<c crc="fafc3eb9"/>
+<m crc="346d4a30"/>
+<v crc="7ff6ca47"/>
+<v crc="696cce3b"/>
+</fake>
+<fake name="mslug5ki">
+<title>Metal Slug 5 [Komorebi, Hack]</title>
+<p crc="846bc220"/>
+<s crc="64952683"/>
+<c crc="e8239365"/>
+<c crc="89b21d4c"/>
+<c crc="3cda13a0"/>
+<c crc="9c00160d"/>
+<c crc="38754256"/>
+<c crc="59d33e9c"/>
+<c crc="c9f8c357"/>
+<c crc="fafc3eb9"/>
+<m crc="346d4a30"/>
+<v crc="7ff6ca47"/>
+<v crc="696cce3b"/>
+</fake>
+<fake name="mslug5cq">
+<title>Metal Slug 5 [Legend, Hack]</title>
+<p crc="07723765"/>
+<s crc="64952683"/>
+<c crc="e8239365"/>
+<c crc="89b21d4c"/>
+<c crc="3cda13a0"/>
+<c crc="9c00160d"/>
+<c crc="38754256"/>
+<c crc="59d33e9c"/>
+<c crc="e5ebe937"/>
+<c crc="43995e2b"/>
+<m crc="346d4a30"/>
+<v crc="7ff6ca47"/>
+<v crc="696cce3b"/>
+</fake>
+<fake name="mslug5dg">
+<title>Metal Slug 5 [Multifunction, Hack]</title>
+<p crc="3be747ab"/>
+<s crc="64952683"/>
+<c crc="e8239365"/>
+<c crc="89b21d4c"/>
+<c crc="3cda13a0"/>
+<c crc="9c00160d"/>
+<c crc="38754256"/>
+<c crc="59d33e9c"/>
+<c crc="c9f8c357"/>
+<c crc="fafc3eb9"/>
+<m crc="346d4a30"/>
+<v crc="7ff6ca47"/>
+<v crc="696cce3b"/>
+</fake>
+<fake name="mslug5w">
+<title>Metal Slug 5 [New Battle, Hack]</title>
+<p crc="4df30bcb"/>
+<p crc="f06c589a"/>
+<s crc="64952683"/>
+<c crc="e8239365"/>
+<c crc="89b21d4c"/>
+<c crc="3cda13a0"/>
+<c crc="9c00160d"/>
+<c crc="483a986c"/>
+<c crc="d918f796"/>
+<c crc="bdb9a887"/>
+<c crc="6f8ac6fb"/>
+<m crc="9577a692"/>
+<v crc="c0cafa36"/>
+<v crc="cc81efa3"/>
+</fake>
+<fake name="mslug5nd" stock="loadhang">
+<title>Metal Slug 5 [Not Encrypted]</title>
+<p crc="975eb06a"/>
+<s crc="64952683"/>
+<c crc="e8239365"/>
+<c crc="89b21d4c"/>
+<c crc="3cda13a0"/>
+<c crc="9c00160d"/>
+<c crc="38754256"/>
+<c crc="59d33e9c"/>
+<c crc="c9f8c357"/>
+<c crc="fafc3eb9"/>
+<m crc="346d4a30"/>
+<v crc="7ff6ca47"/>
+<v crc="696cce3b"/>
+</fake>
+<fake name="ms5plush">
+<title>Metal Slug 5 [Plus, Hack]</title>
+<p crc="612b6005"/>
+<p crc="9a644e2a"/>
+<p crc="1bd24469"/>
+<s crc="99ef577b"/>
+<c crc="e8239365"/>
+<c crc="89b21d4c"/>
+<c crc="3cda13a0"/>
+<c crc="9c00160d"/>
+<c crc="38754256"/>
+<c crc="59d33e9c"/>
+<c crc="c9f8c357"/>
+<c crc="fafc3eb9"/>
+<m crc="346d4a30"/>
+<v crc="7ff6ca47"/>
+<v crc="696cce3b"/>
+</fake>
+<fake name="ms5sgf">
+<title>Metal Slug 5 [Remake FC2, Hack]</title>
+<p crc="b1fbb850"/>
+<s crc="64952683"/>
+<c crc="e8239365"/>
+<c crc="89b21d4c"/>
+<c crc="3cda13a0"/>
+<c crc="9c00160d"/>
+<c crc="38754256"/>
+<c crc="59d33e9c"/>
+<c crc="c9f8c357"/>
+<c crc="fafc3eb9"/>
+<m crc="346d4a30"/>
+<v crc="7ff6ca47"/>
+<v crc="696cce3b"/>
+</fake>
+<fake name="mslug5dd">
+<title>Metal Slug 5 [Starlight, Hack]</title>
+<p crc="40917fba"/>
+<s crc="64952683"/>
+<c crc="e8239365"/>
+<c crc="89b21d4c"/>
+<c crc="3cda13a0"/>
+<c crc="9c00160d"/>
+<c crc="38754256"/>
+<c crc="59d33e9c"/>
+<c crc="c9f8c357"/>
+<c crc="fafc3eb9"/>
+<m crc="346d4a30"/>
+<v crc="7ff6ca47"/>
+<v crc="696cce3b"/>
+</fake>
+<fake name="mslug5sg">
+<title>Metal Slug 5 [Stone Turtle, Hack]</title>
+<p crc="b6cb640e"/>
+<s crc="64952683"/>
+<c crc="e8239365"/>
+<c crc="89b21d4c"/>
+<c crc="3cda13a0"/>
+<c crc="9c00160d"/>
+<c crc="38754256"/>
+<c crc="59d33e9c"/>
+<c crc="c9f8c357"/>
+<c crc="fafc3eb9"/>
+<m crc="346d4a30"/>
+<v crc="7ff6ca47"/>
+<v crc="696cce3b"/>
+</fake>
+<fake name="mslug5sc">
+<title>Metal Slug 5 [Survival, Hack]</title>
+<p crc="71a0953f"/>
+<s crc="64952683"/>
+<c crc="e8239365"/>
+<c crc="89b21d4c"/>
+<c crc="3cda13a0"/>
+<c crc="9c00160d"/>
+<c crc="38754256"/>
+<c crc="59d33e9c"/>
+<c crc="080b585a"/>
+<c crc="a6450c3a"/>
+<m crc="346d4a30"/>
+<v crc="7ff6ca47"/>
+<v crc="696cce3b"/>
+</fake>
+<fake name="mslug5es">
+<title>Metal Slug 5 [The Longest Battle, Hack]</title>
+<p crc="fc309b3d"/>
+<s crc="64952683"/>
+<c crc="e8239365"/>
+<c crc="89b21d4c"/>
+<c crc="3cda13a0"/>
+<c crc="9c00160d"/>
+<c crc="38754256"/>
+<c crc="59d33e9c"/>
+<c crc="c9f8c357"/>
+<c crc="fafc3eb9"/>
+<m crc="346d4a30"/>
+<v crc="7ff6ca47"/>
+<v crc="696cce3b"/>
+</fake>
+<fake name="mslug5zh">
+<title>Metal Slug 5 [Vehicle Summon, Hack]</title>
+<p crc="dc057a7a"/>
+<s crc="64952683"/>
+<c crc="e8239365"/>
+<c crc="89b21d4c"/>
+<c crc="3cda13a0"/>
+<c crc="9c00160d"/>
+<c crc="38754256"/>
+<c crc="59d33e9c"/>
+<c crc="c9f8c357"/>
+<c crc="fafc3eb9"/>
+<m crc="346d4a30"/>
+<v crc="7ff6ca47"/>
+<v crc="696cce3b"/>
+</fake>
+<fake name="mslug5x">
+<title>Metal Slug 5 [X, Hack]</title>
+<p crc="afffcd5b"/>
+<s crc="64952683"/>
+<c crc="e8239365"/>
+<c crc="89b21d4c"/>
+<c crc="3cda13a0"/>
+<c crc="9c00160d"/>
+<c crc="38754256"/>
+<c crc="59d33e9c"/>
+<c crc="c9f8c357"/>
+<c crc="fafc3eb9"/>
+<m crc="346d4a30"/>
+<v crc="7ff6ca47"/>
+<v crc="696cce3b"/>
+</fake>
+<fake name="mslug5unity" target="ms5plus">
+<title>Metal Slug 5 Unity [Added Timer Ver. 2021-04-23]</title>
+<p crc="ced9f5a8"/>
+<p crc="1c08dbb6"/>
+<c crc="ab7c389a"/>
+<c crc="3560881b"/>
+<c crc="3af955ea"/>
+<c crc="c329c373"/>
+<c crc="959c8177"/>
+<c crc="010a831b"/>
+<c crc="6d72a969"/>
+<c crc="551d720e"/>
+<m crc="4a5a6e0e"/>
+<v crc="ae31d60c"/>
+<v crc="c40613ed"/>
+</fake>
+<fake name="mslugunity" p="1">
+<title>Metal Slug Unity [Added Timer Ver. 2021-02-05]</title>
+<p crc="a3186dfd"/>
+<s crc="2f55958d"/>
+<c crc="72813676"/>
+<c crc="96f62574"/>
+<c crc="5121456a"/>
+<c crc="f4ad59a3"/>
+<m crc="c28b3253"/>
+<v crc="23d22ed1"/>
+<v crc="472cf9db"/>
+</fake>
+<fake name="msx1v2" target="mslugx">
+<title>Metal Slug X - Super Vehicle-001 [1v2 Mode, Hack]</title>
+<p crc="0cf1f95b"/>
+<p crc="1fda2e12"/>
+<s crc="fb6f441d"/>
+<c crc="09a52c6f"/>
+<c crc="31679821"/>
+<c crc="fd602019"/>
+<c crc="31354513"/>
+<c crc="a4b56124"/>
+<c crc="83e3e69d"/>
+<m crc="fd42a842"/>
+<v crc="c79ede73"/>
+<v crc="ea9aabe1"/>
+<v crc="2ca65102"/>
+</fake>
+<fake name="msx2r1v2" target="mslugx">
+<title>Metal Slug X - Super Vehicle-001 [2R 1v2 Mode, Hack]</title>
+<p crc="d13fd368"/>
+<p crc="730e94a2"/>
+<s crc="fb6f441d"/>
+<c crc="09a52c6f"/>
+<c crc="31679821"/>
+<c crc="fd602019"/>
+<c crc="31354513"/>
+<c crc="a4b56124"/>
+<c crc="83e3e69d"/>
+<m crc="fd42a842"/>
+<v crc="c79ede73"/>
+<v crc="ea9aabe1"/>
+<v crc="2ca65102"/>
+</fake>
+<fake name="msx2reb">
+<title>Metal Slug X - Super Vehicle-001 [2R Blue, Hack]</title>
+<p crc="dba3f1a1"/>
+<p crc="3866eb68"/>
+<s crc="fb6f441d"/>
+<c crc="09a52c6f"/>
+<c crc="31679821"/>
+<c crc="fd602019"/>
+<c crc="31354513"/>
+<c crc="a4b56124"/>
+<c crc="83e3e69d"/>
+<m crc="fd42a842"/>
+<v crc="c79ede73"/>
+<v crc="ea9aabe1"/>
+<v crc="2ca65102"/>
+</fake>
+<fake name="mslugx2r" target="mslugx">
+<title>Metal Slug X - Super Vehicle-001 [2R, Hack]</title>
+<p crc="721f11aa"/>
+<p crc="4f875278"/>
+<s crc="fb6f441d"/>
+<c crc="09a52c6f"/>
+<c crc="31679821"/>
+<c crc="fd602019"/>
+<c crc="31354513"/>
+<c crc="a4b56124"/>
+<c crc="83e3e69d"/>
+<m crc="fd42a842"/>
+<v crc="c79ede73"/>
+<v crc="ea9aabe1"/>
+<v crc="2ca65102"/>
+</fake>
+<fake name="msxsrf" target="mslugx">
+<title>Metal Slug X - Super Vehicle-001 [AzStar Soda Remix FC2, Hack]</title>
+<p crc="aed327fe"/>
+<p crc="4389f47d"/>
+<s crc="fb6f441d"/>
+<c crc="09a52c6f"/>
+<c crc="31679821"/>
+<c crc="fd602019"/>
+<c crc="31354513"/>
+<c crc="a4b56124"/>
+<c crc="83e3e69d"/>
+<m crc="fd42a842"/>
+<v crc="c79ede73"/>
+<v crc="ea9aabe1"/>
+<v crc="2ca65102"/>
+</fake>
+<fake name="mslugxeb">
+<title>Metal Slug X - Super Vehicle-001 [Blue, Hack]</title>
+<p crc="764d1bb1"/>
+<p crc="a51363d1"/>
+<s crc="fb6f441d"/>
+<c crc="09a52c6f"/>
+<c crc="31679821"/>
+<c crc="fd602019"/>
+<c crc="31354513"/>
+<c crc="a4b56124"/>
+<c crc="83e3e69d"/>
+<m crc="fd42a842"/>
+<v crc="c79ede73"/>
+<v crc="ea9aabe1"/>
+<v crc="2ca65102"/>
+</fake>
+<fake name="mslugxc2" target="mslugx">
+<title>Metal Slug X - Super Vehicle-001 [Enemy Remix, Hack]</title>
+<p crc="81f1f60b"/>
+<p crc="5d1c52cd"/>
+<s crc="fb6f441d"/>
+<c crc="09a52c6f"/>
+<c crc="31679821"/>
+<c crc="fd602019"/>
+<c crc="31354513"/>
+<c crc="a4b56124"/>
+<c crc="83e3e69d"/>
+<m crc="fd42a842"/>
+<v crc="c79ede73"/>
+<v crc="ea9aabe1"/>
+<v crc="2ca65102"/>
+</fake>
+<fake name="mslugxlb" target="mslugx">
+<title>Metal Slug X - Super Vehicle-001 [Extreme Space, Hack]</title>
+<p crc="41fc71cc"/>
+<p crc="6a114e1a"/>
+<s crc="fb6f441d"/>
+<c crc="d52e8702"/>
+<c crc="edec334c"/>
+<c crc="fd602019"/>
+<c crc="31354513"/>
+<c crc="a4b56124"/>
+<c crc="83e3e69d"/>
+<m crc="fd42a842"/>
+<v crc="c79ede73"/>
+<v crc="ea9aabe1"/>
+<v crc="2ca65102"/>
+</fake>
+<fake name="mslugxif" target="mslugx">
+<title>Metal Slug X - Super Vehicle-001 [Infinite Firepower, Hack]</title>
+<p crc="a507546f"/>
+<p crc="9cf91e0f"/>
+<s crc="fb6f441d"/>
+<c crc="09a52c6f"/>
+<c crc="31679821"/>
+<c crc="fd602019"/>
+<c crc="31354513"/>
+<c crc="a4b56124"/>
+<c crc="83e3e69d"/>
+<m crc="fd42a842"/>
+<v crc="c79ede73"/>
+<v crc="ea9aabe1"/>
+<v crc="2ca65102"/>
+</fake>
+<fake name="mslugxcq" target="mslugx">
+<title>Metal Slug X - Super Vehicle-001 [Legend, Hack]</title>
+<p crc="6bbe0a36"/>
+<p crc="3a368748"/>
+<s crc="03bce893"/>
+<c crc="09a52c6f"/>
+<c crc="31679821"/>
+<c crc="917f95c5"/>
+<c crc="93290f81"/>
+<c crc="c2d442e1"/>
+<c crc="ec2f6882"/>
+<m crc="fd42a842"/>
+<v crc="c79ede73"/>
+<v crc="ea9aabe1"/>
+<v crc="2ca65102"/>
+</fake>
+<fake name="mslugxcqi" target="mslugx">
+<title>Metal Slug X - Super Vehicle-001 [Legendary Unlimited Fire, Hack]</title>
+<p crc="f8f95ffa"/>
+<p crc="2c36b1a5"/>
+<s crc="03bce893"/>
+<c crc="09a52c6f"/>
+<c crc="31679821"/>
+<c crc="fd602019"/>
+<c crc="31354513"/>
+<c crc="743cd68d"/>
+<c crc="b1146061"/>
+<m crc="fd42a842"/>
+<v crc="c79ede73"/>
+<v crc="ea9aabe1"/>
+<v crc="2ca65102"/>
+</fake>
+<fake name="mslugxc1">
+<title>Metal Slug X - Super Vehicle-001 [Multi Vehicle, Hack]</title>
+<p crc="e74f36c2"/>
+<p crc="e954b8aa"/>
+<s crc="fb6f441d"/>
+<c crc="09a52c6f"/>
+<c crc="31679821"/>
+<c crc="fd602019"/>
+<c crc="31354513"/>
+<c crc="a4b56124"/>
+<c crc="83e3e69d"/>
+<m crc="fd42a842"/>
+<v crc="c79ede73"/>
+<v crc="ea9aabe1"/>
+<v crc="2ca65102"/>
+</fake>
+<fake name="mslugxdg" target="mslugx">
+<title>Metal Slug X - Super Vehicle-001 [Multifunction, Hack]</title>
+<p crc="f86ea146"/>
+<p crc="ef0c263f"/>
+<s crc="fb6f441d"/>
+<c crc="09a52c6f"/>
+<c crc="31679821"/>
+<c crc="fd602019"/>
+<c crc="31354513"/>
+<c crc="a4b56124"/>
+<c crc="83e3e69d"/>
+<m crc="fd42a842"/>
+<v crc="c79ede73"/>
+<v crc="ea9aabe1"/>
+<v crc="2ca65102"/>
+</fake>
+<fake name="mslugxdd" target="mslugx">
+<title>Metal Slug X - Super Vehicle-001 [Starlight, Hack]</title>
+<p crc="aa09586a"/>
+<p crc="1791d721"/>
+<s crc="fb6f441d"/>
+<c crc="09a52c6f"/>
+<c crc="31679821"/>
+<c crc="fd602019"/>
+<c crc="31354513"/>
+<c crc="b2d7bf98"/>
+<c crc="e0f7a059"/>
+<m crc="fd42a842"/>
+<v crc="c79ede73"/>
+<v crc="ea9aabe1"/>
+<v crc="2ca65102"/>
+</fake>
+<fake name="mslugxsc" target="mslugx">
+<title>Metal Slug X - Super Vehicle-001 [Survival, Hack]</title>
+<p crc="e0792609"/>
+<p crc="01f48336"/>
+<s crc="03bce893"/>
+<c crc="09a52c6f"/>
+<c crc="31679821"/>
+<c crc="fd602019"/>
+<c crc="31354513"/>
+<c crc="916b7239"/>
+<c crc="23016767"/>
+<m crc="fd42a842"/>
+<v crc="c79ede73"/>
+<v crc="ea9aabe1"/>
+<v crc="2ca65102"/>
+</fake>
+<fake name="mslugxsv" target="mslugx">
+<title>Metal Slug X - Super Vehicle-001 [Unbounded, Hack]</title>
+<p crc="1b213460"/>
+<p crc="718d6d66"/>
+<s crc="fb6f441d"/>
+<c crc="09a52c6f"/>
+<c crc="31679821"/>
+<c crc="fd602019"/>
+<c crc="31354513"/>
+<c crc="a4b56124"/>
+<c crc="83e3e69d"/>
+<m crc="fd42a842"/>
+<v crc="c79ede73"/>
+<v crc="ea9aabe1"/>
+<v crc="2ca65102"/>
+</fake>
+<fake name="mslugxxr" target="mslugx">
+<title>Metal Slug X - Super Vehicle-001 [Warriors, Hack]</title>
+<p crc="bea1f7e5"/>
+<p crc="0efc5d67"/>
+<s crc="fb6f441d"/>
+<c crc="09a52c6f"/>
+<c crc="31679821"/>
+<c crc="fd602019"/>
+<c crc="31354513"/>
+<c crc="a4b56124"/>
+<c crc="83e3e69d"/>
+<m crc="fd42a842"/>
+<v crc="c79ede73"/>
+<v crc="ea9aabe1"/>
+<v crc="2ca65102"/>
+</fake>
+<fake name="mslugxunity" target="mslugx">
+<title>Metal Slug X - Super Vehicle-001 Unity [Added Timer Ver. 2021-01-23]</title>
+<p crc="36102d34"/>
+<p crc="1fda2e12"/>
+<s crc="fb6f441d"/>
+<c crc="09a52c6f"/>
+<c crc="31679821"/>
+<c crc="fd602019"/>
+<c crc="31354513"/>
+<c crc="a4b56124"/>
+<c crc="83e3e69d"/>
+<m crc="fd42a842"/>
+<v crc="c79ede73"/>
+<v crc="ea9aabe1"/>
+<v crc="2ca65102"/>
+</fake>
+<fake name="ngmontst">
+<title>Monitor Test Patterns Tool [v1.3]</title>
+<p crc="8a140722"/>
+<s crc="bb82ab71"/>
+<c crc="5c63f88a"/>
+<c crc="3c7e0729"/>
+<m crc="6f41ac95"/>
+<v crc="0f88bd1a"/>
+</fake>
+<fake name="neo2500">
+<title>Neo 2500 Demo</title>
+<p crc="2321c0d8"/>
+<s crc="1a37925c"/>
+<c crc="8c304b56"/>
+<c crc="9a0758d6"/>
+<m crc="9c0291ea"/>
+<v crc="debeb8fb"/>
+</fake>
+<fake name="nblktiger">
+<title>Neo Black Tiger [Demo]</title>
+<p crc="18f34200"/>
+<s crc="a545b593"/>
+<c crc="aa469494"/>
+<c crc="fa07ba1e"/>
+<m crc="2037dc19"/>
+<v crc="3ac066e1"/>
+<v crc="c5a12987"/>
+<v crc="3c623679"/>
+<v crc="fbf00c96"/>
+<v crc="9b2031d4"/>
+<v crc="107cfc89"/>
+<v crc="0703b761"/>
+<v crc="8d525588"/>
+<v crc="97f073b6"/>
+</fake>
+<fake name="neocstlv">
+<title>Neo CastleVania Demo</title>
+<p crc="8d6cd9f2"/>
+<s crc="be950195"/>
+<c crc="960a7414"/>
+<c crc="24a961d0"/>
+<m crc="89c71460"/>
+<v crc="debeb8fb"/>
+</fake>
+<fake name="neonopon">
+<title>Neo No Panepon [beta]</title>
+<p crc="8a792271"/>
+<s crc="93e6fe7d"/>
+<c crc="4a718ae3"/>
+<c crc="0e2cbc25"/>
+<m crc="7669de64"/>
+<v crc="504bf849"/>
+</fake>
+<fake name="neopang">
+<title>Neo Pang</title>
+<p crc="dc5922ee"/>
+<s crc="d78bd9a0"/>
+<c crc="62f5405c"/>
+<c crc="e1183030"/>
+<m crc="9c0291ea"/>
+<v crc="debeb8fb"/>
+</fake>
+<fake name="neoponga">
+<title>Neo Pong [ver 1.0]</title>
+<p crc="31b724d7"/>
+<s crc="cd19264f"/>
+<c crc="d7587282"/>
+<c crc="fefc9d06"/>
+<m crc="9c0291ea"/>
+<v crc="debeb8fb"/>
+</fake>
+<fake name="neopong">
+<title>Neo Pong [ver 1.1]</title>
+<p crc="9f35e29d"/>
+<s crc="cd19264f"/>
+<c crc="f5a57d1a"/>
+<c crc="affde64e"/>
+<m crc="78c851cb"/>
+<v crc="6c31223c"/>
+</fake>
+<fake name="nsmb">
+<title>Neo Super Mario Bros [Demo, v0.01]</title>
+<p crc="9e0fded1"/>
+<s crc="a545b593"/>
+<c crc="f187934c"/>
+<c crc="7ecfc8bb"/>
+<m crc="3c99e181"/>
+<v crc="d1e4fc94"/>
+<v crc="7d42fab3"/>
+<v crc="806b797d"/>
+<v crc="fbf00c96"/>
+<v crc="9b2031d4"/>
+<v crc="107cfc89"/>
+<v crc="0703b761"/>
+<v crc="8d525588"/>
+<v crc="97f073b6"/>
+</fake>
+<fake name="syscheck" c="0">
+<title>Neo System Check [ver 1.0b]</title>
+<p crc="a4adbe1e"/>
+<s crc="4774f28e"/>
+<c crc="75660aac"/>
+<m crc="7669de64"/>
+<v crc="504bf849"/>
+</fake>
+<fake name="neothndr">
+<title>Neo Thunder</title>
+<p crc="f7050757"/>
+<s crc="a545b593"/>
+<c crc="48b9126e"/>
+<c crc="214df62e"/>
+<m crc="9c0291ea"/>
+<v crc="debeb8fb"/>
+</fake>
+<fake name="neotet">
+<title>NeoGeo 2-Player Tetris</title>
+<p crc="3465569a"/>
+<s crc="a545b593"/>
+<c crc="acc6d1d4"/>
+<c crc="7ec06ab5"/>
+<m crc="6b3703c6"/>
+<v crc="2be8e290"/>
+</fake>
+<fake name="neo3ddmo">
+<title>NeoGeo 3D! Demo</title>
+<p crc="791f6042"/>
+<s crc="cd19264f"/>
+<c crc="a7eaca76"/>
+<c crc="042f2cde"/>
+<m crc="7e74cc1f"/>
+<v crc="debeb8fb"/>
+</fake>
+<fake name="neotris">
+<title>NeoTRIS [Free Beta 2, Ver. 202009]</title>
+<p crc="4cd619cf"/>
+<s crc="6809043a"/>
+<c crc="e1c8eca9"/>
+<c crc="11ca6e64"/>
+<c crc="1d9e2046"/>
+<c crc="9091e795"/>
+<c crc="bf278afe"/>
+<c crc="8eb17e24"/>
+<m crc="5a63bb9d"/>
+<v crc="fef16eb4"/>
+<v crc="f0d28e19"/>
+<v crc="fc652c8b"/>
+<v crc="c25764ca"/>
+</fake>
+<fake name="ngem2k">
+<title>NGEM2K [beta 2006-01-18]</title>
+<p crc="f2c42fe3"/>
+<s crc="fb3c02d2"/>
+<c crc="a8e2ab47"/>
+<c crc="a738ea1c"/>
+<m crc="b1f44a15"/>
+<v crc="c32199f0"/>
+</fake>
+<fake name="ngftdemo">
+<title>NGF Transparency Demo</title>
+<p crc="84d87190"/>
+<s crc="a545b593"/>
+<c crc="b2fba994"/>
+<c crc="37495ab2"/>
+<m crc="5ea216be"/>
+<v crc="d03c87eb"/>
+</fake>
+<fake name="ninjamasha">
+<title>Ninja Master's - Haoh-ninpo-cho [Plus]</title>
+<p crc="45332f39"/>
+<p crc="191fca88"/>
+<s crc="8ff782f0"/>
+<c crc="5fe97bc4"/>
+<c crc="886e0d66"/>
+<c crc="59e8525f"/>
+<c crc="8521add2"/>
+<c crc="fb1896e5"/>
+<c crc="1c98c54b"/>
+<c crc="8b0ede2e"/>
+<c crc="a085bb61"/>
+<m crc="d00fb2af"/>
+<v crc="1c34e013"/>
+<v crc="22f1c681"/>
+</fake>
+<fake name="samsho4k">
+<title>Paewang Jeonseol (Legend of a Warrior) [Korean censored Samurai Shodown IV]</title>
+<p crc="06e0a25d"/>
+<p crc="b023cd8b"/>
+<s crc="d313687d"/>
+<c crc="68f2ed95"/>
+<c crc="a6e9aff0"/>
+<c crc="c91b40f4"/>
+<c crc="359510a4"/>
+<c crc="9cfbb22d"/>
+<c crc="685efc32"/>
+<c crc="d0f86f0d"/>
+<c crc="adfc50e3"/>
+<m crc="7615bc1b"/>
+<v crc="7d6ba95f"/>
+<v crc="6c33bb5d"/>
+<v crc="831ea8c0"/>
+</fake>
+<fake name="pnyaaa" target="pnyaa">
+<title>Pochi and Nyaa [Ver 2.00]</title>
+<p crc="112fe2c0"/>
+<c crc="5eebee65"/>
+<c crc="2b67187b"/>
+<m crc="c7853ccd"/>
+<v crc="e2e8e917"/>
+</fake>
+<fake name="poknight">
+<title>Poker Night</title>
+<p crc="750421ee"/>
+<s crc="a26d2f09"/>
+<c crc="5fb2b761"/>
+<c crc="f2b570e3"/>
+<m crc="7669de64"/>
+<v crc="504bf849"/>
+</fake>
+<fake name="neoprimo">
+<title>Primo Demo</title>
+<p crc="a315fb81"/>
+<s crc="a545b593"/>
+<c crc="d68941e1"/>
+<c crc="df7e359f"/>
+<m crc="9c0291ea"/>
+<v crc="debeb8fb"/>
+</fake>
+<fake name="proneon">
+<title>Project Neon [Caravan Edition, prealpha v0.4.19]</title>
+<p crc="f45cac3a"/>
+<s crc="f32de862"/>
+<c crc="87df580b"/>
+<c crc="7b854cc1"/>
+<m crc="6d24cf93"/>
+<v crc="2823ca49"/>
+</fake>
+<fake name="pbobblenb">
+<title>Puzzle Bobble (Bust-A-Move) [Neo-Geo, bootleg]</title>
+<p crc="ac1e9ef3"/>
+<s crc="9caae538"/>
+<c crc="e89ad494"/>
+<c crc="4b42d7eb"/>
+<m crc="f424368a"/>
+<v crc="0840cbc4"/>
+<v crc="0a548948"/>
+</fake>
+<fake name="quizkofk">
+<title>Quiz King of Fighters [Korea]</title>
+<p crc="2589488e"/>
+<s crc="af72c30f"/>
+<c crc="94d90170"/>
+<c crc="297f25a1"/>
+<c crc="cf484c4f"/>
+<c crc="36e5d997"/>
+<m crc="4f157e9a"/>
+<v crc="0be18f60"/>
+<v crc="719fee5b"/>
+<v crc="64b7efde"/>
+</fake>
+<fake name="quizdaisk">
+<title>Quiz Salibtamjeong - The Last Count Down [Korean localized Quiz Daisousa Sen]</title>
+<p crc="a6f35eae"/>
+<s crc="53de938a"/>
+<c crc="e579a606"/>
+<c crc="e182c837"/>
+<m crc="d67f53f9"/>
+<v crc="986f4af9"/>
+</fake>
+<fake name="rotdh" target="rotd">
+<title>Rage of the Dragons [possibly NGH-2640]</title>
+<p crc="ff2fa719"/>
+<p crc="0df2e112"/>
+<c crc="4f148fee"/>
+<c crc="7cf5ff72"/>
+<c crc="64d84c98"/>
+<c crc="2f394a95"/>
+<c crc="6b99b978"/>
+<c crc="847d5c7d"/>
+<c crc="231d681e"/>
+<c crc="c5edb5c4"/>
+<m crc="4dbd7b43"/>
+<v crc="fa005812"/>
+<v crc="c3dc8bf0"/>
+</fake>
+<fake name="rallych">
+<title>Rally Chase [Neo CD conversion]</title>
+<p crc="430c531b"/>
+<p crc="9facb7fb"/>
+<s crc="fff62ae3"/>
+<c crc="840e6161"/>
+<c crc="51979c7a"/>
+<c crc="3bb7b9d6"/>
+<c crc="a4513ecf"/>
+<m crc="0908707e"/>
+<v crc="5ccd9fd5"/>
+<v crc="ddd8d1e6"/>
+<REMOVE crc=""/>
+</fake>
+<fake name="rbff1k">
+<title>Real Bout Fatal Fury (Real Bout Garou Densetsu) [Korean release]</title>
+<p crc="f705364b"/>
+<p crc="cc15826e"/>
+<s crc="b6bf5e08"/>
+<c crc="e302f93c"/>
+<c crc="1053a455"/>
+<c crc="1c0fde2f"/>
+<c crc="a25fc3d0"/>
+<c crc="8b9b65df"/>
+<c crc="3e164718"/>
+<c crc="ca605e12"/>
+<c crc="4e6beb6c"/>
+<m crc="653492a7"/>
+<v crc="2bdbd4db"/>
+<v crc="a698a487"/>
+<v crc="189d1c6c"/>
+</fake>
+<fake name="rbff1ka">
+<title>Real Bout Fatal Fury (Real Bout Garou Densetsu) [Korean release, bug fix revision]</title>
+<p crc="f705364b"/>
+<p crc="cc15826e"/>
+<s crc="b6bf5e08"/>
+<c crc="e302f93c"/>
+<c crc="1053a455"/>
+<c crc="1c0fde2f"/>
+<c crc="a25fc3d0"/>
+<c crc="8b9b65df"/>
+<c crc="3e164718"/>
+<c crc="ca605e12"/>
+<c crc="4e6beb6c"/>
+<m crc="653492a7"/>
+<v crc="2bdbd4db"/>
+<v crc="a698a487"/>
+<v crc="189d1c6c"/>
+<p crc="422093ed"/>
+</fake>
+<fake name="rbff2bs">
+<title>Real Bout Fatal Fury 2 - The Newcomers (Real Bout Garou Densetsu 2 - The Newcomers) [Secret Character, Hack]</title>
+<p crc="d01854fa"/>
+<p crc="c063193d"/>
+<s crc="da3b40de"/>
+<c crc="effac504"/>
+<c crc="ed182d44"/>
+<c crc="22e0330a"/>
+<c crc="c19a07eb"/>
+<c crc="21831787"/>
+<c crc="06b2d1da"/>
+<m crc="ed482791"/>
+<v crc="f796265a"/>
+<v crc="2cb3f3bb"/>
+<v crc="8fe1367a"/>
+<v crc="996704d8"/>
+</fake>
+<fake name="rbffspbs">
+<title>Real Bout Fatal Fury Special (Real Bout Garou Densetsu Special) [Boss, Hack]</title>
+<p crc="abf2a6e7"/>
+<p crc="addd8f08"/>
+<s crc="7ecd6e8c"/>
+<c crc="ebab05e2"/>
+<c crc="641868c3"/>
+<c crc="ca00191f"/>
+<c crc="1f23d860"/>
+<c crc="321e362c"/>
+<c crc="d8fcef90"/>
+<c crc="bc80dd2d"/>
+<c crc="5ad62102"/>
+<m crc="3fee46bf"/>
+<v crc="76673869"/>
+<v crc="7a275acd"/>
+<v crc="5a797fd2"/>
+</fake>
+<fake name="rbffspeck">
+<title>Real Bout Fatal Fury Special (Real Bout Garou Densetsu Special) [Korean release]</title>
+<p crc="b78c8391"/>
+<p crc="addd8f08"/>
+<s crc="7ecd6e8c"/>
+<c crc="ebab05e2"/>
+<c crc="641868c3"/>
+<c crc="ca00191f"/>
+<c crc="1f23d860"/>
+<c crc="321e362c"/>
+<c crc="d8fcef90"/>
+<c crc="bc80dd2d"/>
+<c crc="5ad62102"/>
+<m crc="3fee46bf"/>
+<v crc="76673869"/>
+<v crc="7a275acd"/>
+<v crc="5a797fd2"/>
+</fake>
+<fake name="roboarmya">
+<title>Robo Army [NGM-032 ~ NGH-032]</title>
+<p crc="27c773cb"/>
+<s crc="ac0daa1b"/>
+<c crc="97984c6c"/>
+<c crc="65773122"/>
+<c crc="40adfccd"/>
+<c crc="462571de"/>
+<m crc="35ec952d"/>
+<v crc="63791533"/>
+<v crc="eb95de70"/>
+</fake>
+<fake name="robocopi">
+<title>Robocop [FMV Demo]</title>
+<p crc="adcb4fe0"/>
+<s crc="63b8b25e"/>
+<c crc="8cf565a0"/>
+<c crc="76ef561d"/>
+<c crc="7166790c"/>
+<c crc="c0cdcbfc"/>
+<c crc="a5ddc363"/>
+<c crc="1fcc8fce"/>
+<c crc="be9f9da2"/>
+<c crc="7cff633a"/>
+<m crc="c4d35e83"/>
+<v crc="ecb284a9"/>
+</fake>
+<fake name="samshobs">
+<title>Samurai Shodown (Samurai Spirits) [Boss, Hack]</title>
+<p crc="24389683"/>
+<p crc="38ee9ba9"/>
+<s crc="9142a4d3"/>
+<c crc="2e5873a4"/>
+<c crc="04febb10"/>
+<c crc="f3dabd1e"/>
+<c crc="935c62f0"/>
+<c crc="a2bb8284"/>
+<c crc="4fa71252"/>
+<m crc="95170640"/>
+<v crc="37f78a9b"/>
+<v crc="568b20cf"/>
+</fake>
+<fake name="samshoa">
+<title>Samurai Shodown (Samurai Spirits) [NGM-045, alt board]</title>
+<p crc="80aa6c97"/>
+<p crc="71768728"/>
+<p crc="38ee9ba9"/>
+<s crc="9142a4d3"/>
+<c crc="2e5873a4"/>
+<c crc="04febb10"/>
+<c crc="f3dabd1e"/>
+<c crc="935c62f0"/>
+<c crc="a2bb8284"/>
+<c crc="4fa71252"/>
+<m crc="95170640"/>
+<v crc="37f78a9b"/>
+<v crc="568b20cf"/>
+</fake>
+<fake name="samsh2jq">
+<title>Samurai Shodown II (Shin Samurai Spirits - Haohmaru Jigokuhen) [Infinite Power, Hack]</title>
+<p crc="4b202e25"/>
+<p crc="a03ead44"/>
+<s crc="64a5cd66"/>
+<c crc="86cd307c"/>
+<c crc="cdfcc4ca"/>
+<c crc="7a63ccc7"/>
+<c crc="751025ce"/>
+<c crc="20d3a475"/>
+<c crc="ae4c0a88"/>
+<c crc="9d414581"/>
+<c crc="4ecffd87"/>
+<m crc="56675098"/>
+<v crc="37703f91"/>
+<v crc="0142bde8"/>
+<v crc="d07fa5ca"/>
+<v crc="24aab4bb"/>
+</fake>
+<fake name="ssho2emb" p="1">
+<title>Samurai Shodown II (Shin Samurai Spirits - Haohmaru Jigokuhen) [Move Modeasy Special Attacks V4, Hack]</title>
+<p crc="33284e4f"/>
+<s crc="64a5cd66"/>
+<c crc="86cd307c"/>
+<c crc="cdfcc4ca"/>
+<c crc="7a63ccc7"/>
+<c crc="751025ce"/>
+<c crc="20d3a475"/>
+<c crc="ae4c0a88"/>
+<c crc="2df3cbcf"/>
+<c crc="1ffc6dfa"/>
+<m crc="56675098"/>
+<v crc="37703f91"/>
+<v crc="0142bde8"/>
+<v crc="d07fa5ca"/>
+<v crc="24aab4bb"/>
+</fake>
+<fake name="samsho2t">
+<title>Samurai Shodown II (Shin Samurai Spirits - Haohmaru Jigokuhen) [Optimized, Hack]</title>
+<p crc="c2e62f51"/>
+<p crc="d00663be"/>
+<p crc="0bab6abd"/>
+<s crc="1951a907"/>
+<c crc="86cd307c"/>
+<c crc="cdfcc4ca"/>
+<c crc="7a63ccc7"/>
+<c crc="751025ce"/>
+<c crc="20d3a475"/>
+<c crc="ae4c0a88"/>
+<c crc="dbebced2"/>
+<c crc="bf70b93c"/>
+<m crc="56675098"/>
+<v crc="37703f91"/>
+<v crc="0142bde8"/>
+<v crc="d07fa5ca"/>
+<v crc="24aab4bb"/>
+</fake>
+<fake name="samsho2pe">
+<title>Samurai Shodown II (Shin Samurai Spirits - Haohmaru Jigokuhen) [Perfect V. 2.2, Hack]</title>
+<p crc="03bfaaaf"/>
+<p crc="a3a39ea4"/>
+<p crc="82ce7ad7"/>
+<s crc="64a5cd66"/>
+<c crc="86cd307c"/>
+<c crc="cdfcc4ca"/>
+<c crc="7a63ccc7"/>
+<c crc="751025ce"/>
+<c crc="20d3a475"/>
+<c crc="ae4c0a88"/>
+<c crc="2df3cbcf"/>
+<c crc="1ffc6dfa"/>
+<m crc="56675098"/>
+<v crc="37703f91"/>
+<v crc="0142bde8"/>
+<v crc="d07fa5ca"/>
+<v crc="24aab4bb"/>
+</fake>
+<fake name="samsh2sp">
+<title>Samurai Shodown II (Shin Samurai Spirits - Haohmaru Jigokuhen) [Special 2017, Hack]</title>
+<p crc="ed466b3d"/>
+<p crc="6e1aef70"/>
+<p crc="f9079ea3"/>
+<s crc="1951a907"/>
+<c crc="86cd307c"/>
+<c crc="cdfcc4ca"/>
+<c crc="7a63ccc7"/>
+<c crc="751025ce"/>
+<c crc="20d3a475"/>
+<c crc="ae4c0a88"/>
+<c crc="dbebced2"/>
+<c crc="bf70b93c"/>
+<m crc="56675098"/>
+<v crc="37703f91"/>
+<v crc="0142bde8"/>
+<v crc="d07fa5ca"/>
+<v crc="24aab4bb"/>
+</fake>
+<fake name="samsh3bs">
+<title>Samurai Shodown III (Samurai Spirits - Zankurou Musouken) [Boss, Hack]</title>
+<p crc="251d9b3f"/>
+<p crc="9bbe27e0"/>
+<s crc="74ec7d9f"/>
+<c crc="07a233bc"/>
+<c crc="7a413592"/>
+<c crc="8b793796"/>
+<c crc="728fbf11"/>
+<c crc="172ab180"/>
+<c crc="002ff8f3"/>
+<c crc="ae450e3d"/>
+<c crc="a9e82717"/>
+<m crc="8e6440eb"/>
+<v crc="84bdd9a0"/>
+<v crc="ac0f261a"/>
+</fake>
+<fake name="samsho3h">
+<title>Samurai Shodown III (Samurai Spirits - Zankurou Musouken) [NGH-087]</title>
+<p crc="282a336e"/>
+<p crc="9bbe27e0"/>
+<s crc="74ec7d9f"/>
+<c crc="07a233bc"/>
+<c crc="7a413592"/>
+<c crc="8b793796"/>
+<c crc="728fbf11"/>
+<c crc="172ab180"/>
+<c crc="002ff8f3"/>
+<c crc="ae450e3d"/>
+<c crc="a9e82717"/>
+<m crc="8e6440eb"/>
+<v crc="84bdd9a0"/>
+<v crc="ac0f261a"/>
+</fake>
+<fake name="samsh4bs">
+<title>Samurai Shodown IV - Amakusa's Revenge (Samurai Spirits - Amakusa Kourin) [Boss, Hack]</title>
+<p crc="6e98579a"/>
+<p crc="b023cd8b"/>
+<s crc="d0906101"/>
+<c crc="68f2ed95"/>
+<c crc="a6e9aff0"/>
+<c crc="c91b40f4"/>
+<c crc="359510a4"/>
+<c crc="9cfbb22d"/>
+<c crc="685efc32"/>
+<c crc="d0f86f0d"/>
+<c crc="adfc50e3"/>
+<m crc="7615bc1b"/>
+<v crc="7d6ba95f"/>
+<v crc="6c33bb5d"/>
+<v crc="831ea8c0"/>
+</fake>
+<fake name="samsh4sp">
+<title>Samurai Shodown IV - Amakusa's Revenge (Samurai Spirits - Amakusa Kourin) [Special 2017, Hack]</title>
+<p crc="6e98579a"/>
+<p crc="2c9c64db"/>
+<s crc="8d3d3bf9"/>
+<c crc="68f2ed95"/>
+<c crc="a6e9aff0"/>
+<c crc="c91b40f4"/>
+<c crc="359510a4"/>
+<c crc="9cfbb22d"/>
+<c crc="685efc32"/>
+<c crc="ecb13c24"/>
+<c crc="0f9a0bda"/>
+<m crc="7615bc1b"/>
+<v crc="7d6ba95f"/>
+<v crc="6c33bb5d"/>
+<v crc="831ea8c0"/>
+</fake>
+<fake name="samsh5bs">
+<title>Samurai Shodown V (Samurai Spirits Zero) [Boss, Hack]</title>
+<p crc="0afe5db8"/>
+<p crc="91979dee"/>
+<s crc="cd025baa"/>
+<c crc="9adec562"/>
+<c crc="ac0309e5"/>
+<c crc="82db9dae"/>
+<c crc="f8041153"/>
+<c crc="e689d62d"/>
+<c crc="a993bdcf"/>
+<c crc="707d56a0"/>
+<c crc="f5903adc"/>
+<m crc="f119997c"/>
+<v crc="809c7617"/>
+<v crc="42671607"/>
+</fake>
+<fake name="samsh5fd">
+<title>Samurai Shodown V (Samurai Spirits Zero) [Fully Decrypted]</title>
+<p crc="4f8f86bd"/>
+<p crc="91979dee"/>
+<s crc="2ad6048b"/>
+<c crc="9adec562"/>
+<c crc="ac0309e5"/>
+<c crc="82db9dae"/>
+<c crc="f8041153"/>
+<c crc="e689d62d"/>
+<c crc="a993bdcf"/>
+<c crc="707d56a0"/>
+<c crc="f5903adc"/>
+<m crc="f119997c"/>
+<v crc="809c7617"/>
+<v crc="42671607"/>
+</fake>
+<fake name="samsho5x">
+<title>Samurai Shodown V (Samurai Spirits Zero) [hack of XBOX version]</title>
+<p crc="889dd3f5"/>
+<p crc="d69bce11"/>
+<s crc="2ad6048b"/>
+<c crc="25272e50"/>
+<c crc="ba68f2e7"/>
+<c crc="75883cde"/>
+<c crc="348540e6"/>
+<c crc="1fee8dc8"/>
+<c crc="c300b50d"/>
+<c crc="5e722b0b"/>
+<c crc="e2a2c546"/>
+<m crc="f119997c"/>
+<v crc="809c7617"/>
+<v crc="42671607"/>
+</fake>
+<fake name="samsho5a" target="samsho5">
+<title>Samurai Shodown V (Samurai Spirits Zero) [NGM-2700, set 2]</title>
+<p crc="7795fffe"/>
+<p crc="2b844fe9"/>
+<c crc="14ffffac"/>
+<c crc="401f7299"/>
+<c crc="838f0260"/>
+<c crc="041560a5"/>
+<c crc="bd30b52d"/>
+<c crc="86a69c70"/>
+<c crc="d28fbc3c"/>
+<c crc="02c530a6"/>
+<m crc="49c9901a"/>
+<v crc="62e434eb"/>
+<v crc="180f3c9a"/>
+</fake>
+<fake name="samsh5pf">
+<title>Samurai Shodown V Perfect (Samurai Spirits Zero) Perfect [bootleg, hack]</title>
+<p crc="e3d18d3a"/>
+<s crc="abb3baf9"/>
+<c crc="ec9fda8d"/>
+<c crc="d2fc888d"/>
+<c crc="b0ea781b"/>
+<c crc="d34ac591"/>
+<c crc="1b5c1ea2"/>
+<c crc="deeaad58"/>
+<c crc="af90afc8"/>
+<c crc="b14872da"/>
+<m crc="654e9236"/>
+<v crc="28d57d10"/>
+<v crc="95fe7646"/>
+</fake>
+<fake name="ss5spfd">
+<title>Samurai Shodown V Special (Samurai Spirits Zero) Special [Fully Decrypted]</title>
+<p crc="d5d492a9"/>
+<p crc="b85f2c0f"/>
+<s crc="c297f973"/>
+<c crc="8548097e"/>
+<c crc="8c1b48d0"/>
+<c crc="96ddb28c"/>
+<c crc="99ef7a0a"/>
+<c crc="772e8b1e"/>
+<c crc="5fff21fc"/>
+<c crc="9ac56a0e"/>
+<c crc="cfde7aff"/>
+<m crc="654e9236"/>
+<v crc="28d57d10"/>
+<v crc="95fe7646"/>
+</fake>
+<fake name="samsh5spho" target="samsh5sp">
+<title>Samurai Shodown V Special (Samurai Spirits Zero) Special [NGH-2720, 1st release, censored]</title>
+<p crc="9291794d"/>
+<p crc="fa1a7dd8"/>
+<c crc="4f97661a"/>
+<c crc="a3afda4f"/>
+<c crc="8c3c7502"/>
+<c crc="32d5e2e2"/>
+<c crc="6ce085bc"/>
+<c crc="05c8dc8e"/>
+<c crc="1417b742"/>
+<c crc="d49773cd"/>
+<m crc="adeebf40"/>
+<v crc="76a94127"/>
+<v crc="4ba507f1"/>
+</fake>
+<fake name="samsh5sph" target="samsh5sp">
+<title>Samurai Shodown V Special (Samurai Spirits Zero) Special [NGH-2720, 2nd release, less censored]</title>
+<p crc="c30a08dd"/>
+<p crc="bd64a518"/>
+<c crc="4f97661a"/>
+<c crc="a3afda4f"/>
+<c crc="8c3c7502"/>
+<c crc="32d5e2e2"/>
+<c crc="6ce085bc"/>
+<c crc="05c8dc8e"/>
+<c crc="1417b742"/>
+<c crc="d49773cd"/>
+<m crc="adeebf40"/>
+<v crc="76a94127"/>
+<v crc="4ba507f1"/>
+</fake>
+<fake name="samsh5fe">
+<title>Samurai Shodown V Special (Samurai Spirits Zero) Special [NGM-272] [NGH-272] [Final Edition, location test version]</title>
+<p crc="9e72cc83"/>
+<p crc="1f5469bc"/>
+<s crc="c297f973"/>
+<c crc="ec9fda8d"/>
+<c crc="d2fc888d"/>
+<c crc="b0ea781b"/>
+<c crc="d34ac591"/>
+<c crc="1b5c1ea2"/>
+<c crc="deeaad58"/>
+<c crc="dce0119f"/>
+<c crc="3bf256c5"/>
+<m crc="203d744e"/>
+<v crc="28d57d10"/>
+<v crc="95fe7646"/>
+</fake>
+<fake name="santaball">
+<title>SantaBall - Christmas Tennis Game</title>
+<p crc="2af7a77c"/>
+<s crc="ac031928"/>
+<c crc="1e271a9b"/>
+<c crc="1c7fd396"/>
+<m crc="37a8d679"/>
+<v crc="d0150804"/>
+</fake>
+<fake name="samsho2k">
+<title>Saulabi Spirits (Jin Saulabi Tu Hon) [Korean release of Samurai Shodown II, set 1]</title>
+<p crc="fa32e2d8"/>
+<p crc="70b1a4d9"/>
+<p crc="147cc6d7"/>
+<s crc="ff08f80b"/>
+<c crc="86cd307c"/>
+<c crc="cdfcc4ca"/>
+<c crc="7a63ccc7"/>
+<c crc="751025ce"/>
+<c crc="20d3a475"/>
+<c crc="ae4c0a88"/>
+<c crc="2df3cbcf"/>
+<c crc="1ffc6dfa"/>
+<m crc="56675098"/>
+<v crc="37703f91"/>
+<v crc="0142bde8"/>
+<v crc="d07fa5ca"/>
+<v crc="24aab4bb"/>
+</fake>
+<fake name="samsho2ka">
+<title>Saulabi Spirits (Jin Saulabi Tu Hon) [Korean release of Samurai Shodown II, set 2]</title>
+<p crc="147cc6d7"/>
+<s crc="ff08f80b"/>
+<c crc="86cd307c"/>
+<c crc="cdfcc4ca"/>
+<c crc="7a63ccc7"/>
+<c crc="751025ce"/>
+<c crc="20d3a475"/>
+<c crc="ae4c0a88"/>
+<c crc="2df3cbcf"/>
+<c crc="1ffc6dfa"/>
+<m crc="56675098"/>
+<v crc="37703f91"/>
+<v crc="0142bde8"/>
+<v crc="d07fa5ca"/>
+<v crc="24aab4bb"/>
+</fake>
+<fake name="savagereb" p="1">
+<title>Savage Reign (Fu'un Mokushiroku - Kakutou Sousei) [Boss Hack]</title>
+<p crc="3a7fbff0"/>
+<s crc="e08978ca"/>
+<c crc="763ba611"/>
+<c crc="e05e8ca6"/>
+<c crc="3e4eba4b"/>
+<c crc="3c2a3808"/>
+<c crc="59013f9e"/>
+<c crc="1c8d5def"/>
+<c crc="c88f7035"/>
+<c crc="484ce3ba"/>
+<m crc="29992eba"/>
+<v crc="530c50fd"/>
+<v crc="eb6f1cdb"/>
+<v crc="7038c2f9"/>
+</fake>
+<fake name="savagerp">
+<title>Savage Reign (Fu'un Mokushiroku - Kakutou Sousei) [Plus, Hack]</title>
+<p crc="d8598aa0"/>
+<p crc="58a9af72"/>
+<s crc="e08978ca"/>
+<c crc="763ba611"/>
+<c crc="e05e8ca6"/>
+<c crc="3e4eba4b"/>
+<c crc="3c2a3808"/>
+<c crc="59013f9e"/>
+<c crc="1c8d5def"/>
+<c crc="c88f7035"/>
+<c crc="484ce3ba"/>
+<m crc="29992eba"/>
+<v crc="530c50fd"/>
+<v crc="eb6f1cdb"/>
+<v crc="7038c2f9"/>
+</fake>
+<fake name="sengokuh">
+<title>Sengoku (Sengoku Denshou) [NGH-017, US]</title>
+<p crc="33eccae0"/>
+<p crc="3024bbb3"/>
+<s crc="b246204d"/>
+<c crc="b4eb82a1"/>
+<c crc="d55c550d"/>
+<c crc="ed51ef65"/>
+<c crc="f4f3c9cb"/>
+<m crc="9b4f34c6"/>
+<v crc="23663295"/>
+<v crc="f61e6765"/>
+</fake>
+<fake name="sengk3fs">
+<title>Sengoku 3 (Sengoku Densho 2001) [Demeanor, Hack]</title>
+<p crc="60038a12"/>
+<p crc="c74e374c"/>
+<s crc="c1e27cc7"/>
+<c crc="9af7cbca"/>
+<c crc="2a1f874d"/>
+<c crc="5403adb5"/>
+<c crc="18926df6"/>
+<m crc="7d501c39"/>
+<v crc="64c30081"/>
+<v crc="392a9c47"/>
+<v crc="c1a7ebe3"/>
+<v crc="9000d085"/>
+</fake>
+<fake name="sengoku3s">
+<title>Sengoku 3 (Sengoku Densho 2001) [Evolution 1.0, FCHT hack]</title>
+<p crc="20b15bb5"/>
+<p crc="c74e374c"/>
+<s crc="c1e27cc7"/>
+<c crc="9af7cbca"/>
+<c crc="2a1f874d"/>
+<c crc="5403adb5"/>
+<c crc="18926df6"/>
+<m crc="7d501c39"/>
+<v crc="64c30081"/>
+<v crc="392a9c47"/>
+<v crc="c1a7ebe3"/>
+<v crc="9000d085"/>
+</fake>
+<fake name="sengk3fd">
+<title>Sengoku 3 (Sengoku Densho 2001) [Fully Decrypted]</title>
+<p crc="9295cc2c"/>
+<p crc="c74e374c"/>
+<s crc="c1e27cc7"/>
+<c crc="9af7cbca"/>
+<c crc="2a1f874d"/>
+<c crc="5403adb5"/>
+<c crc="18926df6"/>
+<m crc="7d501c39"/>
+<v crc="64c30081"/>
+<v crc="392a9c47"/>
+<v crc="c1a7ebe3"/>
+<v crc="9000d085"/>
+</fake>
+<fake name="sengk3eb">
+<title>Sengoku 3 (Sengoku Densho 2001) [Green Blue, Hack]</title>
+<p crc="f05a0ab3" dif="a285ce0d"/>
+<p crc="c74e374c"/>
+<s crc="c1e27cc7"/>
+<c crc="9af7cbca"/>
+<c crc="2a1f874d"/>
+<c crc="5403adb5"/>
+<c crc="18926df6"/>
+<m crc="7d501c39"/>
+<v crc="64c30081"/>
+<v crc="392a9c47"/>
+<v crc="c1a7ebe3"/>
+<v crc="9000d085"/>
+<p crc="a285ce0d"/>
+</fake>
+<fake name="sengok3i">
+<title>Sengoku 3 (Sengoku Densho 2001) [Infinite Power, Hack]</title>
+<p crc="a2a750cd"/>
+<p crc="c74e374c"/>
+<s crc="c1e27cc7"/>
+<c crc="9af7cbca"/>
+<c crc="2a1f874d"/>
+<c crc="5403adb5"/>
+<c crc="18926df6"/>
+<m crc="7d501c39"/>
+<v crc="64c30081"/>
+<v crc="392a9c47"/>
+<v crc="c1a7ebe3"/>
+<v crc="9000d085"/>
+</fake>
+<fake name="sengoku3a" target="sengoku3">
+<title>Sengoku 3 (Sengoku Densho 2001) [set 2]</title>
+<p crc="5b557201"/>
+<c crc="ded84d9c"/>
+<c crc="b8eb4348"/>
+<c crc="84e2034a"/>
+<c crc="0b45ae53"/>
+<m crc="7d501c39"/>
+<v crc="64c30081"/>
+<v crc="392a9c47"/>
+<v crc="c1a7ebe3"/>
+<v crc="9000d085"/>
+</fake>
+<fake name="beast">
+<title>Shadow of the Beast [Neo Geo demo]</title>
+<p crc="1f9e62a4"/>
+<s crc="05a417f5"/>
+<c crc="e1974741"/>
+<c crc="9f5b9cf6"/>
+<m crc="7669de64"/>
+<v crc="504bf849"/>
+</fake>
+<fake name="shocktroa">
+<title>Shock Troopers [set 2]</title>
+<p crc="5677456f"/>
+<p crc="5b4a09c5"/>
+<s crc="1f95cedb"/>
+<c crc="90c6a181"/>
+<c crc="888720f0"/>
+<c crc="2c393aa3"/>
+<c crc="b9e909eb"/>
+<c crc="c22c68eb"/>
+<c crc="119323cd"/>
+<c crc="a72ce7ed"/>
+<c crc="1c7c2efb"/>
+<m crc="075b9518"/>
+<v crc="260c0bef"/>
+<v crc="4ad7d59e"/>
+</fake>
+<fake name="moshougi">
+<title>Shougi no Tatsujin - Master of Shougi</title>
+<p crc="7ba70e2d"/>
+<s crc="bfdc8309"/>
+<c crc="bba9e8c0"/>
+<c crc="2574be03"/>
+<m crc="a602c2c2"/>
+<v crc="baa2b9a5"/>
+</fake>
+<fake name="svcfd">
+<title>SNK vs. Capcom - SVC Chaos [Fully Decrypted]</title>
+<p crc="93855c0b"/>
+<s crc="ad184232"/>
+<c crc="465d473b"/>
+<c crc="3eb28f78"/>
+<c crc="f4d4ab2b"/>
+<c crc="a69d523a"/>
+<c crc="ba2a7892"/>
+<c crc="37371ca1"/>
+<c crc="5595b6cc"/>
+<c crc="b17dfcf9"/>
+<m crc="447b3123"/>
+<v crc="ff64cd56"/>
+<v crc="a8dd6446"/>
+</fake>
+<fake name="svcsplse">
+<title>SNK vs. Capcom - SVC Chaos Super Plus [Enhanced, Hack]</title>
+<p crc="e0cbed51"/>
+<p crc="4187b044"/>
+<s crc="e980bc6c"/>
+<c crc="a7826b89"/>
+<c crc="ed3c2089"/>
+<c crc="71ed8063"/>
+<c crc="250bde2d"/>
+<c crc="9817c082"/>
+<c crc="2bc0307f"/>
+<c crc="2f763838"/>
+<c crc="6ac57d25"/>
+<m crc="c6b44615"/>
+<v crc="b5097287"/>
+<v crc="bd3a391f"/>
+<v crc="33fc0b37"/>
+<v crc="aa9849a0"/>
+</fake>
+<fake name="socbrawlh">
+<title>Soccer Brawl [NGH-031]</title>
+<p crc="a2801c24"/>
+<s crc="4c117174"/>
+<c crc="bd0a4eb8"/>
+<c crc="efde5382"/>
+<c crc="580f7f33"/>
+<c crc="ed297de8"/>
+<m crc="cb37427c"/>
+<v crc="cc78497e"/>
+<v crc="dda043c6"/>
+</fake>
+<fake name="amazoneo">
+<title>Soldier Girl Amazon Neo</title>
+<p crc="f5f57b9d"/>
+<s crc="128166bb"/>
+<c crc="901c6ae1"/>
+<c crc="a02a8679"/>
+<m crc="681d2398"/>
+<v crc="1a1a886c"/>
+<v crc="86cade60"/>
+</fake>
+<fake name="spidermi">
+<title>Spiderman [FMV Demo]</title>
+<p crc="66b5cfe8"/>
+<p crc="72082aea"/>
+<s crc="63b8b25e"/>
+<c crc="8e5ccfdd"/>
+<c crc="a6406f5b"/>
+<c crc="adfff926"/>
+<c crc="068c307f"/>
+<c crc="9a5cf7a6"/>
+<c crc="934f03c0"/>
+<m crc="6a02cb1d"/>
+<v crc="95c138da"/>
+</fake>
+<fake name="sbp">
+<title>Super Bubble Pop</title>
+<p crc="d054d264"/>
+<s crc="2fd04b2a"/>
+<c crc="44791317"/>
+<c crc="a3a1c0df"/>
+<m crc="7b1f86f7"/>
+<v crc="c96723b9"/>
+<v crc="08c339a5"/>
+</fake>
+<fake name="sdodgebh" p="1">
+<title>Super Dodge Ball (Kunio no Nekketsu Toukyuu Densetsu) [Secret Character Hack]</title>
+<p crc="e6e58566"/>
+<s crc="64abd6b3"/>
+<c crc="93d8619b"/>
+<c crc="1c737bb6"/>
+<c crc="14cb1703"/>
+<c crc="c7165f19"/>
+<m crc="0a5f3325"/>
+<v crc="e7899a24"/>
+</fake>
+<fake name="sdodgeb">
+<title>Super Dodge Ball (Kunio no Nekketsu Toukyuu Densetsu)</title>
+<p crc="127f3d32"/>
+<s crc="64abd6b3"/>
+<c crc="93d8619b"/>
+<c crc="1c737bb6"/>
+<c crc="14cb1703"/>
+<c crc="c7165f19"/>
+<m crc="0a5f3325"/>
+<v crc="e7899a24"/>
+</fake>
+<fake name="twsoc96">
+<title>Tecmo World Soccer '96</title>
+<p crc="03e20ab6"/>
+<s crc="6f5e2b3a"/>
+<c crc="2611bc2a"/>
+<c crc="6b0d6827"/>
+<c crc="750ddc0c"/>
+<c crc="7a6e7d82"/>
+<m crc="cb82bc5d"/>
+<v crc="97bf1986"/>
+<v crc="b7eb05df"/>
+</fake>
+<fake name="tmnti">
+<title>Teenage Mutant Ninja Turtles [FMV Demo]</title>
+<p crc="2d5066ff"/>
+<s crc="3dc5c1ef"/>
+<c crc="ae1735c1"/>
+<c crc="344281b5"/>
+<c crc="1058a648"/>
+<c crc="1c6ba1b0"/>
+<c crc="73a89fb0"/>
+<c crc="a139246a"/>
+<c crc="ed957842"/>
+<c crc="8c15d91b"/>
+<m crc="953542ef"/>
+<v crc="273640c3"/>
+</fake>
+<fake name="tmntia">
+<title>Teenage Mutant Ninja Turtles [FMV Demo, alt]</title>
+<p crc="ed4f5fec"/>
+<s crc="3dc5c1ef"/>
+<c crc="ae1735c1"/>
+<c crc="344281b5"/>
+<c crc="1058a648"/>
+<c crc="1c6ba1b0"/>
+<c crc="73a89fb0"/>
+<c crc="a139246a"/>
+<c crc="ed957842"/>
+<c crc="8c15d91b"/>
+<m crc="953542ef"/>
+<v crc="273640c3"/>
+</fake>
+<fake name="teot">
+<title>The Eye of Typhoon [Beta 7 Version]</title>
+<p crc="c0ae0a56"/>
+<p crc="68dc7463"/>
+<s crc="6d05f74b"/>
+<c crc="2fdbfbef"/>
+<c crc="4b953a79"/>
+<m crc="0c17ccac"/>
+<v crc="d2911e9c"/>
+<v crc="49e3afe6"/>
+</fake>
+<fake name="kof94bs">
+<title>The King of Fighters '94 [Boss, Hack]</title>
+<p crc="945edf8e"/>
+<p crc="29029d93"/>
+<s crc="825976c1"/>
+<c crc="b96ef460"/>
+<c crc="15e096a7"/>
+<c crc="54f66254"/>
+<c crc="0b01765f"/>
+<c crc="ee759363"/>
+<c crc="498da52c"/>
+<c crc="62f66888"/>
+<c crc="fe0a235d"/>
+<m crc="f6e77cf5"/>
+<v crc="8889596d"/>
+<v crc="25022b27"/>
+<v crc="83cf32c0"/>
+</fake>
+<fake name="kof94rz" p="1">
+<title>The King of Fighters '94 [Hack Boss Remixed]</title>
+<p crc="38410fdf"/>
+<s crc="286ab67d"/>
+<c crc="b96ef460"/>
+<c crc="15e096a7"/>
+<c crc="54f66254"/>
+<c crc="0b01765f"/>
+<c crc="ee759363"/>
+<c crc="498da52c"/>
+<c crc="62f66888"/>
+<c crc="fe0a235d"/>
+<m crc="f6e77cf5"/>
+<v crc="8889596d"/>
+<v crc="25022b27"/>
+<v crc="83cf32c0"/>
+</fake>
+<fake name="kof94nr2" p="1">
+<title>The King of Fighters '94 [New Remix 2018 Rev.2, Hack]</title>
+<p crc="f4c60559"/>
+<s crc="825976c1"/>
+<c crc="b96ef460"/>
+<c crc="15e096a7"/>
+<c crc="54f66254"/>
+<c crc="0b01765f"/>
+<c crc="ee759363"/>
+<c crc="498da52c"/>
+<c crc="62f66888"/>
+<c crc="fe0a235d"/>
+<m crc="f6e77cf5"/>
+<v crc="8889596d"/>
+<v crc="25022b27"/>
+<v crc="83cf32c0"/>
+</fake>
+<fake name="kof94br" p="1">
+<title>The King of Fighters '94 [Portuguese edition, Hack]</title>
+<p crc="0138a992"/>
+<s crc="825976c1"/>
+<c crc="6fb14154"/>
+<c crc="15e096a7"/>
+<c crc="54f66254"/>
+<c crc="0b01765f"/>
+<c crc="ee759363"/>
+<c crc="498da52c"/>
+<c crc="62f66888"/>
+<c crc="fe0a235d"/>
+<m crc="f6e77cf5"/>
+<v crc="8889596d"/>
+<v crc="25022b27"/>
+<v crc="83cf32c0"/>
+</fake>
+<fake name="kof94tea" p="1">
+<title>The King of Fighters '94 [Team Edit Edition - KOF94 style portraits v1.4.2, Hack]</title>
+<p crc="26650715"/>
+<s crc="dcd024d2"/>
+<c crc="8f3bf840"/>
+<c crc="f45d317d"/>
+<c crc="54f66254"/>
+<c crc="0b01765f"/>
+<c crc="ee759363"/>
+<c crc="498da52c"/>
+<c crc="9421909c"/>
+<c crc="7e872d03"/>
+<m crc="f6e77cf5"/>
+<v crc="8889596d"/>
+<v crc="25022b27"/>
+<v crc="83cf32c0"/>
+</fake>
+<fake name="kof94te" p="1">
+<title>The King of Fighters '94 [Team Edit Edition - KOF95 style portraits v1.4.2, Hack]</title>
+<p crc="e4d3e394"/>
+<s crc="dcd024d2"/>
+<c crc="daf4f5d5"/>
+<c crc="849bdfba"/>
+<c crc="54f66254"/>
+<c crc="0b01765f"/>
+<c crc="ee759363"/>
+<c crc="498da52c"/>
+<c crc="78bf6367"/>
+<c crc="7f680a75"/>
+<m crc="f6e77cf5"/>
+<v crc="8889596d"/>
+<v crc="25022b27"/>
+<v crc="83cf32c0"/>
+</fake>
+<fake name="kof95bs">
+<title>The King of Fighters '95 [Boss, Hack]</title>
+<p crc="4f66e4db"/>
+<p crc="5cb1af9e"/>
+<s crc="08d0ff9d"/>
+<c crc="fe087e32"/>
+<c crc="07864e09"/>
+<c crc="a4e65d1b"/>
+<c crc="c1ace468"/>
+<c crc="8a2c1edc"/>
+<c crc="f593ac35"/>
+<c crc="9904025f"/>
+<c crc="78eb0f9b"/>
+<m crc="6f2d7429"/>
+<v crc="84861b56"/>
+<v crc="b38a2803"/>
+<v crc="d683a338"/>
+</fake>
+<fake name="kof95b" p="1">
+<title>The King of Fighters '95 [Enable Hidden Characters V.unknown]</title>
+<p crc="64d9aa39"/>
+<s crc="de716f8a"/>
+<c crc="fe087e32"/>
+<c crc="07864e09"/>
+<c crc="a4e65d1b"/>
+<c crc="c1ace468"/>
+<c crc="8a2c1edc"/>
+<c crc="f593ac35"/>
+<c crc="9904025f"/>
+<c crc="78eb0f9b"/>
+<m crc="6f2d7429"/>
+<v crc="84861b56"/>
+<v crc="b38a2803"/>
+<v crc="d683a338"/>
+</fake>
+<fake name="kof95jq">
+<title>The King of Fighters '95 [Infinite Energy, Hack]</title>
+<p crc="29bed618"/>
+<p crc="b35a695f"/>
+<s crc="de716f8a"/>
+<c crc="fe087e32"/>
+<c crc="07864e09"/>
+<c crc="a4e65d1b"/>
+<c crc="c1ace468"/>
+<c crc="8a2c1edc"/>
+<c crc="f593ac35"/>
+<c crc="9904025f"/>
+<c crc="78eb0f9b"/>
+<m crc="6f2d7429"/>
+<v crc="84861b56"/>
+<v crc="b38a2803"/>
+<v crc="d683a338"/>
+</fake>
+<fake name="kof95h" p="1">
+<title>The King of Fighters '95 [NGH-084]</title>
+<p crc="5e54cf95"/>
+<s crc="de716f8a"/>
+<c crc="fe087e32"/>
+<c crc="07864e09"/>
+<c crc="a4e65d1b"/>
+<c crc="c1ace468"/>
+<c crc="8a2c1edc"/>
+<c crc="f593ac35"/>
+<c crc="9904025f"/>
+<c crc="78eb0f9b"/>
+<m crc="6f2d7429"/>
+<v crc="84861b56"/>
+<v crc="b38a2803"/>
+<v crc="d683a338"/>
+</fake>
+<fake name="kof95t">
+<title>The King of Fighters '95 [Optimized, Hack]</title>
+<p crc="9b155d4c"/>
+<p crc="5cb1af9e"/>
+<p crc="10e83d84"/>
+<s crc="de716f8a"/>
+<c crc="fe087e32"/>
+<c crc="07864e09"/>
+<c crc="a4e65d1b"/>
+<c crc="c1ace468"/>
+<c crc="8a2c1edc"/>
+<c crc="f593ac35"/>
+<c crc="9904025f"/>
+<c crc="78eb0f9b"/>
+<m crc="6f2d7429"/>
+<v crc="84861b56"/>
+<v crc="b38a2803"/>
+<v crc="d683a338"/>
+</fake>
+<fake name="kof95sp">
+<title>The King of Fighters '95 [Special 2017, Hack]</title>
+<p crc="b3c26333"/>
+<p crc="5cb1af9e"/>
+<p crc="7eddc5d8"/>
+<s crc="83cbae60"/>
+<c crc="fe087e32"/>
+<c crc="07864e09"/>
+<c crc="a4e65d1b"/>
+<c crc="c1ace468"/>
+<c crc="8a2c1edc"/>
+<c crc="f593ac35"/>
+<c crc="9904025f"/>
+<c crc="78eb0f9b"/>
+<m crc="6f2d7429"/>
+<v crc="84861b56"/>
+<v crc="b38a2803"/>
+<v crc="d683a338"/>
+</fake>
+<fake name="kof95sr3" p="1">
+<title>The King of Fighters '95 [Super Remix V3, Hack]</title>
+<p crc="2b85571b"/>
+<s crc="de716f8a"/>
+<c crc="fe087e32"/>
+<c crc="07864e09"/>
+<c crc="a4e65d1b"/>
+<c crc="c1ace468"/>
+<c crc="8a2c1edc"/>
+<c crc="f593ac35"/>
+<c crc="9904025f"/>
+<c crc="78eb0f9b"/>
+<m crc="6f2d7429"/>
+<v crc="84861b56"/>
+<v crc="b38a2803"/>
+<v crc="d683a338"/>
+</fake>
+<fake name="kof96ae">
+<title>The King of Fighters '96 [Anniversary, Hack]</title>
+<p crc="c718ea76" dif="27460e16"/>
+<p crc="2638be07" dif="b5300d86"/>
+<s crc="b9626494" dif="e7b193f6"/>
+<c crc="b308c1f9"/>
+<c crc="220a92b2"/>
+<c crc="64989a65"/>
+<c crc="afbea515"/>
+<c crc="41dbd677" dif="3e9f5d11"/>
+<c crc="d6c72311" dif="6e8ba626"/>
+<c crc="08021fd6"/>
+<c crc="bbd21b08"/>
+<c crc="bacafe5b" dif="fc6801b1"/>
+<c crc="055befd6" dif="dff8e33d"/>
+<c crc="f5a661ec" dif="b89cfd0d"/>
+<c crc="78c0dfab" dif="215f2ab5"/>
+<m crc="3a4a7c21" dif="8d7fb2a4"/>
+<v crc="63f7b045"/>
+<v crc="25929059"/>
+<v crc="f85673b0" dif="fd28107d"/>
+</fake>
+<fake name="kof96ep">
+<title>The King of Fighters '96 [bootleg or hack]</title>
+<p crc="52755d74"/>
+<p crc="002ccb73"/>
+<s crc="1254cbdb"/>
+<c crc="7ecf4aa2"/>
+<c crc="05b54f37"/>
+<c crc="64989a65"/>
+<c crc="afbea515"/>
+<c crc="2a3bbd26"/>
+<c crc="44d30dc7"/>
+<c crc="3687331b"/>
+<c crc="fa1461ad"/>
+<m crc="dabc427c"/>
+<v crc="63f7b045"/>
+<v crc="25929059"/>
+<v crc="92a2257d"/>
+<p crc="e5f2fb43"/>
+</fake>
+<fake name="kof96cn">
+<title>The King of Fighters '96 [Chinese Edition, ver 1.0, Hack]</title>
+<p crc="a8c25f0a"/>
+<p crc="0edface5"/>
+<p crc="8724a441"/>
+<s crc="f917527a"/>
+<c crc="7ecf4aa2"/>
+<c crc="05b54f37"/>
+<c crc="64989a65"/>
+<c crc="afbea515"/>
+<c crc="2a3bbd26"/>
+<c crc="44d30dc7"/>
+<c crc="3687331b"/>
+<c crc="fa1461ad"/>
+<c crc="a9f811d2"/>
+<c crc="1147406a"/>
+<m crc="dabc427c"/>
+<v crc="63f7b045"/>
+<v crc="25929059"/>
+<v crc="92a2257d"/>
+</fake>
+<fake name="kof96a">
+<title>The King of Fighters '96 [NGM-214, alt board]</title>
+<p crc="a6101486"/>
+<p crc="6abc7ae5"/>
+<p crc="a588dff4"/>
+<p crc="6d6f17eb"/>
+<p crc="d388f4da"/>
+<s crc="1254cbdb"/>
+<c crc="7ecf4aa2"/>
+<c crc="05b54f37"/>
+<c crc="64989a65"/>
+<c crc="afbea515"/>
+<c crc="2a3bbd26"/>
+<c crc="44d30dc7"/>
+<c crc="3687331b"/>
+<c crc="fa1461ad"/>
+<m crc="dabc427c"/>
+<v crc="63f7b045"/>
+<v crc="25929059"/>
+<v crc="92a2257d"/>
+</fake>
+<fake name="kof96pls">
+<title>The King of Fighters '96 [Plus, Hack]</title>
+<p crc="76fc560c"/>
+<p crc="002ccb73"/>
+<s crc="1254cbdb"/>
+<c crc="7ecf4aa2"/>
+<c crc="05b54f37"/>
+<c crc="64989a65"/>
+<c crc="afbea515"/>
+<c crc="2a3bbd26"/>
+<c crc="44d30dc7"/>
+<c crc="3687331b"/>
+<c crc="fa1461ad"/>
+<m crc="dabc427c"/>
+<v crc="63f7b045"/>
+<v crc="25929059"/>
+<v crc="92a2257d"/>
+</fake>
+<fake name="kof96rp">
+<title>The King of Fighters '96 [Remix Plus 08 SP, Hack]</title>
+<p crc="e412a600"/>
+<p crc="6bd3d75e"/>
+<s crc="36a14c3b"/>
+<c crc="7ecf4aa2"/>
+<c crc="05b54f37"/>
+<c crc="64989a65"/>
+<c crc="afbea515"/>
+<c crc="2a3bbd26"/>
+<c crc="44d30dc7"/>
+<c crc="3687331b"/>
+<c crc="fa1461ad"/>
+<m crc="dabc427c"/>
+<v crc="63f7b045"/>
+<v crc="25929059"/>
+<v crc="92a2257d"/>
+</fake>
+<fake name="kof96rss">
+<title>The King of Fighters '96 [Remix Spring Special, Version 1.5, Hack]</title>
+<p crc="93abe27c"/>
+<p crc="002ccb73"/>
+<s crc="f304df75"/>
+<c crc="7ecf4aa2"/>
+<c crc="05b54f37"/>
+<c crc="64989a65"/>
+<c crc="afbea515"/>
+<c crc="2a3bbd26"/>
+<c crc="44d30dc7"/>
+<c crc="3687331b"/>
+<c crc="fa1461ad"/>
+<m crc="dabc427c"/>
+<v crc="63f7b045"/>
+<v crc="25929059"/>
+<v crc="92a2257d"/>
+</fake>
+<fake name="kof96r">
+<title>The King of Fighters '96 [Revised, Hack]</title>
+<p crc="c36be9c7"/>
+<p crc="7ec1c31e"/>
+<s crc="08811ec1"/>
+<c crc="7ecf4aa2"/>
+<c crc="05b54f37"/>
+<c crc="64989a65"/>
+<c crc="afbea515"/>
+<c crc="2a3bbd26"/>
+<c crc="44d30dc7"/>
+<c crc="3687331b"/>
+<c crc="fa1461ad"/>
+<m crc="dabc427c"/>
+<v crc="63f7b045"/>
+<v crc="25929059"/>
+<v crc="92a2257d"/>
+</fake>
+<fake name="kof97cn">
+<title>The King of Fighters '97 [10th Anniversary Chinese Edition, Hack]</title>
+<p crc="082933c8"/>
+<p crc="d22d3ca3"/>
+<s crc="de5ad278"/>
+<c crc="8c3d2c0c"/>
+<c crc="43ce69ae"/>
+<c crc="581d6618"/>
+<c crc="49bb1e68"/>
+<c crc="34fc4e51"/>
+<c crc="4ff4d47b"/>
+<m crc="45348747"/>
+<v crc="22a2b5b5"/>
+<v crc="2304e744"/>
+<v crc="759eb954"/>
+</fake>
+<fake name="kof97ae">
+<title>The King of Fighters '97 [Anniversary, Hack]</title>
+<p crc="cecc4f64" dif="8da71759"/>
+<p crc="228aa8d1" dif="c3c641b6"/>
+<s crc="30a6b3b8"/>
+<c crc="5f0133eb"/>
+<c crc="136b8449"/>
+<c crc="581d6618"/>
+<c crc="49bb1e68"/>
+<c crc="8167b444"/>
+<c crc="a410f3ca"/>
+<c crc="50a48a56"/>
+<c crc="80d7ec00"/>
+<m crc="f7b7ee13"/>
+<v crc="22a2b5b5"/>
+<v crc="2304e744"/>
+<v crc="759eb954"/>
+</fake>
+<fake name="kof97bt">
+<title>The King of Fighters '97 [Balanced &amp; Optimized, Hack]</title>
+<p crc="efd8fa38"/>
+<p crc="6ab81bd7"/>
+<s crc="8514ecf5"/>
+<c crc="1a5bfb12"/>
+<c crc="a405f128"/>
+<c crc="581d6618"/>
+<c crc="49bb1e68"/>
+<c crc="34fc4e51"/>
+<c crc="4ff4d47b"/>
+<m crc="45348747"/>
+<v crc="22a2b5b5"/>
+<v crc="2304e744"/>
+<v crc="759eb954"/>
+</fake>
+<fake name="kof97ts">
+<title>The King of Fighters '97 [Battle with Orochi, v1.2, Hack]</title>
+<p crc="9a56d828"/>
+<p crc="6aacb6f3"/>
+<s crc="a7d2ea6d"/>
+<c crc="5f8bf0a1"/>
+<c crc="e4d45c81"/>
+<c crc="581d6618"/>
+<c crc="49bb1e68"/>
+<c crc="8174fdf5"/>
+<c crc="32d5aa6a"/>
+<m crc="45348747"/>
+<v crc="22a2b5b5"/>
+<v crc="2304e744"/>
+<v crc="759eb954"/>
+</fake>
+<fake name="kof97bs">
+<title>The King of Fighters '97 [Boss, Hack]</title>
+<p crc="5e287c6f"/>
+<p crc="05c0500c"/>
+<s crc="ece9abba"/>
+<c crc="fdfa1933"/>
+<c crc="ebd8a2c0"/>
+<c crc="b092e64f"/>
+<c crc="d25e8a04"/>
+<c crc="22fbe729"/>
+<c crc="50831866"/>
+<m crc="45348747"/>
+<v crc="22a2b5b5"/>
+<v crc="2304e744"/>
+<v crc="759eb954"/>
+</fake>
+<fake name="kof97ce">
+<title>The King of Fighters '97 [Champion Edition, Hack]</title>
+<p crc="e1808b39"/>
+<p crc="158b23f6"/>
+<s crc="8514ecf5"/>
+<c crc="5f8bf0a1"/>
+<c crc="e4d45c81"/>
+<c crc="581d6618"/>
+<c crc="49bb1e68"/>
+<c crc="34fc4e51"/>
+<c crc="4ff4d47b"/>
+<m crc="45348747"/>
+<v crc="22a2b5b5"/>
+<v crc="2304e744"/>
+<v crc="759eb954"/>
+</fake>
+<fake name="kof97cbt">
+<title>The King of Fighters '97 [Combo Training, Hack, Ver. 2018]</title>
+<p crc="323e4263"/>
+<p crc="91c0cfdb"/>
+<s crc="d4957067"/>
+<c crc="ea16b711"/>
+<c crc="b7bef674"/>
+<c crc="581d6618"/>
+<c crc="49bb1e68"/>
+<c crc="6fe02054"/>
+<c crc="0f96c84a"/>
+<m crc="45348747"/>
+<v crc="22a2b5b5"/>
+<v crc="2304e744"/>
+<v crc="759eb954"/>
+</fake>
+<fake name="kof97cb">
+<title>The King of Fighters '97 [Combo, Hack]</title>
+<p crc="827670ab"/>
+<p crc="91c0cfdb"/>
+<s crc="d4957067"/>
+<c crc="ea16b711"/>
+<c crc="b7bef674"/>
+<c crc="581d6618"/>
+<c crc="49bb1e68"/>
+<c crc="34fc4e51"/>
+<c crc="4ff4d47b"/>
+<m crc="45348747"/>
+<v crc="22a2b5b5"/>
+<v crc="2304e744"/>
+<v crc="759eb954"/>
+</fake>
+<fake name="kof97m">
+<title>The King of Fighters '97 [Dream Back, Hack]</title>
+<p crc="8f00511f"/>
+<p crc="0fa5639a"/>
+<s crc="8514ecf5"/>
+<c crc="5f8bf0a1"/>
+<c crc="e4d45c81"/>
+<c crc="581d6618"/>
+<c crc="49bb1e68"/>
+<c crc="34fc4e51"/>
+<c crc="4ff4d47b"/>
+<m crc="45348747"/>
+<v crc="22a2b5b5"/>
+<v crc="2304e744"/>
+<v crc="759eb954"/>
+</fake>
+<fake name="kof97eb">
+<title>The King of Fighters '97 [Evolution &amp; Balance, Hack]</title>
+<p crc="c602e1c7"/>
+<p crc="9b4f127a"/>
+<s crc="8514ecf5"/>
+<c crc="5b382241"/>
+<c crc="6060de03"/>
+<c crc="581d6618"/>
+<c crc="49bb1e68"/>
+<c crc="34fc4e51"/>
+<c crc="4ff4d47b"/>
+<m crc="45348747"/>
+<v crc="22a2b5b5"/>
+<v crc="2304e744"/>
+<v crc="759eb954"/>
+</fake>
+<fake name="kof97evf">
+<title>The King of Fighters '97 [Evolution FC2, Hack]</title>
+<p crc="e937a935"/>
+<p crc="0d2cb10a"/>
+<s crc="8514ecf5"/>
+<c crc="5f8bf0a1"/>
+<c crc="e4d45c81"/>
+<c crc="581d6618"/>
+<c crc="49bb1e68"/>
+<c crc="34fc4e51"/>
+<c crc="4ff4d47b"/>
+<m crc="45348747"/>
+<v crc="22a2b5b5"/>
+<v crc="2304e744"/>
+<v crc="759eb954"/>
+</fake>
+<fake name="kof97evn">
+<title>The King of Fighters '97 [Evolution New, Hack]</title>
+<p crc="f047c328"/>
+<p crc="5cbb2499"/>
+<s crc="8514ecf5"/>
+<c crc="5f8bf0a1"/>
+<c crc="e4d45c81"/>
+<c crc="581d6618"/>
+<c crc="49bb1e68"/>
+<c crc="34fc4e51"/>
+<c crc="4ff4d47b"/>
+<m crc="45348747"/>
+<v crc="22a2b5b5"/>
+<v crc="2304e744"/>
+<v crc="759eb954"/>
+</fake>
+<fake name="kof97xt">
+<title>The King of Fighters '97 [Final Battle, Hack]</title>
+<p crc="2e4f4e3b"/>
+<p crc="6d4503ce"/>
+<s crc="d6fe166f"/>
+<c crc="d504bf4a"/>
+<c crc="942ea708"/>
+<c crc="581d6618"/>
+<c crc="49bb1e68"/>
+<c crc="c1bd2375"/>
+<c crc="a7c8506a"/>
+<m crc="45348747"/>
+<v crc="22a2b5b5"/>
+<v crc="2304e744"/>
+<v crc="759eb954"/>
+</fake>
+<fake name="kof97ps">
+<title>The King of Fighters '97 [Imitation Playstation final improved version 2016-10-29]</title>
+<p crc="fc25feec"/>
+<p crc="90723643"/>
+<s crc="8514ecf5"/>
+<c crc="748ade86"/>
+<c crc="3270fa6e"/>
+<c crc="581d6618"/>
+<c crc="49bb1e68"/>
+<c crc="47711a8c"/>
+<c crc="6703a48a"/>
+<m crc="45348747"/>
+<v crc="22a2b5b5"/>
+<v crc="2304e744"/>
+<v crc="759eb954"/>
+</fake>
+<fake name="kof97inv">
+<title>The King of Fighters '97 [Invincible Plus!, B2.1.2107, Hack]</title>
+<p crc="ff90a715"/>
+<p crc="9bccc862"/>
+<s crc="de61d11c"/>
+<c crc="b496fb6e"/>
+<c crc="ff3fde05"/>
+<c crc="46db93d9"/>
+<c crc="b1a4ac4a"/>
+<c crc="1a921988"/>
+<c crc="07630b58"/>
+<c crc="c71dcab9"/>
+<c crc="c6d74eaf"/>
+<m crc="7b933dd8"/>
+<v crc="22a2b5b5"/>
+<v crc="2304e744"/>
+<v crc="759eb954"/>
+<v crc="225996c3"/>
+</fake>
+<fake name="kof97k">
+<title>The King of Fighters '97 [Korean release]</title>
+<p crc="7db81ad9"/>
+<p crc="158b23f6"/>
+<s crc="8514ecf5"/>
+<c crc="5f8bf0a1"/>
+<c crc="e4d45c81"/>
+<c crc="581d6618"/>
+<c crc="49bb1e68"/>
+<c crc="34fc4e51"/>
+<c crc="4ff4d47b"/>
+<m crc="bbea9070"/>
+<v crc="22a2b5b5"/>
+<v crc="2304e744"/>
+<v crc="759eb954"/>
+</fake>
+<fake name="kof97h">
+<title>The King of Fighters '97 [NGH-2320]</title>
+<p crc="5c2400b7"/>
+<p crc="158b23f6"/>
+<s crc="8514ecf5"/>
+<c crc="5f8bf0a1"/>
+<c crc="e4d45c81"/>
+<c crc="581d6618"/>
+<c crc="49bb1e68"/>
+<c crc="34fc4e51"/>
+<c crc="4ff4d47b"/>
+<m crc="45348747"/>
+<v crc="22a2b5b5"/>
+<v crc="2304e744"/>
+<v crc="759eb954"/>
+</fake>
+<fake name="kof97t">
+<title>The King of Fighters '97 [Optimized, Hack]</title>
+<p crc="45834e9b" dif="b162219a"/>
+<p crc="d9e51750" dif="a5e6d358"/>
+<s crc="8514ecf5" dif="18c4f447"/>
+<c crc="b7f5a3b9" dif="29a75f37"/>
+<c crc="959d6d78" dif="5f5506f4"/>
+<c crc="581d6618"/>
+<c crc="49bb1e68"/>
+<c crc="34fc4e51" dif="30abf231"/>
+<c crc="4ff4d47b" dif="67d28823"/>
+<m crc="45348747"/>
+<v crc="22a2b5b5"/>
+<v crc="2304e744"/>
+<v crc="759eb954"/>
+</fake>
+<fake name="kof97pm">
+<title>The King of Fighters '97 [Practice Mode, Hack]</title>
+<p crc="34ccabae"/>
+<p crc="158b23f6"/>
+<s crc="8514ecf5"/>
+<c crc="5f8bf0a1"/>
+<c crc="e4d45c81"/>
+<c crc="581d6618"/>
+<c crc="49bb1e68"/>
+<c crc="34fc4e51"/>
+<c crc="4ff4d47b"/>
+<m crc="45348747"/>
+<v crc="22a2b5b5"/>
+<v crc="2304e744"/>
+<v crc="759eb954"/>
+</fake>
+<fake name="kof97rc">
+<title>The King of Fighters '97 [Random Combo, Hack, Ver. 2010]</title>
+<p crc="1d476235"/>
+<p crc="406e4a4b"/>
+<s crc="d4957067"/>
+<c crc="e2fe7d7a"/>
+<c crc="d0746893"/>
+<c crc="581d6618"/>
+<c crc="49bb1e68"/>
+<c crc="34fc4e51"/>
+<c crc="4ff4d47b"/>
+<m crc="45348747"/>
+<v crc="22a2b5b5"/>
+<v crc="2304e744"/>
+<v crc="759eb954"/>
+</fake>
+<fake name="kof97rm">
+<title>The King of Fighters '97 [Randomized, Hack]</title>
+<p crc="4c597fda"/>
+<p crc="0410b42e"/>
+<s crc="53b57ce2"/>
+<c crc="57633aca"/>
+<c crc="831ec266"/>
+<c crc="b092e64f"/>
+<c crc="d25e8a04"/>
+<c crc="34fc4e51"/>
+<c crc="4ff4d47b"/>
+<m crc="45348747"/>
+<v crc="22a2b5b5"/>
+<v crc="2304e744"/>
+<v crc="759eb954"/>
+</fake>
+<fake name="kof97sp">
+<title>The King of Fighters '97 [Special, Hack]</title>
+<p crc="a511714d"/>
+<p crc="d9e51750"/>
+<s crc="ba445f53"/>
+<c crc="b7f5a3b9"/>
+<c crc="959d6d78"/>
+<c crc="581d6618"/>
+<c crc="49bb1e68"/>
+<c crc="34fc4e51"/>
+<c crc="4ff4d47b"/>
+<m crc="45348747"/>
+<v crc="22a2b5b5"/>
+<v crc="2304e744"/>
+<v crc="759eb954"/>
+</fake>
+<fake name="kof97st">
+<title>The King of Fighters '97 [Strengthen Innovation, Hack]</title>
+<p crc="4d4dfd30"/>
+<p crc="f144c697"/>
+<s crc="8514ecf5"/>
+<c crc="57633aca"/>
+<c crc="831ec266"/>
+<c crc="b092e64f"/>
+<c crc="d25e8a04"/>
+<c crc="91771218"/>
+<c crc="55a1bf39"/>
+<m crc="45348747"/>
+<v crc="22a2b5b5"/>
+<v crc="2304e744"/>
+<v crc="759eb954"/>
+</fake>
+<fake name="kof97ubp">
+<title>The King of Fighters '97 [Ultimate Battle Plus, Hack]</title>
+<p crc="8490e92e"/>
+<p crc="33482c71"/>
+<s crc="0016c83a"/>
+<c crc="e1b11416"/>
+<c crc="0ea40438"/>
+<c crc="b092e64f"/>
+<c crc="d25e8a04"/>
+<c crc="8572aa61"/>
+<c crc="dcef5f41"/>
+<m crc="45348747"/>
+<v crc="22a2b5b5"/>
+<v crc="92b14f89"/>
+<v crc="759eb954"/>
+</fake>
+<fake name="kof97oro">
+<title>The King of Fighters '97 Chongchu Jianghu Plus 2003 [bootleg, set 1]</title>
+<p crc="6dcb2946"/>
+<p crc="6e1c4d8c"/>
+<p crc="4c7c0221"/>
+<s crc="4ee2149a"/>
+<c crc="f13e841c"/>
+<c crc="2db1f6d3"/>
+<c crc="a90340cb"/>
+<c crc="188e351a"/>
+<c crc="d4eec50a"/>
+<c crc="031b1ad5"/>
+<m crc="45348747"/>
+<v crc="22a2b5b5"/>
+<v crc="2304e744"/>
+<v crc="759eb954"/>
+</fake>
+<fake name="kof97pla">
+<title>The King of Fighters '97 Chongchu Jianghu Plus 2003 [bootleg, set 2]</title>
+<p crc="035911c5"/>
+<p crc="158b23f6"/>
+<s crc="4ee2149a"/>
+<c crc="5f8bf0a1"/>
+<c crc="e4d45c81"/>
+<c crc="581d6618"/>
+<c crc="49bb1e68"/>
+<c crc="34fc4e51"/>
+<c crc="4ff4d47b"/>
+<m crc="45348747"/>
+<v crc="22a2b5b5"/>
+<v crc="2304e744"/>
+<v crc="759eb954"/>
+</fake>
+<fake name="kof97plc">
+<title>The King of Fighters '97 Plus [Enhanced, Hack]</title>
+<p crc="677ce06d"/>
+<p crc="000c6683"/>
+<s crc="dd7d3b98"/>
+<c crc="fdfa1933"/>
+<c crc="ebd8a2c0"/>
+<c crc="b092e64f"/>
+<c crc="d25e8a04"/>
+<c crc="6fe02054"/>
+<c crc="0f96c84a"/>
+<m crc="45348747"/>
+<v crc="22a2b5b5"/>
+<v crc="2304e744"/>
+<v crc="759eb954"/>
+</fake>
+<fake name="kof97plh">
+<title>The King of Fighters '97 Plus [Hack]</title>
+<p crc="f24cc135"/>
+<p crc="5502b020"/>
+<s crc="73254270"/>
+<c crc="5f8bf0a1"/>
+<c crc="e4d45c81"/>
+<c crc="581d6618"/>
+<c crc="49bb1e68"/>
+<c crc="34fc4e51"/>
+<c crc="4ff4d47b"/>
+<m crc="45348747"/>
+<v crc="22a2b5b5"/>
+<v crc="2304e744"/>
+<v crc="759eb954"/>
+</fake>
+<fake name="kof98ae">
+<title>The King of Fighters '98 - The Slugfest (King of Fighters '98 - Dream Match Never Ends) [Anniversary, Hack]</title>
+<p crc="d69ecaa9" dif="520e2b8b"/>
+<p crc="ac1e9e79" dif="0d926bf9"/>
+<s crc="345c20b0" dif="3dd00989"/>
+<c crc="086ec060" dif="11a5b3ec"/>
+<c crc="16b9a9a2" dif="595472f3"/>
+<c crc="22127b4f"/>
+<c crc="0b4fa044"/>
+<c crc="71641718"/>
+<c crc="982ba2b3"/>
+<c crc="8d495552"/>
+<c crc="8bfc3417"/>
+<c crc="128256d1"/>
+<c crc="4bd8412d"/>
+<c crc="56d361cb" dif="a492faf1"/>
+<c crc="f8cb115b" dif="137cf580"/>
+<m crc="9ade0528"/>
+<v crc="b9ea8051"/>
+<v crc="cc11106e"/>
+<v crc="044ea4e1"/>
+<v crc="7985ea30"/>
+<v crc="afdd9660"/>
+</fake>
+<fake name="kof98bc2nd">
+<title>The King of Fighters '98 - The Slugfest (King of Fighters '98 - Dream Match Never Ends) [BC 2nd Impact Edition, Hack, Ver.2020-07-29]</title>
+<p crc="bd45dd5f"/>
+<p crc="980aba4c"/>
+<s crc="b4ed8fb0"/>
+<c crc="e564ecd6"/>
+<c crc="bd959b60"/>
+<c crc="22127b4f"/>
+<c crc="0b4fa044"/>
+<c crc="9d10bed3"/>
+<c crc="da07b6a2"/>
+<c crc="f6d7a38a"/>
+<c crc="c823e045"/>
+<m crc="4ef7016b"/>
+<v crc="b9ea8051"/>
+<v crc="cc11106e"/>
+<v crc="044ea4e1"/>
+<v crc="7985ea30"/>
+</fake>
+<fake name="kof98bc2k2">
+<title>The King of Fighters '98 - The Slugfest (King of Fighters '98 - Dream Match Never Ends) [BC Style 2002, Hack] [Unknown Author]</title>
+<p crc="2fd34fd8"/>
+<p crc="ccc71b9c"/>
+<s crc="f6871e73"/>
+<c crc="379654a5"/>
+<c crc="9c71fa3d"/>
+<c crc="22127b4f"/>
+<c crc="0b4fa044"/>
+<c crc="9d10bed3"/>
+<c crc="da07b6a2"/>
+<c crc="39494428"/>
+<c crc="d471c78c"/>
+<m crc="4ef7016b"/>
+<v crc="b9ea8051"/>
+<v crc="cc11106e"/>
+<v crc="044ea4e1"/>
+<v crc="7985ea30"/>
+</fake>
+<fake name="kof98cp">
+<title>The King of Fighters '98 - The Slugfest (King of Fighters '98 - Dream Match Never Ends) [Combo Plus, Hack]</title>
+<p crc="003d1128"/>
+<p crc="d4ecdf60"/>
+<p crc="4846dde0"/>
+<p crc="c076b84e"/>
+<s crc="b4ed8fb0"/>
+<c crc="9cb35021"/>
+<c crc="432a83ac"/>
+<c crc="ea84bdae"/>
+<c crc="2c17ac8e"/>
+<c crc="71641718"/>
+<c crc="982ba2b3"/>
+<c crc="8d495552"/>
+<c crc="8bfc3417"/>
+<c crc="33a453ca"/>
+<c crc="0c85069f"/>
+<c crc="56d361cb"/>
+<c crc="f8cb115b"/>
+<m crc="564b53f8"/>
+<v crc="b9ea8051"/>
+<v crc="cc11106e"/>
+<v crc="044ea4e1"/>
+<v crc="7985ea30"/>
+<v crc="afdd9660"/>
+</fake>
+<fake name="kof98cb">
+<title>The King of Fighters '98 - The Slugfest (King of Fighters '98 - Dream Match Never Ends) [Combo, Hack]</title>
+<p crc="2565e431" dif="ee8ec128"/>
+<p crc="d34a4d38"/>
+<s crc="7333d8b0" dif="83ecd0f4"/>
+<c crc="066db0a6"/>
+<c crc="99d0b0fa"/>
+<c crc="ea84bdae"/>
+<c crc="2c17ac8e"/>
+<c crc="9d10bed3"/>
+<c crc="da07b6a2"/>
+<c crc="f6d7a38a"/>
+<c crc="c823e045"/>
+<m crc="db046fc4"/>
+<v crc="b9ea8051"/>
+<v crc="cc11106e"/>
+<v crc="044ea4e1"/>
+<v crc="7985ea30"/>
+</fake>
+<fake name="kof98eck">
+<title>The King of Fighters '98 - The Slugfest (King of Fighters '98 - Dream Match Never Ends) [Easy Combo Edition, Hack]</title>
+<p crc="eb0fd146"/>
+<p crc="c784d2c9"/>
+<s crc="e50c8256"/>
+<c crc="03963c99"/>
+<c crc="f2bce143"/>
+<c crc="fd04ebd3"/>
+<c crc="413f0427"/>
+<c crc="76252bdc"/>
+<c crc="13d5b9b7"/>
+<c crc="c3dda442"/>
+<c crc="f8e2c321"/>
+<c crc="5a8f8d88"/>
+<c crc="dc7a6504"/>
+<m crc="a416260e"/>
+<v crc="64ebb03e"/>
+<v crc="77acfcae"/>
+<v crc="33b1e408"/>
+<v crc="50c82369"/>
+</fake>
+<fake name="kof98evo">
+<title>The King of Fighters '98 - The Slugfest (King of Fighters '98 - Dream Match Never Ends) [Evolution, Hack]</title>
+<p crc="f9a22b2f"/>
+<p crc="65547465"/>
+<s crc="7f7b4805"/>
+<c crc="e564ecd6"/>
+<c crc="bd959b60"/>
+<c crc="22127b4f"/>
+<c crc="0b4fa044"/>
+<c crc="9d10bed3"/>
+<c crc="da07b6a2"/>
+<c crc="35839069"/>
+<c crc="9744d47f"/>
+<m crc="4ef7016b"/>
+<v crc="b9ea8051"/>
+<v crc="cc11106e"/>
+<v crc="044ea4e1"/>
+<v crc="7985ea30"/>
+</fake>
+<fake name="kof98k">
+<title>The King of Fighters '98 - The Slugfest (King of Fighters '98 - Dream Match Never Ends) [Korean board, set 1]</title>
+<p crc="8893df89"/>
+<p crc="980aba4c"/>
+<s crc="7f7b4805"/>
+<c crc="e564ecd6"/>
+<c crc="bd959b60"/>
+<c crc="22127b4f"/>
+<c crc="0b4fa044"/>
+<c crc="9d10bed3"/>
+<c crc="da07b6a2"/>
+<c crc="f6d7a38a"/>
+<c crc="c823e045"/>
+<m crc="ce12da0c"/>
+<v crc="b9ea8051"/>
+<v crc="cc11106e"/>
+<v crc="044ea4e1"/>
+<v crc="7985ea30"/>
+</fake>
+<fake name="kof98ka">
+<title>The King of Fighters '98 - The Slugfest (King of Fighters '98 - Dream Match Never Ends) [Korean board, set 2]</title>
+<p crc="8893df89"/>
+<p crc="980aba4c"/>
+<s crc="7f7b4805"/>
+<c crc="e564ecd6"/>
+<c crc="bd959b60"/>
+<c crc="22127b4f"/>
+<c crc="0b4fa044"/>
+<c crc="9d10bed3"/>
+<c crc="da07b6a2"/>
+<c crc="f6d7a38a"/>
+<c crc="c823e045"/>
+<m crc="ce9fb07c"/>
+<v crc="b9ea8051"/>
+<v crc="cc11106e"/>
+<v crc="044ea4e1"/>
+<v crc="7985ea30"/>
+</fake>
+<fake name="kof98h">
+<title>The King of Fighters '98 - The Slugfest (King of Fighters '98 - Dream Match Never Ends) [NGH-2420]</title>
+<p crc="61ac868a"/>
+<p crc="980aba4c"/>
+<s crc="7f7b4805"/>
+<c crc="e564ecd6"/>
+<c crc="bd959b60"/>
+<c crc="22127b4f"/>
+<c crc="0b4fa044"/>
+<c crc="9d10bed3"/>
+<c crc="da07b6a2"/>
+<c crc="f6d7a38a"/>
+<c crc="c823e045"/>
+<m crc="4e7a6b1b"/>
+<v crc="b9ea8051"/>
+<v crc="cc11106e"/>
+<v crc="044ea4e1"/>
+<v crc="7985ea30"/>
+</fake>
+<fake name="kof98pfe">
+<title>The King of Fighters '98 - The Slugfest (King of Fighters '98 - Dream Match Never Ends) [Plus Final Edition, Hack]</title>
+<p crc="23876d95"/>
+<p crc="dfa686e9" dif="635b6ed1"/>
+<p crc="930ea34e"/>
+<s crc="7f4dbf23"/>
+<c crc="379654a5"/>
+<c crc="9c71fa3d"/>
+<c crc="22127b4f"/>
+<c crc="0b4fa044"/>
+<c crc="9d10bed3"/>
+<c crc="da07b6a2"/>
+<c crc="02f09b2e"/>
+<c crc="d43ab3e6"/>
+<m crc="4e7a6b1b"/>
+<v crc="b9ea8051"/>
+<v crc="cc11106e"/>
+<v crc="044ea4e1"/>
+<v crc="7985ea30"/>
+</fake>
+<fake name="kof98rat">
+<title>The King of Fighters '98 - The Slugfest (King of Fighters '98 - Dream Match Never Ends) [Ratio, Hack]</title>
+<p crc="9171669d"/>
+<p crc="980aba4c"/>
+<s crc="7f7b4805"/>
+<c crc="e564ecd6"/>
+<c crc="bd959b60"/>
+<c crc="22127b4f"/>
+<c crc="0b4fa044"/>
+<c crc="9d10bed3"/>
+<c crc="da07b6a2"/>
+<c crc="f6d7a38a"/>
+<c crc="c823e045"/>
+<m crc="4e7a6b1b"/>
+<v crc="b9ea8051"/>
+<v crc="cc11106e"/>
+<v crc="044ea4e1"/>
+<v crc="7985ea30"/>
+</fake>
+<fake name="kof98ult">
+<title>The King of Fighters '98 - The Slugfest (King of Fighters '98 - Dream Match Never Ends) [Ultimate Match, Hack]</title>
+<p crc="9c450313"/>
+<p crc="6d109dc7"/>
+<s crc="8fd2c84d"/>
+<c crc="8e297a35"/>
+<c crc="d8a4b216"/>
+<c crc="22127b4f"/>
+<c crc="0b4fa044"/>
+<c crc="71641718"/>
+<c crc="982ba2b3"/>
+<c crc="8d495552"/>
+<c crc="8bfc3417"/>
+<c crc="de7e8582"/>
+<c crc="76c7b038"/>
+<c crc="56d361cb"/>
+<c crc="f8cb115b"/>
+<m crc="9ade0528"/>
+<v crc="b9ea8051"/>
+<v crc="cc11106e"/>
+<v crc="044ea4e1"/>
+<v crc="7985ea30"/>
+<v crc="afdd9660"/>
+</fake>
+<fake name="kof98mix">
+<title>The King of Fighters '98 - The Slugfest (King of Fighters '98 - Dream Match Never Ends) [Unlimited, Hack]</title>
+<p crc="8f3da74e" dif="620068e3"/>
+<p crc="73d3505d" dif="173affb5"/>
+<s crc="9acd571d" dif="e3bc013b"/>
+<c crc="e564ecd6"/>
+<c crc="bd959b60"/>
+<c crc="22127b4f"/>
+<c crc="0b4fa044"/>
+<c crc="9d10bed3"/>
+<c crc="da07b6a2"/>
+<c crc="374eb904"/>
+<c crc="eddd2789"/>
+<c crc="1823dfa3" dif="811e05f7"/>
+<c crc="6a04ab8c" dif="b2fa7031"/>
+<m crc="4e7a6b1b"/>
+<v crc="b9ea8051"/>
+<v crc="cc11106e"/>
+<v crc="044ea4e1"/>
+<v crc="7985ea30"/>
+</fake>
+<fake name="kof99ae">
+<title>The King of Fighters '99 - Millennium Battle [Anniversary, Hack]</title>
+<p crc="4c63e81c"/>
+<p crc="f3f47f41"/>
+<p crc="e3847545"/>
+<s crc="3c31ee43"/>
+<c crc="7eabea6c"/>
+<c crc="e5a5bc5c"/>
+<c crc="b047c9d5"/>
+<c crc="6bc8e4b1"/>
+<c crc="9746268c"/>
+<c crc="238b3e71"/>
+<c crc="963c28ab"/>
+<c crc="43f1e92e"/>
+<c crc="86a3550d"/>
+<c crc="986bb897"/>
+<c crc="7fe785c2"/>
+<c crc="a7541483"/>
+<m crc="f847e188"/>
+<v crc="ceaa3bae"/>
+<v crc="07d70650"/>
+<v crc="821901da"/>
+<v crc="b49e6178"/>
+</fake>
+<fake name="kof99cb">
+<title>The King of Fighters '99 - Millennium Battle [Combo, Hack]</title>
+<p crc="857276bd"/>
+<p crc="c79df28d"/>
+<s crc="1b0133fe"/>
+<c crc="b3d88546"/>
+<c crc="915c8634"/>
+<c crc="b047c9d5"/>
+<c crc="6bc8e4b1"/>
+<c crc="9746268c"/>
+<c crc="238b3e71"/>
+<c crc="2f68fdeb"/>
+<c crc="4c2fad1e"/>
+<m crc="5e74539c"/>
+<v crc="ef2eecc8"/>
+<v crc="73e211ca"/>
+<v crc="821901da"/>
+<v crc="b49e6178"/>
+</fake>
+<fake name="kof99eur">
+<title>The King of Fighters '99 - Millennium Battle [Evolution Ultra Remix, Hack]</title>
+<p crc="66fa20fd" dif="7c726033"/>
+<p crc="aec93904" dif="aed40004"/>
+<s crc="a6747969" dif="6b074249"/>
+<c crc="c7e8bf32"/>
+<c crc="4e8f9f7d"/>
+<c crc="b047c9d5" dif="589c2c78"/>
+<c crc="6bc8e4b1" dif="25e5e66b"/>
+<c crc="9746268c" dif="55eea175"/>
+<c crc="238b3e71" dif="741924a5"/>
+<c crc="f0b5ff02"/>
+<c crc="7107b8d5"/>
+<m crc="f847e188"/>
+<v crc="4ae46226"/>
+<v crc="07d70650"/>
+<v crc="821901da"/>
+<v crc="b49e6178"/>
+</fake>
+<fake name="kof99jh">
+<title>The King of Fighters '99 - Millennium Battle [Evolution, Hack]</title>
+<p crc="48fe95b5"/>
+<p crc="2fcd21a1"/>
+<s crc="599f5fac"/>
+<c crc="b3d88546"/>
+<c crc="915c8634"/>
+<c crc="b047c9d5"/>
+<c crc="6bc8e4b1"/>
+<c crc="9746268c"/>
+<c crc="238b3e71"/>
+<c crc="2f68fdeb"/>
+<c crc="4c2fad1e"/>
+<m crc="5e74539c"/>
+<v crc="ef2eecc8"/>
+<v crc="73e211ca"/>
+<v crc="821901da"/>
+<v crc="b49e6178"/>
+</fake>
+<fake name="kof99fd">
+<title>The King of Fighters '99 - Millennium Battle [Fully Decrypted]</title>
+<p crc="f2c7ddfa"/>
+<p crc="274ef47a"/>
+<s crc="1b0133fe"/>
+<c crc="b3d88546"/>
+<c crc="915c8634"/>
+<c crc="b047c9d5"/>
+<c crc="6bc8e4b1"/>
+<c crc="9746268c"/>
+<c crc="238b3e71"/>
+<c crc="2f68fdeb"/>
+<c crc="4c2fad1e"/>
+<m crc="5e74539c"/>
+<v crc="ef2eecc8"/>
+<v crc="73e211ca"/>
+<v crc="821901da"/>
+<v crc="b49e6178"/>
+</fake>
+<fake name="kof99jq">
+<title>The King of Fighters '99 - Millennium Battle [Infinite Energy, Hack]</title>
+<p crc="ff897106"/>
+<p crc="c8602aae"/>
+<s crc="b39bf6ed"/>
+<c crc="c7e8bf32"/>
+<c crc="4e8f9f7d"/>
+<c crc="f20959e8"/>
+<c crc="54ffbe9f"/>
+<c crc="d87a3bbc"/>
+<c crc="4d40a691"/>
+<c crc="f0b5ff02"/>
+<c crc="7107b8d5"/>
+<m crc="5e74539c"/>
+<v crc="ef2eecc8"/>
+<v crc="73e211ca"/>
+<v crc="821901da"/>
+<v crc="b49e6178"/>
+</fake>
+<fake name="kof99k" target="kof99">
+<title>The King of Fighters '99 - Millennium Battle [Korean release]</title>
+<p crc="9fccc688"/>
+<p crc="ef259292"/>
+<p crc="f3898ec2"/>
+<c crc="0f9e93fe"/>
+<c crc="e71e2ea3"/>
+<c crc="238755d2"/>
+<c crc="438c8b22"/>
+<c crc="0b0abd0a"/>
+<c crc="65bbf281"/>
+<c crc="ff65f62e"/>
+<c crc="8d921c68"/>
+<m crc="5e74539c"/>
+<v crc="ef2eecc8"/>
+<v crc="73e211ca"/>
+<v crc="821901da"/>
+<v crc="b49e6178"/>
+</fake>
+<fake name="kof99ka" target="kof99">
+<title>The King of Fighters '99 - Millennium Battle [Korean release, non-encrypted program]</title>
+<p crc="f2c7ddfa"/>
+<p crc="274ef47a"/>
+<c crc="0f9e93fe"/>
+<c crc="e71e2ea3"/>
+<c crc="238755d2"/>
+<c crc="438c8b22"/>
+<c crc="0b0abd0a"/>
+<c crc="65bbf281"/>
+<c crc="ff65f62e"/>
+<c crc="8d921c68"/>
+<m crc="5e74539c"/>
+<v crc="ef2eecc8"/>
+<v crc="73e211ca"/>
+<v crc="821901da"/>
+<v crc="b49e6178"/>
+</fake>
+<fake name="kof99sk">
+<title>The King of Fighters '99 - Millennium Battle [LC+SK, Hack]</title>
+<p crc="83839e76"/>
+<p crc="c4b9aa9c"/>
+<s crc="1b0133fe"/>
+<c crc="e5d8ffa4"/>
+<c crc="d822778f"/>
+<c crc="f20959e8"/>
+<c crc="54ffbe9f"/>
+<c crc="d87a3bbc"/>
+<c crc="4d40a691"/>
+<c crc="a4479a58"/>
+<c crc="ead513ce"/>
+<m crc="5e74539c"/>
+<v crc="ef2eecc8"/>
+<v crc="73e211ca"/>
+<v crc="821901da"/>
+<v crc="b49e6178"/>
+</fake>
+<fake name="kof99h" target="kof99">
+<title>The King of Fighters '99 - Millennium Battle [NGH-2510]</title>
+<p crc="6c9d0647"/>
+<p crc="006e4532"/>
+<p crc="d9057f51"/>
+<c crc="0f9e93fe"/>
+<c crc="e71e2ea3"/>
+<c crc="238755d2"/>
+<c crc="438c8b22"/>
+<c crc="0b0abd0a"/>
+<c crc="65bbf281"/>
+<c crc="ff65f62e"/>
+<c crc="8d921c68"/>
+<m crc="5e74539c"/>
+<v crc="ef2eecc8"/>
+<v crc="73e211ca"/>
+<v crc="821901da"/>
+<v crc="b49e6178"/>
+</fake>
+<fake name="kof99t">
+<title>The King of Fighters '99 - Millennium Battle [Optimized, Hack]</title>
+<p crc="b89ba128" dif="819dbaeb"/>
+<p crc="f767394c" dif="c16e8d5c"/>
+<s crc="1b0133fe"/>
+<c crc="b3d88546"/>
+<c crc="915c8634"/>
+<c crc="b047c9d5"/>
+<c crc="6bc8e4b1"/>
+<c crc="9746268c"/>
+<c crc="238b3e71"/>
+<c crc="2f68fdeb"/>
+<c crc="4c2fad1e"/>
+<m crc="5e74539c"/>
+<v crc="ef2eecc8"/>
+<v crc="73e211ca"/>
+<v crc="821901da"/>
+<v crc="b49e6178"/>
+</fake>
+<fake name="kof99pls">
+<title>The King of Fighters '99 - Millennium Battle [Plus, Hack]</title>
+<p crc="dcba09c6"/>
+<p crc="4fde8e58"/>
+<s crc="1b0133fe"/>
+<c crc="598cc558"/>
+<c crc="5b4c297b"/>
+<c crc="b047c9d5"/>
+<c crc="6bc8e4b1"/>
+<c crc="9746268c"/>
+<c crc="238b3e71"/>
+<c crc="3ac342ad"/>
+<c crc="500aea52"/>
+<m crc="5e74539c"/>
+<v crc="ef2eecc8"/>
+<v crc="73e211ca"/>
+<v crc="821901da"/>
+<v crc="b49e6178"/>
+</fake>
+<fake name="kof99rp">
+<title>The King of Fighters '99 - Millennium Battle [Remix Pro v2.01 Final, Hack]</title>
+<p crc="815f0b12"/>
+<p crc="0d35fb8f"/>
+<s crc="ca942904"/>
+<c crc="f0409101"/>
+<c crc="3a9eff54"/>
+<c crc="b047c9d5"/>
+<c crc="6bc8e4b1"/>
+<c crc="dd023649"/>
+<c crc="b8f60a8c"/>
+<c crc="1dfd5103"/>
+<c crc="23fe3c43"/>
+<m crc="0cb24d46"/>
+<v crc="ef2eecc8"/>
+<v crc="73e211ca"/>
+<v crc="403628da"/>
+<v crc="b49e6178"/>
+</fake>
+<fake name="kof99sr">
+<title>The King of Fighters '99 - Millennium Battle [Summer Revolution, Hack]</title>
+<p crc="b96da0bf"/>
+<p crc="9f1d1660"/>
+<s crc="08055c7a"/>
+<c crc="b3d88546"/>
+<c crc="915c8634"/>
+<c crc="b047c9d5"/>
+<c crc="6bc8e4b1"/>
+<c crc="9746268c"/>
+<c crc="238b3e71"/>
+<c crc="65de862c"/>
+<c crc="3ff457fe"/>
+<m crc="5e74539c"/>
+<v crc="ef2eecc8"/>
+<v crc="73e211ca"/>
+<v crc="821901da"/>
+<v crc="b49e6178"/>
+</fake>
+<fake name="kf10thuo">
+<title>The King of Fighters 10th Anniversary [Optimized 2020, Hack]</title>
+<p crc="5c261d57"/>
+<s crc="312bf34b"/>
+<c crc="2c59db66"/>
+<c crc="024ffd69"/>
+<c crc="959fad0b"/>
+<c crc="efe6a468"/>
+<c crc="74bba7c6"/>
+<c crc="e20d2216"/>
+<c crc="8a5b561c"/>
+<c crc="bef667a3"/>
+<m crc="f6fab859"/>
+<v crc="0fc9a58d"/>
+<v crc="b8c475a4"/>
+</fake>
+<fake name="kof10thd">
+<title>The King of Fighters 10th Anniversary [The King of Fighters 2002 bootleg, Fully Decrypted]</title>
+<p crc="30c82f4c"/>
+<s crc="3c757cb1"/>
+<c crc="3bbc0364"/>
+<c crc="91230075"/>
+<c crc="b5abfc28"/>
+<c crc="6cc4c6e1"/>
+<c crc="5b3d4a16"/>
+<c crc="c6f3419b"/>
+<c crc="9d2bba19"/>
+<c crc="5a4050cb"/>
+<c crc="a289d1e1"/>
+<c crc="e6494b5d"/>
+<c crc="404fff02"/>
+<c crc="f2ccfc9e"/>
+<c crc="be79c5a8"/>
+<c crc="a5952ca4"/>
+<c crc="3fdb3542"/>
+<c crc="661b7a52"/>
+<m crc="f6fab859"/>
+<v crc="0fc9a58d"/>
+<v crc="b8c475a4"/>
+</fake>
+<fake name="kof2kfd">
+<title>The King of Fighters 2000 [Fully Decrypted]</title>
+<p crc="5f809dbe"/>
+<p crc="693c2c5e"/>
+<c crc="abcdd424"/>
+<c crc="cda33778"/>
+<c crc="087fb15b"/>
+<c crc="fe9dfde4"/>
+<c crc="03ee4bf4"/>
+<c crc="8599cc5b"/>
+<c crc="71dfc3e2"/>
+<c crc="0fa30e5f"/>
+<m crc="d404db70"/>
+<v crc="17cde847"/>
+<v crc="1afb20ff"/>
+<v crc="4605036a"/>
+<v crc="764bbd6b"/>
+</fake>
+<fake name="kof2000bc" target="kof2000">
+<title>The King of Fighters 2000 [Imitate BC 14 System, Hack By Aillis]</title>
+<p crc="737d5b20"/>
+<p crc="48a1a381"/>
+<c crc="cef1cdfa"/>
+<c crc="f7bf0003"/>
+<c crc="101e6560"/>
+<c crc="bd2fc1b1"/>
+<c crc="89775412"/>
+<c crc="fa7200d5"/>
+<c crc="7da11fe4"/>
+<c crc="b1afa60b"/>
+<m crc="4b749113"/>
+<v crc="17cde847"/>
+<v crc="1afb20ff"/>
+<v crc="4605036a"/>
+<v crc="764bbd6b"/>
+</fake>
+<fake name="kof2000t">
+<title>The King of Fighters 2000 [Optimized, Hack]</title>
+<p crc="a97dfaf2"/>
+<p crc="693c2c5e"/>
+<c crc="abcdd424"/>
+<c crc="cda33778"/>
+<c crc="087fb15b"/>
+<c crc="fe9dfde4"/>
+<c crc="03ee4bf4"/>
+<c crc="8599cc5b"/>
+<c crc="71dfc3e2"/>
+<c crc="0fa30e5f"/>
+<m crc="d404db70"/>
+<v crc="17cde847"/>
+<v crc="1afb20ff"/>
+<v crc="4605036a"/>
+<v crc="764bbd6b"/>
+</fake>
+<fake name="kof2kotc">
+<title>The King of Fighters 2000 [OTC, Hack]</title>
+<p crc="dde67c6b" dif="6e51e168"/>
+<p crc="e1095f50" dif="ba4d48d2"/>
+<c crc="abcdd424" dif="51081b95"/>
+<c crc="cda33778" dif="9c76d30e"/>
+<c crc="087fb15b" dif="abb6b9b1"/>
+<c crc="fe9dfde4" dif="99316d6a"/>
+<c crc="03ee4bf4"/>
+<c crc="8599cc5b"/>
+<c crc="b2cd7102" dif="903e277d"/>
+<c crc="d11c3b66" dif="f8470466"/>
+<m crc="80ebc3aa"/>
+<v crc="17cde847"/>
+<v crc="1afb20ff"/>
+<v crc="4605036a"/>
+<v crc="764bbd6b"/>
+<v crc="54df285f"/>
+</fake>
+<fake name="kof2kps2">
+<title>The King of Fighters 2000 [Playstation 2, Hack]</title>
+<p crc="56941018"/>
+<p crc="1669a5ad"/>
+<c crc="abcdd424"/>
+<c crc="cda33778"/>
+<c crc="087fb15b"/>
+<c crc="fe9dfde4"/>
+<c crc="03ee4bf4"/>
+<c crc="8599cc5b"/>
+<c crc="93c343ec"/>
+<c crc="ba92f698"/>
+<m crc="d404db70"/>
+<v crc="17cde847"/>
+<v crc="1afb20ff"/>
+<v crc="4605036a"/>
+<v crc="764bbd6b"/>
+</fake>
+<fake name="kof2kpls" target="kof2000">
+<title>The King of Fighters 2000 [Plus Blue, Hack]</title>
+<p crc="329d80c9"/>
+<p crc="70b76979"/>
+<p crc="1ec748c2"/>
+<c crc="c89d1994"/>
+<c crc="19754968"/>
+<c crc="c76b919b"/>
+<c crc="5e03f2af"/>
+<c crc="6a3b2fbd"/>
+<c crc="ac4a8edc"/>
+<c crc="608ffca9"/>
+<c crc="73280ea8"/>
+<m crc="4b749113"/>
+<v crc="17cde847"/>
+<v crc="1afb20ff"/>
+<v crc="4605036a"/>
+<v crc="764bbd6b"/>
+</fake>
+<fake name="kof2ksp">
+<title>The King of Fighters 2000 [Special, Hack]</title>
+<p crc="a9742061"/>
+<p crc="48a1a381"/>
+<c crc="abcdd424"/>
+<c crc="cda33778"/>
+<c crc="087fb15b"/>
+<c crc="fe9dfde4"/>
+<c crc="03ee4bf4"/>
+<c crc="8599cc5b"/>
+<c crc="110f72a3"/>
+<c crc="4347f6af"/>
+<m crc="d404db70"/>
+<v crc="17cde847"/>
+<v crc="1afb20ff"/>
+<v crc="4605036a"/>
+<v crc="764bbd6b"/>
+</fake>
+<fake name="kof2kxxx" target="kof2000">
+<title>The King of Fighters 2000 SP XXX [Hack, Ver. 2016-01-04]</title>
+<p crc="b88cd5eb"/>
+<p crc="1a10f2be"/>
+<c crc="3006a5e4"/>
+<c crc="366fd118"/>
+<c crc="5b16d7e3"/>
+<c crc="7e57dfc1"/>
+<c crc="671904f4"/>
+<c crc="68adf255"/>
+<c crc="8c6b22b3"/>
+<c crc="6223bd1d"/>
+<m crc="4b749113"/>
+<v crc="17cde847"/>
+<v crc="1afb20ff"/>
+<v crc="4605036a"/>
+<v crc="764bbd6b"/>
+</fake>
+<fake name="kof2k1bs">
+<title>The King of Fighters 2001 [Boss, Hack]</title>
+<p crc="b5becb3c"/>
+<p crc="295d0c5c"/>
+<s crc="19b6587b"/>
+<c crc="103225b1"/>
+<c crc="f9d05d99"/>
+<c crc="4c7ec427"/>
+<c crc="1d237aa6"/>
+<c crc="c2256db5"/>
+<c crc="8d6565a9"/>
+<c crc="8d11aed2"/>
+<c crc="9e7168f5"/>
+<m crc="2fb0a8a5"/>
+<v crc="83d49ecf"/>
+<v crc="003f1843"/>
+<v crc="2ae38dbe"/>
+<v crc="26ec4dd9"/>
+</fake>
+<fake name="kof2k1fd">
+<title>The King of Fighters 2001 [Fully Decrypted]</title>
+<p crc="2af7e741"/>
+<p crc="91eea062"/>
+<s crc="6d209796"/>
+<c crc="103225b1"/>
+<c crc="f9d05d99"/>
+<c crc="4c7ec427"/>
+<c crc="1d237aa6"/>
+<c crc="c2256db5"/>
+<c crc="8d6565a9"/>
+<c crc="d1408776"/>
+<c crc="954d0e16"/>
+<m crc="2fb0a8a5"/>
+<v crc="83d49ecf"/>
+<v crc="003f1843"/>
+<v crc="2ae38dbe"/>
+<v crc="26ec4dd9"/>
+</fake>
+<fake name="kf2k1pkz">
+<title>The King of Fighters 2001 [PS2 Krizalid, Hack]</title>
+<p crc="b6df1dac"/>
+<p crc="4cb062de"/>
+<s crc="73efb81d"/>
+<c crc="103225b1"/>
+<c crc="f9d05d99"/>
+<c crc="4c7ec427"/>
+<c crc="1d237aa6"/>
+<c crc="c2256db5"/>
+<c crc="8d6565a9"/>
+<c crc="c29bc0f3"/>
+<c crc="3f1b51d2"/>
+<c crc="e9bb1f55"/>
+<c crc="3853693b"/>
+<m crc="6d5a43db"/>
+<v crc="83d49ecf"/>
+<v crc="003f1843"/>
+<v crc="2ae38dbe"/>
+<v crc="912f3f3b"/>
+</fake>
+<fake name="kof2k1rp">
+<title>The King of Fighters 2001 [Remix Pro v1.02 Final, Hack]</title>
+<p crc="e9e42e55"/>
+<p crc="91668d86"/>
+<s crc="492f5efe"/>
+<c crc="103225b1"/>
+<c crc="f9d05d99"/>
+<c crc="4c7ec427"/>
+<c crc="1d237aa6"/>
+<c crc="c2256db5"/>
+<c crc="8d6565a9"/>
+<c crc="d1408776"/>
+<c crc="954d0e16"/>
+<m crc="2fb0a8a5"/>
+<v crc="83d49ecf"/>
+<v crc="003f1843"/>
+<v crc="2ae38dbe"/>
+<v crc="26ec4dd9"/>
+</fake>
+<fake name="kof2k1ru">
+<title>The King of Fighters 2001 [Remix Ultra 2.3, Hack]</title>
+<p crc="3377ebee"/>
+<p crc="394bcc59"/>
+<s crc="a5d90035"/>
+<c crc="103225b1"/>
+<c crc="f9d05d99"/>
+<c crc="4c7ec427"/>
+<c crc="1d237aa6"/>
+<c crc="c2256db5"/>
+<c crc="8d6565a9"/>
+<c crc="d1408776"/>
+<c crc="954d0e16"/>
+<m crc="2fb0a8a5"/>
+<v crc="83d49ecf"/>
+<v crc="003f1843"/>
+<v crc="2ae38dbe"/>
+<v crc="26ec4dd9"/>
+</fake>
+<fake name="kf2k1ult">
+<title>The King of Fighters 2001 [Ultimate, Hack]</title>
+<p crc="0d9b8889"/>
+<p crc="3e3047fb"/>
+<s crc="e8cb20be"/>
+<c crc="4484a3c7"/>
+<c crc="bbcfb1dc"/>
+<c crc="5797dcda"/>
+<c crc="3a53b0f6"/>
+<c crc="b47e4f8d"/>
+<c crc="ac5f2083"/>
+<c crc="cd11861e"/>
+<c crc="c0e84cc1"/>
+<c crc="694b9949"/>
+<c crc="9c1ee777"/>
+<c crc="8a5b561c"/>
+<c crc="bef667a3"/>
+<c crc="0b316a58"/>
+<c crc="648e620b"/>
+<m crc="bbe3ee15"/>
+<v crc="b3a37823"/>
+<v crc="4864d184"/>
+<v crc="6cecc242"/>
+<v crc="34faa5dd"/>
+<v crc="42423d32"/>
+<v crc="c9cbcb39"/>
+</fake>
+<fake name="kf2k1pls" target="kof2001">
+<title>The King of Fighters 2001 Plus [set 1, bootleg or hack]</title>
+<p crc="758529a7"/>
+<p crc="91eea062"/>
+<s crc="088657e6"/>
+<c crc="99cc785a"/>
+<c crc="50368cbf"/>
+<c crc="fb14ff87"/>
+<c crc="4397faf8"/>
+<c crc="91f24be4"/>
+<c crc="a31e4403"/>
+<c crc="54d9d1ec"/>
+<c crc="59289a6b"/>
+<m crc="a7f8119f"/>
+<v crc="83d49ecf"/>
+<v crc="003f1843"/>
+<v crc="2ae38dbe"/>
+<v crc="26ec4dd9"/>
+</fake>
+<fake name="kf2k1pla" target="kof2001">
+<title>The King of Fighters 2001 Plus [set 2, bootleg or hack]</title>
+<p crc="f8a71b6f"/>
+<p crc="91eea062"/>
+<s crc="50986eeb"/>
+<c crc="99cc785a"/>
+<c crc="50368cbf"/>
+<c crc="fb14ff87"/>
+<c crc="4397faf8"/>
+<c crc="91f24be4"/>
+<c crc="a31e4403"/>
+<c crc="54d9d1ec"/>
+<c crc="59289a6b"/>
+<m crc="a7f8119f"/>
+<v crc="83d49ecf"/>
+<v crc="003f1843"/>
+<v crc="2ae38dbe"/>
+<v crc="26ec4dd9"/>
+</fake>
+<fake name="kf2k23rd">
+<title>The King of Fighters 2002 [3rd Strike of Orochi, Hack]</title>
+<p crc="de02918d" dif="b69fc632"/>
+<p crc="293bbf78" dif="9db1d92a"/>
+<s crc="67e7cbe1"/>
+<c crc="7efa6ef7" dif="1073e68c"/>
+<c crc="aa82948b" dif="9afb5756"/>
+<c crc="959fad0b"/>
+<c crc="2558972f"/>
+<c crc="74bba7c6"/>
+<c crc="e20d2216"/>
+<c crc="201e75e0"/>
+<c crc="ff0fd53b"/>
+<m crc="1c661a4b"/>
+<v crc="0fc9a58d"/>
+<v crc="b8c475a4"/>
+</fake>
+<fake name="kof2k2ts">
+<title>The King of Fighters 2002 [Battle with Orochi, Hack]</title>
+<p crc="f20fc573"/>
+<p crc="432fdf53"/>
+<s crc="e0eaaba3"/>
+<c crc="7efa6ef7"/>
+<c crc="aa82948b"/>
+<c crc="959fad0b"/>
+<c crc="efe6a468"/>
+<c crc="74bba7c6"/>
+<c crc="e20d2216"/>
+<c crc="8a5b561c"/>
+<c crc="bef667a3"/>
+<m crc="1c661a4b"/>
+<v crc="0fc9a58d"/>
+<v crc="b8c475a4"/>
+</fake>
+<fake name="kf2k2mix">
+<title>The King of Fighters 2002 [Climax, Hack]</title>
+<p crc="7ff93e96"/>
+<p crc="01f474fa"/>
+<s crc="bd19c308"/>
+<c crc="7efa6ef7"/>
+<c crc="aa82948b"/>
+<c crc="ca656090"/>
+<c crc="eb898849"/>
+<c crc="74bba7c6"/>
+<c crc="e20d2216"/>
+<c crc="629bdf0e"/>
+<c crc="c7c8c75c"/>
+<m crc="9956ccd8"/>
+<v crc="6e7e3508"/>
+<v crc="2157b90f"/>
+</fake>
+<fake name="kof2k2fd">
+<title>The King of Fighters 2002 [Fully Decrypted]</title>
+<p crc="9ede7323"/>
+<p crc="432fdf53"/>
+<s crc="e0eaaba3"/>
+<c crc="7efa6ef7"/>
+<c crc="aa82948b"/>
+<c crc="959fad0b"/>
+<c crc="efe6a468"/>
+<c crc="74bba7c6"/>
+<c crc="e20d2216"/>
+<c crc="8a5b561c"/>
+<c crc="bef667a3"/>
+<m crc="1c661a4b"/>
+<v crc="0fc9a58d"/>
+<v crc="b8c475a4"/>
+</fake>
+<fake name="kof2k2jq">
+<title>The King of Fighters 2002 [Infinite Energy, Hack]</title>
+<p crc="10554475"/>
+<p crc="0a189c94"/>
+<s crc="20ba99dc"/>
+<c crc="7efa6ef7"/>
+<c crc="aa82948b"/>
+<c crc="959fad0b"/>
+<c crc="efe6a468"/>
+<c crc="74bba7c6"/>
+<c crc="e20d2216"/>
+<c crc="8a5b561c"/>
+<c crc="bef667a3"/>
+<m crc="1c661a4b"/>
+<v crc="0fc9a58d"/>
+<v crc="b8c475a4"/>
+</fake>
+<fake name="kof2002m">
+<title>The King of Fighters 2002 [Mugen, Hack]</title>
+<p crc="496b9e90"/>
+<p crc="046a1232"/>
+<s crc="80922b39"/>
+<c crc="7efa6ef7"/>
+<c crc="aa82948b"/>
+<c crc="102a78a9"/>
+<c crc="ee9d72b8"/>
+<c crc="74bba7c6"/>
+<c crc="e20d2216"/>
+<c crc="8a5b561c"/>
+<c crc="bef667a3"/>
+<c crc="e0ab7f55"/>
+<c crc="97f53698"/>
+<m crc="ce706bc7"/>
+<v crc="0fc9a58d"/>
+<v crc="b8c475a4"/>
+<v crc="86ce1fd1"/>
+</fake>
+<fake name="kof2k2omg">
+<title>The King of Fighters 2002 [Omega v.unknown]</title>
+<p crc="62174834"/>
+<p crc="6fadc5c3"/>
+<s crc="6145daf4"/>
+<c crc="745b343e"/>
+<c crc="2aab7f98"/>
+<c crc="e5074eea"/>
+<c crc="f6eb1ff2"/>
+<c crc="74bba7c6"/>
+<c crc="e20d2216"/>
+<c crc="0e9f6adb"/>
+<c crc="9961799e"/>
+<m crc="ab9d360e"/>
+<v crc="13d98607"/>
+<v crc="9cf74677"/>
+<v crc="8e9448b5"/>
+<v crc="067271b5"/>
+</fake>
+<fake name="kof2k2omg8">
+<title>The King of Fighters 2002 [Omega v0.8]</title>
+<p crc="53086581"/>
+<p crc="40228fe5"/>
+<s crc="65351d40"/>
+<c crc="e144302d"/>
+<c crc="b10c6958"/>
+<c crc="2367927c"/>
+<c crc="4ad48c29"/>
+<c crc="11126545"/>
+<c crc="d225bb9b"/>
+<c crc="890c2a4a"/>
+<c crc="b726009d"/>
+<m crc="9a3d5c65"/>
+<v crc="0fc9a58d"/>
+<v crc="b8c475a4"/>
+</fake>
+<fake name="kof2k2omg9b">
+<title>The King of Fighters 2002 [Omega v0.9 beta]</title>
+<p crc="9ede7323"/>
+<p crc="a171b684"/>
+<s crc="7e3f391a"/>
+<c crc="c8314ae2"/>
+<c crc="e0ddced5"/>
+<c crc="6898f6e2"/>
+<c crc="9232e491"/>
+<c crc="11126545"/>
+<c crc="d225bb9b"/>
+<c crc="6954ef57"/>
+<c crc="3e394883"/>
+<m crc="9a3d5c65"/>
+<v crc="13d98607"/>
+<v crc="9cf74677"/>
+<v crc="8e9448b5"/>
+<v crc="067271b5"/>
+</fake>
+<fake name="kof2k2omg9">
+<title>The King of Fighters 2002 [Omega v0.9]</title>
+<p crc="9ede7323"/>
+<p crc="cd503fcf"/>
+<s crc="4562fb20"/>
+<c crc="c8314ae2"/>
+<c crc="e0ddced5"/>
+<c crc="6898f6e2"/>
+<c crc="9232e491"/>
+<c crc="11126545"/>
+<c crc="d225bb9b"/>
+<c crc="6954ef57"/>
+<c crc="3e394883"/>
+<m crc="ab9d360e"/>
+<v crc="13d98607"/>
+<v crc="9cf74677"/>
+<v crc="8e9448b5"/>
+<v crc="067271b5"/>
+</fake>
+<fake name="kf2k2ps2">
+<title>The King of Fighters 2002 [PlayStation 2, Hack]</title>
+<p crc="9da95b36" dif="09fdfd82"/>
+<p crc="9846db3a" dif="9a7d5af0"/>
+<s crc="714ade47"/>
+<c crc="7efa6ef7"/>
+<c crc="aa82948b"/>
+<c crc="959fad0b"/>
+<c crc="efe6a468"/>
+<c crc="74bba7c6"/>
+<c crc="e20d2216"/>
+<c crc="f0897b93" dif="f146f22d"/>
+<c crc="8d27a4a6" dif="321645f2"/>
+<c crc="9939c08a" dif="2960c058"/>
+<c crc="c724c069" dif="45c40d11"/>
+<m crc="1c661a4b"/>
+<v crc="0fc9a58d"/>
+<v crc="b8c475a4"/>
+</fake>
+<fake name="kf2k2p17">
+<title>The King of Fighters 2002 [Plus 2017, Hack]</title>
+<p crc="059da6f9"/>
+<p crc="7ad26451"/>
+<p crc="80aacc1f"/>
+<s crc="96bdd036"/>
+<c crc="93cf6345"/>
+<c crc="d7373d66"/>
+<c crc="959fad0b"/>
+<c crc="efe6a468"/>
+<c crc="74bba7c6"/>
+<c crc="e20d2216"/>
+<c crc="8a5b561c"/>
+<c crc="bef667a3"/>
+<m crc="1c661a4b"/>
+<v crc="0fc9a58d"/>
+<v crc="b8c475a4"/>
+</fake>
+<fake name="kof2k2ru">
+<title>The King of Fighters 2002 [Remix Ultra 3.5, Hack]</title>
+<p crc="8da72d5c"/>
+<p crc="75185760"/>
+<s crc="bd19c308"/>
+<c crc="7efa6ef7"/>
+<c crc="aa82948b"/>
+<c crc="ca656090"/>
+<c crc="eb898849"/>
+<c crc="74bba7c6"/>
+<c crc="e20d2216"/>
+<c crc="2a9d505c"/>
+<c crc="93d8501f"/>
+<m crc="9956ccd8"/>
+<v crc="6e7e3508"/>
+<v crc="2157b90f"/>
+</fake>
+<fake name="kof2k2ly">
+<title>The King of Fighters 2002 [Remix, Hack]</title>
+<p crc="1003a13b"/>
+<p crc="0a189c94"/>
+<s crc="e0eaaba3"/>
+<c crc="7efa6ef7"/>
+<c crc="aa82948b"/>
+<c crc="959fad0b"/>
+<c crc="efe6a468"/>
+<c crc="74bba7c6"/>
+<c crc="e20d2216"/>
+<c crc="8a5b561c"/>
+<c crc="bef667a3"/>
+<m crc="1c661a4b"/>
+<v crc="0fc9a58d"/>
+<v crc="b8c475a4"/>
+</fake>
+<fake name="kf2k2mp3">
+<title>The King of Fighters 2002 Magic Plus III [Hack]</title>
+<p crc="0cdbe99c"/>
+<p crc="de6ffd21"/>
+<s crc="4d0c4e77"/>
+<c crc="7efa6ef7"/>
+<c crc="aa82948b"/>
+<c crc="959fad0b"/>
+<c crc="efe6a468"/>
+<c crc="74bba7c6"/>
+<c crc="e20d2216"/>
+<c crc="8a5b561c"/>
+<c crc="bef667a3"/>
+<m crc="1c661a4b"/>
+<v crc="0fc9a58d"/>
+<v crc="b8c475a4"/>
+</fake>
+<fake name="kf2k2plb" target="kof2002">
+<title>The King of Fighters 2002 Plus [bootleg set 3]</title>
+<p crc="3ab03781"/>
+<p crc="327266b8"/>
+<s crc="2072d5e9"/>
+<c crc="2b65a656"/>
+<c crc="adf18983"/>
+<c crc="875e9fd7"/>
+<c crc="2da13947"/>
+<c crc="61bd165d"/>
+<c crc="03fdd1eb"/>
+<c crc="1a2749d8"/>
+<c crc="ab0bb549"/>
+<m crc="85aaa632"/>
+<v crc="15e8f3f5"/>
+<v crc="da41d6f9"/>
+</fake>
+<fake name="kf2k2plh">
+<title>The King of Fighters 2002 Plus [Hack]</title>
+<p crc="32cc568f"/>
+<p crc="4c91603b"/>
+<s crc="595e0006"/>
+<c crc="745b343e"/>
+<c crc="2aab7f98"/>
+<c crc="959fad0b"/>
+<c crc="efe6a468"/>
+<c crc="74bba7c6"/>
+<c crc="e20d2216"/>
+<c crc="8a5b561c"/>
+<c crc="bef667a3"/>
+<m crc="1c661a4b"/>
+<v crc="0fc9a58d"/>
+<v crc="b8c475a4"/>
+</fake>
+<fake name="kof2002t">
+<title>The King of Fighters 2002 Plus [Optimised, Hack]</title>
+<p crc="55a19ab8"/>
+<p crc="0a189c94"/>
+<s crc="e0eaaba3"/>
+<c crc="7efa6ef7"/>
+<c crc="aa82948b"/>
+<c crc="959fad0b"/>
+<c crc="efe6a468"/>
+<c crc="74bba7c6"/>
+<c crc="e20d2216"/>
+<c crc="8a5b561c"/>
+<c crc="bef667a3"/>
+<m crc="1c661a4b"/>
+<v crc="0fc9a58d"/>
+<v crc="b8c475a4"/>
+</fake>
+<fake name="kf2k2plc" target="kof2002">
+<title>The King of Fighters 2002 Super [bootleg]</title>
+<p crc="ebedae17"/>
+<p crc="327266b8"/>
+<s crc="fecbb589"/>
+<c crc="2b65a656"/>
+<c crc="adf18983"/>
+<c crc="875e9fd7"/>
+<c crc="2da13947"/>
+<c crc="61bd165d"/>
+<c crc="03fdd1eb"/>
+<c crc="1a2749d8"/>
+<c crc="ab0bb549"/>
+<m crc="85aaa632"/>
+<v crc="15e8f3f5"/>
+<v crc="da41d6f9"/>
+</fake>
+<fake name="kof2k3fd">
+<title>The King of Fighters 2003 [Fully Decrypted]</title>
+<p crc="57a1981d"/>
+<s crc="3230e10f"/>
+<c crc="e42fc226"/>
+<c crc="1b5e3b58"/>
+<c crc="d334fdd9"/>
+<c crc="0d457699"/>
+<c crc="8a91aae4"/>
+<c crc="9f8674b8"/>
+<c crc="8ee6b43c"/>
+<c crc="6d8d2d60"/>
+<m crc="cc8b54c0"/>
+<v crc="dd6c6a85"/>
+<v crc="0e84f8c1"/>
+</fake>
+<fake name="kf2k3ps2">
+<title>The King of Fighters 2003 [PlayStation 2, Hack]</title>
+<p crc="8e66056d"/>
+<s crc="c2e48e98"/>
+<c crc="e42fc226"/>
+<c crc="1b5e3b58"/>
+<c crc="d334fdd9"/>
+<c crc="0d457699"/>
+<c crc="8a91aae4"/>
+<c crc="9f8674b8"/>
+<c crc="0ff993d7"/>
+<c crc="22e36002"/>
+<m crc="4374cb5c"/>
+<v crc="dd6c6a85"/>
+<v crc="0e84f8c1"/>
+</fake>
+<fake name="kof2003t">
+<title>The King of Fighters 2003 [Plus, Hack]</title>
+<p crc="5efd262a"/>
+<s crc="3230e10f"/>
+<c crc="e42fc226"/>
+<c crc="1b5e3b58"/>
+<c crc="d334fdd9"/>
+<c crc="0d457699"/>
+<c crc="8a91aae4"/>
+<c crc="9f8674b8"/>
+<c crc="8ee6b43c"/>
+<c crc="6d8d2d60"/>
+<m crc="cc8b54c0"/>
+<v crc="dd6c6a85"/>
+<v crc="0e84f8c1"/>
+</fake>
+<fake name="kf2k3p2s" target="kof2003">
+<title>The King of Fighters 2003 [PS2 Style Portraits, Hack]</title>
+<p crc="a2b1cd0b"/>
+<p crc="c2321f79"/>
+<p crc="48af7f48"/>
+<c crc="3c43a170"/>
+<c crc="d8a64d42"/>
+<c crc="d818be4e"/>
+<c crc="eb8bd6d6"/>
+<c crc="53bb6706"/>
+<c crc="993254d5"/>
+<c crc="51db8ffe"/>
+<c crc="7dad01ab"/>
+<m crc="f5515629"/>
+<v crc="ffa3f8c7"/>
+<v crc="5382c7d1"/>
+</fake>
+<fake name="kf2k3upl" target="kof2003">
+<title>The King of Fighters 2004 Ultra Plus [bootleg of The King of Fighters 2003]</title>
+<p crc="87294c01"/>
+<s crc="e5708c0c"/>
+<c crc="b1dc25d0"/>
+<c crc="d5362437"/>
+<c crc="0a1fbeab"/>
+<c crc="87b19a0c"/>
+<c crc="704ea371"/>
+<c crc="20a1164c"/>
+<c crc="189aba7f"/>
+<c crc="20ec4fdc"/>
+<m crc="3a4969ff"/>
+<v crc="ffa3f8c7"/>
+<v crc="5382c7d1"/>
+</fake>
+<fake name="kf2k4pls">
+<title>The King of Fighters Special Edition 2004 Plus [bootleg]</title>
+<p crc="ed97c684"/>
+<p crc="e6c50566"/>
+<s crc="cc0ab564"/>
+<c crc="7a050288"/>
+<c crc="e924afcf"/>
+<c crc="959fad0b"/>
+<c crc="efe6a468"/>
+<c crc="74bba7c6"/>
+<c crc="e20d2216"/>
+<c crc="fa705b2b"/>
+<c crc="2c912ff9"/>
+<m crc="5a47d9ad"/>
+<v crc="e4ddfb3f"/>
+<v crc="b887d287"/>
+</fake>
+<fake name="lastbldi">
+<title>The Last Blade (Bakumatsu Roman - Gekka no Kenshi) [Infinite Energy, Hack]</title>
+<p crc="4c21400b"/>
+<p crc="0fdc289e"/>
+<s crc="95561412"/>
+<c crc="9f7e2bd3"/>
+<c crc="80623d3c"/>
+<c crc="91ab1a30"/>
+<c crc="3d60b037"/>
+<c crc="1ba80cee"/>
+<c crc="beafd091"/>
+<m crc="087628ea"/>
+<v crc="ed66b76f"/>
+<v crc="a0e7f6e2"/>
+<v crc="a506e1e2"/>
+<v crc="0e34157f"/>
+</fake>
+<fake name="lastbladh">
+<title>The Last Blade (Bakumatsu Roman - Gekka no Kenshi) [NGH-2340]</title>
+<p crc="cd01c06d"/>
+<p crc="0fdc289e"/>
+<s crc="95561412"/>
+<c crc="9f7e2bd3"/>
+<c crc="80623d3c"/>
+<c crc="91ab1a30"/>
+<c crc="3d60b037"/>
+<c crc="1ba80cee"/>
+<c crc="beafd091"/>
+<m crc="087628ea"/>
+<v crc="ed66b76f"/>
+<v crc="a0e7f6e2"/>
+<v crc="a506e1e2"/>
+<v crc="0e34157f"/>
+</fake>
+<fake name="lastblada">
+<title>The Last Blade (Bakumatsu Roman - Gekka no Kenshi) [NGM-2340, alt board]</title>
+<p crc="3893d38b"/>
+<p crc="9470c788"/>
+<p crc="b45e631c"/>
+<p crc="aa34e149"/>
+<s crc="95561412"/>
+<c crc="9f7e2bd3"/>
+<c crc="80623d3c"/>
+<c crc="91ab1a30"/>
+<c crc="3d60b037"/>
+<c crc="1ba80cee"/>
+<c crc="beafd091"/>
+<m crc="087628ea"/>
+<v crc="ed66b76f"/>
+<v crc="a0e7f6e2"/>
+<v crc="a506e1e2"/>
+<v crc="0e34157f"/>
+</fake>
+<fake name="lastbldp">
+<title>The Last Blade (Bakumatsu Roman - Gekka no Kenshi) [Plus, Hack]</title>
+<p crc="491496f0"/>
+<p crc="f80aeee8"/>
+<s crc="95561412"/>
+<c crc="9f7e2bd3"/>
+<c crc="80623d3c"/>
+<c crc="91ab1a30"/>
+<c crc="3d60b037"/>
+<c crc="1ba80cee"/>
+<c crc="beafd091"/>
+<m crc="087628ea"/>
+<v crc="ed66b76f"/>
+<v crc="a0e7f6e2"/>
+<v crc="a506e1e2"/>
+<v crc="0e34157f"/>
+</fake>
+<fake name="lastblsp">
+<title>The Last Blade (Bakumatsu Roman - Gekka no Kenshi) [Special 2017, Hack]</title>
+<p crc="264f191b"/>
+<p crc="6e5914ce"/>
+<p crc="d6a50f04"/>
+<s crc="95561412"/>
+<c crc="9f7e2bd3"/>
+<c crc="80623d3c"/>
+<c crc="91ab1a30"/>
+<c crc="3d60b037"/>
+<c crc="4ea22fe0"/>
+<c crc="a863c882"/>
+<m crc="b37b89e0"/>
+<v crc="ed66b76f"/>
+<v crc="a0e7f6e2"/>
+<v crc="a506e1e2"/>
+<v crc="bb72113a"/>
+</fake>
+<fake name="lastbd2b">
+<title>The Last Blade 2 (Bakumatsu Roman - Dai Ni Maku Gekka no Kenshi) [Enable Hidden Characters V4]</title>
+<p crc="6e512568"/>
+<p crc="add4a30b"/>
+<s crc="c9cd2298"/>
+<c crc="5839444d"/>
+<c crc="dd087428"/>
+<c crc="6054cbe0"/>
+<c crc="8bd2a9d2"/>
+<c crc="6a503dcf"/>
+<c crc="ec9c36d0"/>
+<m crc="acf12d10"/>
+<v crc="f7ee6fbb"/>
+<v crc="aa9e4df6"/>
+<v crc="4ac750b2"/>
+<v crc="f5c64ba6"/>
+</fake>
+<fake name="lastbd2e">
+<title>The Last Blade 2 (Bakumatsu Roman - Dai Ni Maku Gekka no Kenshi) [Enhanced, Hack]</title>
+<p crc="6c8867d2"/>
+<p crc="eef07572"/>
+<s crc="c9cd2298"/>
+<c crc="5839444d"/>
+<c crc="dd087428"/>
+<c crc="6054cbe0"/>
+<c crc="8bd2a9d2"/>
+<c crc="6a503dcf"/>
+<c crc="ec9c36d0"/>
+<m crc="acf12d10"/>
+<v crc="f7ee6fbb"/>
+<v crc="aa9e4df6"/>
+<v crc="4ac750b2"/>
+<v crc="f5c64ba6"/>
+</fake>
+<fake name="lastbd2i">
+<title>The Last Blade 2 (Bakumatsu Roman - Dai Ni Maku Gekka no Kenshi) [Infinite Energy, Hack]</title>
+<p crc="9a17a53c"/>
+<p crc="52b3f468"/>
+<s crc="c9cd2298"/>
+<c crc="5839444d"/>
+<c crc="dd087428"/>
+<c crc="6054cbe0"/>
+<c crc="8bd2a9d2"/>
+<c crc="6a503dcf"/>
+<c crc="ec9c36d0"/>
+<m crc="acf12d10"/>
+<v crc="f7ee6fbb"/>
+<v crc="aa9e4df6"/>
+<v crc="4ac750b2"/>
+<v crc="f5c64ba6"/>
+</fake>
+<fake name="lastbd2p">
+<title>The Last Blade 2 (Bakumatsu Roman - Dai Ni Maku Gekka no Kenshi) [Plus, Hack]</title>
+<p crc="a401fe4e"/>
+<p crc="52b3f468"/>
+<s crc="c9cd2298"/>
+<c crc="5839444d"/>
+<c crc="dd087428"/>
+<c crc="6054cbe0"/>
+<c crc="8bd2a9d2"/>
+<c crc="6a503dcf"/>
+<c crc="ec9c36d0"/>
+<m crc="acf12d10"/>
+<v crc="f7ee6fbb"/>
+<v crc="aa9e4df6"/>
+<v crc="4ac750b2"/>
+<v crc="f5c64ba6"/>
+</fake>
+<fake name="lastbd2t">
+<title>The Last Blade 2 (Bakumatsu Roman - Dai Ni Maku Gekka no Kenshi) [Team, Hack]</title>
+<p crc="8f9a24bf"/>
+<p crc="37aaffa0"/>
+<s crc="c9cd2298"/>
+<c crc="5839444d"/>
+<c crc="dd087428"/>
+<c crc="6054cbe0"/>
+<c crc="8bd2a9d2"/>
+<c crc="6a503dcf"/>
+<c crc="ec9c36d0"/>
+<m crc="acf12d10"/>
+<v crc="f7ee6fbb"/>
+<v crc="aa9e4df6"/>
+<v crc="4ac750b2"/>
+<v crc="f5c64ba6"/>
+</fake>
+<fake name="timesupd">
+<title>Time's UP! [Demo]</title>
+<p crc="be86adb1"/>
+<s crc="a545b593"/>
+<c crc="c19a300a"/>
+<c crc="fdb3f7ed"/>
+<m crc="fe795d11"/>
+<v crc="13b8f47b"/>
+<v crc="6fdd663d"/>
+</fake>
+<fake name="timesup">
+<title>Time's UP!</title>
+<p crc="b4be3ede"/>
+<s crc="a545b593"/>
+<c crc="1c83fc38"/>
+<c crc="2b3f48b4"/>
+<m crc="8b83308b"/>
+<v crc="1b48708b"/>
+<v crc="6b17df84"/>
+<v crc="6c798d46"/>
+</fake>
+<fake name="tophuntrh">
+<title>Top Hunter - Roddy &amp; Cathy [NGH-046]</title>
+<p crc="771e39bc"/>
+<p crc="f182cb3e"/>
+<s crc="92e9ac8c"/>
+<c crc="fa720a4a"/>
+<c crc="c900c205"/>
+<c crc="880e3c25"/>
+<c crc="7a2248aa"/>
+<c crc="4b735e45"/>
+<c crc="273171df"/>
+<c crc="12829c4c"/>
+<c crc="c944e03d"/>
+<m crc="3f84bb9f"/>
+<v crc="c1f9c2db"/>
+<v crc="56254a64"/>
+<v crc="58113fb1"/>
+<v crc="4f54c187"/>
+</fake>
+<fake name="totc">
+<title>Treasure of the Caribbean</title>
+<p crc="99604539"/>
+<s crc="0a3fee41"/>
+<c crc="cdd6600f"/>
+<c crc="f362c271"/>
+<m crc="18b23ace"/>
+<v crc="15c7f9e6"/>
+<v crc="1b264559"/>
+<v crc="84b62c5d"/>
+</fake>
+<fake name="vliner53">
+<title>V-Liner [v0.53]</title>
+<p crc="e263dce8"/>
+<s crc="972d8c31"/>
+<c crc="5118f7c0"/>
+<c crc="efe9b33e"/>
+<m crc="9b92b7d1"/>
+</fake>
+<fake name="vliner54">
+<title>V-Liner [v0.54]</title>
+<p crc="172efc18"/>
+<s crc="972d8c31"/>
+<c crc="5118f7c0"/>
+<c crc="efe9b33e"/>
+<m crc="9b92b7d1"/>
+</fake>
+<fake name="vliner6e">
+<title>V-Liner [v0.6e]</title>
+<p crc="72a2c043"/>
+<s crc="972d8c31"/>
+<c crc="5118f7c0"/>
+<c crc="efe9b33e"/>
+<m crc="9b92b7d1"/>
+</fake>
+<fake name="vliner7e">
+<title>V-Liner [v0.7e]</title>
+<p crc="49a94db5"/>
+<s crc="972d8c31"/>
+<c crc="5118f7c0"/>
+<c crc="efe9b33e"/>
+<m crc="9b92b7d1"/>
+</fake>
+<fake name="viewpoinp" p="2">
+<title>Viewpoint [prototype]</title>
+<p crc="0adb5eee"/>
+<p crc="31129194"/>
+<s crc="9fea5758"/>
+<c crc="97a3183b"/>
+<c crc="f637667a"/>
+<c crc="b017d2d1"/>
+<c crc="10f1624a"/>
+<c crc="714a8bc4"/>
+<c crc="5bc32495"/>
+<c crc="28a0a127"/>
+<c crc="439c9036"/>
+<m crc="8e69f29a"/>
+<v crc="7e9af736"/>
+<v crc="503a9c51"/>
+<v crc="dfa8d079"/>
+<v crc="612b9292"/>
+</fake>
+<fake name="gowcaiet" p="1">
+<title>Voltage Fighter - Gowcaizer (Choujin Gakuen Gowcaizer) [Eternal, Hack]</title>
+<p crc="4236d373"/>
+<s crc="2f8748a2"/>
+<c crc="042f6af5"/>
+<c crc="0fbcd046"/>
+<c crc="58bfbaa1"/>
+<c crc="9451ee73"/>
+<c crc="ff9cf48c"/>
+<c crc="31bbd918"/>
+<c crc="2091ec04"/>
+<c crc="d80dd241"/>
+<m crc="78c851cb"/>
+<v crc="6c31223c"/>
+<v crc="8edb776c"/>
+<v crc="c63b9285"/>
+</fake>
+<fake name="wakuwak7bh">
+<title>Waku Waku 7 [Boss Hack]</title>
+<p crc="0b7a3776"/>
+<p crc="fe190665"/>
+<s crc="71c4b4b5"/>
+<c crc="ee4fea54"/>
+<c crc="0c549e2d"/>
+<c crc="af0897c0"/>
+<c crc="4c66527a"/>
+<c crc="8ecea2b5"/>
+<c crc="0eb11a6d"/>
+<m crc="0634bba6"/>
+<v crc="6195c6b4"/>
+<v crc="6159c5fe"/>
+</fake>
+<fake name="wakuw7jq">
+<title>Waku Waku 7 [Enhanced, Hack]</title>
+<p crc="680b0912"/>
+<p crc="fe190665"/>
+<s crc="71c4b4b5"/>
+<c crc="ee4fea54"/>
+<c crc="0c549e2d"/>
+<c crc="af0897c0"/>
+<c crc="4c66527a"/>
+<c crc="8ecea2b5"/>
+<c crc="0eb11a6d"/>
+<m crc="0634bba6"/>
+<v crc="6195c6b4"/>
+<v crc="6159c5fe"/>
+</fake>
+<fake name="wh2h">
+<title>World Heroes 2 [ALH-006]</title>
+<p crc="cde9aff5"/>
+<s crc="fcaeb3a4"/>
+<c crc="21c6bb91"/>
+<c crc="a3999925"/>
+<c crc="b725a219"/>
+<c crc="8d96425e"/>
+<c crc="b20354af"/>
+<c crc="b13d1de3"/>
+<m crc="8fa3bc77"/>
+<v crc="8877e301"/>
+<v crc="c1317ff4"/>
+</fake>
+<fake name="wh2es">
+<title>World Heroes 2 [Easy Special Attacks, Hack]</title>
+<p crc="0cfa0f77"/>
+<s crc="fcaeb3a4"/>
+<c crc="21c6bb91"/>
+<c crc="a3999925"/>
+<c crc="b725a219"/>
+<c crc="8d96425e"/>
+<c crc="b20354af"/>
+<c crc="b13d1de3"/>
+<m crc="8fa3bc77"/>
+<v crc="8877e301"/>
+<v crc="c1317ff4"/>
+</fake>
+<fake name="wh2ja">
+<title>World Heroes 2 Jet [ADM-007]</title>
+<p crc="385a2e86"/>
+<s crc="2a03998a"/>
+<c crc="771a6365"/>
+<c crc="e7863a05"/>
+<c crc="64594ed4"/>
+<c crc="6e385398"/>
+<m crc="d2eec9d3"/>
+<v crc="aa277109"/>
+<v crc="b6527edd"/>
+</fake>
+<fake name="wh2jes">
+<title>World Heroes 2 Jet [Easy Special Attacks, Hack]</title>
+<p crc="069449e9"/>
+<s crc="2a03998a"/>
+<c crc="2ec87cea"/>
+<c crc="526b81ab"/>
+<c crc="436d1b31"/>
+<c crc="f9c8dd26"/>
+<c crc="8e34a9f4"/>
+<c crc="a43e4766"/>
+<c crc="59d97215"/>
+<c crc="fc092367"/>
+<m crc="d2eec9d3"/>
+<v crc="aa277109"/>
+<v crc="b6527edd"/>
+</fake>
+<fake name="whpjq">
+<title>World Heroes Perfect [Enhanced, Hack]</title>
+<p crc="0a1da243"/>
+<p crc="b1348758"/>
+<s crc="f2de6500"/>
+<c crc="cd30ed9b"/>
+<c crc="10eed5ee"/>
+<c crc="436d1b31"/>
+<c crc="f9c8dd26"/>
+<c crc="8e34a9f4"/>
+<c crc="a43e4766"/>
+<c crc="59d97215"/>
+<c crc="fc092367"/>
+<m crc="28065668"/>
+<v crc="30cf2709"/>
+<v crc="b6527edd"/>
+<v crc="1908a7ce"/>
+</fake>
+<fake name="neoww2">
+<title>WW2 [Demo] - Arcade Development Project</title>
+<p crc="d53762ff"/>
+<s crc="3fda5d1a"/>
+<c crc="955efd3e"/>
+<c crc="c213940f"/>
+<m crc="99c2354e"/>
+<v crc="debeb8fb"/>
+</fake>
+<fake name="xenocrisis">
+<title>Xeno Crisis [NGM-BB01 ~ NGH-BB01]</title>
+<p crc="637605a6"/>
+<p crc="84838145"/>
+<s crc="7537ea79"/>
+<c crc="ae51ef89"/>
+<c crc="a8610100"/>
+<m crc="28c13ed9"/>
+<v crc="60d57867"/>
+</fake>
+<fake name="xeviousng">
+<title>Xevious [Neo-Geo Conversion]</title>
+<p crc="11dff034"/>
+<s crc="f41d121a"/>
+<c crc="f963e5b6"/>
+<c crc="c97c4e64"/>
+<m crc="6f31c601"/>
+<v crc="37ef6dc5"/>
+</fake>
+<fake name="yoyoshkn">
+<title>Yo-Yo Shuriken [HB]</title>
+<p crc="8a36bd7d"/>
+<s crc="59ce2b22"/>
+<c crc="fde9b178"/>
+<c crc="780c2045"/>
+<m crc="079ac27e"/>
+<v crc="79e1b73f"/>
+<v crc="4c464d41"/>
+<v crc="0fbe1f09"/>
+</fake>
+</fakes>

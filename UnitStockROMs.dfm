@@ -134,5 +134,24 @@ object FrameStockROMs: TFrameStockROMs
       Caption = 'Import All Images...'
       OnClick = MenuItemImportAllImagesClick
     end
+    object N1: TMenuItem
+      Caption = '-'
+    end
+    object MenuItemExportWQWROMs: TMenuItem
+      Caption = 'Export WQW ROMs...'
+      OnClick = MenuItemExportWQWROMsClick
+    end
+    object MenuItemExportWQWImages: TMenuItem
+      Caption = 'Export WQW Images...'
+      OnClick = MenuItemExportWQWImagesClick
+    end
+  end
+  object FileOpenDialogFolder: TFileOpenDialog
+    FavoriteLinks = <>
+    FileTypes = <>
+    Options = [fdoPickFolders]
+    Title = 'Destination'
+    Left = 504
+    Top = 208
   end
 end

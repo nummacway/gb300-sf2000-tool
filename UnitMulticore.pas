@@ -32,6 +32,7 @@ type
     LabelBIOSInfo: TLabel;
     PanelConfigActions: TPanel;
     ButtonSaveConfig: TButton;
+    LabelNotInstalledGB300: TLabel;
     procedure PanelNotInstalledClick(Sender: TObject);
     procedure TimerLazyLoadTimer(Sender: TObject);
     procedure ListViewFilesSelectItem(Sender: TObject; Item: TListItem;
@@ -67,6 +68,8 @@ begin
   Frame.Parent := PanelCoreInfo;
   PanelInstalled.Visible := HasMulticore;
   PanelNotInstalled.Visible := not HasMulticore;
+  if CurrentDevice = cdSF2000 then
+  LabelNotInstalledGB300.Hide();
 end;
 
 procedure TFrameMulticore.ListViewAlwaysItemChecked(Sender: TObject; Item: TListItem);
@@ -170,7 +173,10 @@ end;
 
 procedure TFrameMulticore.PanelNotInstalledClick(Sender: TObject);
 begin
+  if CurrentDevice = cdGB300 then
   Form1.OpenURL('https://github.com/tzubertowski/gb300_multicore/releases');
+  if CurrentDevice = cdSF2000 then
+  Form1.OpenURL('https://github.com/leonardothehuman/sf2000_multicore/releases');
 end;
 
 procedure TFrameMulticore.TimerLazyLoadTimer(Sender: TObject);

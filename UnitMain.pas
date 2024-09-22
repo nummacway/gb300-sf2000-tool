@@ -11,7 +11,7 @@ type
   TFrameClass = class of TFrame;
 
   TForm1 = class(TForm)
-    ShapeFrame1: TShape;
+    ShapeFrame: TShape;
     Shape1: TShape;
     Label1: TLabel;
     Shape2: TShape;
@@ -45,10 +45,10 @@ type
     Label8: TLabel;
     Image8: TImage;
     PanelFrame: TPanel;
-    Image9: TImage;
+    Image14: TImage;
     Label10: TLabel;
-    Label9: TLabel;
-    Shape9: TShape;
+    Label14: TLabel;
+    Shape14: TShape;
     PanelOnboarding: TPanel;
     ImageOnboardingDevice: TImage;
     LabelOnboardingName: TLabel;
@@ -62,10 +62,8 @@ type
     LabelUnboardingDiscordHandle: TLabel;
     ShapeOnboarding: TShape;
     PanelTop: TPanel;
-    CheckBoxOnboardingChinese: TCheckBox;
     ImageListFileTypes: TImageList;
-    ShapeFrame3: TShape;
-    ShapeFrame2: TShape;
+    ShapeDivider: TShape;
     TimerLazyLoad: TTimer;
     ActionList: TActionList;
     BrowseURL: TBrowseURL;
@@ -73,10 +71,20 @@ type
     Image13: TImage;
     Label13: TLabel;
     ImageListCheckResults: TImageList;
-    LabelOnboardingChinese: TLabel;
     FindDialog: TFindDialog;
     ActionFind: TAction;
     ActionFindNext: TAction;
+    Shape9: TShape;
+    Image9: TImage;
+    Label9: TLabel;
+    GroupBox1: TGroupBox;
+    CheckBoxOnboardingChinese: TCheckBox;
+    CheckBoxOnboardingPrettyNames: TCheckBox;
+    CheckBoxOnboardingMaxCompression: TCheckBox;
+    ButtonNeoGeoFaker: TButton;
+    Label15: TLabel;
+    FileRunNeoGeo: TFileRun;
+    CheckBoxOnboardingMulticoreZFB: TCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure EditOnboardingWorkingDirChange(Sender: TObject);
     procedure ButtonOnboardingStartClick(Sender: TObject);
@@ -87,11 +95,12 @@ type
     procedure TimerLazyLoadTimer(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure CheckBoxOnboardingChineseClick(Sender: TObject);
     procedure LabelOnboardingGithubRepositoryClick(Sender: TObject);
     procedure LabelUnboardingDiscordHandleClick(Sender: TObject);
     procedure ActionFindExecute(Sender: TObject);
     procedure FindDialogFind(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure ButtonNeoGeoFakerClick(Sender: TObject);
   private
     { Private declarations }
     var
@@ -116,7 +125,7 @@ implementation
 uses
   GB300Utils, GB300UIConst, DateUtils, GUIHelpers, Generics.Collections,
   UnitBIOS, UnitUI, UnitStockROMs, UnitKeys, UnitUserROMs, UnitFavorites,
-  UnitMulticore, MulticoreUtils, System.UITypes, ComCtrls;
+  UnitMulticore, MulticoreUtils, System.UITypes, ComCtrls, NeoGeoFaker;
 
 {$R *.dfm}
 
@@ -130,11 +139,18 @@ begin
   FindDialog.Execute();
 end;
 
+procedure TForm1.ButtonNeoGeoFakerClick(Sender: TObject);
+begin
+  FileRunNeoGeo.FileName := Paramstr(0);
+  FileRunNeoGeo.Execute();
+end;
+
 procedure TForm1.ButtonOnboardingStartClick(Sender: TObject);
 var
   FileNames: TObjectList<TNameList>;
   i: Integer;
   Core, CoreTGBDual, CoreGambatte, CoreGB, CoreGBB: TCore;
+  FS: TFileStream;
 function IsCoreGambatte(Core: string; Default: Boolean): Boolean;
 begin
   Core := IncludeTrailingPathDelimiter(IncludeTrailingPathDelimiter(Path + 'cores') + Core) + 'core_87000000';
@@ -144,10 +160,28 @@ begin
   Result := Default;
 end;
 begin
+  //if (MonthOf(Now()) > 10) or (YearOf(Now()) > 2024) then
+  //raise Exception.Create('This is a very early development version of this tool that you should not be using it for an extended period');
+
+
   Path := EditOnboardingWorkingDir.Text;
   if Length(Path) = 1 then
   Path := Path + ':';
   Path := IncludeTrailingPathDelimiter(Path);
+
+  FS := TFileStream.Create(TBIOS.Path, fmOpenRead or fmShareDenyNone);
+  try
+    CurrentDevice := TBIOS.GetSizeSupported(FS.Size);
+  finally
+    FS.Free();
+  end;
+
+  if CurrentDevice = cdSF2000 then
+  begin
+    Label9.Hide();
+    Image9.Hide();
+    Shape9.Hide();
+  end;
 
   Foldername.LoadFromFile();
   Foldername.ForceAllDirectories();
@@ -155,8 +189,14 @@ begin
 
   INI.WriteString('Onboarding', 'WorkingDir', Path);
   INI.WriteBool('Onboarding', 'Chinese', CheckBoxOnboardingChinese.Checked);
+  INI.WriteBool('Onboarding', 'PrettyNames', CheckBoxOnboardingPrettyNames.Checked);
+  INI.WriteBool('Onboarding', 'MulticoreZFB', CheckBoxOnboardingMulticoreZFB.Checked);
+  INI.WriteBool('Onboarding', 'MaxCompression', CheckBoxOnboardingMaxCompression.Checked);
   HasMulticore := DirectoryExists(Path + 'cores');
   ShowChineseNames := CheckBoxOnboardingChinese.Checked;
+  UsePrettyGameNames := CheckBoxOnboardingPrettyNames.Checked;
+  UseZFBForMulticore := CheckBoxOnboardingMulticoreZFB.Checked;
+  UseMaxCompression := CheckBoxOnboardingMaxCompression.Checked;
   FileNames := TReferenceList.GetFileNames();
   try
     Favorites := TReferenceList.Create();
@@ -205,11 +245,8 @@ begin
 
   for Core in Cores do
   CoresDict.Add(Core.Core, Core);
-end;
 
-procedure TForm1.CheckBoxOnboardingChineseClick(Sender: TObject);
-begin
-  LabelOnboardingChinese.Visible := CheckBoxOnboardingChinese.Checked;
+  TNeoGeoFakeSource.EnsureXMLLoaded();
 end;
 
 procedure TForm1.EditOnboardingWorkingDirChange(Sender: TObject);
@@ -294,19 +331,24 @@ end;
 
 procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  DragIn.Free(); // separate call prevents really odd bug in drag and drop component causing access violations when you exit (they are invisible, delay closing the form by some seconds)
+  DragIn.Free(); // separate call prevents really odd bug in drag and drop component causing access violations when you exit (they are invisible, but delay closing the form by some seconds)
+end;
+
+procedure TForm1.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+begin
+  FreeAndNil(DragIn); // an attempt to get Windows from not telling me that GB300 Tool got an issue when I shutdown Windows
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 var
   INIPath: string;
 begin
-  if (Screen.Width < 1200) or (Screen.Height < 864) then
-  MessageDlg('Your screen resolution seems to be lower than that of the OLPC XO-1, better known as the world’s cheapest laptop, released in 2007. GB300 Tool does not and will never support such a low resolution.', mtWarning, [mbOk], 0);
+  //if (Screen.Width < 1200) or (Screen.Height < 864) then
+  //MessageDlg('Your screen resolution seems to be lower than that of the OLPC XO-1, better known as the world’s cheapest laptop, released in 2007. GB300 Tool does not and will never support such a low resolution.', mtWarning, [mbOk], 0);
 
   Randomize(); // used for the random background colors of the UI editor
   Application.Title := Caption;
-  Foldername := DefaultFoldername;
+  Foldername := DefaultFoldernameGB300;
   //ShowFrame(TFrameBIOS);
   INIPath := ExtractFilePath(ParamStr(0)) + 'GB300Tool.ini';
   if FileExists(INIPath) then
@@ -319,6 +361,9 @@ begin
   end;
   EditOnboardingWorkingDir.Text := INI.ReadString('Onboarding', 'WorkingDir', '');
   CheckBoxOnboardingChinese.Checked := INI.ReadBool('Onboarding', 'Chinese', False);
+  CheckBoxOnboardingPrettyNames.Checked := INI.ReadBool('Onboarding', 'PrettyNames', False);
+  CheckBoxOnboardingMulticoreZFB.Checked := INI.ReadBool('Onboarding', 'MulticoreZFB', True);
+  CheckBoxOnboardingMaxCompression.Checked := INI.ReadBool('Onboarding', 'MaxCompression', False);
   LoadPNGTo(42, ImageOnboardingDevice.Picture);
   LoadPNGTo(1, ImageOnboardingOctocat.Picture);
   LoadPNGTo(2, ImageOnboardingClyde.Picture);
@@ -333,6 +378,7 @@ begin
   NoIntro.Free();
   INI.Free();
   CoresDict.Free();
+  FakeSources.Free();
 end;
 
 procedure TForm1.HandleDown(NewTag: Byte);
@@ -341,18 +387,18 @@ var
 begin
   FindDialog.CloseDialog();
   case NewTag of
-    1..7:
+    2..9:
       begin
         ShowFrame(TFrameStockROMs);
         (Frame as TFrameStockROMs).ListViewFiles.SmallImages := ImageListFileTypes;
         (Frame as TFrameStockROMs).LoadFromFiles(NewTag-1);
       end;
-    8:
+    1:
       begin
         ShowFrame(TFrameUserROMs);
         (Frame as TFrameUserROMs).ListViewFiles.SmallImages := ImageListFileTypes;
       end;
-    9:
+    14:
       begin
         ShowFrame(TFrameFavorites);
         (Frame as TFrameFavorites).ListViewFiles.SmallImages := ImageListFileTypes;
@@ -366,7 +412,7 @@ begin
     13:
       ShowFrame(TFrameMulticore);
   end;
-  for i := 1 to 13 do
+  for i := 1 to 14 do
   with FindComponent('Shape' + IntToStr(i)) as TShape do
   if i = NewTag then
   begin
@@ -387,7 +433,7 @@ procedure TForm1.HandleHover(NewTag: Byte);
 var
   i: Byte;
 begin
-  for i := 1 to 13 do
+  for i := 1 to 14 do
   with FindComponent('Shape' + IntToStr(i)) as TShape do
   if (i = NewTag) or not Enabled then
   begin
@@ -401,7 +447,7 @@ end;
 
 procedure TForm1.LabelOnboardingGithubRepositoryClick(Sender: TObject);
 begin
-  OpenURL('https://github.com/nummacway/gb300tool');
+  OpenURL('https://github.com/nummacway/gb300-sf2000-tool');
 end;
 
 procedure TForm1.LabelUnboardingDiscordHandleClick(Sender: TObject);
@@ -456,15 +502,16 @@ begin
   end;
   LoadPNGToList(1000, ImageListFileTypes);
   LoadPNGToList(997, ImageListCheckResults);
-  LoadPNGTo(1001, Image1.Picture);
-  LoadPNGTo(1002, Image2.Picture);
+  LoadPNGTo(1001, Image2.Picture);
   LoadPNGTo(1003, Image3.Picture);
   LoadPNGTo(1004, Image4.Picture);
   LoadPNGTo(1005, Image5.Picture);
   LoadPNGTo(1006, Image6.Picture);
   LoadPNGTo(1007, Image7.Picture);
-  LoadPNGTo(42, Image8.Picture);
-  LoadPNGTo(1008, Image9.Picture);
+  LoadPNGTo(1013, Image8.Picture);
+  LoadPNGTo(1002, Image9.Picture);
+  LoadPNGTo(42, Image1.Picture);
+  LoadPNGTo(1008, Image14.Picture);
   LoadPNGTo(1009, Image10.Picture);
   LoadPNGTo(1010, Image11.Picture);
   LoadPNGTo(1011, Image12.Picture);
@@ -529,7 +576,7 @@ procedure TForm1.UpdateLabels;
 var
   i: Byte;
 begin
-  for i := 1 to 8 do
+  for i := 1 to 9 do
   with FindComponent('Label' + IntToStr(i)) as TLabel do
   Caption := StringReplace(Foldername.Folders[i-1], '&', '&&', [rfReplaceAll]);
 end;

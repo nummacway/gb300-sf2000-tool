@@ -225,45 +225,51 @@ type
     procedure MenuItemsUndoClick(Sender: TObject);
     procedure MenuItemDefaultsClick(Sender: TObject);
     procedure ComboBoxMulticoreSelect(Sender: TObject);
+    procedure Label7Click(Sender: TObject);
   private
     { Private declarations }
     procedure InitData();
     function GetFileName(): string;
     const
       // for accessing controls
-      ConsoleNames: array[0..5] of string = ('FC', 'PCE', 'SFC', 'MD', 'GB', 'GBA');
+      ConsoleNames: array[0..5] of string = ('FC', 'SFC', 'MD', 'PCE', 'GBA', 'GB');
       ButtonNames: array[0..11] of string = ('1X', '1Y', '1L', '1A', '1B', '1R', '2X', '2Y', '2L', '2A', '2B', '2R');
+      MulticoreConsole = 4;
       // for populating controls
       KeyNamesFC:   array[0..3] of string = ('A',   'B',   'Turn Disk', 'Eject/Insert'); // also used by GB
       KeyValuesFC:  array[0..3] of Word   = ($0008, $0000, $000a, $000b); // also used by GB
+      KeyNamesGB:   array[0..1] of string = ('A',   'B'); // also used by GB
+      KeyValuesGB:  array[0..1] of Word   = ($0008, $0000); // also used by GB
+      KeyNamesMAME: array[0..3] of string = ('A',   'B',   'C',   'D'); // also used by GB
+      KeyValuesMAME:array[0..3] of Word   = ($0008, $0000, $000a, $000b); // also used by GB
       KeyNamesSFC:  array[0..5] of string = ('A',   'B',   'X',   'Y',   'L',   'R');
       KeyValuesSFC: array[0..5] of Word   = ($0008, $0000, $000a, $000b, $0009, $0001);
       KeyNamesPCE:  array[0..5] of string = ('I',   'II',        'invalid',   'invalid', 'invalid', 'invalid');
       KeyNamesMD:   array[0..5] of string = ('A',   'B / SMS 1', 'C / SMS 2', 'X',       'Y',       'Z');
       KeyValuesMD:  array[0..5] of Word   = ($0008, $0000,       $0001,       $000a,     $000b,     $0009); // also used by PCE
-      KeyNamesGBA:  array[0..5] of string = ('A',   'B',   'invalid', 'invalid', 'L', 'R');
+      KeyNamesGBA:  array[0..5] of string = ('A',   'B',   'invalid', 'invalid', 'L', 'R'); // according to GBA D-PAD test, invalid 1 sometimes works like B, invalid 2 sometimes works like A
       KeyValuesGBA: array[0..5] of Word   = ($0008, $0000, $0001,     $0009,     $000a,    $000b);
 
       MulticoreData: array[0..17] of TMulticoreMapping = (
-         // Default GBA Mapping:         A            B            X            Y            L         R
-        (Name: 'blueMSX CV';       x08: 'L';    x00: 'R';    x09: '1';    x01: '2';    x0a: '4'; x0b: '3'),
-        (Name: 'blueMSX SG';       x08: 'L';    x00: 'R'                                                 ),
-        (Name: 'Caprice32';        x08: 'Joy 1';x00: 'Joy 2'                                             ),
-        (Name: 'CrocoDS BASIC';    x08: 'X';    x00: 'Z';    x09: 'é';    x01: '"';                      ),
-        (Name: 'CrocoDS def.Joy';  x08: 'Joy 1';x00: 'Joy 2';x09: 'Key 2';x01: 'Key 3'                   ),
-        (Name: 'CrocoDS def.Key';  x08: 'Space';x00: 'Key 1';x09: 'Key 2';x01: 'Key 3'                   ),
-        (Name: 'CrocoDS internal'; x08: 'A';    x00: 'B';    x09: 'X';    x01: 'Y';    x0a: 'L'; x0b: 'R'),
-        (Name: 'Gearcoloco';       x08: 'R';    x00: 'L';    x09: '2';    x01: '1';    x0a: '3'; x0b: '4'),
-        (Name: 'Gearsystem SG';    x08: 'R';    x00: 'L'                                                 ),
-        (Name: 'Gearsystem SMS/GG';x08: '2';    x00: '1'                                                 ),
-        (Name: 'gpSP';             x08: 'A';    x00: 'B';    x09: 'TA';   x01: 'TB';   x0a: 'L'; x0b: 'R'),
-        (Name: 'MAME2000 Neo Geo'; x08: 'B';    x00: 'A';    x09: 'D';    x01: 'C';                      ),
-        (Name: 'Picodrive MD';     x08: 'C';    x00: 'B';    x09: 'Y';    x01: 'A';    x0a: 'X'; x0b: 'Z'),
-        (Name: 'Picodrive SG';     x08: 'R';    x00: 'L'                                                 ),
-        (Name: 'Picodrive SMS/GG'; x08: '2';    x00: '1'                                                 ),
-        (Name: 'PokeMini';         x08: 'A';    x00: 'B';    x09: 'TA';                          x0b: 'C'),
-        (Name: 'Snes9x 2002';      x08: 'A';    x00: 'B';    x09: 'X';    x01: 'Y';    x0a: 'L'; x0b: 'R'),
-        (Name: 'Snes9x 2005';      x08: 'A';    x00: 'B';    x09: 'X';    x01: 'Y';    x0a: 'L'; x0b: 'R')
+         // Default GBA Mapping:                  A            B            X            Y            L         R
+        (Name: 'blueMSX: Colecovision';     x08: 'L';    x00: 'R';    x09: '1';    x01: '2';    x0a: '4'; x0b: '3'),
+        (Name: 'blueMSX: SG-1000';          x08: 'L';    x00: 'R'                                                 ),
+        (Name: 'Caprice32';                 x08: 'Joy 1';x00: 'Joy 2'                                             ),
+        (Name: 'CrocoDS: BASIC';            x08: 'X';    x00: 'Z';    x09: 'é';    x01: '"';                      ),
+        (Name: 'CrocoDS: default Joystick'; x08: 'Joy 1';x00: 'Joy 2';x09: 'Key 2';x01: 'Key 3'                   ),
+        (Name: 'CrocoDS: default Keyboard'; x08: 'Space';x00: 'Key 1';x09: 'Key 2';x01: 'Key 3'                   ),
+        (Name: 'CrocoDS: internal';         x08: 'A';    x00: 'B';    x09: 'X';    x01: 'Y';    x0a: 'L'; x0b: 'R'),
+        (Name: 'Gearcoloco';                x08: 'R';    x00: 'L';    x09: '2';    x01: '1';    x0a: '3'; x0b: '4'),
+        (Name: 'Gearsystem: SG-1000';       x08: 'R';    x00: 'L'                                                 ),
+        (Name: 'Gearsystem: SMS/GameGear';  x08: '2';    x00: '1'                                                 ),
+        (Name: 'gpSP';                      x08: 'A';    x00: 'B';    x09: 'TA';   x01: 'TB';   x0a: 'L'; x0b: 'R'),
+        (Name: 'MAME2000: Neo Geo';         x08: 'B';    x00: 'A';    x09: 'D';    x01: 'C';                      ),
+        (Name: 'Picodrive: MegaDrive';      x08: 'C';    x00: 'B';    x09: 'Y';    x01: 'A';    x0a: 'X'; x0b: 'Z'),
+        (Name: 'Picodrive: SG-1000';        x08: 'R';    x00: 'L'                                                 ),
+        (Name: 'Picodrive: SMS/GameGear';   x08: '2';    x00: '1'                                                 ),
+        (Name: 'PokeMini';                  x08: 'A';    x00: 'B';    x09: 'TA';                          x0b: 'C'),
+        (Name: 'Snes9x 2002';               x08: 'A';    x00: 'B';    x09: 'X';    x01: 'Y';    x0a: 'L'; x0b: 'R'),
+        (Name: 'Snes9x 2005';               x08: 'A';    x00: 'B';    x09: 'X';    x01: 'Y';    x0a: 'L'; x0b: 'R')
       );
     var
       ComboBoxes: array[0..71] of TComboBox;
@@ -283,7 +289,7 @@ type
 implementation
 
 uses
-  Generics.Collections, GB300Utils;
+  Generics.Collections, GB300Utils, UnitMain;
 
 {$R *.dfm}
 
@@ -293,7 +299,10 @@ procedure TFrameKeys.ButtonDefaultsClick(Sender: TObject);
 var
   RS: TResourceStream;
 begin
-  RS := TResourceStream.CreateFromID(HInstance, 1, RT_RCDATA);
+  if CurrentDevice = cdGB300 then
+  RS := TResourceStream.CreateFromID(HInstance, 1, RT_RCDATA)
+  else
+  RS := TResourceStream.CreateFromID(HInstance, 2, RT_RCDATA);
   try
     RS.Position := (Sender as TButton).Tag * Length(ButtonNames) * SizeOf(Word) * 2;
     LoadConsoleFromStream((Sender as TButton).Tag, RS);
@@ -318,7 +327,7 @@ begin
   if ii > -1 then
   for i := 0 to 11 do
   begin
-    cbv := ComboBoxes[5*12 + i].ObjectIndexInt;
+    cbv := ComboBoxes[MulticoreConsole*12 + i].ObjectIndexInt;
     with MulticoreData[ii] do
     case cbv of
       $08: Key := x08;
@@ -330,7 +339,7 @@ begin
     end;
     if Key = '' then
     Key := 'invalid';
-    (FindComponent(StringReplace(ComboBoxes[5*12 + i].Name, 'ComboBoxGBA', 'EditMC', [])) as TEdit).Text := Key;
+    (FindComponent(StringReplace(ComboBoxes[MulticoreConsole*12 + i].Name, 'ComboBox' + ConsoleNames[MulticoreConsole], 'EditMC', [])) as TEdit).Text := Key;
   end;
 end;
 
@@ -338,10 +347,17 @@ constructor TFrameKeys.Create(AOwner: TComponent);
 begin
   inherited;
   LoadPNGTo(1001, ImageFC.Picture);
+  if CurrentDevice = cdSF2000 then
+  begin
+    LoadPNGTo(1006, ImagePCE.Picture);
+    Label2.Caption := 'Game Boy / Game Boy Color';
+    Label7.Hide();
+  end
+  else
   LoadPNGTo(1002, ImagePCE.Picture);
   LoadPNGTo(1003, ImageSFC.Picture);
   LoadPNGTo(1004, ImageMD.Picture);
-  LoadPNGTo(1006, ImageGB.Picture);
+  LoadPNGTo(1013, ImageGB.Picture);
   LoadPNGTo(1007, ImageGBA.Picture);
   LoadPNGTo(1012, ImageMC.Picture);
   LoadPNGTo(1101, Image1A.Picture);
@@ -393,7 +409,7 @@ begin
       end
       else
       Items := ComboBoxes[Console * 12].Items;
-      if Console = 5 then
+      if Console = MulticoreConsole then
       OnSelect := ComboBoxMulticoreSelect;
     end;
   end;
@@ -401,11 +417,19 @@ end;
 begin
   Dev := ParamStr(1) = '-dev';
   InitConsole(0, KeyNamesFC, KeyValuesFC);
-  InitConsole(1, KeyNamesPCE, KeyValuesMD);
-  InitConsole(2, KeyNamesSFC, KeyValuesSFC);
-  InitConsole(3, KeyNamesMD, KeyValuesMD);
-  InitConsole(4, KeyNamesFC, KeyValuesFC);
-  InitConsole(5, KeyNamesGBA, KeyValuesGBA);
+  if CurrentDevice = cdGB300 then
+  InitConsole(3, KeyNamesPCE, KeyValuesMD)
+  else
+  InitConsole(3, KeyNamesGB, KeyValuesGB);
+  InitConsole(1, KeyNamesSFC, KeyValuesSFC);
+  InitConsole(2, KeyNamesMD, KeyValuesMD);
+  InitConsole(5, KeyNamesMAME, KeyValuesMAME);
+  InitConsole(4, KeyNamesGBA, KeyValuesGBA);
+end;
+
+procedure TFrameKeys.Label7Click(Sender: TObject);
+begin
+  Form1.OpenURL('https://nummacway.github.io/gb300/#hardware');
 end;
 
 procedure TFrameKeys.LoadConsoleFromStream(Console: Byte; Stream: TStream);
@@ -434,7 +458,10 @@ procedure TFrameKeys.LoadDefaults;
 var
   RS: TResourceStream;
 begin
-  RS := TResourceStream.CreateFromID(HInstance, 1, RT_RCDATA);
+  if CurrentDevice = cdGB300 then
+  RS := TResourceStream.CreateFromID(HInstance, 1, RT_RCDATA)
+  else
+  RS := TResourceStream.CreateFromID(HInstance, 2, RT_RCDATA);
   try
     LoadFromStream(RS);
   finally
@@ -504,7 +531,6 @@ procedure TFrameKeys.SaveToFile(FileName: string);
 var
   i: Integer;
   MS: TMemoryStream;
-  RS: TResourceStream;
 begin
   MS := TMemoryStream.Create;
   try
@@ -514,13 +540,13 @@ begin
       MS.WriteData(Word(CheckBoxes[i].Checked));
     end;
     // Copy 7th console (whyever that one exists...)
-    RS := TResourceStream.CreateFromID(HInstance, 1, RT_RCDATA);
+    {RS := TResourceStream.CreateFromID(HInstance, 1, RT_RCDATA);
     try
       RS.Position := MS.Position;
       MS.CopyFrom(RS, RS.Size - RS.Position);
     finally
       RS.Free();
-    end;
+    end;}
     MS.SaveToFile(FileName);
   finally
     MS.Free();

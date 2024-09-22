@@ -6,8 +6,17 @@ uses
   SysUtils, Classes, Graphics, pngimage, Windows, Generics.Collections,
   inifiles;
 
+type
+  TCurrentDevice = (cdGB300, cdSF2000);
+
 var
-  Path: string = 'M:\'; // must include trailing backslash
+  Path: string; // must include trailing backslash
+  CurrentDevice: TCurrentDevice;
+
+const
+  UserROMsFolderIndex = 0;
+  FCFolderIndex = 1; // for the feature that converts NFC to NES
+  ArcadeFolderIndex = 7; // where ZIP is launched with FBA
 
 type
   TImageDataFormat = (idfRGB565, idfBGRA8888);
@@ -90,7 +99,7 @@ type
     public
       FileName: string;
       ExtraField: RawByteString;
-      procedure LoadFromStream(Stream: TStream);
+      function LoadFromStream(Stream: TStream): Boolean;
       procedure SaveToStream(Stream: TStream);
       procedure Init();
   end;
@@ -155,38 +164,45 @@ type
       procedure SetBootLogo(Value: TGraphic);
       function GetIsCRCValid: Boolean;
       class function GetPath: string; static;
-      function GetVT03: Boolean;
-      function GetSearchResultSelColor: TColor;
-      procedure SetSearchResultSelColor(const Value: TColor);
+      {function GetVT03: Boolean;
       function GetVT03LUT565: Boolean;
       procedure SetVT03LUT565(const Value: Boolean);
       function GetFDS: Boolean;
-      procedure SetFDS(const Value: Boolean);
+      procedure SetFDS(const Value: Boolean);          }
       function Match(Resource: Word; Offset: Int64): Boolean;
       procedure DoPatch(Resource: Word; Offset: Int64);
+      function GetSizeSupported: TCurrentDevice; overload;
+      function GetBootLogoOffset: Integer;
+      function GetBootLogoHeight: Integer;
+      function GetBootLogoWidth: Integer;
+      function GetGaroupP2SizeOffset: Integer;
+      function GetGaroupP2Size: Integer;
+      procedure SetGaroupP2Size(const Value: Integer);
     public
       property StoredCRC: Cardinal read GetStoredCRC write SetStoredCRC;
       property CalculatedCRC: Cardinal read GetCalculatedCRC;
       property BootLogo: TGraphic read GetBootLogo write SetBootLogo; // needs to be freed by caller
       property IsCRCValid: Boolean read GetIsCRCValid;
       procedure SaveBootLogoToStream(Stream: TStream);
-      function GetScreenIndex(): TScreenIndex;
       class property Path: string read GetPath;
-      property VT03: Boolean read GetVT03;
+      {property VT03: Boolean read GetVT03;
       property VT03LUT565: Boolean read GetVT03LUT565 write SetVT03LUT565;
-      property SearchResultSelColor: TColor read GetSearchResultSelColor write SetSearchResultSelColor;
-      property FDS: Boolean read GetFDS write SetFDS;
+      property FDS: Boolean read GetFDS write SetFDS;    }
       class procedure Patch(Resource: Word; Offset: Int64);
+      property SizeSupported: TCurrentDevice read GetSizeSupported;
+      class function GetSizeSupported(Size: Integer): TCurrentDevice; overload;
+      property BootLogoOffset: Integer read GetBootLogoOffset;
+      property BootLogoWidth: Integer read GetBootLogoWidth;
+      property BootLogoHeight: Integer read GetBootLogoHeight;
+      property GaroupP2SizeOffset: Integer read GetGaroupP2SizeOffset;
+      property GaroupP2Size: Integer read GetGaroupP2Size write SetGaroupP2Size;
       const
         CRCOffset = $18c;
-        DisplayInitOffset = $6cbfa4; // we're starting 2 bytes early because the init code basically starts there
-        BootLogoOffset = $670a54;
-        BootLogoWidth = 640;
-        BootLogoHeight = 136;
-        VT03Offset = $319a30;
-        VT03LUTOffset = $62270;
-        SearchResultSelColorOffset = $6cec30;
-        FDSOffset = $34f170;
+        //DisplayInitOffset = $6cbfa4; // not currently used; we're starting 2 bytes early because the init code basically starts there
+        //VT03Offset = $319a30; // not currently used
+        //VT03LUTOffset = $62270; // not currently used
+        //SearchResultSelColorOffset = $6cec30; // not currently used
+        //FDSOffset = $34f170; // not currently used
   end;
 
   TFoldername = record
@@ -194,7 +210,7 @@ type
       function GetAbsoluteFolder(Index: Byte): string;
     public
       const
-        Header = 'GB300';
+        Header = 'SF2000';
       var
         Languages: Integer;
         DefaultColor: TColor;
@@ -202,19 +218,13 @@ type
         Folders: array[0..9] of string;
         TabCount: Integer;
         InitialLeftTab: Integer;
-        InitialSelectedTab: Integer;
-        DownloadROMsFile: Integer;
-        FavoritesFile: Integer;
-        HistoryFile: Integer;
-        SearchTab: Integer;
-        SystemTab: Integer;
+        UserSettingsTab: Integer;
         ThumbnailPosition: TPoint;
         ThumbnailSize: TPoint;
         SelectionSize: TPoint;
         procedure LoadFromFile();
         procedure SaveToFile();
         function GetTabName(Index: Byte): string;
-        function GetTabStaticName(Index: Byte): string;
         property AbsoluteFolder[Index: Byte]: string read GetAbsoluteFolder;
         procedure ForceAllDirectories();
   end;
@@ -231,7 +241,7 @@ type
     private
       FIsCompressed: Boolean;
       FHasImage: Boolean;
-      //FIsFinalBurn: Boolean;
+      FIsFinalBurn: Boolean;
       FROMName: string;
       FFileName: string;
       FStream: TMemoryStream;
@@ -239,6 +249,7 @@ type
       function GetThumbnail: TGraphic;
       procedure SetThumbnail(const Value: TGraphic);
       function GetROMFileName: string;
+      function GetFinalBurnTarget: string;
       function GetHeader: TZipLocalHeader;
       function GetThumbnailSize: Integer;
       class function GetDefaultThumbnailSize: Integer; static;
@@ -248,7 +259,7 @@ type
     public
       property HasImage: Boolean read FHasImage;
       property IsCompressed: Boolean read FIsCompressed;
-      //property IsFinalBurn: Boolean read FIsFinalBurn;
+      property IsFinalBurn: Boolean read FIsFinalBurn;
       property Thumbnail: TGraphic read GetThumbnail write SetThumbnail; // needs to be freed by caller
       procedure SaveThumbnailToStreamDIB(Stream: TStream);
       function GetThumbnailAsPNG(): TPNGImage;
@@ -267,6 +278,7 @@ type
       procedure SaveToFile(FolderIndex: Byte; FileName: string; SaveStubIfMC: Boolean);
       property ThumbnailSize: Integer read GetThumbnailSize;
       constructor Create();
+      constructor CreateFinalBurn(FN: string);
       destructor Destroy(); override;
       class function FileNameToType(const FileName: string): TFileType;
       class function FileNameToImageIndex(const FileName: string): Integer;
@@ -349,26 +361,34 @@ type
   end;
 
 const
-  FileNamesFilenames:    array[0..7] of string = ('rdbui.tax', 'urefs.tax', 'scksp.tax', 'vdsdc.tax', 'pnpui.tax', 'vfnet.tax', 'mswb7.tax', 'tsmfk.tax');
-  ChineseNamesFilenames: array[0..6] of string = ('fhcfg.nec', 'adsnt.nec', 'setxa.nec', 'umboa.nec', 'wjere.nec', 'htuiw.nec', 'msdtc.nec');
-  PinyinNamesFilenames:  array[0..6] of string = ('nethn.bvs', 'xvb6c.bvs', 'wmiui.bvs', 'qdvd6.bvs', 'mgdel.bvs', 'sppnp.bvs', 'mfpmp.bvs');
+                                                // ROMS         FC           SFC          MD           GB           GBC          GBA          ARCADE       PCE
+  FileNamesFilenames:    array[0..8] of string = ('tsmfk.tax', 'rdbui.tax', 'urefs.tax', 'scksp.tax', 'vdsdc.tax', 'pnpui.tax', 'vfnet.tax', 'mswb7.tax', 'kjbyr.tax');
+  ChineseNamesFilenames: array[1..8] of string =              ('fhcfg.nec', 'adsnt.nec', 'setxa.nec', 'umboa.nec', 'wjere.nec', 'htuiw.nec', 'msdtc.nec', 'djoin.nec');
+  PinyinNamesFilenames:  array[1..8] of string =              ('nethn.bvs', 'xvb6c.bvs', 'wmiui.bvs', 'qdvd6.bvs', 'mgdel.bvs', 'sppnp.bvs', 'mfpmp.bvs', 'ke89a.bvs');
 
-  DefaultFoldername: TFoldername =
-    (Languages: 7;
+  DefaultFoldernameGB300: TFoldername =
+    (Languages: 17;
+     DefaultColor: clWhite;
+     SelectedColors: ($c424ff, $1bdb68, $12a3ff, $ec7501, $eaa617, $ec7501, $c73185, $eaa617, $123fff, $80ff);
+     Folders: ('ROMS', 'FC', 'SFC', 'MD', 'GB', 'GBC', 'GBA', 'ARCADE', 'PCE', 'ROMS');
+     TabCount: 9;
+     InitialLeftTab: 7;
+     UserSettingsTab: 0;
+     ThumbnailPosition: (X: 24; Y: 184);
+     ThumbnailSize: (X: 144; Y: 208);
+     SelectionSize: (X: 40; Y: 24));
+
+  DefaultFoldernameSF2000: TFoldername =
+    (Languages: 17;
      DefaultColor: clWhite;
      SelectedColors: ($80ff, $80ff, $80ff, $80ff, $80ff, $80ff, $80ff, $80ff, $80ff, $80ff);
-     Folders: ('FC', 'PCE', 'SFC', 'MD', 'GB', 'GBC', 'GBA', 'ROMS', 'ROMS', 'ROMS');
-     TabCount: 12;
-     InitialLeftTab: 0;
-     InitialSelectedTab: 3;
-     DownloadROMsFile: 7;
-     FavoritesFile: 8;
-     HistoryFile: 9;
-     SearchTab: 10;
-     SystemTab: 11;
-     ThumbnailPosition: (X: 20; Y: 112);
+     Folders: ('ROMS', 'FC', 'SFC', 'MD', 'GB', 'GBC', 'GBA', 'ARCADE', 'ROMS', 'ROMS');
+     TabCount: 8;
+     InitialLeftTab: 7;
+     UserSettingsTab: 0;
+     ThumbnailPosition: (X: 24; Y: 184);
      ThumbnailSize: (X: 144; Y: 208);
-     SelectionSize: (X: 424; Y: 58));
+     SelectionSize: (X: 40; Y: 24));
 
   ExtensionsFC          = '*.fds;*.nes;*.unf;*.nfc';
   ExtensionsPCE         = '*.pce';
@@ -399,7 +419,11 @@ var
   Favorites: TReferenceList = nil;
   History: TReferenceList = nil;
   ShowChineseNames: Boolean;
+  UsePrettyGameNames: Boolean;
+  UseZFBForMulticore: Boolean;
+  UseMaxCompression: Boolean;
   HasMulticore: Boolean;
+  HasGaroupPatch: Boolean;
   NoIntro: TDictionary<Cardinal, TNoIntro> = nil;
   INI: TIniFile;
 
@@ -834,6 +858,38 @@ begin
   Result := GetDIBImageFromStream(Self, idfRGB565, BootLogoWidth, BootLogoHeight);
 end;
 
+function TBIOS.GetBootLogoHeight: Integer;
+begin
+  if CurrentDevice = cdGB300 then
+  Result := 249
+  else
+  Result := 200;
+end;
+
+function TBIOS.GetBootLogoOffset: Integer;
+begin
+  if CurrentDevice = cdGB300 then
+  case Size of
+    12951332: Result := 10577116-248*2;
+    12949540: Result := 10577116-248*2+$a15cde-$A163D6;
+    else raise Exception.Create('GB300+SF2000 Tool does not know this BIOS size''s boot logo offset');
+  end
+  else
+  case Size of
+    12624628: Result := $9B3618; // 1.71
+    12624436: Result := $9B3530; // 1.6 (incl. multicore)
+    else raise Exception.Create('GB300+SF2000 Tool does not know this BIOS size''s boot logo offset (only BIOS v1.71 and v1.6 (multicore) are supported)');
+  end;
+end;
+
+function TBIOS.GetBootLogoWidth: Integer;
+begin
+  if CurrentDevice = cdGB300 then
+  Result := 248
+  else
+  Result := 512;
+end;
+
 function TBIOS.GetCalculatedCRC: Cardinal;
 var
   i, j: Cardinal;
@@ -857,7 +913,7 @@ begin
   end;
 end;
 
-function TBIOS.GetFDS: Boolean;
+{function TBIOS.GetFDS: Boolean;
 begin
   if Bytes[FDSOffset    ] = $a7 then
   if Bytes[FDSOffset+$01] = $f0 then
@@ -870,6 +926,29 @@ begin
   if Bytes[FDSOffset+$42] = $0b then
   Exit(True);
   Result := False;
+end;  }
+
+function TBIOS.GetGaroupP2Size: Integer;
+begin
+  Position := GaroupP2SizeOffset;
+  ReadData(Result);
+end;
+
+function TBIOS.GetGaroupP2SizeOffset: Integer;
+begin
+  // size of 253-p2p.bin
+  if CurrentDevice = cdGB300 then
+  case Size of
+    12951332: Result := $B34968;
+    12949540: Result := $B34278;
+    else raise Exception.Create('GB300+SF2000 Tool does not know this BIOS size''s ''253-p2p.bin'' size offset');
+  end
+  else
+  case Size of
+    12624628: Result := $AE5038; // 1.71
+    12624436: Result := $AE4F48; // 1.6 (incl. multicore)
+    else raise Exception.Create('GB300+SF2000 Tool does not know this BIOS size''s ''253-p2p.bin'' size offset (only BIOS v1.71 and v1.6 (multicore) are supported)');
+  end;
 end;
 
 function TBIOS.GetIsCRCValid: Boolean;
@@ -882,25 +961,19 @@ begin
   Result := IncludeTrailingPathDelimiter(GB300Utils.Path + 'bios') + 'bisrv.asd';
 end;
 
-function TBIOS.GetScreenIndex: TScreenIndex;
+class function TBIOS.GetSizeSupported(Size: Integer): TCurrentDevice;
 begin
-  if Match(300, TBIOS.DisplayInitOffset) then
-  Exit(siGB300);
-  if Match(2000, TBIOS.DisplayInitOffset) then
-  Exit(siSF2000);
-  Result := siUnmatched;
+  case Size of
+      12951332, 12949540: Result := cdGB300;
+      12624628, 12624436: Result := cdSF2000;
+      7299832: raise Exception.Create('You are using the GB300 v1 firmware which is not supported by this version of the tool.'+#13#10#13#10'You have two options:'#13#10'- Use GB300 Tool v1.0b (available from the GitHub link in this tool)'#13#10'- Upgrade your GB300''s firmware to v2. See nummacway.github.io/gb300 for details.');
+      else raise Exception.Create('GB300+SF2000 Tool does not know your BIOS size.'#13#10#13#10'It currently supports both known versions of GB300 v2 as well as SF2000 v1.6 (aka multicore) and v1.71.');
+    end;
 end;
 
-function TBIOS.GetSearchResultSelColor: TColor;
-//var
-  //RGB565: Word;
+function TBIOS.GetSizeSupported: TCurrentDevice;
 begin
-  Position := SearchResultSelColorOffset;
-  //ReadData(RGB565);
-  ReadData(Result);
-  Result := SwapColor(Result);
-
-  //Result := (Round(((RGB565       ) and 31) * 255e0 / 31) shl 0) or (Round(((RGB565 shr  5) and 63) * 255e0 / 63) shl 8) or (Round(((RGB565 shr 11)       ) * 255e0 / 31) shl 16);
+  Result := GetSizeSupported(Size);
 end;
 
 function TBIOS.GetStoredCRC: Cardinal;
@@ -909,7 +982,7 @@ begin
   ReadData(Result);
 end;
 
-function TBIOS.GetVT03: Boolean;
+{function TBIOS.GetVT03: Boolean;
 begin
   Result := Match(3191, TBIOS.VT03Offset);
 end;
@@ -927,7 +1000,7 @@ begin
     Exit(False);
   end;
   Result := True;
-end;
+end; }
 
 function TBIOS.Match(Resource: Word; Offset: Int64): Boolean;
 var
@@ -976,7 +1049,7 @@ begin
   WriteGraphicToStream(Value, Self, idfRGB565, BootLogoWidth, BootLogoHeight, False);
 end;
 
-procedure TBIOS.SetFDS(const Value: Boolean);
+{procedure TBIOS.SetFDS(const Value: Boolean);
 const
   Data: array[Boolean] of Cardinal = ($c098c98, $c0bf0a7); // they're actually only 3-byte values, but there no convenient datatype (cannot make multi-dimensional array constants), so I'm using 4-byte here
 begin
@@ -986,17 +1059,12 @@ begin
   WriteData(Data[Value]);
   Position := FDSOffset+$40;
   WriteData(Data[Value]);
-end;
+end;    }
 
-procedure TBIOS.SetSearchResultSelColor(const Value: TColor);
+procedure TBIOS.SetGaroupP2Size(const Value: Integer);
 begin
-  Position := SearchResultSelColorOffset;
-  //WriteData(Word(
-  //          (Round(((Value shr 16) and $ff) * 31e0 / 255) shl 11) or
-  //          (Round(((Value shr 8) and $ff) * 63e0 / 255) shl 5) or
-  //          (Round(((Value shr 0) and $ff) * 31e0 / 255))));
-
-  WriteData(SwapColor(Value));
+  Position := GaroupP2SizeOffset;
+  WriteData(Value);
 end;
 
 procedure TBIOS.SetStoredCRC(Value: Cardinal);
@@ -1005,7 +1073,7 @@ begin
   WriteData(Value);
 end;
 
-procedure TBIOS.SetVT03LUT565(const Value: Boolean);
+{procedure TBIOS.SetVT03LUT565(const Value: Boolean);
 var
   RS: TResourceStream;
   w: Word;
@@ -1024,7 +1092,7 @@ begin
   finally
     RS.Free();
   end;
-end;
+end;  }
 
 { TNameArray }
 
@@ -1237,6 +1305,7 @@ begin
   Result := TObjectList<TNameList>.Create(True);
   try
     for s in FileNamesFilenames do
+    if (CurrentDevice = cdGB300) or (s <> FileNamesFilenames[High(FileNamesFilenames)]) then // no PCE on SF2000
     begin
       Result.Add(TNameList.Create());
       Result.Last().LoadFromFile(s);
@@ -1270,7 +1339,7 @@ begin
     begin
       MS.ReadData(r.FolderIndex);
       MS.ReadData(r.FileIndex);
-      if r.FolderIndex <= High(FileNamesFilenames) then
+      if r.FolderIndex < FileNames.Count then
       if r.FileIndex < FileNames[r.FolderIndex].Count then
       begin
         r.FileName := FileNames[r.FolderIndex][r.FileIndex];
@@ -1410,6 +1479,22 @@ end;
 constructor TROMFile.Create;
 begin
   FStream := TMemoryStream.Create();
+end;
+
+constructor TROMFile.CreateFinalBurn(FN: string);
+var
+  i: Integer;
+  rs: RawByteString;
+begin
+  Create();
+  for i := 1 to Foldername.ThumbnailSize.X * Foldername.ThumbnailSize.Y do
+  FStream.WriteData(Word(0));
+  FStream.WriteData(Cardinal(0));
+  rs := UTF8Encode(FN);
+  FStream.Write(rs[1], Length(rs));
+  FStream.WriteData(Word(0));
+  FIsFinalBurn := True;
+  FHasImage := True;
 end;
 
 procedure TROMFile.Decompress;
@@ -1575,6 +1660,9 @@ begin
 
   Ext := Copy(Lowercase(ExtractFileExt(FileName)), 2, 1337);
 
+  if Ext = 'zfb' then
+  Result := 25
+  else
   if Ext = 'sms' then // only stock extension with an icon seperate from the others
   Result := 9
   else
@@ -1706,6 +1794,18 @@ begin
   Result := 2 * Foldername.ThumbnailSize.X * Foldername.ThumbnailSize.Y;
 end;
 
+function TROMFile.GetFinalBurnTarget: string;
+var
+  Temp: RawByteString;
+begin
+  if not IsFinalBurn then
+  raise Exception.Create('Internal error: GetFinalBurnTarget() called for non-ZFB file');
+  FStream.Position := ThumbnailSize + 4;
+  SetLength(Temp, FStream.Size - FStream.Position - 2);
+  FStream.Read(Temp[1], Length(Temp));
+  Result := UTF8ToUnicodeString(Temp);
+end;
+
 function TROMFile.GetHeader: TZipLocalHeader;
 begin
   if not IsCompressed then
@@ -1721,6 +1821,8 @@ end;
 
 class function TROMFile.GetIsMultiCore(FN: string): Boolean;
 begin
+  while Pos('/', FN) > 0 do
+  Delete(FN, 1, Pos('/', FN));
   // we cannot savely decide if a compressed or thumbnailed file is multicore without reading the file content
   // maybe checking for existence of the actual ROM would be an idea?
   Result := (Pos(';', FN) > 0) and (FileNameToType(FN) in [ftCompressed, ftThumbnailed, ftGBA]);
@@ -1733,6 +1835,9 @@ begin
   s := FROMName;
   Result := False;
 
+  if FIsFinalBurn then
+  Result := GetIsMultiCore(GetFinalBurnTarget())
+  else
   if IsCompressed then
   begin
     // if this is a zip, the file name (without the ext) has to contain a semicolon and the extension of the ROM must be .gba
@@ -1749,6 +1854,9 @@ end;
 
 class function TROMFile.GetMCName(FN: string): TMulticoreName;
 begin
+  while Pos('/', FN) > 0 do
+  Delete(FN, 1, Pos('/', FN));
+
   Result.Name := ChangeFileExt(FN, '');
   Result.Core := Lowercase(Copy(Result.Name, 1, Pos(';', Result.Name) - 1));
   Delete(Result.Name, 1, Length(Result.Core) + 1);
@@ -1760,6 +1868,9 @@ begin
   if not IsMultiCore then
   raise Exception.Create('Cannot parse multicore name for non-multicore file (internal error, please report)');
 
+  if IsFinalBurn then
+  Result := GetMCName(GetFinalBurnTarget())
+  else
   Result := GetMCName(FFileName);
 end;
 
@@ -1810,17 +1921,14 @@ begin
 end;
 
 function TROMFile.GetROMFileName: string;
-//var
-//  Temp: RawByteString;
 begin
-  {if IsFinalBurn then
+  if IsFinalBurn then
   begin
-    FStream.Position := ThumbnailSize + 4;
-    SetLength(Temp, FStream.Size - FStream.Position - 2);
-    FStream.Read(Temp[1], Length(Temp));
-    Result := UTF8ToUnicodeString(Temp);
+    Result := GetFinalBurnTarget();
+    if GetIsMultiCore(Result) then
+    Result := GetMCName(Result).Name;
   end
-  else}
+  else
   if GetIsMultiCore() then
   Result := GetMCName(FFileName).Name
   else
@@ -1899,11 +2007,12 @@ end;
 procedure TROMFile.LoadFromFile(FolderIndex: Byte; FileName: string);
 var
   c: Cardinal;
+  w: Word;
 begin
   FStream.LoadFromFile(IncludeTrailingPathDelimiter(Path + Foldername.Folders[FolderIndex]) + FileName);
   FHasImage := False;
   FIsCompressed := False;
-  //FIsFinalBurn := False;
+  FIsFinalBurn := False;
   FStream.ReadData(c);
   FFileName := FileName;
   case c of
@@ -1914,12 +2023,17 @@ begin
         FStream.Position := ThumbnailSize;
         FStream.ReadData(c);
         case c of
-          {0:
-            if InRange(FStream.Size, GetDefaultThumbnailSize() + 6 + 1, GetDefaultThumbnailSize() + 6 255) then
+          0, 1: // 1 is rare and its use is unknown
+            if InRange(FStream.Size - GetThumbnailSize(), 6 + 1, 6 + 255) then
             begin
-              FIsFinalBurn := True;
-              FHasImage := True;
-            end;}
+              FStream.Position := FStream.Size - 2;
+              FStream.ReadData(w);
+              if w = 0 then
+              begin
+                FIsFinalBurn := True;
+                FHasImage := True;
+              end;
+            end;
           $03575157, $04034B50: // Wang QunWei's or Phil Katz's header
             begin
               FIsCompressed := True;
@@ -1938,8 +2052,8 @@ var
   Temp: TMemoryStream;
   FN: RawByteString;
 begin
-  //if IsFinalBurn then
-  //raise Exception.Create('This is already a ZFB');
+  if IsFinalBurn then
+  raise Exception.Create('This is already a ZFB');
 
   if not IsMultiCore then
   raise Exception.Create('ZFB is only supported for empty multicore stubs');
@@ -2189,6 +2303,7 @@ begin
   if not TryRenameFile(OldBase + IntToStr(i), NewBase + IntToStr(i)) then
   Result := False;
 
+  // It's important not to rename .zfb targets!
   if GetIsMultiCore(OldFileName) then
   if GetIsMultiCore(NewFileName) then
   begin
@@ -2220,21 +2335,27 @@ end;
 
 procedure TROMFile.SaveToFile(FolderIndex: Byte; FileName: string; SaveStubIfMC: Boolean);
 var
-  MS: TMemoryStream;
+  FS: TFileStream;
+  DoSaveMulticore: Boolean;
+  TargetMC: string;
 begin
-  if GetIsMultiCore(FileName) and not IsCompressed then // new name is Multicore (I'd hope the old one is too, because else this won't work)
+  DoSaveMulticore := False;
+  if not IsFinalBurn then // Final Burn does not have to point to an _existing_ stub
+  if not IsCompressed then
+  if GetIsMultiCore(FileName) then // new name is Multicore (I'd hope the old one is too, because else this won't work)
+  DoSaveMulticore := True;
+
+  if DoSaveMulticore then
   begin
-    if not FileExists(Foldername.AbsoluteFolder[FolderIndex] + FileName) or SaveStubIfMC then // no stub
+    TargetMC := Foldername.AbsoluteFolder[FolderIndex] + FileName;
+    if not FileExists(TargetMC) or SaveStubIfMC then // no stub
     begin
-      MS := TMemoryStream.Create();
-      try
-        MS.SaveToFile(Foldername.AbsoluteFolder[FolderIndex] + FileName); // make stub
-      finally
-        MS.Free();
-      end;
+      ForceDirectories(ExtractFilePath(TargetMC));
+      FS := TFileStream.Create(TargetMC, fmCreate);
+      FS.Free();
     end;
-  end
-  else
+  end;
+  if not DoSaveMulticore or FIsFinalBurn then
   FStream.SaveToFile(Foldername.AbsoluteFolder[FolderIndex] + FileName);
   FFileName := FileName;
   // requires recreating TROMFile
@@ -2432,7 +2553,7 @@ end;
 
 { TZipLocalHeader }
 
-procedure TZipLocalHeader.LoadFromStream(Stream: TStream);
+function TZipLocalHeader.LoadFromStream(Stream: TStream): Boolean;
 var
   i: Word;
   TempFileName: RawByteString;
@@ -2444,6 +2565,11 @@ begin
   SetLength(ExtraField, ExtraFieldLength);
   if ExtraFieldLength > 0 then
   Stream.Read(ExtraField[1], ExtraFieldLength);
+
+  if MagicNumber <> $03575157 then
+  if MagicNumber <> $04034b50 then
+  Exit(False);
+
   // Adjustment for WQW
   if MagicNumber = $03575157 then
   for i := 1 to FileNameLength do
@@ -2452,6 +2578,8 @@ begin
   FileName := UTF8ToUnicodeString(TempFileName)
   else
   FileName := string(TempFileName);
+
+  Result := True;
 end;
 
 procedure TZipLocalHeader.Init;
@@ -2573,7 +2701,7 @@ procedure TFoldername.ForceAllDirectories;
 var
   i: Byte;
 begin
-  for i := 0 to 7 do
+  for i := 0 to 8 do
   ForceDirectories(IncludeTrailingPathDelimiter(Path + Folders[i]) + 'save');
 end;
 
@@ -2585,27 +2713,9 @@ end;
 function TFoldername.GetTabName(Index: Byte): string;
 begin
   case Index of
-    0..6: Exit(Folders[Index]);
-    7: Exit(Folders[DownloadROMsFile]);
+    0..8: Exit(Folders[Index]);
   end;
-  if Index = FavoritesFile then
-  Exit('Favorites');
-  if Index = HistoryFile then
-  Exit('History');
-  if Index = SearchTab then
-  Exit('Search');
-  if Index = SystemTab then
-  Exit('System');
   Result := '';
-end;
-
-function TFoldername.GetTabStaticName(Index: Byte): string;
-begin
-  if Index = 10 then
-  Exit('Search');
-  if Index = 11 then
-  Exit('System');
-  Exit(GetTabName(Index));
 end;
 
 procedure TFoldername.LoadFromFile;
@@ -2650,16 +2760,16 @@ begin
   try
     SL.LoadFromFile(IncludeTrailingPathDelimiter(Path + 'Resources') + 'Foldername.ini', TEncoding.UTF8);
 
-    if SL.Count <> 17 then
-    raise Exception.Create('Invalid ''Foldername.ini'' line count.'#13#10#13#10'Support for "GB300 v2" (the one with MAME) is coming with the next version.');
+    if SL.Count <> 16 then
+    raise Exception.Create('Invalid ''Foldername.ini'' line count – if you are still using GB300 v1, get GB300 v2 from Reddit or GB300 Tool v1 from GitHub');
 
     // Row 0
-    if SL[0] <> 'GB300' then
+    if SL[0] <> 'SF2000' then
     raise Exception.CreateFmt('Invalid ''Foldername.ini'' device name (%s)', [SL[0]]);
 
     // Row 1
-    if SL[1] <> '7' then
-    raise Exception.CreateFmt('Unsupported ''Foldername.ini'' language count (%s)', [SL[0]]);
+    //if SL[1] <> '7' then
+    //raise Exception.CreateFmt('Unsupported ''Foldername.ini'' language count (%s)', [SL[0]]);
     Languages := StrToInt(SL[1]);
 
     // Row 2
@@ -2672,34 +2782,25 @@ begin
 
     // Row 13
     s := SL[13];
-    if GetToken <> '12' then
-    raise Exception.Create('Unsupported Foldername.ini total tab count');
-    TabCount := 12;
+    //if GetToken <> '12' then
+    //raise Exception.Create('Unsupported Foldername.ini total tab count');
+    TabCount := StrToInt(GetToken());
     InitialLeftTab := StrToInt(GetToken());
-    if (InitialLeftTab < 0) or (InitialLeftTab > 11) then
-    raise Exception.Create('Invalid Foldername.ini initial left tab index');
-    InitialSelectedTab := StrToInt(GetToken());
-    if (InitialSelectedTab < 0) or (InitialSelectedTab > 5) then
-    raise Exception.Create('Invalid Foldername.ini initial selected tab index');
-
-    // Row 14
-    if SL[14] <> '7 8 9 10 11' then
-    raise Exception.Create('Unsupported Foldername.ini configuration for the last 5 tabs');
-    DownloadROMsFile := 7;
-    FavoritesFile := 8;
-    HistoryFile := 9;
-    SearchTab := 10;
-    SystemTab := 11;
+    //if (InitialLeftTab < 0) or (InitialLeftTab > 11) then
+    //raise Exception.Create('Invalid Foldername.ini initial left tab index');
+    UserSettingsTab := StrToInt(GetToken());
+    //if (InitialSelectedTab < 0) or (InitialSelectedTab > 5) then
+    //raise Exception.Create('Invalid Foldername.ini initial selected tab index');
 
     // Row 15
-    s := SL[15];
+    s := SL[14];
     ThumbnailPosition.X := StrToInt(GetToken());
     ThumbnailPosition.Y := StrToInt(GetToken());
     ThumbnailSize.X := StrToInt(GetToken());
     ThumbnailSize.Y := StrToInt(GetToken());
 
     // Row 16
-    s := SL[16];
+    s := SL[15];
     SelectionSize.X := StrToInt(GetToken());
     SelectionSize.Y := StrToInt(GetToken());
   finally
@@ -2728,8 +2829,7 @@ begin
     SL.Add(IntColorToHex(SelectedColors[i]) + ' ' + Folders[i]);
 
     // Row 13-16
-    SL.Add(IntToStr(TabCount) + ' ' + IntToStr(InitialLeftTab) + ' ' + IntToStr(InitialSelectedTab));
-    SL.Add(IntToStr(DownloadROMsFile) + ' ' + IntToStr(FavoritesFile) + ' ' + IntToStr(HistoryFile) + ' ' + IntToStr(SearchTab) + ' ' + IntToStr(SystemTab));
+    SL.Add(IntToStr(TabCount) + ' ' + IntToStr(InitialLeftTab) + ' ' + IntToStr(UserSettingsTab));
     SL.Add(IntToStr(ThumbnailPosition.X) + ' ' + IntToStr(ThumbnailPosition.Y) + ' ' + IntToStr(ThumbnailSize.X) + ' ' + IntToStr(ThumbnailSize.Y));
     SL.Add(IntToStr(SelectionSize.X) + ' ' + IntToStr(SelectionSize.Y));
 

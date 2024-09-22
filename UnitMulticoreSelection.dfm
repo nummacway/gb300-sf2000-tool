@@ -4,8 +4,8 @@ object FormMulticoreSelection: TFormMulticoreSelection
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Select multicore Core'
-  ClientHeight = 320
-  ClientWidth = 480
+  ClientHeight = 319
+  ClientWidth = 476
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText

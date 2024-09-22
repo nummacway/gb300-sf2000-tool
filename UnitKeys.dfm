@@ -1,7 +1,7 @@
 object FrameKeys: TFrameKeys
   Left = 0
   Top = 0
-  Width = 1200
+  Width = 1248
   Height = 657
   TabOrder = 0
   Visible = False
@@ -123,12 +123,12 @@ object FrameKeys: TFrameKeys
     Height = 15
     Alignment = taCenter
     AutoSize = False
-    Caption = 'Game Boy / Game Boy Color'
+    Caption = 'Final Burn Alpha'
   end
   object TShape
     Left = 908
     Top = 0
-    Width = 292
+    Width = 340
     Height = 657
     Brush.Style = bsClear
     Pen.Color = clSilver
@@ -152,13 +152,13 @@ object FrameKeys: TFrameKeys
   object TShape
     Left = 1072
     Top = 0
-    Width = 128
+    Width = 176
     Height = 616
     Brush.Style = bsClear
     Pen.Color = clSilver
   end
   object ImageMC: TImage
-    Left = 1104
+    Left = 1128
     Top = 8
     Width = 64
     Height = 64
@@ -167,7 +167,7 @@ object FrameKeys: TFrameKeys
   object ShapePlayer1: TShape
     Left = 0
     Top = 97
-    Width = 1200
+    Width = 1248
     Height = 20
     Brush.Color = 16750899
     Pen.Color = clSilver
@@ -188,7 +188,7 @@ object FrameKeys: TFrameKeys
   object TShape
     Left = 0
     Top = 116
-    Width = 1200
+    Width = 1248
     Height = 41
     Brush.Style = bsClear
     Pen.Color = clSilver
@@ -204,7 +204,7 @@ object FrameKeys: TFrameKeys
   object TShape
     Left = 0
     Top = 156
-    Width = 1200
+    Width = 1248
     Height = 41
     Brush.Style = bsClear
     Pen.Color = clSilver
@@ -220,7 +220,7 @@ object FrameKeys: TFrameKeys
   object TShape
     Left = 0
     Top = 196
-    Width = 1200
+    Width = 1248
     Height = 41
     Brush.Style = bsClear
     Pen.Color = clSilver
@@ -236,7 +236,7 @@ object FrameKeys: TFrameKeys
   object TShape
     Left = 0
     Top = 236
-    Width = 1200
+    Width = 1248
     Height = 41
     Brush.Style = bsClear
     Pen.Color = clSilver
@@ -252,7 +252,7 @@ object FrameKeys: TFrameKeys
   object TShape
     Left = 0
     Top = 276
-    Width = 1200
+    Width = 1248
     Height = 41
     Brush.Style = bsClear
     Pen.Color = clSilver
@@ -268,7 +268,7 @@ object FrameKeys: TFrameKeys
   object TShape
     Left = 0
     Top = 316
-    Width = 1200
+    Width = 1248
     Height = 41
     Brush.Style = bsClear
     Pen.Color = clSilver
@@ -284,7 +284,7 @@ object FrameKeys: TFrameKeys
   object ShapePlayer2: TShape
     Left = 0
     Top = 356
-    Width = 1200
+    Width = 1248
     Height = 20
     Brush.Color = 3355647
     Pen.Color = clSilver
@@ -305,7 +305,7 @@ object FrameKeys: TFrameKeys
   object TShape
     Left = 0
     Top = 375
-    Width = 1200
+    Width = 1248
     Height = 41
     Brush.Style = bsClear
     Pen.Color = clSilver
@@ -321,7 +321,7 @@ object FrameKeys: TFrameKeys
   object TShape
     Left = 0
     Top = 415
-    Width = 1200
+    Width = 1248
     Height = 41
     Brush.Style = bsClear
     Pen.Color = clSilver
@@ -337,7 +337,7 @@ object FrameKeys: TFrameKeys
   object TShape
     Left = 0
     Top = 455
-    Width = 1200
+    Width = 1248
     Height = 41
     Brush.Style = bsClear
     Pen.Color = clSilver
@@ -353,7 +353,7 @@ object FrameKeys: TFrameKeys
   object TShape
     Left = 0
     Top = 495
-    Width = 1200
+    Width = 1248
     Height = 41
     Brush.Style = bsClear
     Pen.Color = clSilver
@@ -369,7 +369,7 @@ object FrameKeys: TFrameKeys
   object TShape
     Left = 0
     Top = 535
-    Width = 1200
+    Width = 1248
     Height = 41
     Brush.Style = bsClear
     Pen.Color = clSilver
@@ -385,7 +385,7 @@ object FrameKeys: TFrameKeys
   object TShape
     Left = 0
     Top = 575
-    Width = 1200
+    Width = 1248
     Height = 41
     Brush.Style = bsClear
     Pen.Color = clSilver
@@ -399,20 +399,22 @@ object FrameKeys: TFrameKeys
     Stretch = True
   end
   object Label7: TLabel
-    Left = 648
+    Left = 635
     Top = 359
-    Width = 548
+    Width = 609
     Height = 15
+    Cursor = crHandPoint
     Alignment = taRightJustify
     Caption = 
       'requires a very special type of proprietary wired gamepad '#8211' for ' +
-      'details, see nummacway.github.io/gb300'
+      'details, see nummacway.github.io/gb300/#hardware'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 13421823
     Font.Height = -12
     Font.Name = 'Segoe UI'
     Font.Style = []
     ParentFont = False
+    OnClick = Label7Click
   end
   object ComboBoxFC1A: TComboBox
     Left = 97
@@ -760,7 +762,7 @@ object FrameKeys: TFrameKeys
     TabOrder = 48
   end
   object ButtonPCEDefaults: TButton
-    Tag = 1
+    Tag = 3
     Left = 295
     Top = 624
     Width = 80
@@ -938,7 +940,7 @@ object FrameKeys: TFrameKeys
     TabOrder = 73
   end
   object ButtonSFCDefaults: TButton
-    Tag = 2
+    Tag = 1
     Left = 459
     Top = 624
     Width = 80
@@ -1116,7 +1118,7 @@ object FrameKeys: TFrameKeys
     TabOrder = 98
   end
   object ButtonMDDefaults: TButton
-    Tag = 3
+    Tag = 2
     Left = 623
     Top = 624
     Width = 80
@@ -1294,7 +1296,7 @@ object FrameKeys: TFrameKeys
     TabOrder = 123
   end
   object ButtonGBDefaults: TButton
-    Tag = 4
+    Tag = 5
     Left = 787
     Top = 624
     Width = 80
@@ -1472,8 +1474,8 @@ object FrameKeys: TFrameKeys
     TabOrder = 144
   end
   object ButtonGBADefaults: TButton
-    Tag = 5
-    Left = 1014
+    Tag = 4
+    Left = 1038
     Top = 624
     Width = 80
     Height = 24
@@ -1496,7 +1498,7 @@ object FrameKeys: TFrameKeys
   object ComboBoxMulticore: TComboBox
     Left = 1074
     Top = 73
-    Width = 124
+    Width = 172
     Height = 23
     Style = csDropDownList
     DropDownCount = 20
@@ -1504,7 +1506,7 @@ object FrameKeys: TFrameKeys
     OnSelect = ComboBoxMulticoreSelect
   end
   object EditMC1A: TEdit
-    Left = 1101
+    Left = 1125
     Top = 125
     Width = 70
     Height = 23
@@ -1512,7 +1514,7 @@ object FrameKeys: TFrameKeys
     TabOrder = 152
   end
   object EditMC1B: TEdit
-    Left = 1101
+    Left = 1125
     Top = 165
     Width = 70
     Height = 23
@@ -1520,7 +1522,7 @@ object FrameKeys: TFrameKeys
     TabOrder = 153
   end
   object EditMC1L: TEdit
-    Left = 1101
+    Left = 1125
     Top = 205
     Width = 70
     Height = 23
@@ -1528,7 +1530,7 @@ object FrameKeys: TFrameKeys
     TabOrder = 154
   end
   object EditMC1R: TEdit
-    Left = 1101
+    Left = 1125
     Top = 245
     Width = 70
     Height = 23
@@ -1536,7 +1538,7 @@ object FrameKeys: TFrameKeys
     TabOrder = 155
   end
   object EditMC1X: TEdit
-    Left = 1101
+    Left = 1125
     Top = 285
     Width = 70
     Height = 23
@@ -1544,7 +1546,7 @@ object FrameKeys: TFrameKeys
     TabOrder = 156
   end
   object EditMC1Y: TEdit
-    Left = 1101
+    Left = 1125
     Top = 325
     Width = 70
     Height = 23
@@ -1552,7 +1554,7 @@ object FrameKeys: TFrameKeys
     TabOrder = 157
   end
   object EditMC2A: TEdit
-    Left = 1101
+    Left = 1125
     Top = 384
     Width = 70
     Height = 23
@@ -1560,7 +1562,7 @@ object FrameKeys: TFrameKeys
     TabOrder = 158
   end
   object EditMC2B: TEdit
-    Left = 1101
+    Left = 1125
     Top = 424
     Width = 70
     Height = 23
@@ -1568,7 +1570,7 @@ object FrameKeys: TFrameKeys
     TabOrder = 159
   end
   object EditMC2L: TEdit
-    Left = 1101
+    Left = 1125
     Top = 464
     Width = 70
     Height = 23
@@ -1576,7 +1578,7 @@ object FrameKeys: TFrameKeys
     TabOrder = 160
   end
   object EditMC2R: TEdit
-    Left = 1101
+    Left = 1125
     Top = 504
     Width = 70
     Height = 23
@@ -1584,7 +1586,7 @@ object FrameKeys: TFrameKeys
     TabOrder = 161
   end
   object EditMC2X: TEdit
-    Left = 1101
+    Left = 1125
     Top = 544
     Width = 70
     Height = 23
@@ -1592,7 +1594,7 @@ object FrameKeys: TFrameKeys
     TabOrder = 162
   end
   object EditMC2Y: TEdit
-    Left = 1101
+    Left = 1125
     Top = 584
     Width = 70
     Height = 23

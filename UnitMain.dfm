@@ -1,9 +1,9 @@
 object Form1: TForm1
   Left = 0
   Top = 0
-  Caption = 'GB300 Tool [v1.0b]'
-  ClientHeight = 808
-  ClientWidth = 1232
+  Caption = 'GB300+SF2000 Tool [v2.0-beta]'
+  ClientHeight = 760
+  ClientWidth = 1280
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clBlack
@@ -12,52 +12,64 @@ object Form1: TForm1
   Font.Style = []
   Position = poScreenCenter
   OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   DesignSize = (
-    1232
-    808)
+    1280
+    760)
   TextHeight = 15
   object PanelFrame: TPanel
+    AlignWithMargins = True
     Left = 16
-    Top = 144
-    Width = 1200
-    Height = 648
-    Anchors = [akLeft, akTop, akRight, akBottom]
+    Top = 128
+    Width = 1248
+    Height = 616
+    Margins.Left = 16
+    Margins.Top = 16
+    Margins.Right = 16
+    Margins.Bottom = 16
+    Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitWidth = 1196
-    ExplicitHeight = 647
+    ExplicitWidth = 1244
+    ExplicitHeight = 615
   end
   object PanelOnboarding: TPanel
-    Left = 396
-    Top = 264
-    Width = 440
-    Height = 216
+    Left = 384
+    Top = 218
+    Width = 512
+    Height = 326
     Anchors = []
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitLeft = 394
+    ExplicitLeft = 382
+    ExplicitTop = 217
+    DesignSize = (
+      512
+      326)
     object ShapeOnboarding: TShape
       Left = 0
       Top = 0
-      Width = 440
-      Height = 216
+      Width = 512
+      Height = 326
+      Align = alClient
       Pen.Color = clSilver
       Shape = stRoundRect
+      ExplicitHeight = 310
     end
     object ImageOnboardingDevice: TImage
-      Left = 72
+      Left = 24
       Top = 32
       Width = 64
       Height = 64
     end
     object LabelOnboardingName: TLabel
-      Left = 136
+      Left = 96
       Top = 24
-      Width = 222
+      Width = 392
       Height = 59
-      Caption = 'GB300 Tool'
+      Caption = 'GB300+SF2000 Tool'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
       Font.Height = -43
@@ -66,31 +78,33 @@ object Form1: TForm1
       ParentFont = False
     end
     object LabelOnboardingWelcome: TLabel
-      Left = 136
+      Left = 96
       Top = 80
       Width = 53
       Height = 15
       Caption = 'Welcome!'
     end
     object LabelOnboardingWorkingDir: TLabel
-      Left = 64
+      Left = 108
       Top = 123
       Width = 129
       Height = 15
       Caption = 'Working drive/directory:'
     end
     object ImageOnboardingClyde: TImage
-      Left = 88
-      Top = 192
+      Left = 103
+      Top = 293
       Width = 16
       Height = 16
+      Anchors = [akLeft, akBottom]
     end
     object LabelUnboardingDiscordHandle: TLabel
-      Left = 107
-      Top = 190
+      Left = 122
+      Top = 291
       Width = 76
       Height = 17
       Cursor = crHandPoint
+      Anchors = [akLeft, akBottom]
       Caption = 'numma_cway'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
@@ -101,18 +115,20 @@ object Form1: TForm1
       OnClick = LabelUnboardingDiscordHandleClick
     end
     object ImageOnboardingOctocat: TImage
-      Left = 192
-      Top = 192
+      Left = 207
+      Top = 293
       Width = 16
       Height = 16
+      Anchors = [akLeft, akBottom]
     end
     object LabelOnboardingGithubRepository: TLabel
-      Left = 211
-      Top = 190
-      Width = 136
+      Left = 226
+      Top = 291
+      Width = 184
       Height = 17
       Cursor = crHandPoint
-      Caption = 'nummacway/gb300tool'
+      Anchors = [akLeft, akBottom]
+      Caption = 'nummacway/gb300-sf2000-tool'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
       Font.Height = -13
@@ -121,16 +137,8 @@ object Form1: TForm1
       ParentFont = False
       OnClick = LabelOnboardingGithubRepositoryClick
     end
-    object LabelOnboardingChinese: TLabel
-      Left = 152
-      Top = 168
-      Width = 142
-      Height = 15
-      Caption = '(double-click to edit them)'
-      Visible = False
-    end
     object EditOnboardingWorkingDir: TEdit
-      Left = 200
+      Left = 244
       Top = 120
       Width = 113
       Height = 23
@@ -138,7 +146,7 @@ object Form1: TForm1
       OnChange = EditOnboardingWorkingDirChange
     end
     object ButtonOnboardingStart: TButton
-      Left = 320
+      Left = 364
       Top = 119
       Width = 56
       Height = 25
@@ -148,59 +156,105 @@ object Form1: TForm1
       TabOrder = 1
       OnClick = ButtonOnboardingStartClick
     end
-    object CheckBoxOnboardingChinese: TCheckBox
-      Left = 128
-      Top = 152
-      Width = 184
-      Height = 17
-      Caption = 'Show Chinese/Pinyin names'
+    object GroupBox1: TGroupBox
+      Left = 16
+      Top = 160
+      Width = 480
+      Height = 116
+      Caption = 'Settings'
       TabOrder = 2
-      OnClick = CheckBoxOnboardingChineseClick
+      object Label15: TLabel
+        Left = 152
+        Top = 87
+        Width = 314
+        Height = 15
+        Caption = 'For manual experiments (it'#39's usually invoked automatically)'
+      end
+      object CheckBoxOnboardingChinese: TCheckBox
+        Left = 8
+        Top = 16
+        Width = 464
+        Height = 17
+        Caption = 
+          'Show Chinese/Pinyin names (double-click stock list items to edit' +
+          ')'
+        TabOrder = 0
+      end
+      object CheckBoxOnboardingPrettyNames: TCheckBox
+        Left = 8
+        Top = 32
+        Width = 464
+        Height = 16
+        Caption = 'Use pretty file names when adding games (not yet implemented)'
+        Enabled = False
+        TabOrder = 1
+      end
+      object CheckBoxOnboardingMaxCompression: TCheckBox
+        Left = 8
+        Top = 64
+        Width = 464
+        Height = 16
+        Caption = 
+          'Use maximum Deflate compression when Neo Geo Faker is auto-invok' +
+          'ed (slow)'
+        TabOrder = 3
+      end
+      object ButtonNeoGeoFaker: TButton
+        Left = 28
+        Top = 83
+        Width = 116
+        Height = 24
+        Caption = 'Start Neo Geo Faker'
+        TabOrder = 4
+        OnClick = ButtonNeoGeoFakerClick
+      end
+      object CheckBoxOnboardingMulticoreZFB: TCheckBox
+        Left = 8
+        Top = 48
+        Width = 464
+        Height = 16
+        Caption = 
+          'Use ZFB when creating multicore stubs (allows arbitrary filename' +
+          's)'
+        Checked = True
+        State = cbChecked
+        TabOrder = 2
+      end
     end
   end
   object PanelTop: TPanel
     Left = 0
     Top = 0
-    Width = 1232
-    Height = 136
+    Width = 1280
+    Height = 112
     Align = alTop
     BevelOuter = bvNone
     DoubleBuffered = True
     ParentDoubleBuffered = False
     TabOrder = 2
     Visible = False
-    ExplicitWidth = 1228
-    object ShapeFrame3: TShape
-      Left = 856
-      Top = 16
-      Width = 360
-      Height = 112
-      Brush.Style = bsClear
-      Pen.Color = clSilver
-      Shape = stRoundRect
-    end
-    object ShapeFrame2: TShape
-      Left = 656
-      Top = 16
-      Width = 184
-      Height = 112
-      Brush.Style = bsClear
-      Pen.Color = clSilver
-      Shape = stRoundRect
-    end
-    object ShapeFrame1: TShape
+    ExplicitWidth = 1276
+    object ShapeFrame: TShape
       Left = 16
-      Top = 16
-      Width = 625
-      Height = 112
+      Top = -16
+      Width = 1248
+      Height = 128
       Brush.Style = bsClear
       Pen.Color = clSilver
+      Shape = stRoundRect
+    end
+    object ShapeDivider: TShape
+      Left = 815
+      Top = 8
+      Width = 2
+      Height = 96
+      Pen.Color = 15263976
       Shape = stRoundRect
     end
     object Shape1: TShape
       Tag = 1
       Left = 24
-      Top = 24
+      Top = 8
       Width = 80
       Height = 96
       Pen.Color = clSilver
@@ -212,7 +266,7 @@ object Form1: TForm1
     object Shape2: TShape
       Tag = 2
       Left = 112
-      Top = 24
+      Top = 8
       Width = 80
       Height = 96
       Pen.Color = clSilver
@@ -224,7 +278,7 @@ object Form1: TForm1
     object Shape3: TShape
       Tag = 3
       Left = 200
-      Top = 24
+      Top = 8
       Width = 80
       Height = 96
       Pen.Color = clSilver
@@ -236,7 +290,7 @@ object Form1: TForm1
     object Shape4: TShape
       Tag = 4
       Left = 288
-      Top = 24
+      Top = 8
       Width = 80
       Height = 96
       Pen.Color = clSilver
@@ -248,7 +302,7 @@ object Form1: TForm1
     object Shape5: TShape
       Tag = 5
       Left = 376
-      Top = 24
+      Top = 8
       Width = 80
       Height = 96
       Pen.Color = clSilver
@@ -260,7 +314,7 @@ object Form1: TForm1
     object Shape6: TShape
       Tag = 6
       Left = 464
-      Top = 24
+      Top = 8
       Width = 80
       Height = 96
       Pen.Color = clSilver
@@ -272,7 +326,7 @@ object Form1: TForm1
     object Shape7: TShape
       Tag = 7
       Left = 552
-      Top = 24
+      Top = 8
       Width = 80
       Height = 96
       Pen.Color = clSilver
@@ -283,8 +337,8 @@ object Form1: TForm1
     end
     object Shape8: TShape
       Tag = 8
-      Left = 664
-      Top = 24
+      Left = 640
+      Top = 8
       Width = 80
       Height = 96
       Pen.Color = clSilver
@@ -293,10 +347,10 @@ object Form1: TForm1
       OnMouseEnter = ShapeMouseEnter
       OnMouseLeave = ShapeMouseLeave
     end
-    object Shape9: TShape
-      Tag = 9
-      Left = 752
-      Top = 24
+    object Shape14: TShape
+      Tag = 14
+      Left = 824
+      Top = 8
       Width = 80
       Height = 96
       Pen.Color = clSilver
@@ -307,8 +361,8 @@ object Form1: TForm1
     end
     object Shape10: TShape
       Tag = 10
-      Left = 864
-      Top = 24
+      Left = 912
+      Top = 8
       Width = 80
       Height = 96
       Pen.Color = clSilver
@@ -319,8 +373,8 @@ object Form1: TForm1
     end
     object Shape11: TShape
       Tag = 11
-      Left = 1040
-      Top = 24
+      Left = 1088
+      Top = 8
       Width = 80
       Height = 96
       Pen.Color = clSilver
@@ -331,8 +385,8 @@ object Form1: TForm1
     end
     object Shape12: TShape
       Tag = 12
-      Left = 1128
-      Top = 24
+      Left = 1176
+      Top = 8
       Width = 80
       Height = 96
       Pen.Color = clSilver
@@ -343,23 +397,23 @@ object Form1: TForm1
     end
     object Image1: TImage
       Left = 32
-      Top = 32
+      Top = 16
       Width = 64
       Height = 64
       Enabled = False
       Stretch = True
     end
     object Image12: TImage
-      Left = 1136
-      Top = 32
+      Left = 1184
+      Top = 16
       Width = 64
       Height = 64
       Enabled = False
       Stretch = True
     end
     object Image8: TImage
-      Left = 672
-      Top = 32
+      Left = 648
+      Top = 16
       Width = 64
       Height = 64
       Enabled = False
@@ -367,7 +421,7 @@ object Form1: TForm1
     end
     object Image2: TImage
       Left = 120
-      Top = 32
+      Top = 16
       Width = 64
       Height = 64
       Enabled = False
@@ -375,7 +429,7 @@ object Form1: TForm1
     end
     object Image3: TImage
       Left = 208
-      Top = 32
+      Top = 16
       Width = 64
       Height = 64
       Enabled = False
@@ -383,7 +437,7 @@ object Form1: TForm1
     end
     object Image4: TImage
       Left = 296
-      Top = 32
+      Top = 16
       Width = 64
       Height = 64
       Enabled = False
@@ -391,7 +445,7 @@ object Form1: TForm1
     end
     object Image5: TImage
       Left = 384
-      Top = 32
+      Top = 16
       Width = 64
       Height = 64
       Enabled = False
@@ -399,7 +453,7 @@ object Form1: TForm1
     end
     object Image6: TImage
       Left = 472
-      Top = 32
+      Top = 16
       Width = 64
       Height = 64
       Enabled = False
@@ -407,31 +461,31 @@ object Form1: TForm1
     end
     object Image7: TImage
       Left = 560
-      Top = 32
+      Top = 16
       Width = 64
       Height = 64
       Enabled = False
       Stretch = True
     end
-    object Image9: TImage
-      Left = 760
-      Top = 32
+    object Image14: TImage
+      Left = 832
+      Top = 16
       Width = 64
       Height = 64
       Enabled = False
       Stretch = True
     end
     object Image11: TImage
-      Left = 1048
-      Top = 32
+      Left = 1096
+      Top = 16
       Width = 64
       Height = 64
       Enabled = False
       Stretch = True
     end
     object Image10: TImage
-      Left = 872
-      Top = 32
+      Left = 920
+      Top = 16
       Width = 64
       Height = 64
       Enabled = False
@@ -439,7 +493,7 @@ object Form1: TForm1
     end
     object Label1: TLabel
       Left = 24
-      Top = 99
+      Top = 83
       Width = 80
       Height = 15
       Alignment = taCenter
@@ -447,8 +501,8 @@ object Form1: TForm1
       Caption = 'FC List'
     end
     object Label12: TLabel
-      Left = 1128
-      Top = 99
+      Left = 1176
+      Top = 83
       Width = 80
       Height = 15
       Alignment = taCenter
@@ -456,17 +510,17 @@ object Form1: TForm1
       Caption = 'UI Editor'
     end
     object Label8: TLabel
-      Left = 664
-      Top = 99
+      Left = 640
+      Top = 83
       Width = 80
       Height = 15
       Alignment = taCenter
       AutoSize = False
       Caption = 'My ROMs'
     end
-    object Label9: TLabel
-      Left = 752
-      Top = 99
+    object Label14: TLabel
+      Left = 824
+      Top = 83
       Width = 80
       Height = 15
       Alignment = taCenter
@@ -475,7 +529,7 @@ object Form1: TForm1
     end
     object Label2: TLabel
       Left = 112
-      Top = 99
+      Top = 83
       Width = 80
       Height = 15
       Alignment = taCenter
@@ -484,7 +538,7 @@ object Form1: TForm1
     end
     object Label3: TLabel
       Left = 200
-      Top = 99
+      Top = 83
       Width = 80
       Height = 15
       Alignment = taCenter
@@ -493,7 +547,7 @@ object Form1: TForm1
     end
     object Label4: TLabel
       Left = 288
-      Top = 99
+      Top = 83
       Width = 80
       Height = 15
       Alignment = taCenter
@@ -502,7 +556,7 @@ object Form1: TForm1
     end
     object Label5: TLabel
       Left = 376
-      Top = 99
+      Top = 83
       Width = 80
       Height = 15
       Alignment = taCenter
@@ -511,7 +565,7 @@ object Form1: TForm1
     end
     object Label6: TLabel
       Left = 464
-      Top = 99
+      Top = 83
       Width = 80
       Height = 15
       Alignment = taCenter
@@ -520,7 +574,7 @@ object Form1: TForm1
     end
     object Label7: TLabel
       Left = 552
-      Top = 99
+      Top = 83
       Width = 80
       Height = 15
       Alignment = taCenter
@@ -528,8 +582,8 @@ object Form1: TForm1
       Caption = 'GBA List'
     end
     object Label10: TLabel
-      Left = 864
-      Top = 99
+      Left = 912
+      Top = 83
       Width = 80
       Height = 15
       Alignment = taCenter
@@ -537,8 +591,8 @@ object Form1: TForm1
       Caption = 'BIOS && Device'
     end
     object Label11: TLabel
-      Left = 1040
-      Top = 99
+      Left = 1088
+      Top = 83
       Width = 80
       Height = 15
       Alignment = taCenter
@@ -547,8 +601,8 @@ object Form1: TForm1
     end
     object Shape13: TShape
       Tag = 13
-      Left = 952
-      Top = 24
+      Left = 1000
+      Top = 8
       Width = 80
       Height = 96
       Pen.Color = clSilver
@@ -558,21 +612,50 @@ object Form1: TForm1
       OnMouseLeave = ShapeMouseLeave
     end
     object Image13: TImage
-      Left = 960
-      Top = 32
+      Left = 1008
+      Top = 16
       Width = 64
       Height = 64
       Enabled = False
       Stretch = True
     end
     object Label13: TLabel
-      Left = 952
-      Top = 99
+      Left = 1000
+      Top = 83
       Width = 80
       Height = 15
       Alignment = taCenter
       AutoSize = False
       Caption = 'multicore'
+    end
+    object Shape9: TShape
+      Tag = 9
+      Left = 728
+      Top = 8
+      Width = 80
+      Height = 96
+      Pen.Color = clSilver
+      Shape = stRoundRect
+      OnMouseDown = ShapeMouseUp
+      OnMouseEnter = ShapeMouseEnter
+      OnMouseLeave = ShapeMouseLeave
+    end
+    object Image9: TImage
+      Left = 736
+      Top = 16
+      Width = 64
+      Height = 64
+      Enabled = False
+      Stretch = True
+    end
+    object Label9: TLabel
+      Left = 728
+      Top = 83
+      Width = 80
+      Height = 15
+      Alignment = taCenter
+      AutoSize = False
+      Caption = 'GBA List'
     end
   end
   object ImageListFileTypes: TImageList
@@ -600,6 +683,13 @@ object Form1: TForm1
       Caption = 'ActionFindNext'
       ShortCut = 114
       OnExecute = FindDialogFind
+    end
+    object FileRunNeoGeo: TFileRun
+      Browse = False
+      BrowseDlg.Title = 'Run'
+      Operation = 'open'
+      Parameters = '-neogeo'
+      ShowCmd = scShowNormal
     end
   end
   object ImageListCheckResults: TImageList

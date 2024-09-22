@@ -69,16 +69,6 @@ type
     Label16: TLabel;
     ComboBoxFoldernameInitialSelectedTab: TComboBox;
     Label17: TLabel;
-    ComboBoxFoldernameDownloadROMsFile: TComboBox;
-    Label18: TLabel;
-    ComboBoxFoldernameFavoritesFile: TComboBox;
-    Label19: TLabel;
-    ComboBoxFoldernameHistoryFile: TComboBox;
-    Label20: TLabel;
-    ComboBoxFoldernameSearchTab: TComboBox;
-    Label21: TLabel;
-    ComboBoxFoldernameSystemTab: TComboBox;
-    Label22: TLabel;
     EditFoldernameThumbnailPositionX: TEdit;
     EditFoldernameThumbnailPositionY: TEdit;
     Label23: TLabel;
@@ -88,13 +78,10 @@ type
     EditFoldernameSelectionSizeWidth: TEdit;
     EditFoldernameSelectionSizeHeight: TEdit;
     Label25: TLabel;
-    Label26: TLabel;
     ButtonFoldernameReload: TButton;
     ButtonFoldernameUndo: TButton;
     ButtonFoldernameDefaults: TButton;
     ButtonFoldernameSave: TButton;
-    LabelSliceLanguage: TLabel;
-    ComboBoxSliceLanguage: TComboBox;
     PopupMenuSave: TPopupMenu;
     MenuItemCopy: TMenuItem;
     N1: TMenuItem;
@@ -102,6 +89,11 @@ type
     N2: TMenuItem;
     ExportAllImagestoDirectory1: TMenuItem;
     MenuItemCopySmall: TMenuItem;
+    PanelRightStrings: TPanel;
+    Memo1: TMemo;
+    MemoStrings: TMemo;
+    Panel1: TPanel;
+    ButtonStringsSave: TButton;
     procedure TimerLazyLoadTimer(Sender: TObject);
     procedure ListViewFilesSelectItem(Sender: TObject; Item: TListItem;
       Selected: Boolean);
@@ -117,13 +109,12 @@ type
     procedure ButtonFoldernameUndoClick(Sender: TObject);
     procedure ButtonFoldernameSaveClick(Sender: TObject);
     procedure EditFoldernameFolderChange(Sender: TObject);
-    procedure ComboBoxFoldernameInitialLeftTabSelect(Sender: TObject);
-    procedure ComboBoxSliceLanguageSelect(Sender: TObject);
     procedure MenuItemCopyClick(Sender: TObject);
     procedure MenuItemReloadXMLClick(Sender: TObject);
     procedure ExportAllImagestoDirectory1Click(Sender: TObject);
     procedure MenuItemCopySmallClick(Sender: TObject);
     procedure PopupMenuSavePopup(Sender: TObject);
+    procedure ButtonStringsSaveClick(Sender: TObject);
   private
     { Private declarations }
     procedure ShowFile(const NewFile: TUIFile);
@@ -145,7 +136,10 @@ uses
 
 procedure TFrameUI.ButtonFoldernameDefaultsClick(Sender: TObject);
 begin
-  Foldername := DefaultFoldername;
+  if CurrentDevice = cdGB300 then
+  Foldername := DefaultFoldernameGB300;
+  if CurrentDevice = cdSF2000 then
+  Foldername := DefaultFoldernameSF2000;
   ButtonFoldernameUndoClick(ButtonFoldernameUndo);
 end;
 
@@ -169,7 +163,7 @@ begin
     TempFoldername.Folders[i] := (FindComponent('EditFoldernameFolder' + IntToStr(i)) as TEdit).Text;
   end;
   TempFoldername.InitialLeftTab := ComboBoxFoldernameInitialLeftTab.ItemIndex;
-  TempFoldername.InitialSelectedTab := ComboBoxFoldernameInitialSelectedTab.ItemIndex;
+  TempFoldername.UserSettingsTab := ComboBoxFoldernameInitialSelectedTab.ItemIndex;
 
   TempFoldername.ThumbnailPosition.X := StrToInt(EditFoldernameThumbnailPositionX.Text);
   TempFoldername.ThumbnailPosition.Y := StrToInt(EditFoldernameThumbnailPositionY.Text);
@@ -198,14 +192,7 @@ begin
   end;
   EditFoldernameTabCount.Text := IntToStr(Foldername.TabCount);
   ComboBoxFoldernameInitialLeftTab.ItemIndex := Foldername.InitialLeftTab;
-  ComboBoxFoldernameInitialLeftTabSelect(ComboBoxFoldernameInitialLeftTab);
-  ComboBoxFoldernameInitialSelectedTab.ItemIndex := Foldername.InitialSelectedTab;
-
-  ComboBoxFoldernameDownloadROMsFile.ItemIndex := Foldername.DownloadROMsFile;
-  ComboBoxFoldernameFavoritesFile.ItemIndex := Foldername.FavoritesFile;
-  ComboBoxFoldernameHistoryFile.ItemIndex := Foldername.HistoryFile;
-  ComboBoxFoldernameSearchTab.ItemIndex := Foldername.SearchTab;
-  ComboBoxFoldernameSystemTab.ItemIndex := Foldername.SystemTab;
+  ComboBoxFoldernameInitialSelectedTab.ItemIndex := Foldername.UserSettingsTab;
 
   EditFoldernameThumbnailPositionX.Text := IntToStr(Foldername.ThumbnailPosition.X);
   EditFoldernameThumbnailPositionY.Text := IntToStr(Foldername.ThumbnailPosition.Y);
@@ -232,6 +219,7 @@ procedure TFrameUI.ButtonSaveClick(Sender: TObject);
 var
   PNG: TPngImage;
 begin
+  SaveDialogImage.FileName := CurrentFile.Filename + '.png';
   if SaveDialogImage.Execute() then
   begin
     PNG := CurrentFile.GetPNGImage();
@@ -241,6 +229,12 @@ begin
       PNG.Free();
     end;
   end;
+end;
+
+procedure TFrameUI.ButtonStringsSaveClick(Sender: TObject);
+begin
+  MemoStrings.Lines.WriteBOM := False;
+  MemoStrings.Lines.SaveToFile(IncludeTrailingPathDelimiter(Path + 'Resources') + CurrentFile.Filename, TEncoding.UTF8);
 end;
 
 procedure TFrameUI.ColorBoxGetColors(Sender: TCustomColorBox; Items: TStrings);
@@ -260,6 +254,7 @@ begin
         try
           ComboBoxImageList.Items.Clear();
           for i := Low(UIPreviews) to High(UIPreviews) do
+          if UIPreviews[i].IsApplicable() then
           if UIPreviews[i].ContainsImage(CurrentFile.Filename) then
           ComboBoxImageList.Items.AddObject(UIPreviews[i].Name, Pointer(i));
         finally
@@ -279,26 +274,6 @@ begin
       end;
   end;
   ImagePreview2.Visible := ComboBoxDisplayMode.ItemIndex = 1;
-  LabelSliceLanguage.Visible := ComboBoxDisplayMode.ItemIndex = 1;
-  ComboBoxSliceLanguage.Visible := ComboBoxDisplayMode.ItemIndex = 1;
-end;
-
-procedure TFrameUI.ComboBoxFoldernameInitialLeftTabSelect(Sender: TObject);
-var
-  i: Integer;
-  OldIndex: Integer;
-begin
-  OldIndex := ComboBoxFoldernameInitialSelectedTab.ItemIndex;
-  ComboBoxFoldernameInitialSelectedTab.Items.BeginUpdate();
-  try
-    ComboBoxFoldernameInitialSelectedTab.Items.Clear();
-    if ComboBoxFoldernameInitialLeftTab.ItemIndex > -1 then
-    for i := ComboBoxFoldernameInitialLeftTab.ItemIndex to ComboBoxFoldernameInitialLeftTab.ItemIndex + 5 do
-    ComboBoxFoldernameInitialSelectedTab.Items.Add(ComboBoxFoldernameInitialLeftTab.Items[i mod 12]);
-  finally
-    ComboBoxFoldernameInitialSelectedTab.Items.EndUpdate();
-  end;
-  ComboBoxFoldernameInitialSelectedTab.ItemIndex := OldIndex;
 end;
 
 procedure TFrameUI.ComboBoxImageListSelect(Sender: TObject);
@@ -326,7 +301,7 @@ begin
           ImagePreview.Picture.Assign(Img);
           Img2 := TPngImage.CreateBlank(COLOR_RGB, 8, 320, 240); // we create the scaled image instead of using Delphi's feature to improve compatibility with screen scaling
           try
-            Img.Canvas.CopyRect(Rect(1,1,640,480), Img.Canvas, Rect(0,0,639,479)); // windows shows the bottom right pixel of a 2x2 block when scaled down by 50%, whereas the GB300 displays the top left (CopyRect is strange if both rectangles have different dimensions)
+            Img.Canvas.CopyRect(Rect(1,1,640,480), Img.Canvas, Rect(0,0,639,479)); // Windows shows the bottom right pixel of a 2x2 block when scaled down by 50%, whereas the GB300 displays the top left (CopyRect is strange if both rectangles have different dimensions)
             img.Draw(Img2.Canvas, Rect(0, 0, 320, 240));
             ImagePreview2.Picture.Assign(Img2);
           finally
@@ -337,12 +312,6 @@ begin
         end;
       end;
   end;
-end;
-
-procedure TFrameUI.ComboBoxSliceLanguageSelect(Sender: TObject);
-begin
-  CurrentLanguage := ComboBoxSliceLanguage.ItemIndex;
-  ComboBoxImageListSelect(ComboBoxImageList);
 end;
 
 procedure TFrameUI.DoReplace(const FileName: string);
@@ -377,28 +346,12 @@ begin
   ComboBoxFoldernameInitialLeftTab.Items.BeginUpdate();
   try
     ComboBoxFoldernameInitialLeftTab.Items.Clear();
-    for i := 0 to 11 do
+    for i := 0 to 8 do
     ComboBoxFoldernameInitialLeftTab.Items.Add(Foldername.GetTabName(i));
   finally
     ComboBoxFoldernameInitialLeftTab.Items.EndUpdate();
   end;
   ComboBoxFoldernameInitialLeftTab.ItemIndex := OldIndex;
-  ComboBoxFoldernameInitialLeftTabSelect(ComboBoxFoldernameInitialLeftTab);
-
-  OldIndex := ComboBoxFoldernameSearchTab.ItemIndex;
-  ComboBoxFoldernameSearchTab.Items.BeginUpdate();
-  try
-    ComboBoxFoldernameSearchTab.Items.Clear();
-    for i := 0 to 11 do
-    ComboBoxFoldernameSearchTab.Items.Add(Foldername.GetTabStaticName(i));
-  finally
-    ComboBoxFoldernameSearchTab.Items.EndUpdate();
-  end;
-  ComboBoxFoldernameSearchTab.ItemIndex := OldIndex;
-
-  OldIndex := ComboBoxFoldernameSystemTab.ItemIndex;
-  ComboBoxFoldernameSystemTab.Items.Text := ComboBoxFoldernameSearchTab.Items.Text;
-  ComboBoxFoldernameSystemTab.ItemIndex := OldIndex;
 end;
 
 procedure TFrameUI.ExportAllImagestoDirectory1Click(Sender: TObject);
@@ -410,9 +363,10 @@ begin
   begin
     Dir := IncludeTrailingPathDelimiter(Dir);
     for UIFile in UIFiles do
+    if UIFile.IsApplicable() then
     CopyFile(PChar(UIFile.GetPath()), PChar(Dir + UIFile.Filename), False);
-    if MessageDlg('Copy ''Foldername.ini''?', mtWarning, mbYesNo, 0) = mrYes then
-    CopyFile(PChar(IncludeTrailingPathDelimiter(Path + 'Resources') + 'Foldername.ini'), PChar(Dir + 'Foldername.ini'), False);
+    //if MessageDlg('Copy ''Foldername.ini''?', mtWarning, mbYesNo, 0) = mrYes then
+    //CopyFile(PChar(IncludeTrailingPathDelimiter(Path + 'Resources') + 'Foldername.ini'), PChar(Dir + 'Foldername.ini'), False);
   end;
 end;
 
@@ -425,17 +379,29 @@ end;
 procedure TFrameUI.ListViewFilesSelectItem(Sender: TObject; Item: TListItem; Selected: Boolean);
 begin
   if Selected then
-  if Item.Caption = 'Foldername' then
+  if Item.Caption = 'Foldername.ini' then
   begin
     PanelRight.Hide();
+    PanelRightStrings.Hide();
     ButtonFoldernameUndoClick(ButtonFoldernameUndo);
     PanelRightFoldername.Show();
     Form1.DragIn.Enabled := False;
   end
   else
+  if Item.GroupID = 8 then
+  begin
+    PanelRight.Hide();
+    PanelRightFoldername.Hide();
+    CurrentFile := UIFiles[Integer(Item.Data)];
+    MemoStrings.Lines.LoadFromFile(IncludeTrailingPathDelimiter(Path + 'Resources') + CurrentFile.Filename, TEncoding.UTF8);
+    PanelRightStrings.Show();
+    Form1.DragIn.Enabled := False;
+  end
+  else
   begin
     PanelRightFoldername.Hide();
-    ShowFile(UIFiles[Item.Index]);
+    PanelRightStrings.Hide();
+    ShowFile(UIFiles[Integer(Item.Data)]);
     PanelRight.Show();
     Form1.DragIn.Enabled := True;
   end;
@@ -488,31 +454,27 @@ end;
 procedure TFrameUI.TimerLazyLoadTimer(Sender: TObject);
 var
   ListItem: TListItem;
-  UIFile: TUIFile;
+  i: Integer;
 begin
   Form1.DragIn.OnDrop := DropNewImage;
   TimerLazyLoad.Enabled := False;
   // Populate list view
   ListViewFiles.Items.BeginUpdate();
   try
-    for UIFile in UIFiles do
+    for i := Low(UIFiles) to High(UIFiles) do
+    if UIFiles[i].IsApplicable() then
     begin
       ListItem := ListViewFiles.Items.Add;
-      ListItem.GroupID := UIFile.Group;
-      ListItem.Caption := UIFile.Filename;
-      ListItem.SubItems.Add(UIFile.Description);
+      ListItem.GroupID := UIFiles[i].Group;
+      ListItem.Caption := UIFiles[i].Filename;
+      ListItem.Data := Pointer(i);
+      ListItem.SubItems.Add(UIFiles[i].Description);
     end;
-    ListItem := ListViewFiles.Items.Add;
-    ListItem.GroupID := 6;
-    ListItem.Caption := 'Foldername';
-    ListItem.SubItems.Add('General configuration file');
   finally
     ListViewFiles.Items.EndUpdate();
     ListViewFiles.DoAutoSize();
   end;
 
-  ComboBoxFoldernameFavoritesFile.Items.Text := ComboBoxFoldernameDownloadROMsFile.Items.Text;
-  ComboBoxFoldernameHistoryFile.Items.Text := ComboBoxFoldernameDownloadROMsFile.Items.Text;
   //MenuItemReloadXML.Visible := ParamStr(1) = '-dev';
 end;
 
@@ -535,3 +497,4 @@ begin
 end;
 
 end.
+

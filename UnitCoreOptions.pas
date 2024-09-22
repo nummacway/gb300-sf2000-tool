@@ -95,7 +95,7 @@ begin
   Top := 0;
   try
     if Core.Config = '' then
-    raise Exception.Create('GB300 Tool does not know the configuration file''s name for this core (probably this core cannot be configured)');
+    raise Exception.Create('GB300+SF2000 Tool does not know the configuration file''s name for this core (probably this core cannot be configured)');
     for Option in Core.GetConfig(ExtractFileName(ROMFullFileName)) do
     begin
       Temp := TFrameCoreOption.Create(Self);

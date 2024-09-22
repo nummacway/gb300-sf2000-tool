@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<title>DataFrog_SF2000_GB300v2_NeoGeoROMFaker_SupportList</title>
+<meta charset="utf-8" />
+<!--Games that do not work perfectly according to `madcock`'s list: 67.
+Of which games that exist in FBNeo: 22 
+This doesn't add up... -->
+
+<p>Remarks:</p>
+<ul>
+<li>My list extends <a href="https://vonmillhausen.github.io/sf2000/arcade/DataFrog_SF2000_FBA.html"><code>madcock</code>'s list</a> for the SF2000, which also applies to the GB300 v2. He checked all sets known to the stock FBAlpha (called MAME by the interface).
+<li>My list is about Neo Geo sets that you could “make the stock emulator load”. GB300+SF2000 Tool 2.0-alpha automatically does this when you try to add any supported set from this list.
+<li>All sets in my list are non-merged FBNeo sets.
+<li>Major commercial games that are now fully working for the first time on frog: <code>mslug5fd</code>, <code>samsh5fd</code> and <code>ss5spfd</code>
+<li>This list omits sets in <code>madcock</code>'s list that I couldn't improve. There were only two that I could successfully improve, <code>mslug5nd</code> and <code>bangbedp</code>. The latter is the fully-decrypted clone (not a prototype!) of the already-supported <code>bandbead</code>.
+<li>Even though this list means to extend <code>madcock</code>'s list and uses the same ratings, I admit that there are differences in how we rated.
+<ul>
+<li>Other than <code>madcock</code>, I wouldn't call <code>gpilots</code> and <code>gpilotsh</code> slow. But changing the status here would claim an improvement that isn't there, so I omitted them.
+<li>On the other hand, I would call <code>mslug3</code> and <code>mslug5</code> slow in some places, even in the base version. To be in line with <code>madcock</code>, I didn't mark them as slow.
+<li>There are some hacks of <code>mslug2</code>, <code>mslug3</code> and <code>mslug5</code> that are much worse than the base games due to massive enemy spawns and weapon effects, and these have been marked as slow in this table.
+<li><code>madcock</code> tagged quite some games as non-English. I however only used that tag for the two non-English games that you cannot enjoy if you don't speak their language: <code>quizdaisk</code> and <code>quizkofk</code>. I believe that you can perfectly enjoy smashing your enemies' heads even if the text is in Japanese and in this case shouldn't care.
+</ul>
+<li>Individual set remarks:</li>
+<ul>
+<li><code>amazoneo</code> and <code>proneon</code> are rotated. It only makes sense to play these when you're on the SF2000 and use a wireless gamepad.
+<li><code>bjourneyh</code> is hardly playable due to missing tiles. I counted it as unplayable. The base game is supported.
+<li><code>cphd</code> freezes when you insert a coin, but is free to play.
+<li><code>horekidb3</code> is very hard to find. Do not insert a coin before it tells you to.
+<li><code>kof97bs</code> is so weird that I'm not sure if my result is how it's supposed to be.
+<li><code>kof97pla</code> has a few pixels swapped. It looks like incorrect vertical interlacing.
+<li><code>kof2kfd</code>, <code>kof2kotc</code>, <code>kof2kps2</code>, <code>kof2ksp</code> look like they might be missing some text. <code>kof2k2omg9</code> and <code>kof2k2omg9b</code> look like they might be missing the logo.
+<li><code>neonopon</code> and <code>poknight</code> are clearly not supposed to have sound.
+<li><code>neotet</code>, <code>neothndr</code> and most demos use the same V-ROM, but <code>neopang</code> is the only one of these to actually have sound. I'm not sure if the others are supposed to have sound, so I decided to tag only the two games among them for missing sound.
+<li><code>neotris</code> and <code>nsmb</code> feel slow-paced, but I'm not sure if they are actually slower than they are supposed to be.
+<li><code>pbobblenb</code> is included in non-merged sets, but in fact, this set is usually merged. Because the base game is supported by stock, I omitted this set.
+</ul>
+</ul>
+
+<p>Definitions for the "working" column (applies to <code>madcock</code>'s list as well, except for "norun"):</p>
+<ul>
+<li>working: The set finishes loading and there is a time after loading where you could enter the pause menu. It does <i>not</i> mean that the game is actually working or even playable.
+<li>loadcorrupt: The set finishes loading and instantly freezes the full device. This either means that the P-ROM is not as expected or that the game itself is not supported. Some of the latter cases are regressions, as sets worked in the much older MAME 2000.
+<li>loadhang: Loading freezes at <code>vs-bios.rom</code>. I believe that's because the V-ROM and its largest file (the latter is always 8 MiB) are about to exceed the 98 MiB ROM limit.
+<li>noload: No loading indicator is displayed in the <i>bottom left</i>. This is usually the case for sets that are way too big or lack a file that matches the expected metadata (names, sizes, CRCs). This cannot happen here, because I chose 32 host sets that aren't too big and all files are freshly generated by my tool, so the metadata is always correct.
+<li>norun: The set finishes loading but the Neo Geo runs its internal test instead of the actual game. This is usually the case because the P-ROM is not what it expects. While this falls under the definition of "working", I refused to call it like that.
+</ul>
+<p>Note that this column is only technical. Players should refer to the "status" column only.</p>
+
+<table>
+<tr><th>rom<th>fullname<th>status<th>rotation<th>playable<th>inrom<th>working<th>parent<th>year<th>company<th>hardware
+<tr><td>19yy<td>19YY (Neo CD conversion, ADK World)<td>playable<td><td><td><td>working<td><td>2022<td>hack<td>Neo Geo MVS
+<tr><td>19yyo<td>19YY (Neo CD conversion, ADK World)(Original release)<td>playable<td><td><td><td>working<td>19yy<td>2022<td>hack<td>Neo Geo MVS
+<tr><td>2020bbcd<td>2020 Super Baseball (Neo CD conversion)<td>playable<td><td><td><td>working<td>2020bb<td>1991<td>hack<td>Neo Geo MVS
+<tr><td>3countba<td>3 Count Bout / Fire Suplex (NGM-043)<td>playable<td><td><td><td>working<td>3countb<td>1993<td>SNK<td>Neo Geo MVS
+<tr><td>4play<td>4 player input test<td>playable<td><td><td><td>working<td><td>???<td>SNK<td>Neo Geo MVS
+<tr><td>abyssali<td>Abyssal Infants<td>playable<td><td><td><td>working<td><td>2021<td>Kako Eimon<td>Neo Geo MVS
+<tr><td>alpham2p<td>Alpha Mission II / ASO II - Last Guardian (prototype)<td>playable<td><td><td><td>working<td>alpham2<td>1991<td>SNK<td>Neo Geo MVS
+<tr><td>amazoneo<td>Soldier Girl Amazon Neo<td>playable (rotation)<td>270<td><td><td>working<td><td>2023<td>IQ_132<td>Neo Geo MVS
+<tr><td>aof2bh<td>Art of Fighting 2 / Ryuuko no Ken 2 (Enable hidden characters V2)<td>playable<td><td><td><td>working<td>aof2<td>1994<td>Yumeji<td>Neo Geo MVS
+<tr><td>aof2bhs<td>Art of Fighting 2 / Ryuuko no Ken 2 (Boss With Simple Attack Edition, Hack)<td>playable<td><td><td><td>working<td>aof2<td>2018<td>hack<td>Neo Geo MVS
+<tr><td>aof3bh<td>Art of Fighting 3 - The Path of the Warrior / Art of Fighting - Ryuuko no Ken Gaiden (Enable Hidden Characters V2)<td>playable<td><td><td><td>working<td>aof3<td>1996<td>Yumeji<td>Neo Geo MVS
+<tr><td>b2b<td>Bang Bang Busters (2010 NCI release)<td>unplayable (locks up)<td><td><td><td>working<td><td>2000<td>Visco<td>Neo Geo MVS
+<tr><td>badapple<td>Bad Apple (Tech-Demo)<td>nonworking<td><td><td><td>loadcorrupt<td><td>2017<td>Hpman<td>Neo Geo MVS
+<tr><td>bangbedp<td>Bang Bead (Prototype?)<td>playable<td><td><td><td>working<td>bangbead<td>2000<td>Visco<td>Neo Geo MVS
+<tr><td>beast<td>Shadow of the Beast (Neo Geo demo)<td>playable<td><td><td><td>working<td><td>????<td>Jeff Kurtz<td>Neo Geo MVS
+<tr><td>bjourneyh<td>Blue's Journey / Raguy (ALH-001)<td>unplayable (graphics)<td><td><td><td>working<td>bjourney<td>1990<td>Alpha Denshi Co.<td>Neo Geo MVS
+<tr><td>blazstarcm<td>Blazing Star (Stage Select Hack)<td>playable<td><td><td><td>working<td>blazstar<td>2020<td>Clear Paper, NeoCverA, JustinG<td>Neo Geo MVS
+<tr><td>bonusstage<td>Bonus Stage<td>playable<td><td><td><td>working<td><td>2020<td>Totologic<td>Neo Geo MVS
+<tr><td>breakrevbh<td>Breakers Revenge (Boss Hack)<td>playable<td><td><td><td>working<td>breakrev<td>2007<td>hack<td>Neo Geo MVS
+<tr><td>brkrevext<td>Breakers Revenge (Extra Mode, Hack)<td>playable<td><td><td><td>working<td>breakrev<td>2018<td>hack<td>Neo Geo MVS
+<tr><td>brkrevjq<td>Breakers Revenge (Enhanced, Hack)<td>playable<td><td><td><td>working<td>breakrev<td>2022<td>hack<td>Neo Geo MVS
+<tr><td>bstarsh<td>Baseball Stars Professional (NGH-002)<td>playable (sound)<td><td><td><td>working<td>bstars<td>1990<td>SNK<td>Neo Geo MVS
+<tr><td>burningfh<td>Burning Fight (NGH-018, US)<td>playable<td><td><td><td>working<td>burningf<td>1991<td>SNK<td>Neo Geo AES
+<tr><td>burningfp<td>Burning Fight (prototype, older)<td>unplayable (graphics)<td><td><td><td>working<td>burningf<td>1991<td>SNK<td>Neo Geo MVS
+<tr><td>burningfpa<td>Burning Fight (prototype, near final, ver 23.3, 910326)<td>unplayable (graphics)<td><td><td><td>working<td>burningf<td>1991<td>SNK<td>Neo Geo MVS
+<tr><td>burningfpb<td>Burning Fight (prototype, newer, V07)<td>unplayable (graphics)<td><td><td><td>working<td>burningf<td>1991<td>SNK<td>Neo Geo MVS
+<tr><td>cabalng<td>Cabal (Neo-Geo Conversion)<td>playable<td><td><td><td>working<td><td>1988-2021<td>TAD Corporation<td>Neo Geo MVS
+<tr><td>cakefght<td>Cake Fighter (hack of Twinkle Star Sprites)<td>playable<td><td><td><td>working<td>twinspri<td>2022<td>hack<td>Neo Geo MVS
+<tr><td>cnbe<td>Codename - Blut Engel (2006-01-19)<td>playable (sound)<td><td><td><td>working<td><td>2006<td>blastar@gmx.net<td>Neo Geo MVS
+<tr><td>cnbe2018<td>Codename - Blut Engel (2018-09-05)<td>playable<td><td><td><td>working<td>cnbe<td>2018<td>blastar@gmx.net<td>Neo Geo MVS
+<tr><td>cndi<td>Chip n Dale (FMV Demo)<td>unplayable (locks up)<td><td><td><td>working<td><td>2009<td>Sergi<td>Neo Geo MVS
+<tr><td>columnsn<td>Columns (Neo Geo)<td>playable<td><td><td><td>working<td><td>????<td>homebrew<td>Neo Geo MVS
+<tr><td>cphd<td>Crouching Poney Hidden Dragon (DEMO)<td>playable<td><td><td><td>working<td><td>2013<td>Le Cortex<td>Neo Geo
+<tr><td>crswd2bl<td>Crossed Swords 2 (bootleg of CD version)<td>playable<td><td><td><td>working<td><td>1996<td>bootleg (Razoola)<td>Neo Geo MVS
+<tr><td>cthd2k3a<td>Crouching Tiger Hidden Dragon 2003 (The King of Fighters 2001 bootleg, set 2)<td>nonworking<td><td><td><td>norun<td>kof2001<td>2003<td>bootleg<td>Neo Geo MVS
+<tr><td>cyborgforce<td>Cyborg Force!<td>playable<td><td><td><td>working<td><td>2023<td>NEO.BYTE.FORCE<td>Neo Geo MVS
+<tr><td>doubldsp<td>Double Dragon (Special 2017, Hack)<td>unplayable (locks up)<td><td><td><td>working<td>doubledr<td>2023<td>hack<td>Neo Geo MVS
+<tr><td>doubledp<td>Double Dragon (Plus, Hack)<td>playable<td><td><td><td>working<td>doubledr<td>2015<td>hack<td>Neo Geo MVS
+<tr><td>doubledrbh<td>Double Dragon (Boss hack)<td>playable<td><td><td><td>working<td>doubledr<td>1995<td>hack<td>Neo Geo MVS
+<tr><td>doubledt<td>Double Dragon (Optimized, Hack)<td>playable<td><td><td><td>working<td>doubledr<td>2014<td>hack<td>Neo Geo MVS
+<tr><td>dragonsh<td>Dragon's Heaven (development board)<td>nonworking<td><td><td><td>loadcorrupt<td><td>1997<td>Face<td>Neo Geo MVS
+<tr><td>ducki<td>Duck Tales (FMV Demo)<td>unplayable (locks up)<td><td><td><td>working<td><td>2009<td>Sergi<td>Neo Geo MVS
+<tr><td>dwi<td>DarkWing Duck (FMV Demo)<td>unplayable (locks up)<td><td><td><td>working<td><td>2009<td>Sergi<td>Neo Geo MVS
+<tr><td>dwia<td>DarkWing Duck (FMV Demo, alt)<td>unplayable (locks up)<td><td><td><td>working<td>dwi<td>2009<td>Sergi<td>Neo Geo MVS
+<tr><td>fatfurspa<td>Fatal Fury Special / Garou Densetsu Special (NGM-058 ~ NGH-058, set 2)<td>playable<td><td><td><td>working<td>fatfursp<td>1993<td>SNK<td>Neo Geo MVS
+<tr><td>fatfury2a<td>Fatal Fury 2 / Garou Densetsu 2 - arata-naru tatakai (NGM-047)<td>unplayable (graphics)<td><td><td><td>working<td>fatfury2<td>1992<td>SNK<td>Neo Geo MVS
+<tr><td>fatfury3a<td>Fatal Fury 3 - Road to the Final Victory / Garou Densetsu 3 - haruka-naru tatakai (NGM-069 ~ NGH-069) (alternate set)<td>unplayable (graphics)<td><td><td><td>working<td>fatfury3<td>1995<td>SNK<td>Neo Geo MVS
+<tr><td>ffurspbs<td>Fatal Fury Special / Garou Densetsu Special (Optional Hidden Character Third Edition, Hack)<td>playable<td><td><td><td>working<td>fatfursp<td>1993<td>hack<td>Neo Geo MVS
+<tr><td>ffurspbt<td>Fatal Fury Special / Garou Densetsu Special (BT Version PPX, Hack)<td>playable<td><td><td><td>working<td>fatfursp<td>1993<td>hack<td>Neo Geo MVS
+<tr><td>ffury1bs<td>Fatal Fury - King of Fighters / Garou Densetsu - Shukumei no Tatakai (Boss, Hack)<td>playable<td><td><td><td>working<td>fatfury1<td>1992<td>hack<td>Neo Geo MVS
+<tr><td>ffury2es<td>Fatal Fury 2 / Garou Densetsu 2 - Arata-naru Tatakai (Easy Special Attacks, Hack)<td>unplayable (graphics)<td><td><td><td>working<td>fatfury2<td>1992<td>hack<td>Neo Geo MVS
+<tr><td>ffury3bs<td>Fatal Fury 3 - Road to the Final Victory / Garou Densetsu 3 - Haruka-naru Tatakai (Ancient Battles Resurgence, Hack)<td>unplayable (graphics)<td><td><td><td>working<td>fatfury3<td>2015<td>hack<td>Neo Geo MVS
+<tr><td>ffury3eh<td>Fatal Fury 3 - Road to the Final Victory / Garou Densetsu 3 - Haruka-naru Tatakai (Add Char - Ultra kill style changed, Hack)<td>unplayable (graphics)<td><td><td><td>working<td>fatfury3<td>1995<td>hack<td>Neo Geo MVS
+<tr><td>fightfeva<td>Fight Fever / Wang Jung Wang (set 2)<td>playable<td><td><td><td>working<td>fightfev<td>1994<td>Viccom<td>Neo Geo MVS
+<tr><td>froman2b<td>Idol Mahjong Final Romance 2 (Neo-Geo, bootleg of CD version)<td>playable<td><td><td><td>working<td><td>1995<td>bootleg<td>Neo Geo MVS
+<tr><td>garoubs<td>Garou - Mark of the Wolves (Enable hidden characters, Hack)<td>playable<td><td><td><td>working<td>garou<td>1999<td>Ydmis<td>Neo Geo MVS
+<tr><td>garouh<td>Garou - Mark of the Wolves (NGM-2530 ~ NGH-2530)<td>nonworking<td><td><td><td>norun<td>garou<td>1999<td>SNK<td>Neo Geo MVS
+<tr><td>garouha<td>Garou - Mark of the Wolves (NGH-2530)<td>playable<td><td><td><td>working<td>garou<td>1999<td>SNK<td>Neo Geo MVS
+<tr><td>garoujq<td>Garou - Mark of the Wolves (Enhanced, Hack)<td>nonworking<td><td><td><td>loadcorrupt<td>garou<td>2023<td>hack<td>Neo Geo MVS
+<tr><td>ghostbi<td>Ghost Busters (FMV Demo)<td>unplayable (locks up)<td><td><td><td>working<td><td>2009<td>Sergi<td>Neo Geo MVS
+<tr><td>gladmort<td>GladMort (Demo 2)<td>playable<td><td><td><td>working<td><td>2024<td>PixelHeart<td>Neo Geo MVS
+<tr><td>gowcaiet<td>Voltage Fighter - Gowcaizer / Choujin Gakuen Gowcaizer (Eternal, Hack)<td>playable<td><td><td><td>working<td>gowcaizr<td>2024<td>hack<td>Neo Geo MVS
+<tr><td>gpilotsp<td>Ghost Pilots (prototype)<td>unplayable (graphics)<td><td><td><td>working<td>gpilots<td>1991<td>SNK<td>Neo Geo MVS
+<tr><td>horekidb3<td>Kid no Hore Hore Daisakusen (Neo-Geo Conversion)<td>playable<td><td><td><td>working<td><td>2022<td>Nichibutsu<td>Neo Geo MVS
+<tr><td>hypernoid<td>Hypernoid (Ver. 20220224)<td>playable<td><td><td><td>working<td><td>2022<td>NeoHomeBrew<td>Neo Geo MVS
+<tr><td>ironclad<td>Choutetsu Brikin'ger / Iron Clad (prototype)<td>playable<td><td><td><td>working<td><td>1996<td>Saurus<td>Neo Geo MVS
+<tr><td>ironclado<td>Choutetsu Brikin'ger / Iron Clad (prototype, bootleg)<td>playable<td><td><td><td>working<td>ironclad<td>1996<td>bootleg<td>Neo Geo MVS
+<tr><td>jockeygpa<td>Jockey Grand Prix (set 2)<td>playable<td><td><td><td>working<td>jockeygp<td>2001<td>Sun Amusement / BrezzaSoft<td>Neo Geo MVS
+<tr><td>kabukijq<td>Far East of Eden - Kabuki Klash / Tengai Makyou - Shin Den (Enhanced, Hack)<td>playable<td><td><td><td>working<td>kabukikl<td>2023<td>hack<td>Neo Geo MVS
+<tr><td>kabukiklb<td>Far East of Eden - Kabuki Klash / Tengai Makyou - Shin Den (Add hidden characters)<td>playable<td><td><td><td>working<td>kabukikl<td>2008<td>Ydmis / Creamymami[EGCG]<td>Neo Geo MVS
+<tr><td>karnovre<td>Karnov's Revenge / Fighter's History Dynamite (Revolution v0.2, Hack)<td>nonworking<td><td><td><td>loadcorrupt<td>karnovr<td>2024<td>GameHackFan<td>Neo Geo MVS
+<tr><td>kf10thuo<td>The King of Fighters 10th Anniversary (Optimized 2020, Hack)<td>playable<td><td><td><td>working<td>kof2002<td>2020<td>hack<td>Neo Geo MVS
+<tr><td>kf2k1pkz<td>The King of Fighters 2001 (PS2 Krizalid, Hack)<td>nonworking<td><td><td><td>loadcorrupt<td>kof2001<td>2021<td>hack<td>Neo Geo MVS
+<tr><td>kf2k1pla<td>The King of Fighters 2001 Plus (set 2, bootleg / hack)<td>unplayable (black)<td><td><td><td>working<td>kof2001<td>2002<td>bootleg<td>Neo Geo MVS
+<tr><td>kf2k1pls<td>The King of Fighters 2001 Plus (set 1, bootleg / hack)<td>unplayable (black)<td><td><td><td>working<td>kof2001<td>2002<td>bootleg<td>Neo Geo MVS
+<tr><td>kf2k1ult<td>The King of Fighters 2001 (Ultimate, Hack)<td>nonworking<td><td><td><td>loadcorrupt<td>kof2001<td>2024<td>hack<td>Neo Geo MVS
+<tr><td>kf2k23rd<td>The King of Fighters 2002 (3rd Strike of Orochi, Hack)<td>playable<td><td><td><td>working<td>kof2002<td>2020-2022<td>hack<td>Neo Geo MVS
+<tr><td>kf2k2mix<td>The King of Fighters 2002 (Climax, Hack)<td>playable<td><td><td><td>working<td>kof2002<td>2016<td>hack<td>Neo Geo MVS
+<tr><td>kf2k2mp3<td>The King of Fighters 2002 Magic Plus III (Hack)<td>playable<td><td><td><td>working<td>kof2002<td>2010<td>hack<td>Neo Geo MVS
+<tr><td>kf2k2p17<td>The King of Fighters 2002 (Plus 2017, Hack)<td>nonworking<td><td><td><td>loadcorrupt<td>kof2002<td>2020<td>hack<td>Neo Geo MVS
+<tr><td>kf2k2plb<td>The King of Fighters 2002 Plus (bootleg set 3)<td>playable (sound)<td><td><td><td>working<td>kof2002<td>2002<td>bootleg<td>Neo Geo MVS
+<tr><td>kf2k2plc<td>The King of Fighters 2002 Super (bootleg)<td>playable (sound)<td><td><td><td>working<td>kof2002<td>2002<td>bootleg<td>Neo Geo MVS
+<tr><td>kf2k2plh<td>The King of Fighters 2002 Plus (Hack)<td>playable<td><td><td><td>working<td>kof2002<td>2022<td>hack<td>Neo Geo MVS
+<tr><td>kf2k2ps2<td>The King of Fighters 2002 (PlayStation 2, Hack)<td>playable (size)<td><td><td><td>working<td>kof2002<td>2007-2023<td>hack<td>Neo Geo MVS
+<tr><td>kf2k3p2s<td>The King of Fighters 2003 (PS2 Style Portraits, Hack)<td>nonworking<td><td><td><td>loadhang<td>kof2003<td>20??<td>hack<td>Neo Geo MVS
+<tr><td>kf2k3ps2<td>The King of Fighters 2003 (PlayStation 2, Hack)<td>playable<td><td><td><td>working<td>kof2003<td>2006<td>hack<td>Neo Geo MVS
+<tr><td>kf2k3upl<td>The King of Fighters 2004 Ultra Plus (bootleg of The King of Fighters 2003)<td>nonworking<td><td><td><td>loadhang<td>kof2003<td>2003<td>bootleg<td>Neo Geo MVS
+<tr><td>kf2k4pls<td>The King of Fighters Special Edition 2004 Plus (bootleg)<td>nonworking<td><td><td><td>norun<td>kof2002<td>2004<td>bootleg<td>Neo Geo MVS
+<tr><td>knightsch<td>Knight's Chance<td>nonworking<td><td><td><td>loadcorrupt<td><td>2014<td>Neobitz<td>Neo Geo MVS
+<tr><td>kof10thd<td>The King of Fighters 10th Anniversary (The King of Fighters 2002 bootleg / Fully Decrypted)<td>playable<td><td><td><td>working<td>kof2002<td>200?<td>hack<td>Neo Geo MVS
+<tr><td>kof2000bc<td>The King of Fighters 2000 (Imitate BC 14 System, Hack By Aillis)<td>nonworking<td><td><td><td>loadcorrupt<td>kof2000<td>2021<td>hack<td>Neo Geo MVS
+<tr><td>kof2000t<td>The King of Fighters 2000 (Optimized, Hack)<td>playable<td><td><td><td>working<td>kof2000<td>2013<td>hack<td>Neo Geo MVS
+<tr><td>kof2002m<td>The King of Fighters 2002 (Mugen, Hack)<td>playable<td><td><td><td>working<td>kof2002<td>2023<td>hack<td>Neo Geo MVS
+<tr><td>kof2002t<td>The King of Fighters 2002 Plus (Optimised, Hack)<td>playable<td><td><td><td>working<td>kof2002<td>2014<td>hack<td>Neo Geo MVS
+<tr><td>kof2003t<td>The King of Fighters 2003 (Plus, Hack)<td>playable<td><td><td><td>working<td>kof2003<td>2014<td>SNK Playmore<td>Neo Geo MVS
+<tr><td>kof2k1bs<td>The King of Fighters 2001 (Boss, Hack)<td>nonworking<td><td><td><td>loadcorrupt<td>kof2001<td>2010<td>hack<td>Neo Geo MVS
+<tr><td>kof2k1fd<td>The King of Fighters 2001 (Fully Decrypted)<td>nonworking<td><td><td><td>loadcorrupt<td>kof2001<td>2001<td>Eolith / SNK<td>Neo Geo MVS
+<tr><td>kof2k1rp<td>The King of Fighters 2001 (Remix Pro v1.02 Final, Hack)<td>nonworking<td><td><td><td>loadcorrupt<td>kof2001<td>2004<td>hack<td>Neo Geo MVS
+<tr><td>kof2k1ru<td>The King of Fighters 2001 (Remix Ultra 2.3, Hack)<td>nonworking<td><td><td><td>loadcorrupt<td>kof2001<td>2004<td>hack<td>Neo Geo MVS
+<tr><td>kof2k2fd<td>The King of Fighters 2002 (Fully Decrypted)<td>playable<td><td><td><td>working<td>kof2002<td>2002<td>Eolith / Playmore<td>Neo Geo MVS
+<tr><td>kof2k2jq<td>The King of Fighters 2002 (Infinite Energy, Hack)<td>playable<td><td><td><td>working<td>kof2002<td>2022<td>hack<td>Neo Geo MVS
+<tr><td>kof2k2ly<td>The King of Fighters 2002 (Remix, Hack)<td>playable<td><td><td><td>working<td>kof2002<td>2015<td>hack<td>Neo Geo MVS
+<tr><td>kof2k2omg<td>The King of Fighters 2002 (Omega v.0?)<td>unplayable (boot loop)<td><td><td><td>working<td>kof2002<td>2002<td>hack<td>KOF-ON Team
+<tr><td>kof2k2omg8<td>The King of Fighters 2002 (Omega v0.8)<td>playable<td><td><td><td>working<td>kof2002<td>2010<td>hack<td>KOF-ON Team
+<tr><td>kof2k2omg9<td>The King of Fighters 2002 (Omega v0.9)<td>playable<td><td><td><td>working<td>kof2002<td>2012<td>hack<td>KOF-ON Team
+<tr><td>kof2k2omg9b<td>The King of Fighters 2002 (Omega v0.9 beta)<td>playable<td><td><td><td>working<td>kof2002<td>2011<td>hack<td>KOF-ON Team
+<tr><td>kof2k2ru<td>The King of Fighters 2002 (Remix Ultra 3.5, Hack)<td>playable<td><td><td><td>working<td>kof2002<td>2006<td>hack<td>Neo Geo MVS
+<tr><td>kof2k2ts<td>The King of Fighters 2002 (Battle with Orochi, Hack)<td>playable<td><td><td><td>working<td>kof2002<td>2021<td>hack<td>Neo Geo MVS
+<tr><td>kof2k3fd<td>The King of Fighters 2003 (Fully Decrypted)<td>playable<td><td><td><td>working<td>kof2003<td>2003<td>SNK Playmore<td>Neo Geo MVS
+<tr><td>kof2kfd<td>The King of Fighters 2000 (Fully Decrypted)<td>playable<td><td><td><td>working<td>kof2000<td>2000<td>SNK<td>Neo Geo MVS
+<tr><td>kof2kotc<td>The King of Fighters 2000 (OTC, Hack)<td>playable (size)<td><td><td><td>working<td>kof2000<td>2022-2023<td>hack<td>Neo Geo MVS
+<tr><td>kof2kpls<td>The King of Fighters 2000 (Plus Blue, Hack)<td>nonworking<td><td><td><td>loadcorrupt<td>kof2000<td>2018<td>hack<td>Neo Geo MVS
+<tr><td>kof2kps2<td>The King of Fighters 2000 (Playstation 2, Hack)<td>playable<td><td><td><td>working<td>kof2000<td>2013<td>hack<td>Neo Geo MVS
+<tr><td>kof2ksp<td>The King of Fighters 2000 (Special, Hack)<td>playable<td><td><td><td>working<td>kof2000<td>2023<td>hack<td>Neo Geo MVS
+<tr><td>kof2kxxx<td>The King of Fighters 2000 SP XXX (Hack, Ver. 2016-01-04)<td>nonworking<td><td><td><td>loadcorrupt<td>kof2000<td>2016<td>hack<td>Neo Geo MVS
+<tr><td>kof94br<td>The King of Fighters '94 (Portuguese edition, Hack)<td>playable<td><td><td><td>working<td>kof94<td>2006<td>SNK<td>Neo Geo MVS
+<tr><td>kof94bs<td>The King of Fighters '94 (Boss, Hack)<td>playable<td><td><td><td>working<td>kof94<td>2015<td>hack<td>Neo Geo MVS
+<tr><td>kof94nr2<td>The King of Fighters '94 (New Remix 2018 Rev.2, Hack)<td>playable<td><td><td><td>working<td>kof94<td>2018<td>hack<td>Neo Geo MVS
+<tr><td>kof94rz<td>The King of Fighters '94 (Hack Boss Remixed)<td>playable<td><td><td><td>working<td>kof94<td>1994<td>ZKW<td>Neo Geo MVS
+<tr><td>kof94te<td>The King of Fighters '94 (Team Edit Edition: KOF95 style portraits v1.4.2, Hack)<td>playable<td><td><td><td>working<td>kof94<td>2024<td>hack (Matt Greer)<td>Neo Geo MVS
+<tr><td>kof94tea<td>The King of Fighters '94 (Team Edit Edition: KOF94 style portraits v1.4.2, Hack)<td>playable<td><td><td><td>working<td>kof94<td>2024<td>hack (Matt Greer)<td>Neo Geo MVS
+<tr><td>kof95b<td>The King of Fighters '95 (Enable Hidden Characters V.[?])<td>playable (graphics)<td><td><td><td>working<td>kof95<td>1995<td>Ydmis & Creamymami[EGCG]<td>Neo Geo MVS
+<tr><td>kof95bs<td>The King of Fighters '95 (Boss, Hack)<td>playable (graphics)<td><td><td><td>working<td>kof95<td>2022<td>hack<td>Neo Geo MVS
+<tr><td>kof95h<td>The King of Fighters '95 (NGH-084)<td>playable (graphics)<td><td><td><td>working<td>kof95<td>1995<td>SNK<td>Neo Geo MVS
+<tr><td>kof95jq<td>The King of Fighters '95 (Infinite Energy, Hack)<td>playable (graphics)<td><td><td><td>working<td>kof95<td>2023<td>hack<td>Neo Geo MVS
+<tr><td>kof95sp<td>The King of Fighters '95 (Special 2017, Hack)<td>unplayable (freeze on coin)<td><td><td><td>working<td>kof95<td>2020<td>hack<td>Neo Geo MVS
+<tr><td>kof95sr3<td>The King of Fighters '95 (Super Remix V3, Hack)<td>playable (graphics)<td><td><td><td>working<td>kof95<td>2018<td>hack<td>Neo Geo MVS
+<tr><td>kof95t<td>The King of Fighters '95 (Optimized, Hack)<td>unplayable (freeze on coin)<td><td><td><td>working<td>kof95<td>2024<td>hack<td>Neo Geo MVS
+<tr><td>kof96a<td>The King of Fighters '96 (NGM-214, alt board)<td>nonworking<td><td><td><td>loadcorrupt<td>kof96<td>1996<td>SNK<td>Neo Geo MVS
+<tr><td>kof96ae<td>The King of Fighters '96 (Anniversary, Hack)<td>nonworking<td><td><td><td>loadcorrupt<td>kof96<td>2007-2020<td>hack<td>Neo Geo MVS
+<tr><td>kof96cn<td>The King of Fighters '96 (Chinese Edition, ver 1.0, Hack)<td>nonworking<td><td><td><td>loadcorrupt<td>kof96<td>200?<td>hack<td>Neo Geo MVS
+<tr><td>kof96ep<td>The King of Fighters '96 (bootleg / hack)<td>nonworking<td><td><td><td>loadcorrupt<td>kof96<td>1996<td>bootleg<td>Neo Geo MVS
+<tr><td>kof96pls<td>The King of Fighters '96 (Plus, Hack)<td>nonworking<td><td><td><td>loadcorrupt<td>kof96<td>2003<td>hack<td>Neo Geo MVS
+<tr><td>kof96r<td>The King of Fighters '96 (Revised, Hack)<td>nonworking<td><td><td><td>loadcorrupt<td>kof96<td>2008<td>hack<td>Neo Geo MVS
+<tr><td>kof96rp<td>The King of Fighters '96 (Remix Plus 08 SP, Hack)<td>nonworking<td><td><td><td>loadcorrupt<td>kof96<td>2008<td>hack<td>Neo Geo MVS
+<tr><td>kof96rss<td>The King of Fighters '96 (Remix Spring Special, Version 1.5, Hack)<td>nonworking<td><td><td><td>loadcorrupt<td>kof96<td>2005<td>hack<td>Neo Geo MVS
+<tr><td>kof97ae<td>The King of Fighters '97 (Anniversary, Hack)<td>playable (graphics+sound)<td><td><td><td>working<td>kof97<td>2018-2020<td>EGHT<td>Neo Geo MVS
+<tr><td>kof97bs<td>The King of Fighters '97 (Boss, Hack)<td>playable<td><td><td><td>working<td>kof97<td>2023<td>hack<td>Neo Geo MVS
+<tr><td>kof97bt<td>The King of Fighters '97 (Balanced & Optimized, Hack)<td>playable<td><td><td><td>working<td>kof97<td>2023<td>hack<td>Neo Geo MVS
+<tr><td>kof97cb<td>The King of Fighters '97 (Combo, Hack)<td>playable<td><td><td><td>working<td>kof97<td>2018<td>hack<td>Neo Geo MVS
+<tr><td>kof97cbt<td>The King of Fighters '97 (Combo Training, Hack, Ver. 2018)<td>playable<td><td><td><td>working<td>kof97<td>2019<td>hack<td>Neo Geo MVS
+<tr><td>kof97ce<td>The King of Fighters '97 (Champion  Edition, Hack)<td>playable<td><td><td><td>working<td>kof97<td>2024<td>hack<td>Neo Geo MVS
+<tr><td>kof97cn<td>The King of Fighters '97 (10th Anniversary Chinese Edition, Hack)<td>playable<td><td><td><td>working<td>kof97<td>2007<td>hack<td>Neo Geo MVS
+<tr><td>kof97eb<td>The King of Fighters '97 (Evolution & Balance, Hack)<td>playable<td><td><td><td>working<td>kof97<td>2023<td>hack<td>Neo Geo MVS
+<tr><td>kof97evf<td>The King of Fighters '97 (Evolution FC2, Hack)<td>playable<td><td><td><td>working<td>kof97<td>2011<td>hack<td>Neo Geo MVS
+<tr><td>kof97evn<td>The King of Fighters '97 (Evolution New, Hack)<td>playable<td><td><td><td>working<td>kof97<td>200?<td>hack<td>Neo Geo MVS
+<tr><td>kof97h<td>The King of Fighters '97 (NGH-2320)<td>playable<td><td><td><td>working<td>kof97<td>1997<td>SNK<td>Neo Geo MVS
+<tr><td>kof97inv<td>The King of Fighters '97 (Invincible Plus!, B2.1.2107, Hack)<td>playable (graphics)<td><td><td><td>working<td>kof97<td>2021<td>hack<td>Neo Geo AES
+<tr><td>kof97k<td>The King of Fighters '97 (Korean release)<td>playable<td><td><td><td>working<td>kof97<td>1997<td>SNK<td>Neo Geo MVS
+<tr><td>kof97m<td>The King of Fighters '97 (Dream Back, Hack)<td>playable<td><td><td><td>working<td>kof97<td>2013<td>hack<td>Neo Geo MVS
+<tr><td>kof97oro<td>The King of Fighters '97 Chongchu Jianghu Plus 2003 (bootleg, set 1)<td>nonworking<td><td><td><td>norun<td>kof97<td>1997<td>bootleg<td>Neo Geo MVS
+<tr><td>kof97pla<td>The King of Fighters '97 Chongchu Jianghu Plus 2003 (bootleg, set 2)<td>playable (graphics)<td><td><td><td>working<td>kof97<td>2003<td>bootleg<td>Neo Geo MVS
+<tr><td>kof97plc<td>The King of Fighters '97 Plus (Enhanced, Hack)<td>playable<td><td><td><td>working<td>kof97<td>2023<td>hack<td>Neo Geo MVS
+<tr><td>kof97plh<td>The King of Fighters '97 Plus (Hack)<td>playable<td><td><td><td>working<td>kof97<td>2014<td>hack<td>Neo Geo MVS
+<tr><td>kof97pm<td>The King of Fighters '97 (Practice Mode, Hack)<td>playable<td><td><td><td>working<td>kof97<td>1997<td>hack<td>Neo Geo AES
+<tr><td>kof97ps<td>The King of Fighters '97 (Imitation Playstation final improved version 2016-10-29)<td>playable<td><td><td><td>working<td>kof97<td>1997<td>Eddids<td>Neo Geo MVS
+<tr><td>kof97rc<td>The King of Fighters '97 (Random Combo, Hack, Ver. 2010)<td>playable<td><td><td><td>working<td>kof97<td>2019<td>hack<td>Neo Geo MVS
+<tr><td>kof97rm<td>The King of Fighters '97 (Randomized, Hack)<td>playable<td><td><td><td>working<td>kof97<td>2022<td>hack<td>Neo Geo MVS
+<tr><td>kof97sp<td>The King of Fighters '97 (Special, Hack)<td>playable<td><td><td><td>working<td>kof97<td>2015<td>hack<td>Neo Geo MVS
+<tr><td>kof97st<td>The King of Fighters '97 (Strengthen Innovation, Hack)<td>playable<td><td><td><td>working<td>kof97<td>2023<td>hack<td>Neo Geo MVS
+<tr><td>kof97t<td>The King of Fighters '97 (Optimized, Hack)<td>playable<td><td><td><td>working<td>kof97<td>2014-2020<td>hack<td>Neo Geo MVS
+<tr><td>kof97ts<td>The King of Fighters '97 (Battle with Orochi, v1.2, Hack)<td>playable<td><td><td><td>working<td>kof97<td>2019<td>hack<td>Neo Geo MVS
+<tr><td>kof97ubp<td>The King of Fighters '97 (Ultimate Battle Plus, Hack)<td>playable<td><td><td><td>working<td>kof97<td>2020<td>hack<td>Neo Geo MVS
+<tr><td>kof97xt<td>The King of Fighters '97 (Final Battle, Hack)<td>playable<td><td><td><td>working<td>kof97<td>2007<td>hack<td>Neo Geo MVS
+<tr><td>kof98ae<td>The King of Fighters '98 - The Slugfest / King of Fighters '98 - Dream Match Never Ends (Anniversary, Hack)<td>unplayable (graphics b/c size)<td><td><td><td>working<td>kof98<td>2007-2016<td>hack<td>Neo Geo MVS
+<tr><td>kof98bc2k2<td>The King of Fighters '98 - The Slugfest / King of Fighters '98 - Dream Match Never Ends (BC Style 2002, Hack) (Unknown Author)<td>playable<td><td><td><td>working<td>kof98<td>20??<td>hack<td>Neo Geo MVS
+<tr><td>kof98bc2nd<td>The King of Fighters '98 - The Slugfest / King of Fighters '98 - Dream Match Never Ends (BC 2nd Impact Edition, Hack, Ver.2020-07-29)<td>playable<td><td><td><td>working<td>kof98<td>2020<td>hack<td>Neo Geo MVS
+<tr><td>kof98bsc<td>King of Fighters '98 - Dream Match Never Ends (Boss Chinese Edition, Hack)<td>playable<td><td><td><td>working<td>kof98<td>2023<td>hack<td>Neo Geo MVS
+<tr><td>kof98cb<td>The King of Fighters '98 - The Slugfest / King of Fighters '98 - Dream Match Never Ends (Combo, Hack)<td>playable<td><td><td><td>working<td>kof98<td>2018-2020<td>hack<td>Neo Geo MVS
+<tr><td>kof98cp<td>The King of Fighters '98 - The Slugfest / King of Fighters '98 - Dream Match Never Ends (Combo Plus, Hack)<td>nonworking<td><td><td><td>loadcorrupt<td>kof98<td>2020<td>hack<td>Neo Geo MVS
+<tr><td>kof98eck<td>The King of Fighters '98 - The Slugfest / King of Fighters '98 - Dream Match Never Ends (Easy Combo Edition, Hack)<td>playable (size)<td><td><td><td>working<td>kof98<td>2024<td>hack<td>Neo Geo MVS
+<tr><td>kof98evo<td>The King of Fighters '98 - The Slugfest / King of Fighters '98 - Dream Match Never Ends (Evolution, Hack)<td>playable<td><td><td><td>working<td>kof98<td>200?<td>hack<td>Neo Geo MVS
+<tr><td>kof98h<td>The King of Fighters '98 - The Slugfest / King of Fighters '98 - Dream Match Never Ends (NGH-2420)<td>playable<td><td><td><td>working<td>kof98<td>1998<td>SNK<td>Neo Geo MVS
+<tr><td>kof98ka<td>The King of Fighters '98 - The Slugfest / King of Fighters '98 - Dream Match Never Ends (Korean board, set 2)<td>nonworking<td><td><td><td>norun<td>kof98<td>1998<td>SNK<td>Neo Geo MVS
+<tr><td>kof98mix<td>The King of Fighters '98 - The Slugfest / King of Fighters '98 - Dream Match Never Ends (Unlimited, Hack)<td>playable (graphics b/c size)<td><td><td><td>working<td>kof98<td>2011-2015<td>hack<td>Neo Geo MVS
+<tr><td>kof98pfe<td>The King of Fighters '98 - The Slugfest / King of Fighters '98 - Dream Match Never Ends (Plus Final Edition, Hack)<td>nonworking<td><td><td><td>loadcorrupt<td>kof98<td>2019<td>hack<td>Neo Geo MVS
+<tr><td>kof98plc<td>King of Fighters '98 - Dream Match Never Ends (Plus Chinese Edition, Hack)<td>playable<td><td><td><td>working<td>kof98<td>2023<td>hack<td>Neo Geo MVS
+<tr><td>kof98rat<td>The King of Fighters '98 - The Slugfest / King of Fighters '98 - Dream Match Never Ends (Ratio, Hack)<td>playable<td><td><td><td>working<td>kof98<td>2021<td>hack (bankbank)<td>Neo Geo MVS
+<tr><td>kof98ult<td>The King of Fighters '98 - The Slugfest / King of Fighters '98 - Dream Match Never Ends (Ultimate Match, Hack)<td>playable (size)<td><td><td><td>working<td>kof98<td>2020<td>hack<td>Neo Geo MVS
+<tr><td>kof99ae<td>The King of Fighters '99 - Millennium Battle (Anniversary, Hack)<td>unplayable (graphics b/c size)<td><td><td><td>working<td>kof99<td>2020<td>hack<td>Neo Geo MVS
+<tr><td>kof99cb<td>The King of Fighters '99 - Millennium Battle (Combo, Hack)<td>playable<td><td><td><td>working<td>kof99<td>2008<td>hack<td>Neo Geo MVS
+<tr><td>kof99eur<td>The King of Fighters '99 - Millennium Battle (Evolution Ultra Remix, Hack)<td>playable<td><td><td><td>working<td>kof99<td>201?-2015<td>hack<td>Neo Geo MVS
+<tr><td>kof99fd<td>The King of Fighters '99 - Millennium Battle (Fully Decrypted)<td>playable<td><td><td><td>working<td>kof99<td>1999<td>SNK<td>Neo Geo MVS
+<tr><td>kof99h<td>The King of Fighters '99 - Millennium Battle (NGH-2510)<td>playable<td><td><td><td>working<td>kof99<td>1999<td>SNK<td>Neo Geo MVS
+<tr><td>kof99jh<td>The King of Fighters '99 - Millennium Battle (Evolution, Hack)<td>playable<td><td><td><td>working<td>kof99<td>2023<td>hack<td>Neo Geo MVS
+<tr><td>kof99jq<td>The King of Fighters '99 - Millennium Battle (Infinite Energy, Hack)<td>playable<td><td><td><td>working<td>kof99<td>2024<td>hack<td>Neo Geo MVS
+<tr><td>kof99k<td>The King of Fighters '99 - Millennium Battle (Korean release)<td>playable<td><td><td><td>working<td>kof99<td>1999<td>SNK<td>Neo Geo MVS
+<tr><td>kof99ka<td>The King of Fighters '99 - Millennium Battle (Korean release, non-encrypted program)<td>nonworking<td><td><td><td>norun<td>kof99<td>1999<td>SNK<td>Neo Geo MVS
+<tr><td>kof99pls<td>The King of Fighters '99 - Millennium Battle (Plus, Hack)<td>playable<td><td><td><td>working<td>kof99<td>2024<td>hack<td>Neo Geo MVS
+<tr><td>kof99rp<td>The King of Fighters '99 - Millennium Battle (Remix Pro v2.01 Final, Hack)<td>playable<td><td><td><td>working<td>kof99<td>2022<td>hack<td>Neo Geo MVS
+<tr><td>kof99sk<td>The King of Fighters '99 - Millennium Battle (LC+SK, Hack)<td>playable<td><td><td><td>working<td>kof99<td>2024<td>hack<td>Neo Geo MVS
+<tr><td>kof99sr<td>The King of Fighters '99 - Millennium Battle (Summer Revolution, Hack)<td>playable<td><td><td><td>working<td>kof99<td>2007<td>hack<td>Neo Geo MVS
+<tr><td>kof99t<td>The King of Fighters '99 - Millennium Battle (Optimized, Hack)<td>playable<td><td><td><td>working<td>kof99<td>2014-2024<td>hack<td>Neo Geo MVS
+<tr><td>kog<td>King of Gladiator (bootleg of The King of Fighters '97)<td>nonworking<td><td><td><td>norun<td>kof97<td>1997<td>bootleg<td>Neo Geo MVS
+<tr><td>kogplus<td>King of Gladiator Plus (The King of Fighters '97 bootleg)<td>nonworking<td><td><td><td>norun<td>kof97<td>1997<td>bootleg<td>Neo Geo MVS
+<tr><td>kotm2a<td>King of the Monsters 2 - The Next Thing (older)<td>unplayable (graphics)<td><td><td><td>working<td>kotm2<td>1992<td>SNK<td>Neo Geo MVS
+<tr><td>kotm2p<td>King of the Monsters 2 - The Next Thing (prototype)<td>unplayable (graphics)<td><td><td><td>working<td>kotm2<td>1992<td>SNK<td>Neo Geo MVS
+<tr><td>lastbd2b<td>The Last Blade 2 / Bakumatsu Roman - Dai Ni Maku Gekka no Kenshi (Enable Hidden Characters V4)<td>nonworking<td><td><td><td>loadcorrupt<td>lastbld2<td>1998<td>Dodowang[EGCG]<td>Neo Geo MVS
+<tr><td>lastbd2e<td>The Last Blade 2 / Bakumatsu Roman - Dai Ni Maku Gekka no Kenshi (Enhanced, Hack)<td>nonworking<td><td><td><td>loadcorrupt<td>lastbld2<td>1998<td>hack<td>Neo Geo MVS
+<tr><td>lastbd2i<td>The Last Blade 2 / Bakumatsu Roman - Dai Ni Maku Gekka no Kenshi (Infinite Energy, Hack)<td>nonworking<td><td><td><td>loadcorrupt<td>lastbld2<td>2023<td>hack<td>Neo Geo MVS
+<tr><td>lastbd2p<td>The Last Blade 2 / Bakumatsu Roman - Dai Ni Maku Gekka no Kenshi (Plus, Hack)<td>nonworking<td><td><td><td>loadcorrupt<td>lastbld2<td>2014<td>hack<td>Neo Geo MVS
+<tr><td>lastbd2t<td>The Last Blade 2 / Bakumatsu Roman - Dai Ni Maku Gekka no Kenshi (Team, Hack)<td>nonworking<td><td><td><td>loadcorrupt<td>lastbld2<td>2015<td>hack<td>Neo Geo MVS
+<tr><td>lastblada<td>The Last Blade / Bakumatsu Roman - Gekka no Kenshi (NGM-2340, alt board)<td>playable<td><td><td><td>working<td>lastblad<td>1997<td>SNK<td>Neo Geo MVS
+<tr><td>lastbladh<td>The Last Blade / Bakumatsu Roman - Gekka no Kenshi (NGH-2340)<td>playable (little slow)<td><td><td><td>working<td>lastblad<td>1997<td>SNK<td>Neo Geo AES
+<tr><td>lastbldi<td>The Last Blade / Bakumatsu Roman - Gekka no Kenshi (Infinite Energy, Hack)<td>playable (little slow)<td><td><td><td>working<td>lastblad<td>2023<td>hack<td>Neo Geo MVS
+<tr><td>lastbldp<td>The Last Blade / Bakumatsu Roman - Gekka no Kenshi (Plus, Hack)<td>playable (little slow)<td><td><td><td>working<td>lastblad<td>2014<td>hack<td>Neo Geo MVS
+<tr><td>lastblsp<td>The Last Blade / Bakumatsu Roman - Gekka no Kenshi (Special 2017, Hack)<td>unplayable (locks up)<td><td><td><td>working<td>lastblad<td>2023<td>hack<td>Neo Geo MVS
+<tr><td>lasthope<td>Last Hope (bootleg AES to MVS conversion, no coin support)<td>playable<td><td><td><td>working<td><td>2005<td>NG:DEV.TEAM<td>Neo Geo MVS
+<tr><td>lhcdb<td>Last Hope CD Beta (Neo CD conversion)<td>nonworking<td><td><td><td>loadcorrupt<td><td>2007<td>NG:Dev.Team<td>Neo Geo MVS
+<tr><td>looptris<td>Looptris (v.2021-12-26)<td>playable<td><td><td><td>working<td>looptrsp<td>2021<td>Blastar<td>Neo Geo MVS
+<tr><td>looptrsp<td>Looptris Plus (v.2022-12-24)<td>playable<td><td><td><td>working<td><td>2022<td>Blastar<td>Neo Geo MVS
+<tr><td>lresortp<td>Last Resort (prototype)<td>unplayable (graphics)<td><td><td><td>working<td>lresort<td>1992<td>SNK<td>Neo Geo MVS
+<tr><td>ltorb<td>Jonas Indiana and the Lost Temple of RA (20050717)<td>playable (sound)<td><td><td><td>working<td><td>2005<td>blastar@gmx.net<td>Neo Geo MVS
+<tr><td>magdrop3bh<td>Magical Drop III (Secret Character Hack)<td>playable<td><td><td><td>working<td>magdrop3<td>1997<td>hack<td>Neo Geo MVS
+<tr><td>magdrop3te<td>Magical Drop III Tournament Edition<td>playable<td><td><td><td>working<td>magdrop3<td>2022<td>hack (bankbank)<td>Neo Geo MVS
+<tr><td>matrimbh<td>Matrimelee / Shin Gouketsuji Ichizoku Toukon (Enable Hidden Characters V2)<td>playable (sound)<td><td><td><td>working<td>matrim<td>2002<td>Creamymami[EGCG]<td>Neo Geo MVS
+<tr><td>moshougi<td>Shougi no Tatsujin - Master of Shougi<td>playable<td><td><td><td>working<td><td>1995<td>ADK / SNK<td>Neo Geo MVS
+<tr><td>ms21v2<td>Metal Slug 2 - Super Vehicle-001/II (1v2 Mode, Hack)<td>playable<td><td><td><td>working<td>mslug2<td>2019<td>hack<td>Neo Geo MVS
+<tr><td>ms31v2<td>Metal Slug 3 (1v2 Mode, Hack)<td>nonworking<td><td><td><td>loadhang<td>mslug3<td>2019<td>hack<td>Neo Geo MVS
+<tr><td>ms41v2<td>Metal Slug 4 (1v2 Mode, Hack)<td>nonworking<td><td><td><td>loadcorrupt<td>mslug4<td>2019<td>hack<td>Neo Geo MVS
+<tr><td>ms51v2<td>Metal Slug 5 (1v2 Mode, Hack)<td>playable<td><td><td><td>working<td>mslug5<td>2019<td>hack<td>Neo Geo MVS
+<tr><td>ms5esr<td>Metal Slug 5 (Double Enemy, Hack)<td>playable (slow)<td><td><td><td>working<td>mslug5<td>2023<td>hack<td>Neo Geo
+<tr><td>ms5plush<td>Metal Slug 5 (Plus, Hack)<td>playable<td><td><td><td>working<td>mslug5<td>2019<td>hack<td>Neo Geo MVS
+<tr><td>ms5sgf<td>Metal Slug 5 (Remake FC2, Hack)<td>playable<td><td><td><td>working<td>mslug5<td>2021<td>hack<td>Neo Geo MVS
+<tr><td>mslug1v2<td>Metal Slug - Super Vehicle-001 (1v2 Mode, Hack)<td>playable<td><td><td><td>working<td>mslug<td>2023<td>hack<td>Neo Geo MVS
+<tr><td>mslug2ct<td>Metal Slug 2 - Super Vehicle-001/II (Survival, Hack)<td>playable<td><td><td><td>working<td>mslug2<td>2018<td>hack<td>Neo Geo MVS
+<tr><td>mslug2dd<td>Metal Slug 2 - Super Vehicle-001/II (Starlight, Hack)<td>playable (slow)<td><td><td><td>working<td>mslug2<td>2022<td>hack<td>Neo Geo MVS
+<tr><td>mslug2dg<td>Metal Slug 2 - Super Vehicle-001/II (Multifunction, Hack)<td>playable<td><td><td><td>working<td>mslug2<td>2017<td>hack<td>Neo Geo MVS
+<tr><td>mslug2eg<td>Metal Slug 2 - Super Vehicle-001/II (Extraction Green Turbo, Hack)<td>playable<td><td><td><td>working<td>mslug2<td>2021<td>hack<td>Neo Geo MVS
+<tr><td>mslug2fm<td>Metal Slug 2 - Super Vehicle-001/II (Friendly Fire FC2, Hack)<td>playable<td><td><td><td>working<td>mslug2<td>2021<td>hack<td>Neo Geo MVS
+<tr><td>mslug2p<td>Metal Slug 2 - Super Vehicle-001/II (Weapon Storage, Hack)<td>playable<td><td><td><td>working<td>mslug2<td>2015<td>hack<td>Neo Geo MVS
+<tr><td>mslug2r<td>Metal Slug 2 - Super Vehicle-001/II (Enemy Remix, Hack)<td>playable<td><td><td><td>working<td>mslug2<td>2014<td>hack<td>Neo Geo MVS
+<tr><td>mslug2t<td>Metal Slug 2 Turbo (NGM-9410) (hack)<td>playable<td><td><td><td>working<td>mslug2<td>2015<td>hack (trap15)<td>Neo Geo MVS
+<tr><td>mslug2unity<td>Metal Slug 2 - Super Vehicle-001/II Unity (Added Timer Ver. 2021-01-22)<td>playable<td><td><td><td>working<td>mslug2<td>2021<td>hack<td>Neo Geo MVS
+<tr><td>mslug3a<td>Metal Slug 3 (NGM-2560, earlier)<td>nonworking<td><td><td><td>loadhang<td>mslug3<td>2000<td>SNK<td>Neo Geo MVS
+<tr><td>mslug3c<td>Metal Slug 3 (Enemy Remix, Hack)<td>playable<td><td><td><td>working<td>mslug3<td>2019<td>hack<td>Neo Geo MVS
+<tr><td>mslug3cq<td>Metal Slug 3 (Legend, Hack)<td>playable<td><td><td><td>working<td>mslug3<td>2024<td>hack<td>Neo Geo MVS
+<tr><td>mslug3cqi<td>Metal Slug 3 (Legendary Unlimited Fire, Hack)<td>playable<td><td><td><td>working<td>mslug3<td>2024<td>hack<td>Neo Geo MVS
+<tr><td>mslug3dd<td>Metal Slug 3 (Starlight, Hack)<td>playable (slow)<td><td><td><td>working<td>mslug3<td>2022<td>hack<td>Neo Geo MVS
+<tr><td>mslug3eb<td>Metal Slug 3 (Blue, Hack)<td>nonworking<td><td><td><td>loadhang<td>mslug3<td>2014<td>hack<td>Neo Geo MVS
+<tr><td>mslug3fd<td>Metal Slug 3 (Fully Decrypted)<td>playable<td><td><td><td>working<td>mslug3<td>2000<td>SNK<td>Neo Geo MVS
+<tr><td>mslug3g<td>Metal Slug 3 (Multifunction, Hack)<td>unplayable (coin)<td><td><td><td>working<td>mslug3<td>2022<td>hack<td>Neo Geo MVS
+<tr><td>mslug3gw<td>Metal Slug 3 (Onimusha Samanosuke, Hack)<td>playable<td><td><td><td>working<td>mslug3<td>2018<td>hack<td>Neo Geo MVS
+<tr><td>mslug3i<td>Metal Slug 3 (Firepower Enhance, Hack)<td>nonworking<td><td><td><td>loadhang<td>mslug3<td>2021<td>hack<td>Neo Geo MVS
+<tr><td>mslug3ki<td>Metal Slug 3 (Komorebi, Hack)<td>playable (slow)<td><td><td><td>working<td>mslug3<td>2022<td>hack<td>Neo Geo MVS
+<tr><td>mslug3lw<td>Metal Slug 3 (Last Bullet Remix, Hack)<td>playable<td><td><td><td>working<td>mslug3<td>2023<td>hack<td>Neo Geo MVS
+<tr><td>mslug3ps<td>Metal Slug 3 (Pigeon Slug, Hack)<td>playable<td><td><td><td>working<td>mslug3<td>2023<td>hack<td>Neo Geo MVS
+<tr><td>mslug3sc<td>Metal Slug 3 (Survival, Hack)<td>playable<td><td><td><td>working<td>mslug3<td>2023<td>hack<td>Neo Geo MVS
+<tr><td>mslug3sd<td>Metal Slug 3 (Shop, Hack)<td>playable<td><td><td><td>working<td>mslug3<td>2017<td>hack<td>Neo Geo MVS
+<tr><td>mslug3se<td>Metal Slug 3 (Special, Hack)<td>playable<td><td><td><td>working<td>mslug3<td>2022<td>hack<td>Neo Geo MVS
+<tr><td>mslug3unity<td>Metal Slug 3 Unity (Added Timer Ver. 2021-02-13)<td>nonworking<td><td><td><td>loadhang<td>mslug3<td>2021<td>hack<td>Neo Geo MVS
+<tr><td>mslug3v<td>Metal Slug 3 (Enhanced Violence, Hack)<td>playable<td><td><td><td>working<td>mslug3<td>2012<td>hack<td>Neo Geo MVS
+<tr><td>mslug3x<td>Metal Slug 3X (Complete Collection)<td>playable<td><td><td><td>working<td><td>2022<td>WillNie<td>Neo Geo AES
+<tr><td>mslug3zh<td>Metal Slug 3 (Vehicle Summon, Hack)<td>playable<td><td><td><td>working<td>mslug3<td>2017<td>hack<td>Neo Geo MVS
+<tr><td>mslug4a<td>Metal Slug 4 (20th Anniversary, Hack)<td>nonworking<td><td><td><td>loadcorrupt<td>mslug4<td>2021<td>hack<td>Neo Geo MVS
+<tr><td>mslug4ar<td>Metal Slug 4 (Random Ammunition, Hack)<td>nonworking<td><td><td><td>loadcorrupt<td>mslug4<td>2023<td>hack<td>Neo Geo MVS
+<tr><td>mslug4c<td>Metal Slug 4 (Enemy Remix, Hack)<td>nonworking<td><td><td><td>loadcorrupt<td>mslug4<td>2020<td>hack<td>Neo Geo MVS
+<tr><td>mslug4dd<td>Metal Slug 4 (Starlight, Hack)<td>nonworking<td><td><td><td>loadcorrupt<td>mslug4<td>2022<td>hack<td>Neo Geo MVS
+<tr><td>mslug4dg<td>Metal Slug 4 (Multifunction, Hack)<td>nonworking<td><td><td><td>loadcorrupt<td>mslug4<td>2017<td>hack<td>Neo Geo MVS
+<tr><td>mslug4fd<td>Metal Slug 4 (Fully Decrypted)<td>nonworking<td><td><td><td>loadcorrupt<td>mslug4<td>2002<td>Mega / Noise Factory / Playmore<td>Neo Geo MVS
+<tr><td>mslug4h<td>Metal Slug 4 (NGH-2630)<td>nonworking<td><td><td><td>loadcorrupt<td>mslug4<td>2002<td>Mega / Noise Factory / Playmore<td>Neo Geo MVS
+<tr><td>mslug4ki<td>Metal Slug 4 (Komorebi, Hack)<td>nonworking<td><td><td><td>loadcorrupt<td>mslug4<td>2022<td>hack<td>Neo Geo MVS
+<tr><td>mslug4lq<td>Metal Slug 4 (Last Bullet Remix - Without body armor, Hack)<td>nonworking<td><td><td><td>loadcorrupt<td>mslug4<td>2023<td>hack<td>Neo Geo MVS
+<tr><td>mslug4lw<td>Metal Slug 4 (Last Bullet Remix, Hack)<td>nonworking<td><td><td><td>loadcorrupt<td>mslug4<td>2023<td>hack<td>Neo Geo MVS
+<tr><td>mslug4q<td>Metal Slug 4 (The Longest Battle, Hack)<td>nonworking<td><td><td><td>loadcorrupt<td>mslug4<td>2022<td>hack<td>Neo Geo MVS
+<tr><td>mslug4unity<td>Metal Slug 4 Unity (Added Timer Ver. 2021-01-30)<td>nonworking<td><td><td><td>loadcorrupt<td>mslug4<td>2021<td>hack<td>Neo Geo MVS
+<tr><td>mslug5b<td>Metal Slug 5 (bootleg, set 1)<td>unplayable (graphics)<td><td><td><td>working<td>mslug5<td>2003<td>bootleg<td>Neo Geo MVS
+<tr><td>mslug5b2<td>Metal Slug 5 (bootleg, set 2)<td>nonworking<td><td><td><td>loadhang<td>mslug5<td>2003<td>bootleg<td>Neo Geo MVS
+<tr><td>mslug5bs<td>Metal Slug 5 (Boss Battles, Hack)<td>playable<td><td><td><td>working<td>mslug5<td>2024<td>hack<td>Neo Geo MVS
+<tr><td>mslug5c<td>Metal Slug 5 (Enemy Remix, Hack)<td>playable (slow)<td><td><td><td>working<td>mslug5<td>2019<td>hack<td>Neo Geo MVS
+<tr><td>mslug5cq<td>Metal Slug 5 (Legend, Hack)<td>playable<td><td><td><td>working<td>mslug5<td>2024<td>hack<td>Neo Geo MVS
+<tr><td>mslug5db<td>Metal Slug 5 (Enemy Enhance, Hack)<td>playable (little slow)<td><td><td><td>working<td>mslug5<td>2022<td>hack<td>Neo Geo MVS
+<tr><td>mslug5dd<td>Metal Slug 5 (Starlight, Hack)<td>playable<td><td><td><td>working<td>mslug5<td>2022<td>hack<td>Neo Geo MVS
+<tr><td>mslug5dg<td>Metal Slug 5 (Multifunction, Hack)<td>playable<td><td><td><td>working<td>mslug5<td>2017<td>hack<td>Neo Geo MVS
+<tr><td>mslug5es<td>Metal Slug 5 (The Longest Battle, Hack)<td>playable (slow)<td><td><td><td>working<td>mslug5<td>2023<td>hack<td>Neo Geo
+<tr><td>mslug5ex<td>Metal Slug 5 (Extend v1.2, Hack)<td>playable<td><td><td><td>working<td>mslug5<td>2022<td>hack<td>Neo Geo MVS
+<tr><td>mslug5f<td>Metal Slug 5 (Fierce Battle, Hack)<td>playable<td><td><td><td>working<td>mslug5<td>2015<td>hack<td>Neo Geo MVS
+<tr><td>mslug5fd<td>Metal Slug 5 (Fully Decrypted)<td>playable<td><td><td><td>working<td>mslug5<td>2003<td>SNK Playmore<td>Neo Geo MVS
+<tr><td>mslug5ki<td>Metal Slug 5 (Komorebi, Hack)<td>playable<td><td><td><td>working<td>mslug5<td>2022<td>hack<td>Neo Geo
+<tr><td>mslug5mg<td>Metal Slug 5 (Devil Enemy Remix, Hack)<td>playable (little slow)<td><td><td><td>working<td>mslug5<td>2019<td>hack<td>Neo Geo MVS
+<tr><td>mslug5nd<td>Metal Slug 5 (Not Encrypted)<td>playable<td><td><td><td>working<td>mslug5<td>2003<td>SNK Playmore<td>Neo Geo MVS
+<tr><td>mslug5sc<td>Metal Slug 5 (Survival, Hack)<td>playable<td><td><td><td>working<td>mslug5<td>2023<td>hack<td>Neo Geo MVS
+<tr><td>mslug5sg<td>Metal Slug 5 (Stone Turtle, Hack)<td>playable<td><td><td><td>working<td>mslug5<td>2024<td>hack<td>Neo Geo MVS
+<tr><td>mslug5unity<td>Metal Slug 5 Unity (Added Timer Ver. 2021-04-23)<td>nonworking<td><td><td><td>loadhang<td>mslug5<td>2021<td>hack<td>Neo Geo MVS
+<tr><td>mslug5w<td>Metal Slug 5 (New Battle, Hack)<td>playable<td><td><td><td>working<td>mslug5<td>2015<td>hack<td>Neo Geo MVS
+<tr><td>mslug5x<td>Metal Slug 5 (X, Hack)<td>playable<td><td><td><td>working<td>mslug5<td>2022<td>hack<td>Neo Geo MVS
+<tr><td>mslug5zh<td>Metal Slug 5 (Vehicle Summon, Hack)<td>playable<td><td><td><td>working<td>mslug5<td>2018<td>hack<td>Neo Geo MVS
+<tr><td>mslugdg<td>Metal Slug - Super Vehicle-001 (Multifunction, Hack)<td>playable<td><td><td><td>working<td>mslug<td>2018<td>hack<td>Neo Geo MVS
+<tr><td>mslugfc1<td>Metal Slug - Super Vehicle-001 (Random Item, Hack)<td>playable<td><td><td><td>working<td>mslug<td>2024<td>Alice<td>Neo Geo MVS
+<tr><td>mslugfc2<td>Metal Slug - Super Vehicle-001 (Random Item & Powerful Enemy Defense, Hack)<td>playable<td><td><td><td>working<td>mslug<td>2024<td>Alice<td>Neo Geo MVS
+<tr><td>mslugfs<td>Metal Slug - Super Vehicle-001 (Firepower Showdown, Hack)<td>playable<td><td><td><td>working<td>mslug<td>2024<td>hack<td>Neo Geo MVS
+<tr><td>mslugqy<td>Metal Slug - Super Vehicle-001 (Origins, Hack)<td>playable<td><td><td><td>working<td>mslug<td>2024<td>hack<td>Neo Geo MVS
+<tr><td>mslugunity<td>Metal Slug Unity (Added Timer Ver. 2021-02-05)<td>playable<td><td><td><td>working<td>mslug<td>2021<td>hack<td>Neo Geo MVS
+<tr><td>mslugx2r<td>Metal Slug X - Super Vehicle-001 (2R, Hack)<td>playable<td><td><td><td>working<td>mslugx<td>2020<td>hack<td>Neo Geo MVS
+<tr><td>mslugxc1<td>Metal Slug X - Super Vehicle-001 (Multi Vehicle, Hack)<td>playable<td><td><td><td>working<td>mslugx<td>2013<td>hack<td>Neo Geo MVS
+<tr><td>mslugxc2<td>Metal Slug X - Super Vehicle-001 (Enemy Remix, Hack)<td>playable<td><td><td><td>working<td>mslugx<td>2013<td>hack<td>Neo Geo MVS
+<tr><td>mslugxcq<td>Metal Slug X - Super Vehicle-001 (Legend, Hack)<td>playable<td><td><td><td>working<td>mslugx<td>2024<td>hack<td>Neo Geo MVS
+<tr><td>mslugxcqi<td>Metal Slug X - Super Vehicle-001 (Legendary Unlimited Fire, Hack)<td>playable<td><td><td><td>working<td>mslugx<td>2024<td>hack<td>Neo Geo MVS
+<tr><td>mslugxdd<td>Metal Slug X - Super Vehicle-001 (Starlight, Hack)<td>playable<td><td><td><td>working<td>mslugx<td>2022<td>hack<td>Neo Geo MVS
+<tr><td>mslugxdg<td>Metal Slug X - Super Vehicle-001 (Multifunction, Hack)<td>playable<td><td><td><td>working<td>mslugx<td>2023<td>hack<td>Neo Geo MVS
+<tr><td>mslugxeb<td>Metal Slug X - Super Vehicle-001 (Blue, Hack)<td>playable<td><td><td><td>working<td>mslugx<td>2016<td>hack<td>Neo Geo MVS
+<tr><td>mslugxif<td>Metal Slug X - Super Vehicle-001 (Infinite Firepower, Hack)<td>playable<td><td><td><td>working<td>mslugx<td>2021<td>hack<td>Neo Geo MVS
+<tr><td>mslugxlb<td>Metal Slug X - Super Vehicle-001 (Extreme Space, Hack)<td>playable<td><td><td><td>working<td>mslugx<td>2015<td>hack<td>Neo Geo MVS
+<tr><td>mslugxsc<td>Metal Slug X - Super Vehicle-001 (Survival, Hack)<td>playable<td><td><td><td>working<td>mslugx<td>2023<td>hack<td>Neo Geo MVS
+<tr><td>mslugxsv<td>Metal Slug X - Super Vehicle-001 (Unbounded, Hack)<td>playable<td><td><td><td>working<td>mslugx<td>2021<td>hack<td>Neo Geo MVS
+<tr><td>mslugxunity<td>Metal Slug X - Super Vehicle-001 Unity (Added Timer Ver. 2021-01-23)<td>playable<td><td><td><td>working<td>mslugx<td>2021<td>hack<td>Neo Geo MVS
+<tr><td>mslugxxr<td>Metal Slug X - Super Vehicle-001 (Warriors, Hack)<td>playable<td><td><td><td>working<td>mslugx<td>2021<td>hack<td>Neo Geo MVS
+<tr><td>msqyfc1<td>Metal Slug - Super Vehicle-001 (Origins Item Random, Hack)<td>playable<td><td><td><td>working<td>mslug<td>2024<td>Alice<td>Neo Geo MVS
+<tr><td>msx1v2<td>Metal Slug X - Super Vehicle-001 (1v2 Mode, Hack)<td>playable<td><td><td><td>working<td>mslugx<td>2019<td>hack<td>Neo Geo MVS
+<tr><td>msx2r1v2<td>Metal Slug X - Super Vehicle-001 (2R 1v2 Mode, Hack)<td>playable<td><td><td><td>working<td>mslugx<td>2020<td>hack<td>Neo Geo MVS
+<tr><td>msx2reb<td>Metal Slug X - Super Vehicle-001 (2R Blue, Hack)<td>playable<td><td><td><td>working<td>mslugx<td>2020<td>hack<td>Neo Geo MVS
+<tr><td>msxsrf<td>Metal Slug X - Super Vehicle-001 (AzStar Soda Remix FC2, Hack)<td>playable<td><td><td><td>working<td>mslugx<td>2021<td>hack<td>Neo Geo MVS
+<tr><td>nblktiger<td>Neo Black Tiger (Demo)<td>playable<td><td><td><td>working<td><td>2020<td>OzzyOuzo<td>Neo Geo MVS
+<tr><td>neo2500<td>Neo 2500 Demo<td>playable (demo)<td><td><td><td>working<td><td>2004<td>blastar@gmx.net<td>Neo Geo MVS
+<tr><td>neo3ddmo<td>NeoGeo 3D! Demo<td>playable (demo)<td><td><td><td>working<td><td>2012<td>Oxygene<td>Neo Geo
+<tr><td>neocstlv<td>Neo CastleVania Demo<td>playable (demo)<td><td><td><td>working<td><td>2004<td>Barf/BarfHappy<td>Neo Geo
+<tr><td>neodemo<td>Chaos Demo (Neo Geo)<td>playable (demo)<td><td><td><td>working<td><td>2002<td>Chaos<td>Neo Geo MVS
+<tr><td>neogalag<td>Galaga Demo (set 1)<td>playable (demo)<td><td><td><td>working<td><td>2013<td>Cristiano Bei/www.iocerom.com<td>Neo Geo
+<tr><td>neogalaga<td>Galaga Demo (set 2)<td>playable (demo)<td><td><td><td>working<td>neogalag<td>2013<td>Cristiano Bei/www.iocerom.com<td>Neo Geo
+<tr><td>neonopon<td>Neo No Panepon (beta)<td>playable<td><td><td><td>working<td><td>????<td>blastar@gmx.net<td>Neo Geo MVS
+<tr><td>neopang<td>Neo Pang<td>playable (graphics)<td><td><td><td>working<td><td>2010<td>CeL<td>Neo Geo MVS
+<tr><td>neopong<td>Neo Pong (ver 1.1)<td>playable<td><td><td><td>working<td><td>2002<td>Neo Dev Corporation<td>Neo Geo MVS
+<tr><td>neoponga<td>Neo Pong (ver 1.0)<td>unplayable (boot loop)<td><td><td><td>working<td>neopong<td>2002<td>Neo Dev Corporation<td>Neo Geo MVS
+<tr><td>neoprimo<td>Primo Demo<td>playable (demo)<td><td><td><td>working<td><td>2013<td>iocerom.com<td>Neo Geo
+<tr><td>neotet<td>NeoGeo 2-Player Tetris<td>playable (sound)<td><td><td><td>working<td><td>2013<td>Crim/Stephen<td>Neo Geo
+<tr><td>neothndr<td>Neo Thunder<td>playable (sound)<td><td><td><td>working<td><td>2012<td>Sebastian Mihai<td>Neo Geo
+<tr><td>neotris<td>NeoTRIS (Free Beta 2, Ver. 202009)<td>playable<td><td><td><td>working<td><td>2020<td>Chipsonsteroids<td>Neo Geo MVS
+<tr><td>neoww2<td>WW2 (Demo) - Arcade Development Project<td>unplayable (locks up)<td><td><td><td>working<td><td>2012<td>Charles DOTY/RasterSoft (USA)<td>Neo Geo
+<tr><td>ngem2k<td>NGEM2K (beta 2006-01-18)<td>nonworking<td><td><td><td>loadcorrupt<td><td>2006<td>homebrew<td>Neo Geo MVS
+<tr><td>ngfrog<td>Frog Feast (Neo Geo)<td>playable<td><td><td><td>working<td><td>2006<td>Rastersoft<td>Neo Geo MVS
+<tr><td>ngftdemo<td>NGF Transparency Demo<td>nonworking<td><td><td><td>loadcorrupt<td><td>2012<td>CeL<td>Neo Geo
+<tr><td>ngmontst<td>Monitor Test Patterns Tool (v1.3)<td>playable<td><td><td><td>working<td><td>2022<td>M.Priewe / NeoHomeBrew<td>Neo Geo MVS
+<tr><td>ninjamasha<td>Ninja Master's - Haoh-ninpo-cho (Plus)<td>playable<td><td><td><td>working<td>ninjamas<td>1996<td>7325<td>Neo Geo MVS
+<tr><td>nsmb<td>Neo Super Mario Bros (Demo, v0.01)<td>playable<td><td><td><td>working<td><td>2020<td>OzzyOuzo<td>Neo Geo MVS
+<!--<tr><td>pbobblenb<td>Puzzle Bobble / Bust-A-Move (Neo-Geo, bootleg)<td><td><td><td><td><td>pbobblen<td>1994<td>bootleg<td>Neo Geo MVS-->
+<tr><td>pnyaaa<td>Pochi and Nyaa (Ver 2.00)<td>playable (sound)<td><td><td><td>working<td>pnyaa<td>2003<td>Aiky / Taito<td>Neo Geo MVS
+<tr><td>poknight<td>Poker Night<td>playable<td><td><td><td>working<td><td>199?<td>Jeff Kurtz<td>Neo Geo MVS
+<tr><td>proneon<td>Project Neon (Caravan Edition, prealpha v0.4.19)<td>playable (rotation)<td>270<td><td><td>working<td><td>2019<td>FULLSET<td>Neo Geo MVS
+<tr><td>quizdaisk<td>Quiz Salibtamjeong - The Last Count Down (Korean localized Quiz Daisousa Sen)<td>playable (nonenglish)<td><td><td><td>working<td>quizdais<td>1995<td>SNK / Viccom<td>Neo Geo MVS
+<tr><td>quizkofk<td>Quiz King of Fighters (Korea)<td>playable (nonenglish)<td><td><td><td>working<td>quizkof<td>1996<td>Saurus / Viccom (SNK license)<td>Neo Geo MVS
+<tr><td>rallych<td>Rally Chase (Neo CD conversion)<td>playable (graphics)<td><td><td><td>working<td>trally<td>1991<td>hack<td>Neo Geo MVS
+<tr><td>rbff1k<td>Real Bout Fatal Fury / Real Bout Garou Densetsu (Korean release)<td>playable<td><td><td><td>working<td>rbff1<td>1995<td>SNK<td>Neo Geo MVS
+<tr><td>rbff1ka<td>Real Bout Fatal Fury / Real Bout Garou Densetsu (Korean release, bug fix revision)<td>playable<td><td><td><td>working<td>rbff1<td>1995<td>SNK<td>Neo Geo MVS
+<tr><td>rbff2bs<td>Real Bout Fatal Fury 2 - The Newcomers / Real Bout Garou Densetsu 2 - The Newcomers (Secret Character, Hack)<td>nonworking<td><td><td><td>loadcorrupt<td>rbff2<td>1998<td>hack<td>Neo Geo MVS
+<tr><td>rbffspbs<td>Real Bout Fatal Fury Special / Real Bout Garou Densetsu Special (Boss, Hack)<td>playable<td><td><td><td>working<td>rbffspec<td>1996<td>hack<td>Neo Geo MVS
+<tr><td>rbffspeck<td>Real Bout Fatal Fury Special / Real Bout Garou Densetsu Special (Korean release)<td>playable<td><td><td><td>working<td>rbffspec<td>1996<td>SNK<td>Neo Geo MVS
+<tr><td>roboarmya<td>Robo Army (NGM-032 ~ NGH-032)<td>playable<td><td><td><td>working<td>roboarmy<td>1991<td>SNK<td>Neo Geo MVS
+<tr><td>robocopi<td>Robocop (FMV Demo)<td>unplayable (boot loop+locks up)<td><td><td><td>working<td><td>2009<td>Sergi<td>Neo Geo MVS
+<tr><td>rotdh<td>Rage of the Dragons (NGH-2640?)<td>playable (sound)<td><td><td><td>working<td>rotd<td>2002<td>Evoga / Playmore<td>Neo Geo MVS
+<tr><td>samsh2jq<td>Samurai Shodown II / Shin Samurai Spirits - Haohmaru Jigokuhen (Infinite Power, Hack)<td>playable<td><td><td><td>working<td>samsho2<td>2023<td>hack<td>Neo Geo MVS
+<tr><td>samsh2sp<td>Samurai Shodown II / Shin Samurai Spirits - Haohmaru Jigokuhen (Special 2017, Hack)<td>unplayable (locks up)<td><td><td><td>working<td>samsho2<td>2023<td>hack<td>Neo Geo MVS
+<tr><td>samsh3bs<td>Samurai Shodown III / Samurai Spirits - Zankurou Musouken (Boss, Hack)<td>playable<td><td><td><td>working<td>samsho3<td>2003<td>hack<td>Neo Geo MVS
+<tr><td>samsh4bs<td>Samurai Shodown IV - Amakusa's Revenge / Samurai Spirits - Amakusa Kourin (Boss, Hack)<td>playable<td><td><td><td>working<td>samsho4<td>2004<td>hack<td>Neo Geo MVS
+<tr><td>samsh4sp<td>Samurai Shodown IV - Amakusa's Revenge / Samurai Spirits - Amakusa Kourin (Special 2017, Hack)<td>playable<td><td><td><td>working<td>samsho4<td>2017<td>hack<td>Neo Geo MVS
+<tr><td>samsh5bs<td>Samurai Shodown V / Samurai Spirits Zero (Boss, Hack)<td>playable<td><td><td><td>working<td>samsho5<td>2004<td>hack<td>Neo Geo MVS
+<tr><td>samsh5fd<td>Samurai Shodown V / Samurai Spirits Zero (Fully Decrypted)<td>playable<td><td><td><td>working<td>samsho5<td>2003<td>Yuki Enterprise / SNK Playmore<td>Neo Geo MVS
+<tr><td>samsh5fe<td>Samurai Shodown V Special / Samurai Spirits Zero Special (NGM-272) (NGH-272) (Final Edition, location test version)<td>playable<td><td><td><td>working<td>samsh5sp<td>2004<td>Yuki Enterprise / SNK Playmore<td>Neo Geo MVS
+<tr><td>samsh5pf<td>Samurai Shodown V Perfect / Samurai Spirits Zero Perfect (bootleg, hack)<td>playable<td><td><td><td>working<td>samsh5sp<td>2020<td>bootleg<td>Neo Geo MVS
+<tr><td>samsh5sph<td>Samurai Shodown V Special / Samurai Spirits Zero Special (NGH-2720, 2nd release, less censored)<td>playable (sound)<td><td><td><td>working<td>samsh5sp<td>2004<td>Yuki Enterprise / SNK Playmore<td>Neo Geo MVS
+<tr><td>samsh5spho<td>Samurai Shodown V Special / Samurai Spirits Zero Special (NGH-2720, 1st release, censored)<td>playable (sound)<td><td><td><td>working<td>samsh5sp<td>2004<td>Yuki Enterprise / SNK Playmore<td>Neo Geo MVS
+<tr><td>samsho2k<td>Saulabi Spirits / Jin Saulabi Tu Hon (Korean release of Samurai Shodown II, set 1)<td>playable<td><td><td><td>working<td>samsho2<td>1994<td>SNK<td>Neo Geo MVS
+<tr><td>samsho2ka<td>Saulabi Spirits / Jin Saulabi Tu Hon (Korean release of Samurai Shodown II, set 2)<td>unplayable (locks up)<td><td><td><td>working<td>samsho2<td>1994<td>SNK<td>Neo Geo MVS
+<tr><td>samsho2pe<td>Samurai Shodown II / Shin Samurai Spirits - Haohmaru Jigokuhen (Perfect V. 2.3, Hack)<td>nonworking<td><td><td><td>loadcorrupt<td>samsho2<td>2024<td>hack (Bear)<td>Neo Geo MVS
+<tr><td>samsho2t<td>Samurai Shodown II / Shin Samurai Spirits - Haohmaru Jigokuhen (Optimized, Hack)<td>unplayable (locks up)<td><td><td><td>working<td>samsho2<td>2020<td>hack<td>Neo Geo MVS
+<tr><td>samsho3h<td>Samurai Shodown III / Samurai Spirits - Zankurou Musouken (NGH-087)<td>playable<td><td><td><td>working<td>samsho3<td>1995<td>SNK<td>Neo Geo MVS
+<tr><td>samsho4k<td>Paewang Jeonseol / Legend of a Warrior (Korean censored Samurai Shodown IV)<td>playable<td><td><td><td>working<td>samsho4<td>1996<td>SNK<td>Neo Geo MVS
+<tr><td>samsho5a<td>Samurai Shodown V / Samurai Spirits Zero (NGM-2700, set 2)<td>playable (sound)<td><td><td><td>working<td>samsho5<td>2003<td>Yuki Enterprise / SNK Playmore<td>Neo Geo MVS
+<tr><td>samsho5x<td>Samurai Shodown V / Samurai Spirits Zero (hack of XBOX version)<td>playable<td><td><td><td>working<td>samsho5<td>2013<td>hack<td>Neo Geo MVS
+<tr><td>samshoa<td>Samurai Shodown / Samurai Spirits (NGM-045, alt board)<td>playable<td><td><td><td>working<td>samsho<td>1993<td>SNK<td>Neo Geo MVS
+<tr><td>samshobs<td>Samurai Shodown / Samurai Spirits (Boss, Hack)<td>playable<td><td><td><td>working<td>samsho<td>2003<td>hack<td>Neo Geo MVS
+<tr><td>santaball<td>SantaBall - Christmas Tennis Game<td>nonworking<td><td><td><td>loadcorrupt<td><td>2012<td>M.Priewe / NeoHomeBrew<td>Neo Geo MVS
+<tr><td>savagereb<td>Savage Reign / Fu'un Mokushiroku - Kakutou Sousei (Boss Hack)<td>playable<td><td><td><td>working<td>savagere<td>1995<td>Yumeji, Dodowang[EGCG]<td>Neo Geo MVS
+<tr><td>savagerp<td>Savage Reign / Fu'un Mokushiroku - Kakutou Sousei (Plus, Hack)<td>playable<td><td><td><td>working<td>savagere<td>2015<td>hack<td>Neo Geo MVS
+<tr><td>sbp<td>Super Bubble Pop<td>nonworking<td><td><td><td>loadcorrupt<td><td>2004<td>Vektorlogic<td>Neo Geo MVS
+<tr><td>sdodgebh<td>Super Dodge Ball / Kunio no Nekketsu Toukyuu Densetsu (Secret Character Hack)<td>nonworking<td><td><td><td>norun<td>sdodgeb<td>1996<td>hack<td>Neo Geo MVS
+<tr><td>sengk3eb<td>Sengoku 3 / Sengoku Densho 2001 (Green Blue, Hack)<td>nonworking<td><td><td><td>loadcorrupt<td>sengoku3<td>2010-2013<td>hack<td>Neo Geo MVS
+<tr><td>sengk3fd<td>Sengoku 3 / Sengoku Densho 2001 (Fully Decrypted)<td>nonworking<td><td><td><td>loadcorrupt<td>sengoku3<td>2001<td>Noise Factory / SNK<td>Neo Geo MVS
+<tr><td>sengk3fs<td>Sengoku 3 / Sengoku Densho 2001 (Demeanor, Hack)<td>nonworking<td><td><td><td>loadcorrupt<td>sengoku3<td>2020<td>hack<td>Neo Geo MVS
+<tr><td>sengok3i<td>Sengoku 3 / Sengoku Densho 2001 (Infinite Power, Hack)<td>nonworking<td><td><td><td>loadcorrupt<td>sengoku3<td>2020<td>hack<td>Neo Geo MVS
+<tr><td>sengoku3a<td>Sengoku 3 / Sengoku Densho 2001 (set 2)<td>nonworking<td><td><td><td>loadcorrupt<td>sengoku3<td>2001<td>Noise Factory / SNK<td>Neo Geo MVS
+<tr><td>sengoku3s<td>Sengoku 3 / Sengoku Densho 2001 (Evolution 1.0, FCHT hack)<td>nonworking<td><td><td><td>loadcorrupt<td>sengoku3<td>2001<td>hack<td>Neo Geo MVS
+<tr><td>sengokuh<td>Sengoku / Sengoku Denshou (NGH-017, US)<td>playable<td><td><td><td>working<td>sengoku<td>1991<td>SNK<td>Neo Geo MVS
+<tr><td>shocktroa<td>Shock Troopers (set 2)<td>playable<td><td><td><td>working<td>shocktro<td>1997<td>Saurus<td>Neo Geo MVS
+<tr><td>socbrawlh<td>Soccer Brawl (NGH-031)<td>playable<td><td><td><td>working<td>socbrawl<td>1991<td>SNK<td>Neo Geo MVS
+<tr><td>spidermi<td>Spiderman (FMV Demo)<td>unplayable (boot loop+locks up)<td><td><td><td>working<td><td>2009<td>Sergi<td>Neo Geo MVS
+<tr><td>ss5spfd<td>Samurai Shodown V Special / Samurai Spirits Zero Special (Fully Decrypted)<td>playable<td><td><td><td>working<td>samsh5sp<td>2004<td>Yuki Enterprise / SNK Playmore<td>Neo Geo MVS
+<tr><td>ssho2emb<td>Samurai Shodown II / Shin Samurai Spirits - Haohmaru Jigokuhen (Move Modeasy Special Attacks V4, Hack)<td>playable<td><td><td><td>working<td>samsho2<td>2009<td>hack<td>Neo Geo MVS
+<tr><td>svcfd<td>SNK vs. Capcom - SVC Chaos (Fully Decrypted)<td>playable<td><td><td><td>working<td>svc<td>2003<td>Playmore / Capcom<td>Neo Geo MVS
+<tr><td>svcsplse<td>SNK vs. Capcom - SVC Chaos Super Plus (Enhanced, Hack)<td>nonworking<td><td><td><td>norun<td>svc<td>2023<td>hack<td>Neo Geo MVS
+<tr><td>syscheck<td>Neo System Check (ver 1.0b)<td>playable<td><td><td><td>working<td><td>????<td>blastar@gmx.net<td>Neo Geo MVS
+<tr><td>teot<td>The Eye of Typhoon (Beta 7 Version)<td>playable<td><td><td><td>working<td><td>2022<td>OzzyOuzo<td>Neo Geo MVS
+<tr><td>test240p<td>240p Test Suite (v1.0)<td>playable<td><td><td><td>working<td><td>2023<td>Artemio<td>Neo Geo MVS
+<tr><td>timesup<td>Time's UP!<td>nonworking<td><td><td><td>loadcorrupt<td><td>2012<td>NGF Dev. Inc.<td>Neo Geo
+<tr><td>timesupd<td>Time's UP! (Demo)<td>nonworking<td><td><td><td>loadcorrupt<td>timesup<td>2012<td>NGF Dev. Inc.<td>Neo Geo
+<tr><td>tmnti<td>Teenage Mutant Ninja Turtles (FMV Demo)<td>unplayable (locks up)<td><td><td><td>working<td><td>2009<td>Sergi<td>Neo Geo MVS
+<tr><td>tmntia<td>Teenage Mutant Ninja Turtles (FMV Demo, alt)<td>unplayable (locks up)<td><td><td><td>working<td>tmnti<td>2009<td>Sergi<td>Neo Geo MVS
+<tr><td>tophuntrh<td>Top Hunter - Roddy & Cathy (NGH-046)<td>playable<td><td><td><td>working<td>tophuntr<td>1994<td>SNK<td>Neo Geo MVS
+<tr><td>totc<td>Treasure of the Caribbean<td>playable<td><td><td><td>working<td><td>2011<td>FACE Corporation / N.C.I - Le Cortex<td>Neo Geo MVS
+<tr><td>twsoc96<td>Tecmo World Soccer '96<td>playable<td><td><td><td>working<td><td>1996<td>Tecmo<td>Neo Geo MVS
+<tr><td>viewpoinp<td>Viewpoint (prototype)<td>unplayable (locks up)<td><td><td><td>working<td>viewpoin<td>1992<td>Sammy / Aicom<td>Neo Geo MVS
+<tr><td>vliner53<td>V-Liner (v0.53)<td>nonworking<td><td><td><td>loadcorrupt<td>vliner<td>2001<td>Dyna / BrezzaSoft<td>Neo Geo MVS
+<tr><td>vliner54<td>V-Liner (v0.54)<td>nonworking<td><td><td><td>loadcorrupt<td>vliner<td>2001<td>Dyna / BrezzaSoft<td>Neo Geo MVS
+<tr><td>vliner6e<td>V-Liner (v0.6e)<td>nonworking<td><td><td><td>loadcorrupt<td>vliner<td>2001<td>Dyna / BrezzaSoft<td>Neo Geo MVS
+<tr><td>vliner7e<td>V-Liner (v0.7e)<td>nonworking<td><td><td><td>loadcorrupt<td>vliner<td>2001<td>Dyna / BrezzaSoft<td>Neo Geo MVS
+<tr><td>wakuw7jq<td>Waku Waku 7 (Enhanced, Hack)<td>playable<td><td><td><td>working<td>wakuwak7<td>2023<td>hack<td>Neo Geo MVS
+<tr><td>wakuwak7bh<td>Waku Waku 7 (Boss Hack)<td>playable<td><td><td><td>working<td>wakuwak7<td>1996<td>hack<td>Neo Geo MVS
+<tr><td>wh2es<td>World Heroes 2 (Easy Special Attacks, Hack)<td>playable (graphics)<td><td><td><td>working<td>wh2<td>1993<td>hack<td>Neo Geo MVS
+<tr><td>wh2h<td>World Heroes 2 (ALH-006)<td>playable (graphics)<td><td><td><td>working<td>wh2<td>1993<td>ADK<td>Neo Geo MVS
+<tr><td>wh2ja<td>World Heroes 2 Jet (ADM-007)<td>playable<td><td><td><td>working<td>wh2j<td>1994<td>ADK / SNK<td>Neo Geo MVS
+<tr><td>wh2jes<td>World Heroes 2 Jet (Easy Special Attacks, Hack)<td>playable<td><td><td><td>working<td>wh2j<td>1994<td>hack<td>Neo Geo MVS
+<tr><td>whpjq<td>World Heroes Perfect (Enhanced, Hack)<td>playable (graphics)<td><td><td><td>working<td>whp<td>2023<td>hack<td>Neo Geo MVS
+<tr><td>xenocrisis<td>Xeno Crisis (NGM-BB01 ~ NGH-BB01)<td>playable<td><td><td><td>working<td><td>2019<td>Bitmap Bureau<td>Neo Geo MVS
+<tr><td>xeviousng<td>Xevious (Neo-Geo Conversion)<td>unplayable (locks up)<td><td><td><td>working<td><td>1982-2023<td>Namco<td>Neo Geo MVS
+<tr><td>yoyoshkn<td>Yo-Yo Shuriken (HB)<td>playable<td><td><td><td>working<td><td>2023<td>LudoSience<td>Neo Geo MVS
+</table>
+<!-- <tr><td>{{{1}}}<td>{{{2}}}<td>{{{3}}}<td>{{{4}}}<td>{{{5}}}<td>{{{6}}}<td>{{{7}}}<td>{{{8}}}<td>{{{9}}}<td>{{{10}}}<td>{{{11}}} -->

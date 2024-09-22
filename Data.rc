@@ -1,7 +1,7 @@
 // UI Images
 1 PNG Data\UI\Octocat.png
 2 PNG Data\UI\Clyde.png
-42 PNG Data\UI\GB300.png
+42 PNG Data\UI\GB300_SF2000.png
 1000 PNG Data\UI\List.png
 1001 PNG Data\UI\FC.png
 1002 PNG Data\UI\PCE.png
@@ -15,6 +15,7 @@
 1010 PNG Data\UI\Buttons.png
 1011 PNG Data\UI\UI.png
 1012 PNG Data\UI\Gears.png
+1013 PNG Data\UI\Arcade.png
 997 PNG Data\UI\Check.png
 998 PNG Data\UI\FavoriteOff.png
 999 PNG Data\UI\Favorite.png
@@ -36,6 +37,7 @@
 
 // Defaults
 1 RCDATA Data\KeyMapInfo.kmp
+2 RCDATA Data\KeyMapInfo_SF2000.kmp
 
 // No-Intro (IDs are their official platform IDs, but the formats have been simplified to include only the data this program needs)
 12 DAT Data\NoIntro\12.bin // NEC - PC Engine
@@ -74,12 +76,15 @@
 // GG2SMS advisory
 // GG2SMS results
 
+// Neo Geo ROM Faker DAT
+2 XML Data\neogeo.fake.xml
+
 // BIOS hacks
-300 RCDATA Data\GB300_Screen.bin
-2000 RCDATA Data\SF2000_Screen.bin
-3190 RCDATA Data\LoadProc_80319a30_original.bin
-3191 RCDATA Data\LoadProc_80319a30.bin
-555 RCDATA Data\bisrv_vt3_lut_555.bin
+//300 RCDATA Data\GB300_Screen.bin
+//2000 RCDATA Data\SF2000_Screen.bin
+//3190 RCDATA Data\LoadProc_80319a30_original.bin
+//3191 RCDATA Data\LoadProc_80319a30.bin
+//555 RCDATA Data\bisrv_vt3_lut_555.bin
 
 // Bootloader
 42 RCDATA Data\Firmware.upk

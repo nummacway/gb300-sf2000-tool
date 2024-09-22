@@ -1,13 +1,11 @@
 This is a tool for managing your [Sup+ GB300 (Game Box) console](https://nummacway.github.io/gb300/).
 
-It is supposed to be the GB300's counterpart to what Tadpole is for the similar Data Frog SF2000, even though the interface is completely different. GB300 Tool does not work with the SF2000 and prevents you from even trying to do so. (There is [a hack of GB300's `bisrv.asd` for SF2000](https://vonmillhausen.github.io/sf2000/#gb300-firmware-ported) made with the intention of using GB300 Tool. There is also [a version with multicore](https://discord.com/channels/741895796315914271/1092831839955193987/1237247978520055828).)
-
-**GB300 Tool does not yet work with "GB300 v2" (the one that has MAME).** The "GB300 v1" (which this tool is for) is the one where you navigate the menu using the shoulder buttons.
+GB300+SF2000 Tool v2.x supports the GB300 v2 (the one that has Arcade games) and SF2000 v1.60 (aka multicore) and v1.71.
 
 
 ## Download
 
-**[Download from GitHub](https://github.com/nummacway/gb300tool/releases/)**
+**[Download from GitHub](https://github.com/nummacway/gb300-sf2000-tool/releases/)**
 
 
 ## Requirements
@@ -17,11 +15,9 @@ Software:
 
 Hardware:
 - microSD (TF) reader (or SD reader with an adapter) that – unlike a phone – has a drive letter
-- Screen resolution must not be lower than that of the [OLPC XO-1](https://en.wikipedia.org/wiki/OLPC_XO), the world's cheapest laptop ever made, released in 2007
+- If your screen resolution is extremely low (under like 800px), you better turn on auto-hiding for Windows' task bar
 
-**Because I was repeatedly asked: No, I will _not_ support laptops that are even worse than a 2007 50-dollar children's laptop.**
-
-If you want to build it yourself, you need Embarcadero Delphi. It should compile with no to minimal changes starting from Delphi XE2. GB300 Tool makes heavy use of negative Zlib window sizes (aka headerless Deflate streams) which are not possible in earlier versions (maybe XE works as well, I don't know). There is a way newer free Community Edition that will do the job.
+If you want to build it yourself, you need Embarcadero Delphi. It should compile with no to minimal changes starting from Delphi XE2. GB300+SF2000 Tool makes heavy use of negative Zlib window sizes (aka headerless Deflate streams) which are not possible in earlier versions (maybe XE works as well, I don't know). There is a way newer free Community Edition that will do the job.
 
 
 ## Features
@@ -30,7 +26,7 @@ If you want to build it yourself, you need Embarcadero Delphi. It should compile
 
 - Small
 - Fast startup times
-- Works quite smooth (depends on Windows GDI and TF card/reader performance)
+- Works quite smooth (depends on TF card/reader performance and on Windows GDI (I'm talking about you, _Keys_ tab!))
 - Clean interface with all icons handcrafted just for this software, according to the OpenMoji style guide
 - Many explanations right inside the tool (more details on this page)
 - Supports drag and drop and multi-select (actions in the ROM details still apply to displayed single file only)
@@ -67,7 +63,7 @@ If you want to build it yourself, you need Embarcadero Delphi. It should compile
 - Enable VT02/VT03 support and patch VT03 LUT
 - Fix broken MD thumbnails (45 of these exist on the GB300)
 - Fix Glazed thumbnail
-- Make all NES ROMs use FCEUmm for better compatibility
+- Make all NES ROMs use FCEUmm for better compatibility (GB300 only)
 - Clear favorites, history and key map
 
 **Multicore**
@@ -85,14 +81,14 @@ If you want to build it yourself, you need Embarcadero Delphi. It should compile
 **UI Editor**
 - Export and replace all images
 - View slices of images that aren't used as a whole
-- Preview images in 66 pixel-perfect simulated scenes
+- Preview images in pixel-perfect simulated scenes
 - Edit general UI settings in `Foldername.ini`
 
 I hope that people will be sharing the themes they made, so we can have a theme gallery with downloads like the SF2000 has.
 
 
 **Limitations**
-- There was a plan to get you suggested GG2SMS hacks when you add GG games where those hacks exist and can be played without an external gamepad. Except for the absolute best hacks that use the entire screen, there is no need for this with multicore. You can find a list of hacks that work on the GB300 stock Picodrive [here](https://nummacway.github.io/gb300/#sega-game-gear).
+- There was a plan to get you suggested GG2SMS hacks when you add GG games where those hacks exist and can be played without an external gamepad. Except for the absolute best hacks that use the entire screen, there is no need for this with multicore. You can find a list of hacks that work on the stock Picodrive [here](https://nummacway.github.io/gb300/#sega-game-gear).
 - Files with bad thumbnails are not supported. Use the two fixes in the BIOS tab before doing anything else with the 45 glitched MD files and _Pokemon - Glazed Version (CN)_.
 - There are no plans for sound-related features. Use [Kerokero](https://github.com/Dteyn/SF2000_BGM_Tool) instead.
 
@@ -102,14 +98,14 @@ There are no plans to add any new features to the tool because I cannot think of
 
 This is the small box that is displayed on startup. Enter your drive letter here. You can also enter a local folder.
 
-**Note:** You are welcome to eject the TF card from your computer while GB 300 Tool is running as long as you do not interact with the tool while the card is missing. However, do not swap between _different_ cards while GB300 Tool is running, as favorites use cached versions of the current static ROM lists.
+**Note:** You are welcome to eject the TF card from your reader while GB300+SF2000 Tool is running as long as you do not interact with the tool while the card is missing. However, do not swap between _different_ cards while GB300+SF2000 Tool is running, as favorites use cached versions of the current static ROM lists.
 
-When you hit _Start_, GB300 Tool makes sure that `Foldername.ini` exists and you made no unsupported modifications to it (ones that would break your console anyway). GB300 Tool will also create all required folders.
+When you hit _Start_, GB300+SF2000 Tool makes sure that `Foldername.ini` exists and you made no unsupported modifications to it (ones that would break your console anyway). It will also create all required folders.
 
 
 ### ROMs
 
-**Note:** GB300 Tool does not use obfuscation in files it writes. This applies to archives with and without thumbnails, as obfuscation is purely optional for both. (It will keep any existing obfuscation if you just change a thumbnail.)
+**Note:** GB300+SF2000 Tool does not use obfuscation in files it writes. This applies to archives with and without thumbnails, as obfuscation is purely optional for both. (It will keep any existing obfuscation if you just change a thumbnail.)
 
 There are the following buttons below the list:
 
@@ -127,7 +123,7 @@ Below the No-Intro status, you'll find a lot of features that for the current RO
 
 - _Duplicate..._ duplicates the file. Useful before applying an IPS patch. You cannot duplicate multicore files because the _Duplicate as multicore_ feature does the same (see below).
 - _Compress_ and _Decompress_ do what they say. Note that _Decompress_ deletes the thumbnail for good.
-- If you are viewing a compressed file containing a `.nes` or `.nfc` ROM, you can change the emulator in a submenu called _NES/FC Stock Emulator_ because the GB300 has two. FCEUmm generally has better compatibility, whereas wiseemu/libvrt supports VT02 and VT03. For example, Galaxian suffers from screen tearing in wiseemu, but is fine in FCEUmm. Do not change this VTxx ROMs, as FCEUmm cannot run them. This feature is not available for `.unf` and `.fds` ROMs because wiseemu does not support these.
+- If you are viewing a compressed file containing a `.nes` or `.nfc` ROM, you can change the emulator in a submenu called _NES/FC Stock Emulator_ because the GB300 has two (even v2). FCEUmm generally has better compatibility, whereas wiseemu/libvrt supports VT02 and VT03. For example, Galaxian suffers from screen tearing in wiseemu, but is fine in FCEUmm. Do not change this VTxx ROMs, as FCEUmm cannot run them. This feature is not available for `.unf` and `.fds` ROMs because wiseemu does not support these.
 - _Duplicate as multicore..._ adds the ROM again. Despite the name of the feature, you can also opt to add the ROM for stock emulators. This feature does not work with compressed files because multicore does not support them and for stock emulators, you can use the normal _Duplicate..._ feature.
 - _Per-Game Core Config..._ allows you to set multicore options for this ROM. This includes Gambatte's palette. Do note that multicore's per-game configuration feature ignores the extension and path.
 
@@ -139,7 +135,7 @@ Below the buttons, you can find screenshots of your save states (should any exis
 - _Copy Screenshot to Clipboard_ copies the screenshot to clipboard.
 - The next three items handle the state content. Note that it is quite unlikely that these work, as save states are pretty much guaranteed to be incompatible between different emulators, and might even be incompatible between different CPU architectures. One example where these features are known to work is PokeMini, where you can freely exchange states between multicore and the Windows version.
 
-As a technical side note: The screenshots do not display in the list (but can still be exported and copied) if states do not share screenshot dimensions. This can happen in a very few PC-Engine games where you can select the resolution, e.g. _Burning Angels_. In this case, only screenshots matching the first state's dimensions are displayed. This can also happen with GB300 Tool's _Create Save State from Data..._ feature which uses the last resolution it has successfully displayed after entering the current tab (or 160×120 if no screenshot has been loaded yet).
+As a technical side note: The screenshots do not display in the list (but can still be exported and copied) if states do not share screenshot dimensions. This can happen in a very few PC-Engine games where you can select the resolution, e.g. _Burning Angels_. In this case, only screenshots matching the first state's dimensions are displayed. This can also happen with GB300+SF2000 Tool's _Create Save State from Data..._ feature which uses the last resolution it has successfully displayed after entering the current tab (or 160×120 if no screenshot has been loaded yet).
 
 If you rightclick the file list in one of the first seven tabs, there is an option to mass import images, called _Import All Images..._. This will first show a confirmation message box where you can decide if you want to delete processed images after the import. After that, it checks all files in the currently-displayed list for images with a name pattern described in the message box. Say you used this in the `MD` tab and it's currently processing a list item called `sega;Zero Wing.md.gba`. In this case, it will try to load the following images in the following order, continuing with the next list item after the first one that exists. Note that this feature does not overwrite _other_ files if the new filename conflicted with one (`sega;Zero Wing.md.zgb` in this example).
 
@@ -162,11 +158,11 @@ This tab is kinda boring and self-explanatory. One info though: You can reorder 
 
 ### BIOS
 
-***Important:*** Should the boot logo look strange or the screen combo box be empty, you probably have a different BIOS than everyone else's 15 Dec 2023 one. Please contact the author `numma_cway` on Discord. Thank you. GB300 Tool does check if the size mismatches though, and that should be a relatively safe criterion.
+***Important:*** Should the boot logo look strange or the screen combo box be empty, you probably have a different BIOS than everyone else's. Please contact the author `numma_cway` on Discord. Thank you. GB300+SF2000 Tool does check if the size mismatches though, and that should be a relatively safe criterion.
 
 This tab is full of features of which that have a good description right inside the tool, so they won't need explanation here. Well, there is one thing I want to emphasize:
 
-***Important:*** It is strongly recommended that you apply the bootloader patch before doing anything else. Checking the checkbox is not enough, though! You then have to put the card in your GB300 and boot to the menu. Now your GB300 is safe for modifications.
+***Important:*** It is strongly recommended that you apply the bootloader patch before doing anything else. Checking the checkbox is not enough, though! You then have to put the card in your device and boot to the menu. Now your console is safe for modifications.
 
 I would like to thank Discord user `bnister` (osaka) for his research and making the patches you find here.
 
@@ -175,19 +171,19 @@ But what is this VTxx thing anyway? It's a Famiclone (Famicom clone) with more f
 
 ### multicore
 
-If you don't have multicore yet, GB300 Tool will tell you what to do in order to download it.
+If you don't have multicore yet, GB300+SF2000 Tool will tell you what to do in order to download it.
 
 If you already have multicore, you can configure it here:
 - Configure core settings
   - multicore has a button to enable, view and disable the log. Because disabling and deleting the log is the same to multicore, you can only disable the log by deleting it.
   - Many emulators that handle black-and-white games have a preview for the palette
-  - Gambatte even allows custom palettes, so GB300 Tool has a full-featured palette editor
+  - Gambatte even allows custom palettes, so GB300+SF2000 Tool has a full-featured palette editor
   - You can configure settings, including Gambatte's custom palettes, on a per-game basis! Select a ROM and find the per-game configuration in the _Rename_ button's dropdown menu.
 - Check BIOS requirements
 - Set default core per extension (this is automatically set to the last core you used when you last added a ROM)
 - You can also disable showing the core selection dialog for certain extensions here
 
-Note that for configuration to work, GB300 Tool has to know the core you want to configure and the `.opt` file to use. In the past, there were issues when a core was renamed and there may be more cores to be renamed in the future. Also, the `.opt` file has to be in the correct format with all available options inside comments at the top of the file.
+Note that for configuration to work, GB300+SF2000 Tool has to know the core you want to configure and the `.opt` file to use. In the past, there were issues when a core was renamed and there may be more cores to be renamed in the future. Also, the `.opt` file has to be in the correct format with all available options inside comments at the top of the file.
 
 
 ### Keys
@@ -199,7 +195,7 @@ This tab is pretty much self-explanatory.
 - Use this button's drop down menu to _Import_ and _Export_ the current mapping. _Undo_ will load the last-saved key map from the device. _Defaults_ will reset all consoles' keys. None of these will automatically save.
 - The last column is the multicore column. You can select a core to see its mapping. It depends on your GBA mapping, which therefore affects all multicore cores' mappings as well. A prefixed `T` is for autofire ("turbo").
 
-Note that the device's own "Joystick" editor is completely bugged and unusable for many reasons. Do not file a bug report unless you _physically_ confirmed that GB300 Tool is wrong.
+Note that the device's own "Joystick" editor is completely bugged and unusable for many reasons. Do not file a bug report unless you _physically_ confirmed that GB300+SF2000 Tool is wrong.
 
 
 ### UI Editor
@@ -210,14 +206,14 @@ Here you can change all images used by the GB300's UI. Only the boot logo and th
 
 - Select a file from the list on the left.
 - Click _Save File_ to save the current file.
-  **Technical note:** This will always use PNG because there are different ways to decode/encode RGB565 bitmaps: `shl`-type (higher performance, supports true grays) and full byte range (supports true white, seems to be the more common one). Because RGB565 isn't natively supported by most image editors, they must decode RGB565 first to convert it to RGB888. Should your image editor use a different algorithm than GB300 Tool (full byte range), importing an edited file will cause rounding errors. This means that if you made changes based on the original image, any untouched areas will also be altered. PNG however is unambiguous (as long as gamma is unset, which is the case for GB300), because encoding and decoding depend on the implementation in GB300 Tool.
+  **Technical note:** This will always use PNG because there are different ways to decode/encode RGB565 bitmaps: `shl`-type (higher performance, supports true grays) and full byte range (supports true white, seems to be the more common one). Because RGB565 isn't natively supported by most image editors, they must decode RGB565 first to convert it to RGB888. Should your image editor use a different algorithm than GB300+SF2000 Tool (full byte range), importing an edited file will cause rounding errors. This means that if you made changes based on the original image, any untouched areas will also be altered. PNG however is unambiguous (as long as gamma is unset, which is the case for GB300), because encoding and decoding depend on the implementation in GB300+SF2000 Tool.
 - Use this button's drop down menu to _Copy Current Image to Clipboard_. This applies to whatever is currently displayed, whereas _Save File_ saves the image from the selected files, even if something else is currently displayed here. Copying BGRA8888 images doesn't make sense because Windows clipboard cannot realy handle transparency.
-- Click _Replace..._ to load a new image. This overwrites the current file. GB300 Tool makes sure your image has the correct dimensions. You cannot overwrite BGRA8888 with an image that does not feature alpha.
+- Click _Replace..._ to load a new image. This overwrites the current file. GB300+SF2000 Tool makes sure your image has the correct dimensions. You cannot overwrite BGRA8888 with an image that does not feature alpha.
 - The left combo box is for selecting the mode.
   - _Image / Slices_
     - _(full image)_ will show the original image file.
-    - If the GB300 doesn't use the image as a whole, you can also select any of the used parts, called slices. The selected and pressed keyboard images are unique, because there are unused areas in the image. Changes made to these parts will not have any effect.
-  - _Live Previews_ are 66 predefined scenes that simulate how your theme will look on the device (bottom image) and TV screen (top image). These scenes were created based on NTSC output captured using an analog frame grabber (Astrometa DVB-T2hybrid). NTSC output from the GB300 is vertically pixel-perfect and horizontally alright, so these images are supposed to be pixel-perfect. There is one exception to this: Text is rendered by Windows, which uses a slightly different font rendering algorithm. This affects primarily the character spacing. In addition to that, the spacing for the horizontal ellipsis (...) is much smaller on the device (it looks almost like a underscore), and descenders (parts of letters below the baseline) are partially clipped, so the previews use neither of these two where possible.
+    - If the device doesn't use the image as a whole, you can also select any of the used parts, called slices. The selected and pressed keyboard images are unique, because there are unused areas in the image. Changes made to these parts will not have any effect.
+  - _Live Previews_ are predefined scenes that simulate how your theme will look on the device (bottom image) and TV screen (top image). These scenes were created based on NTSC output captured using an analog frame grabber (Astrometa DVB-T2hybrid). NTSC output from the device is vertically pixel-perfect and horizontally alright, so these images are supposed to be pixel-perfect. There is one exception to this: Text is rendered by Windows, which uses a different font rendering algorithm. This affects primarily the font weight (text looks slightly "bolder") and character spacing. In addition to that, the spacing for the horizontal ellipsis (...) is much smaller on the device (it looks almost like a underscore), so the previews don't use them except for Low Battery warning in Pause Menu.
 - Click on the previews to randomize the background color (meant to proof transparent images).
 
 
@@ -237,19 +233,19 @@ Selecting another file or leaving the _UI Editor_ tab without saving will discar
 
 Launch with `-dev` switch for the following features:
 
-- In the _Rename_ menu of the ROM details, there will be an option to convert NoIntro DATs into the format this tool uses for space and performance reasons (DATs are XML files with more checksums and lots of redundant information and overhead). The result will have No-Intro's platform ID with a `.bin` extension as its name. Make sure to use the headerless NES DAT, BIN DAT for Atari 7800, remove duplicate _Galaxian (USA)_ entry for Atari 5200. The existing No-Intro databases in GB300 Tool do not include BIOS.
+- In the _Rename_ menu of the ROM details, there will be an option to convert NoIntro DATs into the format this tool uses for space and performance reasons (DATs are XML files with more checksums and lots of redundant information and overhead). The result will have No-Intro's platform ID with a `.bin` extension as its name. Make sure to use the headerless NES DAT, BIN DAT for Atari 7800, remove duplicate _Galaxian (USA)_ entry for Atari 5200. The existing No-Intro databases in GB300+SF2000 Tool do not include BIOS.
 - In the _Save_ menu of the UI editor, you can load `preview.xml` from the tool's directory. You can grab the current file from the repository (`Data` folder). If you didn't reorder, add or delete `<preview>`s, this will reload the currently-viewed preview.
 - In the _Keys_ tab, keys are shown with hex values. The original values are 16-bit LE, but only 1 byte is shown because the other is always 0.
 
-The User ROMs tab has a context menu for the list where you can save the list file created by the GB300 on the last boot. It's meant for developers only, but is accessible even outside of dev mode.
+The User ROMs tab has a context menu for the list where you can save the list file created by the device on the last boot. It's meant for developers only, but is accessible even outside of dev mode.
 
 
 ## Trivia
 
-There are 22879 entries in the tool's initial No-Intro database. The chance that all of these have different hashes ("birthday paradox") is around 94.1% <!--(2^32)!/((2^32)^22879*(2^32-22879)!)--> There is actually one duplicate game, but that one is an SMS game released for the MD with just a physical adapter, but still exactly the same ROM. In A5200, one identical file is listed twice inside only one game.
+There are 22879 entries in the tool's No-Intro database. The chance that all of these have different hashes ("birthday paradox") is around 94.1% <!--(2^32)!/((2^32)^22879*(2^32-22879)!)--> There is actually one duplicate game, but that one is an SMS game released for the MD with just a physical adapter, but still exactly the same ROM. In A5200, one identical file is listed twice inside only one game.
 
 Fun Facts about making the live previews:
-- To not promote even more downloading of commercial games, the sample screenshot for "Download ROMs" contains one free homebrew ROM for each of the 8 supported systems. All ROMs were considered the best on their respective systems according to various sources. I took considerable time to create this list, leading to delays in publishing this tool. You should give all of these ROMs a try.
+- To not promote even more downloading of commercial games, the sample screenshot for "ROMS" contains one free homebrew ROM for each of the 8 supported systems. All ROMs were considered the best on their respective systems according to various sources. I took considerable time to create this list, leading to delays in publishing this tool. You should give all of these ROMs a try.
 - The three screenshots used in the samples are the most memorable situations (or memes) I recalled when thinking about ROMs.
 
 The BPS support was added because I wanted to patch Pokémon Crystal into Pokémon Prism myself. When I finished my work, I noticed that the patch was in BSP format rather than BPS. BSP seems way more advanced than BPS as it can even upgrade battery saves.
@@ -258,6 +254,52 @@ v1.0-rc2's title bar reads "v1.0", so the actual v1.0 is called "v1.0-final".
 
 
 ## Changelog
+
+### Planned for v2.0
+
+- Add ZFB editor (with an option to move the ROM)
+- Add support for selective configuration options
+- Add a way to check ZIP-based bios and use it for `m2k`'s `neogeo.zip` in `ROMS\m2k` which seems to be where it loads it (despite the file names not matching errors in log).
+- Change the _ROMS_ icon in the tab bar to an icon of a folder (similar to what the device has), and change the _UI Editor_ icon to match the device's current interface
+
+
+### v2.0-beta (23 Sep 2024)
+
+- A lot of quality-of-life and UI enhancements<br>Note: I forgot what exactly I did, but I promise it's great!
+- Now works on smaller screens (task bar auto-hide is required for under 800px of height)
+- Added more previews
+- Added support for `.zfb` stubs<br>Note: Leonardo's stubs were originally planned, but it turned out I underestimated the power of `.zfb` as it too can have arbitrary names. Leonardo's stubs cannot run from user ROMs folder and probably cannot be thumbnailed.
+- Fixed a bug that prevented the file icon to be displayed for newly-created multicore stubs
+- Removed the time limit
+
+
+### v2.0-alpha (22 Sep 2024, Discord-only release)
+
+- Added _Export WQW Images_ feature (stock file list context menu)
+- Added _Export WQW ROMs_ feature (stock file list context menu)
+- Updated some descriptions in `Foldername.ini` editor
+- Changed slices of game labels (`gakne.ctp`) to respect that these are always used as a full row (also makes creating previews easier)
+- Added a few previews for the main menu
+- Added Neo Geo ROM Faker<br>Note: This is transparent. You can only see that it is invoked by the fact that you cannot enter a file name during ZFB creation.<br>Note: See the included compatibility list.<br>Note: Sets sets containing `xor` patches ( `.dif` files) are supported, but only for predefined ones (in the XML resource). You cannot have your own sets patched because these patches are too weird.
+- Added ZFB creation when adding a ZIP to the seventh list
+- Added support for `.zfb` save states (their naming is different than any other file's)
+- Added a new (generic) icon for ZFB
+- Changed the icon, name and logo to GB300+SF2000 Tool
+- Increased time limit to October
+- Added support for SF2000 (please thank my colleague, Svenni, for lending me his SF2000 for the weekend)
+  - BIOS settings for SF2000 1.60 (used by multicore) and 1.71 (most recent)<br>Note: There will not be support for all SF2000 firmware versions because some cannot be differentiated by size and I don't want to add more advanced techniques here for a marginal audience)
+  - Key binds
+  - UI files missing (due to the lack of PCE)
+  - UI file dimensions (due to the lack of PCE)
+  - UI file slices (due to the lack of PCE, different keyboard layout)
+  - Live preview adjustments (e.g. not showing PCE, different keyboard layout)
+
+
+### v2.0-pre-alpha (29 Aug 2024, Discord-only release)
+
+- Added GB300 v2 support
+- Removed GB300 v1 support
+
 
 ### v1.0b (22 Aug 2024)
 
@@ -283,7 +325,7 @@ v1.0-rc2's title bar reads "v1.0", so the actual v1.0 is called "v1.0-final".
 
 - Added enabling FDS support
 - Added support for the FDS key mappings
-- BIOS check now checks if stock FDS and VTxx support has been enabled in GB300 Tool
+- BIOS check now checks if stock FDS and VTxx support has been enabled in GB300+SF2000 Tool
 - Fixed BIOS status for Gambatte and TGB always assuming multicore 0.1.x (it can now detect if the cores have been swapped)
 - _Check All_ button in stock ROM tabs now unchecks (removes) missing files
 - _Duplicate as multicore..._ can now duplicate multicore for use with another emulator (note that you can select stock emulators too)
@@ -306,18 +348,18 @@ v1.0-rc2's title bar reads "v1.0", so the actual v1.0 is called "v1.0-final".
 - Fixed `.gb` not being recognized as a stock core extension
 - Added config filenames for `c64fc` (`Frodo.opt`, shared with `c64f`) and `gbb` (Gambatte)
 - Fixed some duplicate extensions in core data (probably didn't have a big impact)
-- Added support for multicore 0.2.x which caused issues by randomly swapping core names (`gb` and `gbb`); GB300 Tool will try to recognize them by file size<br>Note: GB300 Tool does this automatically when you hit _Start_ on the onboarding screen. Do not update multicore while GB300 Tool is running.
+- Added support for multicore 0.2.x which caused issues by randomly swapping core names (`gb` and `gbb`); GB300+SF2000 Tool will try to recognize them by file size<br>Note: GB300+SF2000 Tool does this automatically when you hit _Start_ on the onboarding screen. Do not update multicore while GB300+SF2000 Tool is running.
 - `.dmg` will always be attributed to the classic Game Boy (the actual name of which is Dot Matrix Game, hence the `.dmg`)
 - Input files are now automatically scaled when adding/replacing a thumbnail image (keeps aspect ratio)
 - Fixed a bug that prevented updating the image when _replacing_ thumbnails (adding was not affected)
-- Added around 400 Gambatte palette previews converted from their source<br>Note: At the time of originally writing this, TWB64 278 was a duplicate of TWB64 277 in Gambatte's palette data source, so it is also the case for your GB300 multicore. I submitted a pull request (PR 268) with a fix, which was accepted by Libretro in under a day's time, but that needs to get merged into the multicore repository and then built. This will take some time. If you want to use TWB 278, select TWB 278 in GB300 Tool, click any color in the preview and then click _OK_ to save it as a custom palette.
+- Added around 400 Gambatte palette previews converted from their source<br>Note: At the time of originally writing this, TWB64 278 was a duplicate of TWB64 277 in Gambatte's palette data source, so it is also the case for your GB300 multicore. I submitted a pull request (PR 268) with a fix, which was accepted by Libretro in under a day's time, but that needs to get merged into the multicore repository and then built. This will take some time. If you want to use TWB 278, select TWB 278 in GB300+SF2000 Tool, click any color in the preview and then click _OK_ to save it as a custom palette.
 - Added Gambatte full palette customization
-- Added support for per-game OPT files (and per-game Gambatte custom color palettes)<br>Note for per-game Gambatte custom color palettes: Gambatte accept two file names for custom palettes, internal ROM name and file name, with the latter taking precedence. Even though GB300 Tool even looks up the ROM's internal name (it uses it to preview the palette in `auto`, `SGB` and `GBC` mode), it uses the file name for identifying the palette to use, because multicore requires the file name to be used for per-game OPT files, so this is consistent.
+- Added support for per-game OPT files (and per-game Gambatte custom color palettes)<br>Note for per-game Gambatte custom color palettes: Gambatte accept two file names for custom palettes, internal ROM name and file name, with the latter taking precedence. Even though GB300+SF2000 Tool even looks up the ROM's internal name (it uses it to preview the palette in `auto`, `SGB` and `GBC` mode), it uses the file name for identifying the palette to use, because multicore requires the file name to be used for per-game OPT files, so this is consistent.
   Note: Palettes and OPT both ignore the path. This makes sense since one core can only have one file of the same name. No matter in which tab on the device you chose to put the file (stub) for that game – the actual ROM always goes into `ROMS`.
 - Added Gearboy palette previews (there are only six predefined ones with no further customization)
-- Added enabling VT02/03 support for `.nfc` files (must contain an iNES header with mapper 12)<br>Note: There is a ROM size limit of 2&thinsp;MiB in iNES prior to v2.0, so this applies to Archaic iNES as well. `bnister` (osaka) made a patch but that broke all stock ROMs internally named `.nfc`. This patch is not in GB300 Tool.
+- Added enabling VT02/03 support for `.nfc` files (must contain an iNES header with mapper 12)<br>Note: There is a ROM size limit of 2&thinsp;MiB in iNES prior to v2.0, so this applies to Archaic iNES as well. `bnister` (osaka) made a patch but that broke all stock ROMs internally named `.nfc`. This patch is not in GB300+SF2000 Tool.
 - Added editing the search results' selection color (BIOS tab)<br>Note: That's hardcoded in the BIOS file, so you cannot ship that with your theme
-- Removed `.zfb` thumbnail support as this does not exist on the GB300<br>Note: There was a bug in GB300 Tool caused by insufficient (weak) critieria for identifying `.zfb` files. I first fixed that bug but then decided to remove support alltogether because there is no support on the GB300 anyway.
+- Removed `.zfb` thumbnail support as this does not exist on the GB300<br>Note: There was a bug in GB300+SF2000 Tool caused by insufficient (weak) critieria for identifying `.zfb` files. I first fixed that bug but then decided to remove support alltogether because there is no support on the GB300 anyway.
 - Stopped the tool from attempting to hash disc images and multicore ZIP files, as well as any file over 100&thinsp;MB
 - Drew more platform (file) icons
 - Fixed a bug that mixed up GBA and GB BIOS files in the core BIOS checker
@@ -337,7 +379,7 @@ v1.0-rc2's title bar reads "v1.0", so the actual v1.0 is called "v1.0-final".
 - Because many people seem to be running this thing on a screen with the resolution of roughly that of the GB300, I added a message saying this is not supported. I want people to stop buying e-waste laptops.
 - If you set keys to undocumented values, the _Keys_ tab will now show these values
   Note: This is big endian (in case you ever use values over 255), whereas the actual file is little endian.
-- For some of multicore's cores, GB300 Tool can now show the key mapping resulting of your current GBA mapping
+- For some of multicore's cores, GB300+SF2000 Tool can now show the key mapping resulting of your current GBA mapping
 - Added multicore log support
 - Fixed tab order of multicore selection screen
 - Made `sega` a recommended core for SG-1000 and Game Gear (both unofficial)
@@ -349,7 +391,7 @@ v1.0-rc2's title bar reads "v1.0", so the actual v1.0 is called "v1.0-final".
 - Added palette previews for Potator (`wsv`), PokeMini (`pokem`) and Beetle Cygne (`wswan`).
 - Added the remaining previews (no further updates on these are currently planned, but let me know if you are missing something)
 - Config is now stored in `%APPDATA%\GB300Tool` unless there's a `gb300tool.ini` where the `.exe` is
-- In stock ROM lists, new items added using GB300 Tool are now checked by default (when duplicating non-multicore ROMs, they instead inherit the checked status from their parent)
+- In stock ROM lists, new items added using GB300+SF2000 Tool are now checked by default (when duplicating non-multicore ROMs, they instead inherit the checked status from their parent)
 - Added multicore thumbnail support
 - Made _Export Thumb_ button actually work
 
@@ -363,13 +405,13 @@ v1.0-rc2's title bar reads "v1.0", so the actual v1.0 is called "v1.0-final".
 - Added No-Intro databases for all platforms that run reasonably well on the GB300 and do not require disc images (because they are difficult to handle):<br>&#8199;(88) Atari - 2600<br>&#8199;(74) Atari - 7800<br>&#8199;(30) Atari - Lynx<br>&#8199;(50) Bandai - WonderSwan<br>&#8199;(51) Bandai - WonderSwan Color<br>&#8199;(87) Benesse - Pocket Challenge v2<br>&#8199;&#8199;(3) Coleco - ColecoVision<br>&#8199;&#8199;(6) Fairchild - Channel F<br>&#8199;&#8199;(7) GCE - Vectrex<br>(105) Mattel - IntelliVision<br>&#8199;(14) Nintendo - Pokémon mini<br>&#8199;(17) Sega - 32X<br>&#8199;(18) Sega - Kids Computer Pico _(also available on stock)_<br>&#8199;(19) Sega - SG-1000<br>&#8199;(73) Sinclair - ZX Spectrum<br>&#8199;(35) SNK - NeoGeo Pocket<br>&#8199;836) SNK - NeoGeo Pocket Color<br>&#8199;(22) Watara - SuperVision<br>Note: In theory, you could use this to identify files with generic extensions like `.bin`. This not currently planned because those extensions are rare.
 
 
-### v1.0-rc1 (04 May 2024)
+### v1.0-rc1 (04 May 2024, Discord-only release)
 
 - Added full multicore support
 - Fixed some bugs
 
 
-### v1.0-pre1 vanilla-only (28 Apr 2024)
+### v1.0-pre1 vanilla-only (28 Apr 2024, Discord-only release)
 
 - This is the first release.
 - No-Intro databases included:<br>&#8199;(12) NEC - PC Engine<br>&#8199;(46) Nintendo - Game Boy<br>&#8199;(23) Nintendo - Game Boy Advance<br>&#8199;(47) Nintendo - Game Boy Color<br>&#8199;(45) Nintendo - Nintendo Entertainment System<br>&#8199;(49) Nintendo - Super Nintendo Entertainment System<br>&#8199;(25) Sega - Game Gear<br>&#8199;(26) Sega - Master System<br>&#8199;(32) Sega - Mega Drive

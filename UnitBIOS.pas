@@ -19,19 +19,19 @@ type
     LabelPointlessFile: TLabel;
     GroupBoxGBABIOS: TGroupBox;
     LabelGBABIOS: TLabel;
-    GroupBoxBIOS: TGroupBox;
+    GroupBoxBIOSGB300: TGroupBox;
     TimerLazyLoad: TTimer;
     PanelBootLogoDoubleBufferer: TPanel;
-    ImageBootLogo: TImage;
+    ImageBootLogoGB300: TImage;
     LabelCRC: TLabel;
-    LabelCRCStatus: TLabel;
+    LabelCRCStatusGB300: TLabel;
     LabelCRCInfo: TLabel;
-    ButtonCRCFix: TButton;
-    ButtonCRCRefresh: TButton;
+    ButtonCRCFixGB300: TButton;
+    ButtonCRCRefreshGB300: TButton;
     LabelBootLogo: TLabel;
-    ButtonBootLogoSave: TButton;
-    ButtonBootLogoReplace: TButton;
-    ButtonBootLogoRefresh: TButton;
+    ButtonBootLogoSaveGB300: TButton;
+    ButtonBootLogoReplaceGB300: TButton;
+    ButtonBootLogoRefreshGB300: TButton;
     GroupBoxROMFixes: TGroupBox;
     ButtonFixMDThumbs: TButton;
     LabelFixMDThumbs: TLabel;
@@ -41,7 +41,6 @@ type
     OpenDialogBootLogo: TOpenDialog;
     LabelBootLogo1: TLabel;
     LabelScreen: TLabel;
-    ComboBoxScreen: TComboBox;
     CheckBoxGBABIOS0: TCheckBox;
     LabelGBABIOS1: TLabel;
     CheckBoxGBABIOS1: TCheckBox;
@@ -58,14 +57,28 @@ type
     ButtonClearKeyMap: TButton;
     LabelScreen2: TLabel;
     CheckBoxVT03: TCheckBox;
-    LabelSearchResultSelColor: TLabel;
-    ColorBoxSearchResultSelColor: TColorBox;
-    LabelSearchResultSelColor2: TLabel;
     ButtonAlwaysUseFCEUmm: TButton;
     Label1: TLabel;
     CheckBoxPatchVT03LUT: TCheckBox;
     Label3: TLabel;
     CheckBoxFDS: TCheckBox;
+    CheckBoxGBABIOS8: TCheckBox;
+    GroupBoxBIOSSF2000: TGroupBox;
+    Label2: TLabel;
+    LabelCRCStatusSF2000: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Panel1: TPanel;
+    ImageBootLogoSF2000: TImage;
+    ButtonCRCFixSF2000: TButton;
+    ButtonCRCRefreshSF2000: TButton;
+    ButtonBootLogoSaveSF2000: TButton;
+    ButtonBootLogoReplaceSF2000: TButton;
+    ButtonBootLogoRefreshSF2000: TButton;
+    Label4: TLabel;
+    CheckBoxGaroupSF2000: TCheckBox;
+    CheckBoxGaroupGB300: TCheckBox;
     procedure TimerLazyLoadTimer(Sender: TObject);
     procedure ButtonCRCRefreshClick(Sender: TObject);
     procedure ButtonBootLogoRefreshClick(Sender: TObject);
@@ -73,7 +86,6 @@ type
     procedure ButtonBootLogoReplaceClick(Sender: TObject);
     procedure ButtonBootLogoSaveClick(Sender: TObject);
     procedure ButtonFixMDThumbsClick(Sender: TObject);
-    procedure ComboBoxScreenSelect(Sender: TObject);
     procedure CheckBoxPatchBootloaderClick(Sender: TObject);
     procedure CheckBoxPointlessFileClick(Sender: TObject);
     procedure ButtonFixGlazedThumbClick(Sender: TObject);
@@ -82,10 +94,10 @@ type
     procedure ButtonClearKeyMapClick(Sender: TObject);
     procedure CheckBoxGBABIOSClick(Sender: TObject);
     procedure CheckBoxVT03Click(Sender: TObject);
-    procedure ColorBoxSearchResultSelColorChange(Sender: TObject);
     procedure ButtonAlwaysUseFCEUmmClick(Sender: TObject);
     procedure CheckBoxPatchVT03LUTClick(Sender: TObject);
     procedure CheckBoxFDSClick(Sender: TObject);
+    procedure CheckBoxGaroupClick(Sender: TObject);
   private
     { Private declarations }
     procedure DoCRCCheckReset();
@@ -128,12 +140,12 @@ begin
   sl := TStringList.Create();
   try
     NL := TNameList.Create();
-    NL.LoadFromFile(FileNamesFilenames[7]);
+    NL.LoadFromFile(FileNamesFilenames[UserROMsFolderIndex]);
     for Candidate in {TDirectory.GetFiles(Path + 'FC', '*.zfc')} NL do
     begin
       ROM := TROMFile.Create();
       try
-        ROM.LoadFromFile(7, ExtractFileName(Candidate));
+        ROM.LoadFromFile(UserROMsFolderIndex, ExtractFileName(Candidate));
         ROMROM := ROM.ROM;
         try
           Line := ROM.ROMFileName;
@@ -159,14 +171,17 @@ var
   Candidate: string;
   ROM: TROMFile;
 begin
+  if CurrentDevice = cdSF2000 then
+  raise Exception.Create('This feature would not affect the SF2000');
+
   for Candidate in TDirectory.GetFiles(Path + 'FC') do
   begin
     ROM := TROMFile.Create;
     try
-      ROM.LoadFromFile(0, ExtractFileName(Candidate));
+      ROM.LoadFromFile(FCFolderIndex, ExtractFileName(Candidate));
 
       if ROM.ChangeExt('.nfc', '.nes') then
-      ROM.SaveToFile(0, ExtractFileName(Candidate), False);
+      ROM.SaveToFile(FCFolderIndex, ExtractFileName(Candidate), False);
     finally
       ROM.Free();
     end;
@@ -336,10 +351,10 @@ begin
 end;
 
 procedure TFrameBIOS.CheckBoxFDSClick(Sender: TObject);
-var
-  BIOS: TBIOS;
+//var
+//  BIOS: TBIOS;
 begin
-  DoCRCCheckReset();
+{  DoCRCCheckReset();
   BIOS := TBIOS.Create();
   try
     BIOS.LoadFromFile(TBIOS.Path);
@@ -347,6 +362,31 @@ begin
     BIOS.StoredCRC := BIOS.CalculatedCRC;
     BIOS.SaveToFile(TBIOS.Path);
     ButtonCRCRefreshClick(nil);
+  finally
+    BIOS.Free();
+  end;  }
+end;
+
+procedure TFrameBIOS.CheckBoxGaroupClick(Sender: TObject);
+var
+  BIOS: TBIOS;
+begin
+  DoCRCCheckReset();
+  BIOS := TBIOS.Create();
+  try
+    BIOS.LoadFromFile(TBIOS.Path);
+    try
+      if (Sender as TCheckBox).Checked then
+      BIOS.GaroupP2Size := 8 * 1024 * 1024
+      else
+      BIOS.GaroupP2Size := 4 * 1024 * 1024;
+      BIOS.StoredCRC := BIOS.CalculatedCRC;
+      BIOS.SaveToFile(TBIOS.Path);
+    finally
+      CheckBoxGaroupGB300.CheckedNoClick := (Sender as TCheckBox).Checked;
+      CheckBoxGaroupSF2000.CheckedNoClick := (Sender as TCheckBox).Checked;
+      ButtonCRCRefreshClick(nil);
+    end;
   finally
     BIOS.Free();
   end;
@@ -404,10 +444,10 @@ begin
 end;
 
 procedure TFrameBIOS.CheckBoxPatchVT03LUTClick(Sender: TObject);
-var
-  BIOS: TBIOS;
+//var
+//  BIOS: TBIOS;
 begin
-  DoCRCCheckReset();
+{  DoCRCCheckReset();
   BIOS := TBIOS.Create();
   try
     BIOS.LoadFromFile(TBIOS.Path);
@@ -417,7 +457,7 @@ begin
     ButtonCRCRefreshClick(nil);
   finally
     BIOS.Free();
-  end;
+  end;      }
 end;
 
 procedure TFrameBIOS.CheckBoxPointlessFileClick(Sender: TObject);
@@ -435,53 +475,14 @@ end;
 
 procedure TFrameBIOS.CheckBoxVT03Click(Sender: TObject);
 begin
-  DoCRCCheckReset();
+{  DoCRCCheckReset();
   try
     TBIOS.Patch(3190+Byte(CheckBoxVT03.Checked), TBIOS.VT03Offset);
   except
     CheckBoxVT03.CheckedNoClick := not CheckBoxVT03.Checked;
     raise;
   end;
-  ButtonCRCRefreshClick(nil);
-end;
-
-procedure TFrameBIOS.ColorBoxSearchResultSelColorChange(Sender: TObject);
-var
-  BIOS: TBIOS;
-begin
-  DoCRCCheckReset();
-  BIOS := TBIOS.Create();
-  try
-    BIOS.LoadFromFile(TBIOS.Path);
-    BIOS.SearchResultSelColor := ColorBoxSearchResultSelColor.Selected;
-    BIOS.StoredCRC := BIOS.CalculatedCRC;
-    BIOS.SaveToFile(TBIOS.Path);
-    ButtonCRCRefreshClick(nil);
-  finally
-    BIOS.Free();
-  end;
-end;
-
-procedure TFrameBIOS.ComboBoxScreenSelect(Sender: TObject);
-procedure Patch(Resource: Word);
-begin
-  DoCRCCheckReset();
-  TBIOS.Patch(Resource, TBIOS.DisplayInitOffset);
-  ButtonCRCRefreshClick(nil);
-end;
-begin
-  case ComboBoxScreen.ItemIndex of
-    0:
-      if MessageDlg('Do you want to change the display init code back to the original one?', mtWarning, mbYesNo, 0) = mrYes then
-      Patch(300)
-      else
-      TimerLazyLoadTimer(TimerLazyLoad);
-    1:
-      if MessageDlg('If you''ve opened your GB300 and swapped in the SF2000''s screen, you''ll notice that your screen is now upside-down and inverted.'#13#10'This feature will install a patch created by bnister (osaka) and Dteyn to fix this.'#13#10#13#10'Do you want to continue?', mtWarning, mbYesNo, 0) = mrYes then
-      Patch(2000)
-      else
-      TimerLazyLoadTimer(TimerLazyLoad);
-  end;
+  ButtonCRCRefreshClick(nil);     }
 end;
 
 constructor TFrameBIOS.Create(AOwner: TComponent);
@@ -493,7 +494,11 @@ begin
   CheckBoxPatchBootloader.CheckedNoClick := FileExists(FirmwareFileName);
   for i := 1 to 4 do
   (FindComponent('CheckboxPointlessFile' + IntToStr(i)) as TCheckBox).CheckedNoClick := FileExists(GetPointlessFileName(i));
-  for i := 0 to 7 do
+  if CurrentDevice = cdSF2000 then
+  CheckBoxGBABIOS8.Hide();
+  GroupBoxBIOSGB300.Visible := CurrentDevice = cdGB300;
+  GroupBoxBIOSSF2000.Visible := CurrentDevice = cdSF2000;
+  for i := 0 to 8 do
   (FindComponent('CheckboxGBABIOS' + IntToStr(i)) as TCheckBox).Caption := StringReplace(Foldername.Folders[i], '&', '&&', [rfReplaceAll]);
   UpdateGBABIOSStatus();
   Form1.DragIn.OnDrop := DropBootlogo;
@@ -504,20 +509,24 @@ procedure TFrameBIOS.DoCRCCheck(BIOS: TBIOS);
 begin
   if BIOS.IsCRCValid then
   begin
-    LabelCRCStatus.Caption := 'VALID';
-    LabelCRCStatus.Font.Color := clGreen;
+    LabelCRCStatusGB300.Caption := 'VALID';
+    LabelCRCStatusGB300.Font.Color := clGreen;
   end
   else
   begin
-    LabelCRCStatus.Caption := 'INVALID';
-    LabelCRCStatus.Font.Color := clMaroon;
+    LabelCRCStatusGB300.Caption := 'INVALID';
+    LabelCRCStatusGB300.Font.Color := clMaroon;
   end;
+  LabelCRCStatusSF2000.Caption := LabelCRCStatusGB300.Caption;
+  LabelCRCStatusSF2000.Font.Color := LabelCRCStatusGB300.Font.Color;
 end;
 
 procedure TFrameBIOS.DoCRCCheckReset;
 begin
-  LabelCRCStatus.Caption := '...';
-  LabelCRCStatus.Font.Color := Font.Color;
+  LabelCRCStatusGB300.Caption := '...';
+  LabelCRCStatusGB300.Font.Color := Font.Color;
+  LabelCRCStatusSF2000.Caption := '...';
+  LabelCRCStatusSF2000.Font.Color := Font.Color;
 end;
 
 procedure TFrameBIOS.DoDelete(FileName: string);
@@ -558,7 +567,10 @@ var
 begin
   Logo := BIOS.BootLogo;
   try
-    ImageBootLogo.Picture.Assign(Logo);
+    if CurrentDevice = cdGB300 then
+    ImageBootLogoGB300.Picture.Assign(Logo);
+    if CurrentDevice = cdSF2000 then
+    ImageBootLogoSF2000.Picture.Assign(Logo);
   finally
     Logo.Free();
   end;
@@ -591,20 +603,32 @@ begin
   BIOS := TBIOS.Create();
   try
     BIOS.LoadFromFile(TBIOS.Path);
-    if BIOS.Size <> 7299832 then
-    if GroupBoxBIOS.Visible then
-    begin
-      MessageDlg('Your BIOS has a different size than expected.'#13#10#13#10'Please contact numma_cway on Discord to have GB300 Tool updated to support it.'#13#10#13#10'The BIOS settings will now disappear to prevent GB300 Tool from breaking anything.', mtWarning, [mbOk], 0);
-      GroupBoxBIOS.Hide();
-      Exit;
+    try
+      BIOS.SizeSupported;
+    except
+      if GroupBoxBIOSGB300.Visible or GroupBoxBIOSSF2000.Visible then
+      begin
+        // cannot occur anymore as BIOS is checked before entering, unless people swap the card
+        MessageDlg('Your BIOS has a different size than expected.'#13#10#13#10'Please contact numma_cway on Discord to have GB300+SF2000 Tool updated to support it.'#13#10#13#10'The BIOS settings will now disappear to prevent the tool from breaking anything.', mtWarning, [mbOk], 0);
+        GroupBoxBIOSGB300.Hide();
+        GroupBoxBIOSSF2000.Hide();
+        Exit;
+      end;
     end;
     DoCRCCheck(BIOS);
     DoUpdateBootLogo(BIOS);
-    CheckBoxFDS.CheckedNoClick := BIOS.FDS;
-    CheckBoxVT03.CheckedNoClick := BIOS.VT03;
-    CheckBoxPatchVT03LUT.CheckedNoClick := BIOS.VT03LUT565;
-    ColorBoxSearchResultSelColor.Selected := BIOS.SearchResultSelColor;
-    ComboBoxScreen.ItemIndex := Ord(BIOS.GetScreenIndex);
+    case BIOS.GaroupP2Size of
+      8*1024*1024: HasGaroupPatch := True;
+      4*1024*1024: HasGaroupPatch := False;
+      else MessageDlg('garoup''s current P2 ROM size is neither 4 nor 8 MiB. This is unexpected for supported BIOS versions. You might want to submit your BIOS to the developer.', mtWarning, [mbOk], 0);
+    end;
+    CheckBoxGaroupSF2000.CheckedNoClick := HasGaroupPatch;
+    CheckBoxGaroupGB300.CheckedNoClick := HasGaroupPatch;
+
+    //CheckBoxFDS.CheckedNoClick := BIOS.FDS;
+    //CheckBoxVT03.CheckedNoClick := BIOS.VT03;
+    //CheckBoxPatchVT03LUT.CheckedNoClick := BIOS.VT03LUT565;
+    //ColorBoxSearchResultSelColor.Selected := BIOS.SearchResultSelColor;
   finally
     BIOS.Free();
   end;
@@ -614,7 +638,7 @@ procedure TFrameBIOS.UpdateGBABIOSStatus();
 var
   i: Byte;
 begin
-  for i := 0 to 7 do
+  for i := 0 to 8 do
   (FindComponent('CheckboxGBABIOS' + IntToStr(i)) as TCheckBox).CheckedNoClick := FileExists(GetGBABIOSFileName(i));
 end;
 

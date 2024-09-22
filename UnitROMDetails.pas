@@ -102,6 +102,7 @@ type
       FItem: TListItem;
       FOnRename: TRenameEvent;
       FOnDuplicate: TRenameEvent;
+      FStateBase: string;
   public
     { Public declarations }
     procedure ShowFile(FolderIndex: Byte; Item: TListItem; Force: Boolean = False);
@@ -335,6 +336,7 @@ var
 begin
   inherited;
   for UIFile in UIFiles do
+  if UIFile.IsApplicable() then
   if UIFile.Filename = 'appvc.ikb' then
   begin
     PNG := UIFile.GetPNGImage;
@@ -608,7 +610,7 @@ var
 begin
   for i := 0 to 3 do
   begin
-    Candidate := IncludeTrailingPathDelimiter(IncludeTrailingPathDelimiter(Path + Foldername.Folders[FFolderIndex]) + 'save') + FFileName + '.sa' + IntToStr(i);
+    Candidate := IncludeTrailingPathDelimiter(IncludeTrailingPathDelimiter(Path + Foldername.Folders[FFolderIndex]) + 'save') + FStateBase + '.sa' + IntToStr(i);
     if FileExists(Candidate) then
     Continue;
 
@@ -832,6 +834,11 @@ begin
     LabelNoIntro.Caption := 'No-Intro: unmatched';
 
     // States
+    if ROM.IsFinalBurn then
+    FStateBase := StringReplace(ROM.ROMFileName, '/', '\', [rfReplaceAll])
+    else
+    FStateBase := Item.Caption;
+
     ListViewStates.Items.BeginUpdate();
     ImageListStates.BeginUpdate();
     try
@@ -839,7 +846,7 @@ begin
       ImageListStates.Clear();
       for i := 0 to 3 do
       begin
-        Candidate := IncludeTrailingPathDelimiter(IncludeTrailingPathDelimiter(Path + Foldername.Folders[FolderIndex]) + 'save') + Item.Caption + '.sa' + IntToStr(i);
+        Candidate := IncludeTrailingPathDelimiter(IncludeTrailingPathDelimiter(Path + Foldername.Folders[FolderIndex]) + 'save') + FStateBase + '.sa' + IntToStr(i);
         if FileExists(Candidate) then
         begin
           State := TState.Create();

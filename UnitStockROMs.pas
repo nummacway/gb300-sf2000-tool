@@ -23,6 +23,10 @@ type
     TimerDnDScroll: TTimer;
     PopupMenu: TPopupMenu;
     MenuItemImportAllImages: TMenuItem;
+    N1: TMenuItem;
+    MenuItemExportWQWROMs: TMenuItem;
+    MenuItemExportWQWImages: TMenuItem;
+    FileOpenDialogFolder: TFileOpenDialog;
     procedure ListViewFilesSelectItem(Sender: TObject; Item: TListItem;
       Selected: Boolean);
     procedure TimerSaveTimer(Sender: TObject);
@@ -45,6 +49,8 @@ type
     procedure ListViewFilesKeyPress(Sender: TObject; var Key: Char);
     procedure ListViewFilesDblClick(Sender: TObject);
     procedure MenuItemImportAllImagesClick(Sender: TObject);
+    procedure MenuItemExportWQWROMsClick(Sender: TObject);
+    procedure MenuItemExportWQWImagesClick(Sender: TObject);
   private
     { Private declarations }
     procedure DropFiles(Sender: TObject);
@@ -72,7 +78,7 @@ implementation
 
 uses
   GUIHelpers, Generics.Collections, UnitMain, UITypes, MulticoreUtils,
-  UnitMulticoreSelection;
+  UnitMulticoreSelection, pngimage, UnitFinalBurn, NeoGeoFaker, UnitNeoGeoFaker;
 
 {$R *.dfm}
 
@@ -223,6 +229,114 @@ begin
 end;
 
 procedure TFrameStockROMs.DoAdd(Files: TStrings);
+function DoTryAddFBA(FN: string): Boolean;
+var
+  ZFBFN: string;
+  ZIPFN: string;
+  ZIPFNBIN: string;
+  FileExisted: Boolean;
+  ZFB: TROMFile;
+  DoFake: Boolean;
+  Success: Boolean;
+begin
+  Result := False;
+  if FolderIndex = ArcadeFolderIndex then
+  if SameStr(ExtractFileExt(FN), '.zip') then
+  begin
+    Application.CreateForm(TFormFinalBurn, FormFinalBurn);
+    try
+      FormFinalBurn.LabelFileName.Caption := ExtractFileName(FN);
+      DoFake := False;
+      FormFinalBurn.EditZIPFileName.Text := ChangeFileExt(ExtractFileName(FN), '');
+      if FakeSources.ContainsKey(ChangeFileExt(ExtractFileName(FN), '')) then
+      //if FakeSources[ChangeFileExt(ExtractFileName(FN), '')].Status <> 'error' then
+      begin
+        FormFinalBurn.EditZIPFileName.Text := FakeSources[ChangeFileExt(ExtractFileName(FN), '')].Target;
+        FormFinalBurn.EditZIPFileName.Enabled := False;
+        FormFinalBurn.EditFolder.Text := ChangeFileExt(ExtractFileName(FN), '');
+        DoFake := True;
+      end;
+      FormFinalBurn.EditZFBFileName.Text := ChangeFileExt(ExtractFileName(FN), '');
+      case FormFinalBurn.ShowModal() of
+        mrAll: Exit;
+        mrIgnore: Exit(True);
+        mrAbort: Abort;
+        mrOk:
+          if FormFinalBurn.CheckBoxZFB.Checked then
+          begin
+            ZFBFN := FormFinalBurn.GetZFBFileName();
+            FileExisted := FileExists(Foldername.AbsoluteFolder[ArcadeFolderIndex] + ZFBFN);
+            ZIPFN := FormFinalBurn.GetZIPFileName(False);
+            ZIPFNBin := FormFinalBurn.GetZIPFileName(True);
+            ForceDirectories(ExtractFilePath(Foldername.AbsoluteFolder[ArcadeFolderIndex] + ZIPFNBin));
+            ForceDirectories(ExtractFilePath(IncludeTrailingPathDelimiter(Foldername.AbsoluteFolder[ArcadeFolderIndex] + 'save') + ZIPFN));
+
+            Success := False;
+            if DoFake then
+            begin
+              if not HasGaroupPatch then
+              if FormFinalBurn.EditZIPFileName.Text = 'garoup' then
+              MessageDlg('You must enable the ''garoup'' P-ROM patch in BIOS tab before you can play ROMs faked into ''garou''', mtWarning, [mbOk], 0);
+
+              Application.CreateForm(TFormNeoGeoFaker, FormNeoGeoFaker);
+              try
+                try
+                  FormNeoGeoFaker.LoadFromZIPFile(FN, False);
+                  if UseMaxCompression then
+                  FormNeoGeoFaker.ComboBoxCompressionLevel.ItemIndex := FormNeoGeoFaker.ComboBoxCompressionLevel.Items.Count - 1;
+                  FormNeoGeoFaker.SaveToZIPFile(Foldername.AbsoluteFolder[ArcadeFolderIndex] + ZIPFNBin);
+                  Success := True;
+                except
+                  on E: Exception do
+                  case MessageDlg('Could not create a fake ROM set for ''' + ChangeFileExt(ExtractFileName(FN), '') + ''':'#13#10+E.Message, mtError, [mbOk, mbAbort], 0) of
+                    mrOk: Exit(True);
+                    else Abort;
+                  end;
+                end;
+              finally
+                FormNeoGeoFaker.Free();
+              end;
+            end
+            else
+            Success := CopyFile(PChar(FN), PChar(Foldername.AbsoluteFolder[ArcadeFolderIndex] + ZIPFNBin), False);
+
+            if not Success then
+            case MessageDlg('Could not copy ROM set file.', mtError, [mbOk, mbAbort], 0) of
+              mrOk: Exit(True);
+              else Abort;
+            end;
+
+            if Success then
+            begin
+              ZFB := TROMFile.CreateFinalBurn(StringReplace(ZIPFN, '\', '/', [rfReplaceAll]));
+              try
+                ZFB.SaveToFile(FolderIndex, ZFBFN, False);
+                if not FileExisted then
+                DoAddUnlisted(ZFBFN, True);
+                Exit(True);
+              finally
+                ZFB.Free();
+              end;
+            end;
+          end
+          else
+          begin
+            ZIPFN := FormFinalBurn.GetZIPFileName(False); // argument doesn't matter
+            FileExisted := FileExists(ZIPFN);
+            if CopyFile(PChar(FN), PChar(Foldername.AbsoluteFolder[ArcadeFolderIndex] + ZIPFN), True) then
+            begin
+              if not FileExisted then
+              DoAddUnlisted(ZIPFN, True);
+              Exit(True);
+            end;
+          end;
+        else Exit (True); // skip on close
+      end;
+    finally
+      FormFinalBurn.Free();
+    end;
+  end;
+end;
 var
   FN: string;
   NewFN: string;
@@ -241,6 +355,8 @@ begin
       TidyUpFileList(Files);
       for FN in Files do
       begin
+        if DoTryAddFBA(FN) then
+        Continue;
         NewFN := FN;
         if TFormMulticoreSelection.HandleMulticore(FolderIndex, NewFN) then
         if NewFN <> '' then
@@ -250,6 +366,9 @@ begin
     else
     for FN in Files do
     begin
+      if DoTryAddFBA(FN) then
+      Continue;
+
       NewFN := Foldername.AbsoluteFolder[FolderIndex] + ExtractFileName(FN);
 
       if NewFN = FN then
@@ -291,6 +410,7 @@ begin
   Result := ListViewFiles.Items.Add();
   Result.Caption := FN;
   Result.Checked := Checked;
+  Result.ImageIndex := TROMFile.FileNameToImageIndex(FN);
   //if ShowChineseNames then
   //begin
   if TROMFile.GetIsMultiCore(FN) then
@@ -298,7 +418,6 @@ begin
   FN2 := ChangeFileExt(FN, '');
   Result.SubItems.Add(FN2);
   Result.SubItems.Add(FN2);
-  Result.ImageIndex := TROMFile.FileNameToImageIndex(FN);
   //end;
 end;
 
@@ -524,7 +643,7 @@ begin
     begin
       Item := ListViewFiles.Items.Add();
       Item.Caption := Names.FileNames[i];
-      KnownFiles.Add(AnsiLowercase(Names.FileNames[i]), 0);
+      KnownFiles.AddOrSetValue(AnsiLowercase(Names.FileNames[i]), 0);
       Item.Checked := True;
       Item.ImageIndex := TROMFile.FileNameToImageIndex(Names.FileNames[i]);
       Item.SubItems.Add(Names.ChineseNames[i]);
@@ -544,6 +663,98 @@ begin
     ListViewFiles.OnItemChecked := ListViewFilesItemChecked;
     ListViewFiles.DoAutoSize();
     KnownFiles.Free();
+  end;
+end;
+
+procedure TFrameStockROMs.MenuItemExportWQWImagesClick(Sender: TObject);
+var
+  Item: TListItem;
+  Ext: string;
+  ROM: TROMFile;
+  PNG: TPNGImage;
+  KeepExt: Boolean;
+begin
+  if FileOpenDialogFolder.Execute() then
+  begin
+    case MessageDlg('Do you want to include the WQW files'' extension in the exported images'' filename??'#13#10#13#10 +
+                    'Example: ''Yes'' means "Filename.zfb.png", ''No'' means "Filename.png".'#13#10#13#10 +
+                    '''No'' will allow easier subsequent processing, e.g. with the Import All Images feature in this menu.'#13#10'''Yes'' is only recommended if you expect conflicts.', mtInformation, mbYesNoCancel, 0, mbNo) of
+      mrYes: KeepExt := True;
+      mrNo: KeepExt := False;
+      else Exit;
+    end;
+
+    for Item in ListViewFiles.Items do
+    begin
+      Ext := Lowercase(ExtractFileExt(Item.Caption));
+      if (Ext = '.zfb') or (Ext = '.zfc') or (Ext = '.zsf') or (Ext = '.zpc') or (Ext = '.zmd') or (Ext = '.zgb') then
+      begin
+        ROM := TROMFile.Create();
+        try
+          ROM.LoadFromFile(FolderIndex, Item.Caption);
+          if ROM.HasImage then
+          begin
+            PNG := ROM.GetThumbnailAsPNG;
+            try
+              if KeepExt then
+              PNG.SaveToFile(IncludeTrailingPathDelimiter(FileOpenDialogFolder.FileName) + Item.Caption + '.png')
+              else
+              PNG.SaveToFile(IncludeTrailingPathDelimiter(FileOpenDialogFolder.FileName) + ChangeFileExt(Item.Caption, '.png'))
+            finally
+              PNG.Free();
+            end;
+          end;
+        finally
+          ROM.Free();
+        end;
+      end;
+    end;
+  end;
+end;
+
+procedure TFrameStockROMs.MenuItemExportWQWROMsClick(Sender: TObject);
+var
+  Item: TListItem;
+  Ext: string;
+  ROM: TROMFile;
+  ActualROM: TBytesStream;
+  UseInternalName: Boolean;
+begin
+  if FileOpenDialogFolder.Execute() then
+  begin
+    case MessageDlg('Do you want to save the ROMs with the archive''s internal file name?'#13#10#13#10 +
+                    'If you choose ''No'', the tool will use the WQW files'' name with the internal names'' extension.'#13#10#13#10 +
+                    'Your answer to this question does not make any difference unless a WQW file has been renamed after it was created.', mtInformation, mbYesNoCancel, 0, mbYes) of
+      mrYes: UseInternalName := True;
+      mrNo: UseInternalName := False;
+      else Exit;
+    end;
+
+    for Item in ListViewFiles.Items do
+    begin
+      Ext := Lowercase(ExtractFileExt(Item.Caption));
+      if (Ext = '.zfc') or (Ext = '.zsf') or (Ext = '.zpc') or (Ext = '.zmd') or (Ext = '.zgb') then // no ZFB here
+      begin
+        ROM := TROMFile.Create();
+        try
+          ROM.LoadFromFile(FolderIndex, Item.Caption);
+          if ROM.IsCompressed then
+          begin
+            ActualROM := ROM.ROM;
+            try
+              if UseInternalName then
+              ActualROM.SaveToFile(IncludeTrailingPathDelimiter(FileOpenDialogFolder.FileName) + ROM.ROMFileName)
+              else
+              ActualROM.SaveToFile(IncludeTrailingPathDelimiter(FileOpenDialogFolder.FileName) + ChangeFileExt(Item.Caption, ExtractFileExt(ROM.ROMFileName)));
+            finally
+              ActualROM.Free();
+            end;
+          end;
+        finally
+          ROM.Free();
+        end;
+      end;
+    end;
   end;
 end;
 
@@ -610,9 +821,9 @@ end;
 var
   Item: TListItem;
 begin
-  case MessageDlg('This checks this folder for ROMs that have images where .png and .jpg have added to the extension or replaced it. ' +
-                  'For multicore stubs, it also checks the actual ROMs'' location using the same pattern. Those images are then used as thumbnail.'#13#10#13#10 +
-                  'Do you want to delete images that were successfully imported in this process?', mtWarning, mbYesNoCancel, 0, mbNo) of
+  case MessageDlg('This checks this folder for ROMs that have images where .png or .jpg have been added to the extension or replaced it. ' +
+                  'For multicore .gba stubs (but not .zfb ones), it also checks the actual ROMs'' location using the same pattern. Those images are then used as thumbnail.'#13#10#13#10 +
+                  'Do you want to delete images that were successfully imported within this process?', mtWarning, mbYesNoCancel, 0, mbNo) of
     mrYes: Del := True;
     mrNo: Del := False;
     else Exit;

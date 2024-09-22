@@ -939,12 +939,17 @@ end;
 { TBIOSCheckerFamicomDiskSystemStock }
 
 class function TBIOSCheckerFamicomDiskSystemStock.DoCheckBIOS(OnlyRequired: Boolean): TBIOSCheckResults;
-var
-  BIOS: TBIOS;
+//var
+//  BIOS: TBIOS;
 begin
   SetLength(Result, 2);
   Result[1] := CheckBIOSFileAbs(IncludeTrailingPathDelimiter(Path + 'ROMS') + 'disksys.rom', True, [$5E607DCF]);
-  Result[0].FileName := 'FDS enabled in BIOS tab'  {Copy(TBIOS.Path, Length(Path) - 1, 1337)};
+  Result[0].FileName := 'Binary patch (not yet available)';
+  Result[0].Required := True;
+  Result[0].CRCValid := False;
+  Result[0].Exists := False;
+
+  {Result[0].FileName := 'FDS enabled in BIOS tab';
   Result[0].Required := True;
   if FileExists(TBIOS.Path) then
   begin
@@ -958,7 +963,7 @@ begin
   end
   else
   Result[0].CRCValid := False;
-  Result[0].Exists := Result[0].CRCValid;
+  Result[0].Exists := Result[0].CRCValid;       }
 end;
 
 { TBIOSCheckerPCEngineCD }
@@ -1083,10 +1088,15 @@ end;
 { TBIOSCheckerVTxx }
 
 class function TBIOSCheckerVTxx.DoCheckBIOS(OnlyRequired: Boolean): TBIOSCheckResults;
-var
-  BIOS: TBIOS;
+//var
+//  BIOS: TBIOS;
 begin
-  SetLength(Result, 2);
+  SetLength(Result, 1);
+  Result[0].FileName := 'Binary patch (not yet available)';
+  Result[0].Required := True;
+  Result[0].CRCValid := False;
+  Result[0].Exists := False;
+  {SetLength(Result, 2);
   Result[0].FileName := 'VT02/03 enabled in BIOS tab';
   Result[0].Required := True;
   Result[1].FileName := 'VT03 LUT patched in BIOS tab';
@@ -1107,7 +1117,7 @@ begin
     Result[0].CRCValid := False;
     Result[1].CRCValid := False;
   end;
-  Result[0].Exists := Result[0].CRCValid;
+  Result[0].Exists := Result[0].CRCValid;      }
 end;
 
 end.

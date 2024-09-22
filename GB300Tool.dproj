@@ -190,6 +190,15 @@
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
         <DCCReference Include="PaletteColors.pas"/>
+        <DCCReference Include="UnitNeoGeoFaker.pas">
+            <Form>FormNeoGeoFaker</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="UnitFinalBurn.pas">
+            <Form>FormFinalBurn</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="NeoGeoFaker.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
