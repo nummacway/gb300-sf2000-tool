@@ -36,6 +36,7 @@ If you want to build it yourself, you need Embarcadero Delphi. It should compile
 
 **ROMs**
 - Add and remove ROMs in the seven "static" lists and user ROMs
+- Makes your device support around 300 more Neo Geo Arcade sets than it normally would, including the most recent homebrew
 - Manually reorder and alphabetically sort ROMs in the "static" lists
 - Identify ROMs using No-Intro (includes No-Intro game ID, name and verification status; ignores NES header if one is present)
 - Rename, duplicate, compress and decompress ROM files
