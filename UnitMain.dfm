@@ -1,7 +1,7 @@
 object Form1: TForm1
   Left = 0
   Top = 0
-  Caption = 'GB300+SF2000 Tool [v2.0-beta]'
+  Caption = 'GB300+SF2000 Tool [v2.0-beta2]'
   ClientHeight = 760
   ClientWidth = 1280
   Color = clWhite
@@ -37,14 +37,14 @@ object Form1: TForm1
   end
   object PanelOnboarding: TPanel
     Left = 384
-    Top = 218
+    Top = 219
     Width = 512
     Height = 326
     Anchors = []
     BevelOuter = bvNone
     TabOrder = 1
     ExplicitLeft = 382
-    ExplicitTop = 217
+    ExplicitTop = 218
     DesignSize = (
       512
       326)
@@ -214,8 +214,8 @@ object Form1: TForm1
         Width = 464
         Height = 16
         Caption = 
-          'Use ZFB when creating multicore stubs (allows arbitrary filename' +
-          's)'
+          'Use ZFB when creating multicore stubs in static lists (allows ar' +
+          'bitrary filenames)'
         Checked = True
         State = cbChecked
         TabOrder = 2

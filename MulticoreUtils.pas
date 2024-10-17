@@ -21,6 +21,7 @@ type
     protected
       class function CheckBIOSFile(const FileName: string; Required: Boolean; ExpectedCRC: array of Cardinal): TBIOSCheckResult;
       class function CheckBIOSFileAbs(const FileName: string; Required: Boolean; ExpectedCRC: array of Cardinal): TBIOSCheckResult;
+      class function CheckBIOSZipFileAbs(const FileName: string; Required: Boolean; FileNames: array of string; ExpectedCRCs: array of Cardinal): TBIOSCheckResult; // zero-length name -> match CRC only
       class function DoCheckBIOS(OnlyRequired: Boolean): TBIOSCheckResults; overload; virtual; abstract;
       class var
         BIOSLastRequiredCheckedResult: TBIOSCheckResults;
@@ -91,6 +92,14 @@ type
   end;
 
   TBIOSCheckerLynx = class(TBIOSChecker)
+    class function DoCheckBIOS(OnlyRequired: Boolean): TBIOSCheckResults; override;
+  end;
+
+  TBIOSCheckerMAME = class(TBIOSChecker) // Neo Geo only
+    class function DoCheckBIOS(OnlyRequired: Boolean): TBIOSCheckResults; override;
+  end;
+
+  TBIOSCheckerMAMEN2K = class(TBIOSChecker) // Neo Geo only
     class function DoCheckBIOS(OnlyRequired: Boolean): TBIOSCheckResults; override;
   end;
 
@@ -174,7 +183,7 @@ const
   Beetle = 'Mednafen ';
 
 var
-  CoreConsoles: array[0..76] of TCoreConsole =
+  CoreConsoles: array[0..77] of TCoreConsole =
     ((Core: 'Stock';      Console: 'Nintendo - Nintendo Entertainment System (Famicom) [FCEUmm]';                        NoIntro:  45; Extensions: 'nes|unf'; BIOSChecker: TBIOSCheckerNone),
      (Core: 'Stock';      Console: 'Nintendo - Famicom Disk System [FCEUmm]';                                            NoIntro:  31; Extensions: 'fds'; BIOSChecker: TBIOSCheckerFamicomDiskSystemStock),
      (Core: 'Stock';      Console: 'V.R. Technology - VTxx (incl. NES/Famicom) - mapper 12 only [wiseemu]';              NoIntro:  45; Extensions: 'nfc'; BIOSChecker: TBIOSCheckerVTxx),
@@ -216,7 +225,8 @@ var
      (Core: 'int';        Console: 'Mattel - Intellivision';                                                             NoIntro: 105; Extensions: 'int|rom|bin'; BIOSChecker: TBIOSCheckerIntelliVision),
      (Core: 'lnx';        Console: 'Atari - Lynx';                                                                       NoIntro:  30; Extensions: 'lnx'; BIOSChecker: TBIOSCheckerLynx),
      //(Core: 'lnxb';       Console: 'Atari - Lynx';                                                                       NoIntro:  30; Extensions: 'lnx|o'; BIOSChecker: TBIOSCheckerLynx),
-     (Core: 'm2k';        Console: 'Arcade';                                                                             NoIntro:   0; Extensions: 'zip'; BIOSChecker: TBIOSCheckerNone),
+     (Core: 'm2kn';       Console: 'Arcade';                                                                             NoIntro:   0; Extensions: 'zip'; BIOSChecker: TBIOSCheckerMAMEN2K),
+     (Core: 'm2k';        Console: 'Arcade';                                                                             NoIntro:   0; Extensions: 'zip'; BIOSChecker: TBIOSCheckerMAME),
      (Core: 'msx';        Console: 'Sega - SG-1000';                                                                     NoIntro:  19; Extensions: 'sg|sc|ri'; BIOSChecker: TBIOSCheckerMSXSegaSG1000),
      (Core: 'msx';        Console: 'Coleco - ColecoVision';                                                              NoIntro:   3; Extensions: 'col'; BIOSChecker: TBIOSCheckerMSXColecoVision),
      (Core: 'nes';        Console: 'Nintendo - Nintendo Entertainment System';                                           NoIntro:  45; Extensions: 'nes|unif|unf'; BIOSChecker: TBIOSCheckerNone),
@@ -258,7 +268,7 @@ var
      (Core: 'wswan';      Console: 'Benesse - Pocket Challenge v2';                                                      NoIntro:  87; Extensions: 'pc2'; BIOSChecker: TBIOSCheckerNone),
      (Core: 'zx81';       Console: 'Sinclair - ZX 81';                                                                   NoIntro:   0; Extensions: 'p|tzx|t81'; BIOSChecker: TBIOSCheckerNone));
 
-  Cores: array[0..94] of TCore =
+  Cores: array[0..95] of TCore =
     ((Core: 'multicore';  Name: 'multicore General Options';   Config: 'multicore';               Description: 'configuration only'),
      (Core: 'Stock';      Name: 'GB300 Stock Emulators';       Config: '';                        Description: 'NES, VTxx, PCE, SNES, MD, SMS, GB, GBC, GBA'),
      (Core: 'arduboy';    Name: 'Arduous';                     Config: 'arduous';                 Description: 'Arduboy'),
@@ -298,6 +308,7 @@ var
      (Core: 'jnb';        Name: 'Jump ''n Bump';               Config: 'Jump ''n Bump';           Description: 'Game Engine'),
      (Core: 'lowres-nx';  Name: 'LowRes NX';                   Config: 'LowRes NX';               Description: 'LowRes NX Fantasy Console'),
      (Core: 'm2k';        Name: 'MAME 2000';                   Config: 'MAME 2000';               Description: 'Arcade'),
+     (Core: 'm2kn';       Name: 'MAME nummacwaytausend';       Config: 'MAME 2000';               Description: 'Arcade'),
      (Core: 'mgba';       Name: 'mGBA';                        Config: 'mGBA';                    Description: 'Game Boy Classic, Color, Advance'),
      (Core: 'nest';       Name: 'Nestopia UE';                 Config: 'Nestopia';                Description: 'Nintendo Entertainment System/Famicom'),
      (Core: 'cavestory';  Name: 'NXEngine';                    Config: 'NXEngine';                Description: 'Cave Story Game Engine'),
@@ -491,6 +502,57 @@ begin
     end;
   end;
 
+end;
+
+class function TBIOSChecker.CheckBIOSZipFileAbs(const FileName: string; Required: Boolean; FileNames: array of string; ExpectedCRCs: array of Cardinal): TBIOSCheckResult;
+var
+  Files: TDictionary<string, Cardinal>; // Filename -> CRC (header)
+  Header: TZipLocalHeader;
+  ZipFile: TFileStream;
+  i: Integer;
+begin
+  Result.FileName := FileName;
+  Delete(Result.FileName, 1, Length(Path));
+  Result.Required := Required;
+  Result.Exists := FileExists(FileName);
+  Result.CRCValid := Result.Exists;
+
+  if not Result.Exists then
+  Exit;
+
+  Files := TDictionary<string, Cardinal>.Create();
+  try
+    // Load ZIP Local Headers
+    ZipFile := TFileStream.Create(FileName, fmOpenRead or fmShareDenyNone);
+    try
+      while Header.LoadFromStream(ZipFile) do
+      begin
+        Files.Add(Header.FileName, Header.CRC32);
+        ZipFile.Position := ZipFile.Position + Header.CompressedSize;
+      end;
+    finally
+      ZipFile.Free();
+    end;
+
+    // Check our expectations
+    for i := Low(FileNames) to High(FileNames) do
+    begin
+      if FileNames[i] = '' then // ignore file names
+      begin
+        if Files.ContainsValue(ExpectedCRCs[i]) then
+        Continue;
+      end
+      else
+      if Files.ContainsKey(FileNames[i]) then
+      if Files[FileNames[i]] = ExpectedCRCs[i] then
+      Continue;
+
+      Result.CRCValid := False;
+      Exit;
+    end;
+  finally
+    Files.Free();
+  end;
 end;
 
 class function TBIOSChecker.CheckBIOS(OnlyRequired: Boolean; out AllOK: Boolean): TBIOSCheckResults;
@@ -1118,6 +1180,23 @@ begin
     Result[1].CRCValid := False;
   end;
   Result[0].Exists := Result[0].CRCValid;      }
+end;
+
+{ TBIOSCheckerMAME }
+
+class function TBIOSCheckerMAME.DoCheckBIOS(OnlyRequired: Boolean): TBIOSCheckResults;
+begin
+  SetLength(Result, 1);
+  Result[0] := CheckBIOSZipFileAbs(IncludeTrailingPathDelimiter(IncludeTrailingPathDelimiter(Path + 'ROMS') + 'm2k') + 'neogeo.zip', True, ['', '', ''], [$354029fc, $9036d879, $97cf998b]);
+end;
+
+{ TBIOSCheckerMAMEN2K }
+
+class function TBIOSCheckerMAMEN2K.DoCheckBIOS(
+  OnlyRequired: Boolean): TBIOSCheckResults;
+begin
+  SetLength(Result, 1);
+  Result[0] := CheckBIOSZipFileAbs(IncludeTrailingPathDelimiter(IncludeTrailingPathDelimiter(Path + 'ROMS') + 'm2kn') + 'neogeo.zip', True, ['', '', ''], [$354029fc, $9036d879, $97cf998b]);
 end;
 
 end.

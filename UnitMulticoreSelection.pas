@@ -149,7 +149,7 @@ begin
     if not MakeStub then
     OutputFile := ''
     else
-    if UseZFBForMulticore then
+    if UseZFBForMulticore and (FolderIndex <> UserROMsFolderIndex) then
     begin
       ROM := TROMFile.CreateFinalBurn(Core + ';' + ExtractFileName(FileNameList[0]) + '.gba');
       try

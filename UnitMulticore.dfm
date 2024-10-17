@@ -16,7 +16,6 @@ object FrameMulticore: TFrameMulticore
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitWidth = 1112
     object ListViewFiles: TListView
       Left = 0
       Top = 0
@@ -75,7 +74,6 @@ object FrameMulticore: TFrameMulticore
       BevelOuter = bvNone
       TabOrder = 2
       Visible = False
-      ExplicitWidth = 976
       object PanelCorePreferences: TPanel
         Left = 0
         Top = 0
@@ -84,7 +82,6 @@ object FrameMulticore: TFrameMulticore
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitWidth = 976
         object LabelEmuName: TLabel
           Left = 0
           Top = 0
@@ -224,7 +221,6 @@ object FrameMulticore: TFrameMulticore
         Align = alBottom
         BevelOuter = bvNone
         TabOrder = 1
-        ExplicitWidth = 976
         object ButtonSaveConfig: TButton
           Left = 0
           Top = 8
@@ -274,13 +270,13 @@ object FrameMulticore: TFrameMulticore
     object LabelNotInstalled2: TLabel
       Left = 16
       Top = 40
-      Width = 795
+      Width = 886
       Height = 15
       Cursor = crHandPoint
       Caption = 
         'Before you install multicore, make sure that you have already pa' +
         'tched the bootloader. See this tool'#39's "BIOS / Device" tab for mo' +
-        're information.'
+        're information (first checkbox).'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -12
@@ -292,39 +288,37 @@ object FrameMulticore: TFrameMulticore
     object LabelNotInstalled4: TLabel
       Left = 16
       Top = 120
-      Width = 800
+      Width = 991
       Height = 15
       Cursor = crHandPoint
       Caption = 
-        'multicore for SF2000 was created by kobil, osaka and madcock. Pr' +
-        'osty brought it to GB300 v1. He and Leonardo made most of the mo' +
-        're recent changes.'
+        'multicore for SF2000 was created by kobil, osaka and madcock. os' +
+        'aka, Prosty, Karl Ellis and Mutandone brought it to GB300 v2. Pr' +
+        'osty and Leonardo made most of the more recent changes.'
       OnClick = PanelNotInstalledClick
     end
     object LabelNotInstalled3: TLabel
       Left = 16
       Top = 64
-      Width = 1085
+      Width = 1192
       Height = 15
       Cursor = crHandPoint
       Caption = 
         'Click here to visit the downloads page of multicore. Simply down' +
         'load the most recent 7-Zip archive and extract it to your TF car' +
-        'd (root directory) so the '#39#39'bios'#39#39' folders merge. Then restart G' +
-        'B300+SF2000 Tool.'
+        'd (root directory) so the '#39'bios'#39' folders merge and '#39'cores'#39' is cr' +
+        'eated. Then restart GB300+SF2000 Tool.'
       OnClick = PanelNotInstalledClick
     end
     object LabelNotInstalledGB300: TLabel
       Left = 16
       Top = 88
-      Width = 1207
+      Width = 660
       Height = 15
       Cursor = crHandPoint
       Caption = 
-        'As of the release of this tool, there is no multicore for the GB' +
-        '300 v2. Make sure this has changed before installing multicore. ' +
-        'Otherwise releases until v0.2.1 will remove the Arcade, newer on' +
-        'es will break the GB300 v2.'
+        'If you are running GB300 v2, download at least 0.10 v0.3.1! (0.1' +
+        '0 v0.3.0 lacks its most important file and will not work!)'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -12

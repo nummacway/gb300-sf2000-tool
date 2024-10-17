@@ -1,4 +1,4 @@
-This is a tool for managing your [Sup+ GB300 (Game Box) console](https://nummacway.github.io/gb300/).
+This is a tool for managing your [Sup+ GB300 (Game Box)](https://nummacway.github.io/gb300/) and [DataFrog SF2000](https://vonmillhausen.github.io/sf2000/) handheld game consoles.
 
 GB300+SF2000 Tool v2.x supports the GB300 v2 (the one that has Arcade games) and SF2000 v1.60 (aka multicore) and v1.71.
 
@@ -35,10 +35,10 @@ If you want to build it yourself, you need Embarcadero Delphi. It should compile
 **Features in detail:**
 
 **ROMs**
-- Add and remove ROMs in the seven "static" lists and user ROMs
+- Add and remove ROMs in the "static" lists and user ROMs
 - Makes your device support around 300 more Neo Geo Arcade sets than it normally would, including the most recent homebrew
 - Manually reorder and alphabetically sort ROMs in the "static" lists
-- Identify ROMs using No-Intro (includes No-Intro game ID, name and verification status; ignores NES header if one is present)
+- Identify ROMs using No-Intro (includes No-Intro game ID, name and verification status; ignores iNES header if one is present)
 - Rename, duplicate, compress and decompress ROM files
 - Import (replace) and export ROM files
 - Apply IPS (International Patching System; RLE and truncate extensions supported) and BPS (beat Patching System) patches
@@ -58,12 +58,12 @@ If you want to build it yourself, you need Embarcadero Delphi. It should compile
 - Enable GBA BIOS
 - Fix BIOS CRC
 - Change boot logo
-- Patch BIOS after swapping in the SF2000's screen
+<!--- Patch BIOS after swapping in the SF2000's screen
 - Change search result selection color
 - Enable Famicom Disk System
-- Enable VT02/VT03 support and patch VT03 LUT
-- Fix broken MD thumbnails (45 of these exist on the GB300)
-- Fix Glazed thumbnail
+- Enable VT02/VT03 support and patch VT03 LUT -->
+- Fix broken MD thumbnails (225 of these exist on the SF2000)
+- Fix Glazed thumbnail (SF2000 only)
 - Make all NES ROMs use FCEUmm for better compatibility (GB300 only)
 - Clear favorites, history and key map
 
@@ -90,10 +90,8 @@ I hope that people will be sharing the themes they made, so we can have a theme 
 
 **Limitations**
 - There was a plan to get you suggested GG2SMS hacks when you add GG games where those hacks exist and can be played without an external gamepad. Except for the absolute best hacks that use the entire screen, there is no need for this with multicore. You can find a list of hacks that work on the stock Picodrive [here](https://nummacway.github.io/gb300/#sega-game-gear).
-- Files with bad thumbnails are not supported. Use the two fixes in the BIOS tab before doing anything else with the 45 glitched MD files and _Pokemon - Glazed Version (CN)_.
+- Files with bad thumbnails are not supported. Use the two fixes in the BIOS tab before doing anything else with the 225 glitched MD files and _Pokemon - Glazed Version (CN)_. The GB300 either had the issues fixed or the ROMs removed completely. There is a single MD file that is still affected, but it's hidden (but you can make it show up with this very tool!).
 - There are no plans for sound-related features. Use [Kerokero](https://github.com/Dteyn/SF2000_BGM_Tool) instead.
-
-There are no plans to add any new features to the tool because I cannot think of any that are missing. Databases inside the tool might get updated.
 
 ### Onboarding
 
@@ -110,7 +108,7 @@ When you hit _Start_, GB300+SF2000 Tool makes sure that `Foldername.ini` exists 
 
 There are the following buttons below the list:
 
-- _Check All_ ("static" lists only) makes sure the list matches the folder content. It checks all files that exist and unchecks all files that don't.
+- _Check All_ ("static" lists only) makes sure the list matches the folder content. It checks all files that exist and - other than the name suggests! - unchecks all files that don't.
 - _Uncheck All_ ("static" lists only) removes all checkmarks.
 - _Alphasort_ ("static" lists only) sorts the list alphabetically. This uses your computer locale and is therefore different than the GB300's sorting, which is binary-based.
 - _Add..._ adds ROMs. If multicore is enabled, you are asked to choose the core (or stock).
@@ -118,7 +116,7 @@ There are the following buttons below the list:
 
 All actions instantly save the list and update favorites.
 
-If you select a file, a panel appears to the right of the file list. It's header contains the ROM name (the internal name of the actual ROM, which also determines which of the two stock FC emulators is used), the CRC32 and the No-Intro status. If you have a ROM of a that was commercially released during the original console's livespan and it is not matched with No-Intro, that ROM was modified somehow. If you are in a "static" ROM list, you can favorite a ROM that is currently in the list (checked).
+If you select a file, a panel appears to the right of the file list. It's header contains the ROM name (the internal name of the actual ROM, which also determines which of the two stock FC emulators is used on GB300), the CRC32 and the No-Intro status. If you have a ROM of a that was commercially released during the original console's livespan and it is not matched with No-Intro, that ROM was modified somehow. If you are in a "static" ROM list, you can favorite a ROM that is currently in the list (checked).
 
 Below the No-Intro status, you'll find a lot of features that for the current ROM. The main features have a description inside the tool. Many advanced features can be found in the _Rename..._ button's dropdown menu:
 
@@ -138,16 +136,16 @@ Below the buttons, you can find screenshots of your save states (should any exis
 
 As a technical side note: The screenshots do not display in the list (but can still be exported and copied) if states do not share screenshot dimensions. This can happen in a very few PC-Engine games where you can select the resolution, e.g. _Burning Angels_. In this case, only screenshots matching the first state's dimensions are displayed. This can also happen with GB300+SF2000 Tool's _Create Save State from Data..._ feature which uses the last resolution it has successfully displayed after entering the current tab (or 160×120 if no screenshot has been loaded yet).
 
-If you rightclick the file list in one of the first seven tabs, there is an option to mass import images, called _Import All Images..._. This will first show a confirmation message box where you can decide if you want to delete processed images after the import. After that, it checks all files in the currently-displayed list for images with a name pattern described in the message box. Say you used this in the `MD` tab and it's currently processing a list item called `sega;Zero Wing.md.gba`. In this case, it will try to load the following images in the following order, continuing with the next list item after the first one that exists. Note that this feature does not overwrite _other_ files if the new filename conflicted with one (`sega;Zero Wing.md.zgb` in this example).
+If you rightclick the file list in the stock lists, there is an option to mass import images, called _Import All Images..._. This will first show a confirmation message box where you can decide if you want to delete processed images after the import. After that, it checks all files in the currently-displayed list for images with a name pattern described in the message box. Say you used this in the `MD` tab and it's currently processing a list item called `sega;Zero Wing.md.gba`. In this case, it will try to load the following images in the following order, continuing with the next list item after the first one that exists. Note that this feature does not overwrite _other_ files if the new filename conflicted with one (`sega;Zero Wing.md.zgb` in this example).
 
 1. `MD\sega;Zero Wing.md.gba.png`
 2. `MD\sega;Zero Wing.md.gba.jpg`
 3. `MD\sega;Zero Wing.md.png`
 4. `MD\sega;Zero Wing.md.jpg`
-5. `ROMS\sega\Zero Wing.md.png` (multicore stubs only)
-6. `ROMS\sega\Zero Wing.md.jpg` (multicore stubs only)
-7. `ROMS\sega\Zero Wing.png` (multicore stubs only)
-8. `ROMS\sega\Zero Wing.jpg` (multicore stubs only)
+5. `ROMS\sega\Zero Wing.md.png` (non-ZFB multicore stubs only)
+6. `ROMS\sega\Zero Wing.md.jpg` (non-ZFB multicore stubs only)
+7. `ROMS\sega\Zero Wing.png` (non-ZFB multicore stubs only)
+8. `ROMS\sega\Zero Wing.jpg` (non-ZFB multicore stubs only)
 
 All your image are now belong to us. For great justice!!
 
@@ -159,15 +157,15 @@ This tab is kinda boring and self-explanatory. One info though: You can reorder 
 
 ### BIOS
 
-***Important:*** Should the boot logo look strange or the screen combo box be empty, you probably have a different BIOS than everyone else's. Please contact the author `numma_cway` on Discord. Thank you. GB300+SF2000 Tool does check if the size mismatches though, and that should be a relatively safe criterion.
+***Important:*** Should the boot logo look strange, you probably have a different BIOS than everyone else's. Please contact the author `numma_cway` on Discord. Thank you. GB300+SF2000 Tool does check if the size mismatches though, and that should be a relatively safe criterion.
 
 This tab is full of features of which that have a good description right inside the tool, so they won't need explanation here. Well, there is one thing I want to emphasize:
 
 ***Important:*** It is strongly recommended that you apply the bootloader patch before doing anything else. Checking the checkbox is not enough, though! You then have to put the card in your device and boot to the menu. Now your console is safe for modifications.
 
-I would like to thank Discord user `bnister` (osaka) for his research and making the patches you find here.
+<!-- I would like to thank Discord user `bnister` (osaka) for his research and making the patches for the GB300 v1.
 
-But what is this VTxx thing anyway? It's a Famiclone (Famicom clone) with more features. The most important features are way bigger ROMs and more colors (officially 4096 instead of 52, but that's not really true, it's actually just 1703). The GB300's _wiseemu_ can only run [a very few of these ROMs](https://nummacway.github.io/gb300/#vr-technology-vt02vt03).
+But what is this VTxx thing anyway? It's a Famiclone (Famicom clone) with more features. The most important features are way bigger ROMs and more colors (officially 4096 instead of 52, but that's not really true, it's actually just 1703). The GB300's _wiseemu_ can only run [a very few of these ROMs](https://nummacway.github.io/gb300/#vr-technology-vt02vt03). -->
 
 
 ### multicore
@@ -203,7 +201,7 @@ Note that the device's own "Joystick" editor is completely bugged and unusable f
 
 #### Images
 
-Here you can change all images used by the GB300's UI. Only the boot logo and the search results' selection color are found in the BIOS tab instead because that's where they are stored.
+Here you can change all images used by the device's UI. Only the boot logo is found in the BIOS tab instead because that's where it is stored.
 
 - Select a file from the list on the left.
 - Click _Save File_ to save the current file.
@@ -220,14 +218,14 @@ Here you can change all images used by the GB300's UI. Only the boot logo and th
 
 #### Foldername
 
-If you select the file called _Foldername_ (there wasn't enough space to fit ".ini" in) at the very end of the file list, you will have a completely different interface. Here you can edit general UI settings. A few input boxes are locked because changes to them would break (freeze) your device. You can find more information [here](https://nummacway.github.io/gb300/#foldernameini).
+If you select the file called _Foldername_ (there wasn't enough space to fit ".ini" in) at the very end of the file list, you will have a completely different interface. Here you can edit general UI settings. A few input boxes are locked because changes to them would break (freeze) your device. You can find more information [here](https://vonmillhausen.github.io/sf2000/#foldernameini).
 
 - Click _Reload File_ if you made any changes to the file using anyother software.
 - Click _Undo_ to discard all changes made after selecting this file or pressing any of the other buttons.
 - Click _Defaults_ to load the defaults.
 - Click save to save the settings.
 
-Selecting another file or leaving the _UI Editor_ tab without saving will discard any changes made since you last saved. Changing folders does not move but create them upon saving. You can move the files in Windows Explorer if you want.
+Selecting another file or leaving the _UI Editor_ tab without saving will discard any changes made since you last saved. Changing folder names does not rename the folders upon saving but instead creates them (empty). You can move the files in Windows Explorer if you want.
 
 
 ## Dev Mode
@@ -258,10 +256,23 @@ v1.0-rc2's title bar reads "v1.0", so the actual v1.0 is called "v1.0-final".
 
 ### Planned for v2.0
 
-- Add ZFB editor (with an option to move the ROM)
+- Add ZFB and Leonardo stub editor (with an option to move the ROM)
 - Add support for selective configuration options
-- Add a way to check ZIP-based bios and use it for `m2k`'s `neogeo.zip` in `ROMS\m2k` which seems to be where it loads it (despite the file names not matching errors in log).
 - Change the _ROMS_ icon in the tab bar to an icon of a folder (similar to what the device has), and change the _UI Editor_ icon to match the device's current interface
+- Add quick select management (the four games per platform on the main screen)
+- Add an option for the WQW export to affect the selection, not all files
+- Add "convert WQW to multicore" to context menu (will not be that easy because you will need to select the emulator for all platforms but arcade)
+- Add "make skp" to state context menu of arcade states
+- Maybe SF2000 battery level editor (voltage to charge state)
+
+
+### v2.0-beta2 (17 Oct 2024)
+
+- Added support for _MAME nummacwaytausend_ (a mod by me for better Neo Geo support) which now ships with Leonardo's multicore
+- Added ZIP bios checks for `m2k`'s `neogeo.zip` in `ROMS\m2k` which seems to be where it loads it (despite the file names not matching information in log, so I guess finds them by CRC only)
+- ZFB stubs are no longer used for your user ROMs (because they don't work). This was a bug.<br>Note: The next version of this tool should have an option to use Leonardo's Save-3 stub format instead, which was changed to work for the user ROMs folder now).
+- Updated multicore info displayed when no multicore is installed
+- Fixed PCE UI preview being selectable for SF2000 but failing due to the PCE background and selection icon both missing
 
 
 ### v2.0-beta (23 Sep 2024)
@@ -271,7 +282,7 @@ v1.0-rc2's title bar reads "v1.0", so the actual v1.0 is called "v1.0-final".
 - Added more previews
 - Added support for `.zfb` stubs<br>Note: Leonardo's stubs were originally planned, but it turned out I underestimated the power of `.zfb` as it too can have arbitrary names. Leonardo's stubs cannot run from user ROMs folder and probably cannot be thumbnailed.
 - Fixed a bug that prevented the file icon to be displayed for newly-created multicore stubs
-- Removed the time limit
+- Removed the time limit that existed in the two alpha versions
 
 
 ### v2.0-alpha (22 Sep 2024, Discord-only release)
