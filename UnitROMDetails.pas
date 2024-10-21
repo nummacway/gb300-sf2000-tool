@@ -835,7 +835,7 @@ begin
 
     // States
     if ROM.IsFinalBurn then
-    FStateBase := StringReplace(ROM.ROMFileName, '/', '\', [rfReplaceAll])
+    FStateBase := StringReplace(ROM.FinalBurnTarget, '/', '\', [rfReplaceAll])
     else
     FStateBase := Item.Caption;
 

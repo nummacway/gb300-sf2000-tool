@@ -24,9 +24,14 @@ type
     PopupMenu: TPopupMenu;
     MenuItemImportAllImages: TMenuItem;
     N1: TMenuItem;
-    MenuItemExportWQWROMs: TMenuItem;
-    MenuItemExportWQWImages: TMenuItem;
+    MenuItemExportAllWQWROMs: TMenuItem;
+    MenuItemExportAllWQWImages: TMenuItem;
     FileOpenDialogFolder: TFileOpenDialog;
+    MenuItemConvertAllWQWToMulticore: TMenuItem;
+    N2: TMenuItem;
+    MenuItemExportSelectedWQWROMs: TMenuItem;
+    MenuItemExportSelectedWQWImages: TMenuItem;
+    MenuItemConvertSelectedWQWToMulticore: TMenuItem;
     procedure ListViewFilesSelectItem(Sender: TObject; Item: TListItem;
       Selected: Boolean);
     procedure TimerSaveTimer(Sender: TObject);
@@ -49,14 +54,15 @@ type
     procedure ListViewFilesKeyPress(Sender: TObject; var Key: Char);
     procedure ListViewFilesDblClick(Sender: TObject);
     procedure MenuItemImportAllImagesClick(Sender: TObject);
-    procedure MenuItemExportWQWROMsClick(Sender: TObject);
-    procedure MenuItemExportWQWImagesClick(Sender: TObject);
+    procedure MenuItemExportAllWQWROMsClick(Sender: TObject);
+    procedure MenuItemExportAllWQWImagesClick(Sender: TObject);
+    procedure MenuItemConvertAllWQWToMulticoreClick(Sender: TObject);
   private
     { Private declarations }
     procedure DropFiles(Sender: TObject);
     procedure DoCheck(NewState: Boolean);
     procedure DoCheckSelection(NewState: Boolean);
-    function DoAddUnlisted(FN: string; Checked: Boolean): TListItem;
+    function  DoAddUnlisted(FN: string; Checked: Boolean): TListItem;
     procedure ROMDuplicate(var Item: TListItem; const NewName: string);
     procedure ROMRename(var Item: TListItem; const NewName: string);
     var
@@ -78,7 +84,8 @@ implementation
 
 uses
   GUIHelpers, Generics.Collections, UnitMain, UITypes, MulticoreUtils,
-  UnitMulticoreSelection, pngimage, UnitFinalBurn, NeoGeoFaker, UnitNeoGeoFaker;
+  UnitMulticoreSelection, pngimage, UnitFinalBurn, NeoGeoFaker, UnitNeoGeoFaker,
+  UnitConvertToMulticore, StrUtils;
 
 {$R *.dfm}
 
@@ -666,7 +673,167 @@ begin
   end;
 end;
 
-procedure TFrameStockROMs.MenuItemExportWQWImagesClick(Sender: TObject);
+procedure TFrameStockROMs.MenuItemConvertAllWQWToMulticoreClick(Sender: TObject);
+var
+  ROM: TROMFile;
+  Item: TListItem;
+  MustSaveFavorites: Boolean;
+  MustSaveHistory: Boolean;
+  MustUpdateList: Boolean;
+procedure HandleConversion(ConsoleIndex: Integer; HandleState: Boolean);
+var
+  ROMData: TMemoryStream;
+  ZFBTarget: string;
+  ZFB: TROMFile;
+  Console: TCoreConsole;
+  Dir: string;
+  ZFBFN: string;
+  OrigStateFN: string;
+  StateIndex: Integer;
+  State: TState;
+  StateFS: TFileStream;
+  Offset: Integer;
+  FileExisted: Boolean;
+begin
+  if ConsoleIndex = -1 then
+  Exit;
+
+  Console := CoreConsoles[ConsoleIndex];
+
+  // Export ROM
+  ROMData := ROM.ROM;
+  try
+    Dir := IncludeTrailingPathDelimiter(IncludeTrailingPathDelimiter(Path + 'ROMS') + Console.Core);
+    ForceDirectories(Dir);
+    ROMData.SaveToFile(Dir + ROM.ROMFileName);
+  finally
+    ROMData.Free();
+  end;
+
+  // Create ZFB
+  ZFBFN := ChangeFileExt(Item.Caption, '.zfb');
+  FileExisted := FileExists(Foldername.AbsoluteFolder[FolderIndex] + ZFBFN);
+  ZFBTarget := Console.Core + ';' + ROM.ROMFileName + '.gba';
+  ZFB := TROMFile.CreateFinalBurn(ZFBTarget);
+  try
+    ZFB.CopyThumbnail(ROM);
+    ZFB.SaveToFile(FolderIndex, ZFBFN, True);
+  finally
+    ZFB.Free();
+  end;
+
+  // Convert states
+  for StateIndex := 0 to 3 do
+  begin
+    OrigStateFN := IncludeTrailingPathDelimiter(Foldername.AbsoluteFolder[FolderIndex] + 'save') + Item.Caption + '.sa' + IntToStr(StateIndex);
+
+    if not FileExists(OrigStateFN) then
+    Continue;
+
+    if HandleState then
+    begin
+      State := TState.Create();
+      try
+        State.LoadFromFile(OrigStateFN);
+        // Create state data
+        StateFS := TFileStream.Create(TState.GetMCStateFileName(ZFBTarget, StateIndex), fmCreate);
+        try
+          State.SaveStateToStream('', StateFS); // first argument not needed - this is guaranteed to not be multicore already (unless you mix in the stubs created by the 2.0-alpha of this tool, which I assume will still work)
+        finally
+          StateFS.Free();
+        end;
+        // Create state thumb
+        StateFS := TFileStream.Create(IncludeTrailingPathDelimiter(Foldername.AbsoluteFolder[FolderIndex] + 'save') + ZFBTarget + '.sa' + IntToStr(StateIndex), fmCreate);
+        try
+          State.Position := State.Size - 4;
+          State.ReadData(Offset);
+          State.Position := Offset;
+          StateFS.CopyFrom2(State, State.Size - State.Position - 4);
+          StateFS.WriteData(Integer(0));
+        finally
+          StateFS.Free();
+        end;
+      finally
+        State.Free();
+      end;
+    end;
+    if FormConvertToMulticore.CheckBoxDeleteOldStates.Checked then
+    DeleteFile(OrigStateFN);
+  end;
+
+  if Item.Checked and not FileExisted then
+  begin
+    if Favorites.Rename(FolderIndex, Item.Caption, ZFBFN) then
+    MustSaveFavorites := True;
+    if History.Rename(  FolderIndex, Item.Caption, ZFBFN) then
+    MustSaveHistory   := True;
+  end;
+
+  {
+  FileExisted \ DeleteOldROMs | False                                      | True
+  ----------------------------+--------------------------------------------+-----------------------------
+  False                       | creates unticked item for old WQW (reload) | Update item now
+  True                        | equals Magicarp using Splash               | Delete old WQW item (reload)
+
+  }
+
+  if FormConvertToMulticore.CheckBoxDeleteOldROMs.Checked = FileExisted then
+  MustUpdateList := True;
+
+  if FormConvertToMulticore.CheckBoxDeleteOldROMs.Checked then
+  DeleteFile(Foldername.AbsoluteFolder[FolderIndex] + Item.Caption);
+
+  if not FileExisted then // also do this if souece is NOT deleted to ApplyAndSave
+  Item.Caption := ZFBFN;
+end;
+begin
+  Application.CreateForm(TFormConvertToMulticore, FormConvertToMulticore);
+  try
+    if FormConvertToMulticore.ShowModal = mrOk then
+    try
+      MustSaveFavorites := False;
+      MustSaveHistory := False;
+      MustUpdateList := False;
+      ListViewFiles.Items.BeginUpdate();
+      try
+        for Item in ListViewFiles.Items do
+        if Item.Selected or (Sender = MenuItemConvertAllWQWToMulticore) then
+        if TROMFile.FileNameToType(Item.Caption) = ftThumbnailed then
+        begin
+          ROM := TROMFile.Create();
+          try
+            ROM.LoadFromFile(FolderIndex, Item.Caption);
+            case TROMFile.FileNameToType(ROM.ROMFileName) of
+              ftFC:  HandleConversion(FormConvertToMulticore.ComboBoxFC.ObjectIndexInt,  False);
+              ftSFC: HandleConversion(FormConvertToMulticore.ComboBoxSFC.ObjectIndexInt, False);
+              ftMD:  HandleConversion(FormConvertToMulticore.ComboBoxMD.ObjectIndexInt,  FormConvertToMulticore.CheckBoxStatesMD.Checked);
+              ftGB:  if EndsText('.gb', ROM.ROMFileName) then
+                     HandleConversion(FormConvertToMulticore.ComboBoxDMG.ObjectIndexInt, FormConvertToMulticore.CheckBoxStatesDMG.Checked)
+                     else
+                     HandleConversion(FormConvertToMulticore.ComboBoxCGB.ObjectIndexInt, FormConvertToMulticore.CheckBoxStatesCGB.Checked);
+              ftGBA: HandleConversion(FormConvertToMulticore.ComboBoxAGB.ObjectIndexInt, False);
+              ftPCE: HandleConversion(FormConvertToMulticore.ComboBoxPCE.ObjectIndexInt, FormConvertToMulticore.CheckBoxStatesPCE.Checked);
+            end;
+          finally
+            ROM.Free();
+          end;
+        end;
+      finally
+        ListViewFiles.Items.EndUpdate();
+      end;
+    finally
+      ROMDetailsFrame.Hide();
+      MustSaveReferenceLists := MustSaveFavorites or MustSaveHistory;
+      ApplyAndSave();
+      if MustUpdateList then // new files might have been created
+      LoadFromFiles(FolderIndex);
+    end;
+  finally
+    FormConvertToMulticore.Free();
+  end;
+end;
+
+procedure TFrameStockROMs.MenuItemExportAllWQWImagesClick(Sender: TObject);
 var
   Item: TListItem;
   Ext: string;
@@ -676,7 +843,7 @@ var
 begin
   if FileOpenDialogFolder.Execute() then
   begin
-    case MessageDlg('Do you want to include the WQW files'' extension in the exported images'' filename??'#13#10#13#10 +
+    case MessageDlg('Do you want to include the WQW files'' extension in the exported images'' filename?'#13#10#13#10 +
                     'Example: ''Yes'' means "Filename.zfb.png", ''No'' means "Filename.png".'#13#10#13#10 +
                     '''No'' will allow easier subsequent processing, e.g. with the Import All Images feature in this menu.'#13#10'''Yes'' is only recommended if you expect conflicts.', mtInformation, mbYesNoCancel, 0, mbNo) of
       mrYes: KeepExt := True;
@@ -685,6 +852,7 @@ begin
     end;
 
     for Item in ListViewFiles.Items do
+    if Item.Selected or (Sender = MenuItemExportAllWQWImages) then
     begin
       Ext := Lowercase(ExtractFileExt(Item.Caption));
       if (Ext = '.zfb') or (Ext = '.zfc') or (Ext = '.zsf') or (Ext = '.zpc') or (Ext = '.zmd') or (Ext = '.zgb') then
@@ -712,7 +880,7 @@ begin
   end;
 end;
 
-procedure TFrameStockROMs.MenuItemExportWQWROMsClick(Sender: TObject);
+procedure TFrameStockROMs.MenuItemExportAllWQWROMsClick(Sender: TObject);
 var
   Item: TListItem;
   Ext: string;
@@ -731,6 +899,7 @@ begin
     end;
 
     for Item in ListViewFiles.Items do
+    if Item.Selected or (Sender = MenuItemExportAllWQWROMs) then
     begin
       Ext := Lowercase(ExtractFileExt(Item.Caption));
       if (Ext = '.zfc') or (Ext = '.zsf') or (Ext = '.zpc') or (Ext = '.zmd') or (Ext = '.zgb') then // no ZFB here
@@ -872,10 +1041,13 @@ end;
 
 procedure TFrameStockROMs.ROMRename(var Item: TListItem; const NewName: string);
 begin
-  if Favorites.Rename(FolderIndex, Item.Caption, NewName) then
-  MustSaveReferenceLists := True;
-  if History.Rename(FolderIndex, Item.Caption, NewName) then
-  MustSaveReferenceLists := True;
+  if Item.Checked then
+  begin
+    if Favorites.Rename(FolderIndex, Item.Caption, NewName) then
+    MustSaveReferenceLists := True;
+    if History.Rename(FolderIndex, Item.Caption, NewName) then
+    MustSaveReferenceLists := True;
+  end;
   if not TROMFile.RenameRelated(FolderIndex, Item.Caption, NewName) then
   MessageDlg('Could not rename all existing related files, likely because there is some conflict or corruption', mtWarning, [mbOk], 0);
   Item.Caption := NewName;

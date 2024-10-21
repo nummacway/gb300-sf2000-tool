@@ -149,6 +149,21 @@ If you rightclick the file list in the stock lists, there is an option to mass i
 
 All your image are now belong to us. For great justice!!
 
+The context menu also has features to handle Wang QunWei files. These are the stock files that ship with the console, and that are created by the tool when you add an image to a raw ROM file (not multicore). You can do three things with them:
+
+- _Export All/Selected WQW ROMs..._ will export the ROM files to a selectable folder
+- _Export All/Selected WQW Images..._ will export the thumbnails to a selectable folder (PNG); this is the only of these three features to affect ZFB files
+- _Convert All/Selected WQW To Multicore..._ will convert the files to multicore (while keeping the thumbnail), which will keep
+  - ROM
+  - ROM Thumbnails
+  - Position in list (if target file is a new file)
+  - States (if you're converting to TGB Dual, Doublecherry, Mednafen PCE Fast or PicoDrive)
+    - State Thumbnails
+  - Source WQW (optional)
+  - Source states (optional)
+  - Favorites status (if target file is a new file and the old file is ticked)
+  - History entry (same conditions)
+
 
 ### Favorites
 
@@ -256,21 +271,27 @@ v1.0-rc2's title bar reads "v1.0", so the actual v1.0 is called "v1.0-final".
 
 ### Planned for v2.0
 
+- Add Leonardo stubs for `ROMS` on SF2000 (because ZFB does not work there)
 - Add ZFB and Leonardo stub editor (with an option to move the ROM)
 - Add support for selective configuration options
 - Change the _ROMS_ icon in the tab bar to an icon of a folder (similar to what the device has), and change the _UI Editor_ icon to match the device's current interface
-- Add quick select management (the four games per platform on the main screen)
-- Add an option for the WQW export to affect the selection, not all files
-- Add "convert WQW to multicore" to context menu (will not be that easy because you will need to select the emulator for all platforms but arcade)
+- Add quick select management (the four games per platform on the main screen), but this is complicated due to the need to create the images for this, which requires implementing Gaußian Blur
 - Add "make skp" to state context menu of arcade states
 - Maybe SF2000 battery level editor (voltage to charge state)
+
+
+### v2.0-beta3 (21 Oct 2024)
+
+- Added an option for the WQW export to affect the selection, not all files
+- Fixed a bug that prevented ZFB multicore states from working
+- Added _Convert WQW to multicore_ to context menu<br>Note: Doing this for many files can take some minutes, especially for GBA.<br>Note: Save states can be kept for platforms where they are compatible (TGB Dual, Doublecherry, Picodrive and Mednafen PCE Fast). States are not supposed to at all, but for these, it works anyway. Sadly, GBA (the platform where converting makes most sense because of performance), states are compatible with neither the most recent version of gpSP, nor Prosty's save API downgrade.<br>Note: Does not process ZFB because arcade can only run a single stock game properly (Wildfang), but that one works well on FBA as well.
 
 
 ### v2.0-beta2 (17 Oct 2024)
 
 - Added support for _MAME nummacwaytausend_ (a mod by me for better Neo Geo support) which now ships with Leonardo's multicore
 - Added ZIP bios checks for `m2k`'s `neogeo.zip` in `ROMS\m2k` which seems to be where it loads it (despite the file names not matching information in log, so I guess finds them by CRC only)
-- ZFB stubs are no longer used for your user ROMs (because they don't work). This was a bug.<br>Note: The next version of this tool should have an option to use Leonardo's Save-3 stub format instead, which was changed to work for the user ROMs folder now).
+- ZFB stubs are no longer used for your user ROMs (because they don't work there). This was a bug.<br>Note: The next version of this tool should have an option to use Leonardo's Save-3 stub format instead, which was changed to work for the user ROMs folder now.
 - Updated multicore info displayed when no multicore is installed
 - Fixed PCE UI preview being selectable for SF2000 but failing due to the PCE background and selection icon both missing
 

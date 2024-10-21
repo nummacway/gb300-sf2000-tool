@@ -1,7 +1,7 @@
 object Form1: TForm1
   Left = 0
   Top = 0
-  Caption = 'GB300+SF2000 Tool [v2.0-beta2]'
+  Caption = 'GB300+SF2000 Tool [v2.0-beta3]'
   ClientHeight = 760
   ClientWidth = 1280
   Color = clWhite
@@ -36,14 +36,14 @@ object Form1: TForm1
     ExplicitHeight = 615
   end
   object PanelOnboarding: TPanel
-    Left = 384
+    Left = 382
     Top = 219
     Width = 512
     Height = 326
     Anchors = []
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitLeft = 382
+    ExplicitLeft = 380
     ExplicitTop = 218
     DesignSize = (
       512

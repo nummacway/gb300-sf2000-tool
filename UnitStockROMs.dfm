@@ -137,13 +137,32 @@ object FrameStockROMs: TFrameStockROMs
     object N1: TMenuItem
       Caption = '-'
     end
-    object MenuItemExportWQWROMs: TMenuItem
-      Caption = 'Export WQW ROMs...'
-      OnClick = MenuItemExportWQWROMsClick
+    object MenuItemExportAllWQWROMs: TMenuItem
+      Caption = 'Export All WQW ROMs...'
+      OnClick = MenuItemExportAllWQWROMsClick
     end
-    object MenuItemExportWQWImages: TMenuItem
-      Caption = 'Export WQW Images...'
-      OnClick = MenuItemExportWQWImagesClick
+    object MenuItemExportAllWQWImages: TMenuItem
+      Caption = 'Export All WQW/ZFB Images...'
+      OnClick = MenuItemExportAllWQWImagesClick
+    end
+    object MenuItemConvertAllWQWToMulticore: TMenuItem
+      Caption = 'Convert All WQW to Multicore...'
+      OnClick = MenuItemConvertAllWQWToMulticoreClick
+    end
+    object N2: TMenuItem
+      Caption = '-'
+    end
+    object MenuItemExportSelectedWQWROMs: TMenuItem
+      Caption = 'Export Selected WQW ROMs...'
+      OnClick = MenuItemExportAllWQWROMsClick
+    end
+    object MenuItemExportSelectedWQWImages: TMenuItem
+      Caption = 'Export Selected WQW/ZFB Images...'
+      OnClick = MenuItemExportAllWQWImagesClick
+    end
+    object MenuItemConvertSelectedWQWToMulticore: TMenuItem
+      Caption = 'Convert Selected WQW to Multicore...'
+      OnClick = MenuItemConvertAllWQWToMulticoreClick
     end
   end
   object FileOpenDialogFolder: TFileOpenDialog

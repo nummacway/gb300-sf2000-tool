@@ -30,7 +30,8 @@ uses
   PaletteColors in 'PaletteColors.pas',
   UnitNeoGeoFaker in 'UnitNeoGeoFaker.pas' {FormNeoGeoFaker},
   UnitFinalBurn in 'UnitFinalBurn.pas' {FormFinalBurn},
-  NeoGeoFaker in 'NeoGeoFaker.pas';
+  NeoGeoFaker in 'NeoGeoFaker.pas',
+  UnitConvertToMulticore in 'UnitConvertToMulticore.pas' {FormConvertToMulticore};
 
 {$R *.res}
 

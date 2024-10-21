@@ -269,6 +269,7 @@ type
       property ROMFileName: string read GetROMFileName;
       //property FileName: string read FFileName;
       property MCName: TMulticoreName read GetMCName;
+      property FinalBurnTarget: string read GetFinalBurnTarget;
       class function GetMCName(FN: string): TMulticoreName; overload;
       property IsMultiCore: Boolean read GetIsMultiCore;
       class function GetIsMultiCore(FN: string): Boolean; overload;
@@ -292,6 +293,7 @@ type
       function GetCRC: Cardinal;
       class function RenameRelated(FolderIndex: Byte; OldFileName, NewFileName: string): Boolean;
       function ChangeExt(const OldExtWithDot, NewExtWithDot: FourCharString): Boolean;
+      procedure CopyThumbnail(Source: TROMFile);
   end;
 
   TState = class (TMemoryStream)
@@ -1476,6 +1478,20 @@ begin
   end;
 end;
 
+procedure TROMFile.CopyThumbnail(Source: TROMFile);
+begin
+  if not HasImage then
+  raise Exception.Create('Internal error: Trying to copy a thumbnail to a file that is not already thumbnailed');
+  if not Source.HasImage then
+  raise Exception.Create('Trying to copy a thumbnail from a file that is not thumbnailed');
+  if ThumbnailSize <> Source.ThumbnailSize then // cannot currently happen
+  raise Exception.Create('Thumbnail size mismatch');
+
+  FStream.Position := 0;
+  Source.FStream.Position := 0;
+  FStream.CopyFrom2(Source.FStream, ThumbnailSize);
+end;
+
 constructor TROMFile.Create;
 begin
   FStream := TMemoryStream.Create();
@@ -1698,7 +1714,7 @@ begin
   if (Ext = 'zip') or (Ext = 'bkp') or (Ext = 'zfb') then
   Result := ftCompressed
   else
-  if (Ext = 'zfc') or (Ext = 'zsf') or (Ext = 'zpc') or (Ext = 'zmd') or (Ext = 'zgb') then
+  if (Ext = 'zfc') or (Ext = 'zsf') or (Ext = 'zpc') or (Ext = 'zmd') or (Ext = 'zgb') then // do not add ZFB here! (context menu feature of stock ROM list use this)
   Result := ftThumbnailed
   else
   Result := ftUnknown;
